@@ -73,7 +73,7 @@ export default function Login() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #f5ebf1 0%, #f9f0f5 50%, #f2e8ee 100%)",
+        background: "#faf7f9",
       }}
     >
       <div style={{ width: "100%", maxWidth: 400, padding: "0 16px" }}>

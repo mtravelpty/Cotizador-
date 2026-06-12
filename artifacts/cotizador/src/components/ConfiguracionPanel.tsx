@@ -68,7 +68,6 @@ export default function ConfiguracionPanel({
             Formato de cotización
           </div>
           <div className="grid grid-cols-3 gap-2">
-            {/* Tarifario → Individual + Tarifas + Detallada */}
             <ModeCard
               active={quotingMode === "individual" && modo === "tarifas"}
               icon={<Tag className="w-4 h-4" />}
@@ -79,7 +78,6 @@ export default function ConfiguracionPanel({
                 onPresentationModeChange("detailed");
               }}
             />
-            {/* Grupo → Grupo + Totales + Detallada */}
             <ModeCard
               active={quotingMode === "grupo"}
               icon={<Users className="w-4 h-4" />}
@@ -90,7 +88,6 @@ export default function ConfiguracionPanel({
                 onPresentationModeChange("detailed");
               }}
             />
-            {/* Paquete → Individual + Totales + Paquete */}
             <ModeCard
               active={quotingMode === "individual" && modo === "calculo" && presentationMode === "package"}
               icon={<Package className="w-4 h-4" />}
@@ -158,11 +155,11 @@ function IdiomaSelector({ idioma, onChange }: { idioma: Idioma; onChange: (i: Id
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 transition-all text-sm"
+        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-[#e8d5e0] bg-white hover:border-[#b78ca4] hover:bg-[#fdf7fb] transition-all text-sm"
       >
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-          style={{ backgroundColor: "rgba(0,67,187,0.1)", color: "#0043BB" }}
+          style={{ backgroundColor: "#f3e9f0", color: "#802d62" }}
         >
           <Globe className="w-4 h-4" />
         </div>
@@ -176,7 +173,7 @@ function IdiomaSelector({ idioma, onChange }: { idioma: Idioma; onChange: (i: Id
 
       {open && (
         <div
-          className="absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden"
+          className="absolute z-50 left-0 right-0 mt-1 bg-white border border-[#e8d5e0] rounded-xl shadow-lg overflow-hidden"
           onMouseLeave={() => setOpen(false)}
         >
           {IDIOMAS.map((lang) => (
@@ -189,11 +186,11 @@ function IdiomaSelector({ idioma, onChange }: { idioma: Idioma; onChange: (i: Id
               }}
               className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors ${
                 lang === idioma
-                  ? "bg-[#0043BB]/5 text-[#0043BB] font-semibold"
-                  : "text-slate-700 hover:bg-slate-50"
+                  ? "bg-[#f3e9f0] text-[#802d62] font-semibold"
+                  : "text-slate-700 hover:bg-[#fdf7fb]"
               }`}
             >
-              {lang === idioma && <Check className="w-3.5 h-3.5 flex-shrink-0" />}
+              {lang === idioma && <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "#802d62" }} />}
               {lang !== idioma && <span className="w-3.5 h-3.5 flex-shrink-0" />}
               {IDIOMA_LABELS[lang]}
             </button>
@@ -223,20 +220,24 @@ function ModeCard({
       onClick={onClick}
       className={`flex flex-col items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all ${
         active
-          ? "border-[#0043BB] bg-[#0043BB]/5 shadow-sm"
-          : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
+          ? "border-[#802d62] bg-[#f3e9f0] shadow-sm"
+          : "border-[#e8d5e0] bg-white hover:border-[#b78ca4] hover:bg-[#fdf7fb]"
       }`}
       data-testid={`mode-card-${title.toLowerCase().replace(/\s+/g, "-")}`}
     >
       <div
         className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors"
-        style={active ? { backgroundColor: "rgba(0,67,187,0.12)", color: "#0043BB" } : { backgroundColor: "#f1f5f9", color: "#64748b" }}
+        style={
+          active
+            ? { backgroundColor: "#e8d0e0", color: "#802d62" }
+            : { backgroundColor: "#f1f5f9", color: "#64748b" }
+        }
       >
         {icon}
       </div>
       <div
         className="text-xs font-semibold leading-tight text-center"
-        style={{ color: active ? "#0043BB" : "#1e293b" }}
+        style={{ color: active ? "#802d62" : "#1e293b" }}
       >
         {title}
       </div>
@@ -264,12 +265,16 @@ function Toggle({
       className={`flex items-center gap-3 px-3 py-3 transition-colors ${
         disabled
           ? "opacity-50 cursor-not-allowed"
-          : "cursor-pointer hover:bg-slate-50"
+          : "cursor-pointer hover:bg-[#fdf7fb]"
       }`}
     >
       <div
         className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors"
-        style={checked && !disabled ? { backgroundColor: "rgba(0,67,187,0.1)", color: "#0043BB" } : { backgroundColor: "#f1f5f9", color: "#64748b" }}
+        style={
+          checked && !disabled
+            ? { backgroundColor: "#f3e9f0", color: "#802d62" }
+            : { backgroundColor: "#f1f5f9", color: "#64748b" }
+        }
       >
         {icon}
       </div>
@@ -290,7 +295,7 @@ function Toggle({
         onClick={() => !disabled && onChange()}
         disabled={disabled}
         className={`relative w-10 h-6 rounded-full flex-shrink-0 transition-colors ${disabled ? "cursor-not-allowed" : ""}`}
-        style={{ backgroundColor: checked && !disabled ? "#0047c7" : "#cbd5e1" }}
+        style={{ backgroundColor: checked && !disabled ? "#802d62" : "#cbd5e1" }}
       >
         <span
           className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform ${

@@ -504,7 +504,7 @@ function AutocompleteInput({
         <div
           ref={listRef}
           className="absolute z-50 top-full mt-1 left-0 right-0 bg-white border border-slate-200 rounded-xl shadow-lg overflow-hidden"
-          style={{ boxShadow: "0 8px 24px rgba(0,52,184,0.10), 0 1px 4px rgba(0,0,0,0.06)" }}
+          style={{ boxShadow: "0 8px 24px rgba(128,45,98,0.10), 0 1px 4px rgba(0,0,0,0.06)" }}
         >
           {filtered.length === 0 ? (
             <div className="px-4 py-3 text-sm text-slate-400 italic text-center">
@@ -827,8 +827,8 @@ export function AlojamientoBar({
                   display: "flex", alignItems: "center", justifyContent: "center",
                   transition: "all 0.15s",
                   ...(active
-                    ? { backgroundColor: "#b78ca4", boxShadow: "0 2px 10px rgba(20,149,255,0.55)" }
-                    : { backgroundColor: "rgba(0,30,90,0.5)", border: "1px solid rgba(147,197,253,0.35)" }),
+                    ? { backgroundColor: "#802d62", boxShadow: "0 2px 10px rgba(128,45,98,0.45)" }
+                    : { backgroundColor: "rgba(107,34,82,0.45)", border: "1px solid rgba(183,140,164,0.40)" }),
                 }}
               >
                 {p}
@@ -933,12 +933,12 @@ export function AlojamientoBar({
                   transition: "background 0.2s, border-color 0.2s, box-shadow 0.2s, opacity 0.2s",
                   ...(hasRooms
                     ? {
-                        backgroundColor: "rgba(20,149,255,0.82)",
-                        border: "1px solid rgba(73,198,255,0.70)",
-                        boxShadow: "0 2px 8px rgba(20,149,255,0.40)",
+                        backgroundColor: "rgba(128,45,98,0.85)",
+                        border: "1px solid rgba(183,140,164,0.70)",
+                        boxShadow: "0 2px 8px rgba(128,45,98,0.40)",
                       }
                     : {
-                        backgroundColor: "rgba(0,20,60,0.50)",
+                        backgroundColor: "rgba(107,34,82,0.45)",
                         border: "1px solid rgba(255,255,255,0.13)",
                         opacity: 0.60,
                       }),

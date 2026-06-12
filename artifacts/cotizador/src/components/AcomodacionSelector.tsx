@@ -35,7 +35,7 @@ export default function AcomodacionSelector({ selected, onChange }: Props) {
           display: "inline-flex",
           flexWrap: "wrap",
           gap: 4,
-          backgroundColor: "#faf5f8",
+          backgroundColor: "#e8dbe4",
           border: "1px solid #d4b0c4",
           borderRadius: 14,
           padding: "4px",
