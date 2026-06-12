@@ -11,7 +11,7 @@ import {
   LogOut,
   User,
 } from "lucide-react";
-import logoRge from "@assets/style-travel-blue-2_1780272470978.png";
+import logoRge from "@assets/0000_1781231540085.png";
 import { useState } from "react";
 import type { ActiveUser } from "@/lib/auth";
 
