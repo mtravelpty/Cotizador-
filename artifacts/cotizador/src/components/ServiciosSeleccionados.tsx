@@ -22,10 +22,11 @@ import {
   Pencil,
   Trash2,
   Hotel,
-  MapPin,
-  Bus,
+  Compass,
+  Car,
   Plane,
-  Ship,
+  Anchor,
+  LayoutGrid,
   Search,
   Plus,
   Calendar,
@@ -237,7 +238,7 @@ export default function ServiciosSeleccionados({
       }
     >
       {servicios.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-[#e8d5e0] px-6 py-10 text-center flex flex-col items-center gap-3" style={{ backgroundColor: "#fdf7fb" }}>
+        <div className="rounded-2xl border border-dashed border-[#e8d5e0] px-6 py-10 text-center flex flex-col items-center gap-3" style={{ backgroundColor: "#ffffff" }}>
           <img
             src={emptyStateImg}
             alt=""
@@ -360,7 +361,7 @@ export default function ServiciosSeleccionados({
               )}
 
               <div
-                className="rounded-2xl bg-slate-50/70 border border-slate-100 overflow-hidden divide-y divide-slate-100"
+                className="rounded-2xl bg-white border border-[#e8d5e0] overflow-hidden divide-y divide-[#f0e4ea]"
                 style={isPaqueteHotel && activeOpIdx > 0 ? { borderLeftColor: activeOpColor + "cc", borderLeftWidth: "3px" } : undefined}
               >
                 {displayItems.length === 0 && isPaqueteHotel ? (
@@ -598,18 +599,14 @@ function ObsPanel({
 
 function iconForTipo(tipo: ServicioSeleccionado["tipo"]) {
   if (tipo === "hotel") return <Hotel className="w-4 h-4" />;
-  if (tipo === "tour") return <MapPin className="w-4 h-4" />;
+  if (tipo === "tour") return <Compass className="w-4 h-4" />;
   if (tipo === "vuelo") return <Plane className="w-4 h-4" />;
-  if (tipo === "catamaran") return <Ship className="w-4 h-4" />;
-  return <Bus className="w-4 h-4" />;
+  if (tipo === "catamaran") return <Anchor className="w-4 h-4" />;
+  return <Car className="w-4 h-4" />;
 }
 
-function tipoColors(tipo: ServicioSeleccionado["tipo"]) {
-  if (tipo === "hotel") return { bg: "bg-amber-50", text: "text-amber-600" };
-  if (tipo === "tour") return { bg: "bg-emerald-50", text: "text-emerald-600" };
-  if (tipo === "vuelo") return { bg: "bg-indigo-50", text: "text-indigo-600" };
-  if (tipo === "catamaran") return { bg: "bg-teal-50", text: "text-teal-600" };
-  return { bg: "bg-sky-50", text: "text-sky-600" };
+function tipoColors(_tipo: ServicioSeleccionado["tipo"]) {
+  return { bg: "bg-[#fdf4f9]", text: "text-[#802d62]" };
 }
 
 function fmtDMA(iso?: string): string {

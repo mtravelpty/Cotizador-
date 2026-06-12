@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Search,
   Hotel as HotelIcon,
-  Bus,
-  MapPin,
+  Car,
+  Compass,
   ChevronDown,
   Loader2,
   X,
@@ -458,14 +458,12 @@ export default function ServiceSearchBar({
 function iconForTipo(tipo: "hotel" | "tour" | "traslado") {
   const cls = "w-4 h-4";
   if (tipo === "hotel") return <HotelIcon className={cls} />;
-  if (tipo === "tour") return <MapPin className={cls} />;
-  return <Bus className={cls} />;
+  if (tipo === "tour") return <Compass className={cls} />;
+  return <Car className={cls} />;
 }
 
-function colorsForTipo(tipo: "hotel" | "tour" | "traslado"): { bg: string; text: string; border: string } {
-  if (tipo === "hotel") return { bg: "#fff8ed", text: "#b45309", border: "#fde68a" };
-  if (tipo === "tour") return { bg: "#f0fdf4", text: "#15803d", border: "#bbf7d0" };
-  return { bg: "#f9f0f5", text: "#802d62", border: "#bfdbfe" };
+function colorsForTipo(_tipo: "hotel" | "tour" | "traslado"): { bg: string; text: string; border: string } {
+  return { bg: "#fdf4f9", text: "#802d62", border: "#d4b0c4" };
 }
 
 function highlight(text: string, q: string) {

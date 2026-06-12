@@ -50,10 +50,10 @@
 
 :root {
   /* Travel Mayorista — primary #802d62, emphasis #b78ca4 */
-  --background: 322 30% 96%;
+  --background: 322 8% 98%;
   --foreground: 322 40% 12%;
-  --border: 322 20% 88%;
-  --input: 322 20% 88%;
+  --border: 322 10% 90%;
+  --input: 322 10% 90%;
   --ring: 322 48% 34%;
 
   --card: 0 0% 100%;
@@ -65,11 +65,11 @@
   --primary: 322 48% 34%;             /* #802d62 */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 322 20% 92%;
+  --secondary: 322 8% 94%;
   --secondary-foreground: 322 40% 20%;
 
-  --muted: 322 15% 93%;
-  --muted-foreground: 322 15% 50%;
+  --muted: 322 6% 95%;
+  --muted-foreground: 322 10% 50%;
 
   --accent: 322 30% 63%;              /* #b78ca4 */
   --accent-foreground: 0 0% 100%;
@@ -77,12 +77,12 @@
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
-  --sidebar: 322 30% 96%;
+  --sidebar: 322 8% 98%;
   --sidebar-foreground: 322 40% 12%;
-  --sidebar-border: 322 20% 88%;
+  --sidebar-border: 322 10% 90%;
   --sidebar-primary: 322 48% 34%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 322 20% 92%;
+  --sidebar-accent: 322 8% 94%;
   --sidebar-accent-foreground: 322 40% 20%;
 
   --app-font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
