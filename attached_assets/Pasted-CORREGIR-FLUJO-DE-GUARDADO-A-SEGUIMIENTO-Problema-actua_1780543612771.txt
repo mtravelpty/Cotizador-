@@ -1,0 +1,129 @@
+CORREGIR FLUJO DE GUARDADO A SEGUIMIENTO
+
+Problema actual:
+- Solo el botón Guardar manda correctamente a Seguimiento.
+- Copiar correo limpia la cotización principal, pero NO la guarda en Seguimiento.
+- Esto provoca pérdida de la cotización.
+- La notificación temporal en la barra lateral “Seguimiento” no siempre aparece.
+
+Objetivo:
+Corregir únicamente la lógica de guardado de acciones.
+
+No tocar:
+- Diseño
+- PDF visual
+- Correo visual
+- WhatsApp visual
+- Tarifas
+- Cálculos
+- Seguimiento visual
+
+──────────────────────────────
+1. BOTÓN GUARDAR
+──────────────────────────────
+
+Al presionar Guardar:
+
+- Validar campos obligatorios.
+- Guardar cotización.
+- Crear o actualizar oportunidad en Seguimiento.
+- Activar notificación temporal en sidebar “Seguimiento”.
+- Mostrar toast superior derecho.
+
+Si es nueva:
+Toast: “Cotización enviada a Seguimiento”
+
+Si es edición:
+Toast: “Cotización actualizada en Seguimiento”
+
+──────────────────────────────
+2. BOTÓN COPIAR CORREO
+──────────────────────────────
+
+Al presionar Copiar correo:
+
+PRIMERO:
+- Validar campos obligatorios.
+- Guardar cotización.
+- Crear o actualizar oportunidad en Seguimiento.
+- Confirmar que el guardado fue exitoso.
+
+DESPUÉS:
+- Copiar correo.
+- Activar notificación temporal en sidebar “Seguimiento”.
+- Mostrar toast superior derecho.
+- Limpiar formulario SOLO si el guardado fue exitoso.
+
+IMPORTANTE:
+Nunca limpiar el formulario si la cotización no se guardó correctamente en Seguimiento.
+
+──────────────────────────────
+3. BOTÓN DESCARGAR PDF
+──────────────────────────────
+
+Mantener lógica similar a correo:
+
+- Validar.
+- Guardar.
+- Crear o actualizar Seguimiento.
+- Descargar PDF.
+- Activar notificación temporal.
+- Limpiar solo si el guardado fue exitoso.
+
+──────────────────────────────
+4. BOTÓN WHATSAPP
+──────────────────────────────
+
+WhatsApp NO debe:
+
+- Guardar.
+- Mandar a Seguimiento.
+- Limpiar formulario.
+- Exigir campos obligatorios.
+- Activar notificación en sidebar.
+
+Solo debe copiar/generar mensaje.
+
+──────────────────────────────
+5. EVITAR DUPLICADOS
+──────────────────────────────
+
+Si la cotización viene desde Seguimiento en modo edición:
+
+- Usar quoteId/opportunityId existente.
+- Actualizar la misma oportunidad.
+- NO crear duplicado.
+
+Si es cotización nueva:
+
+- Crear nueva oportunidad.
+
+──────────────────────────────
+6. NOTIFICACIÓN SIDEBAR
+──────────────────────────────
+
+Cuando Guardar, Copiar correo o Descargar PDF guarden correctamente:
+
+Mostrar junto al menú lateral “Seguimiento”:
+
+- Badge temporal “+1” o punto animado.
+- Duración 3 segundos.
+- Luego desaparecer automáticamente.
+
+No debe quedarse permanente.
+
+──────────────────────────────
+7. VALIDACIÓN FINAL
+──────────────────────────────
+
+Probar:
+
+✓ Guardar manda a Seguimiento.
+✓ Copiar correo manda a Seguimiento.
+✓ Descargar PDF manda a Seguimiento.
+✓ Copiar correo NO limpia si no guardó.
+✓ PDF NO limpia si no guardó.
+✓ WhatsApp no guarda ni valida.
+✓ Notificación aparece en Seguimiento por 3 segundos.
+✓ Editar desde Seguimiento no duplica.
+✓ App carga sin errores.

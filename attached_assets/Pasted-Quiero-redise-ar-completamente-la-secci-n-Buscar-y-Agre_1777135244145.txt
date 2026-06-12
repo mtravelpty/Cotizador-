@@ -1,0 +1,98 @@
+Quiero rediseñar completamente la sección “Buscar y Agregar Servicios” para eliminar el flujo actual basado en múltiples pasos (Agregar servicio → seleccionar categoría → abrir card → agregar).
+
+El nuevo comportamiento debe ser tipo buscador inteligente/autocomplete (estilo Airbnb / Spotlight / iOS).
+
+OBJETIVO PRINCIPAL:
+Agregar servicios de forma inmediata, sin modales ni pasos intermedios, y que se reflejen directamente en la sección existente de “Servicios seleccionados”.
+
+---
+
+1. BUSCADOR SIEMPRE VISIBLE
+- Mostrar siempre un input de búsqueda + selector de categoría en la misma fila.
+- Placeholder: "Buscar hotel, traslado, tour..."
+- Categoría como dropdown compacto (Hotelería, Traslados, Tours, etc.)
+
+---
+
+2. DROPDOWN FLOTANTE (AUTOCOMPLETE)
+- Al escribir 2-3 letras, mostrar un dropdown flotante debajo del input.
+- Resultados en tiempo real (sin botón buscar).
+- Estilo moderno tipo floating panel con sombra y bordes redondeados.
+
+---
+
+3. RESULTADOS (CADA ITEM)
+Cada resultado debe mostrar:
+- Icono según categoría
+- Nombre del servicio (resaltar coincidencia)
+- Código (ej: RGE-387)
+- Rango de fechas
+- Precios alineados a la derecha:
+  - DBL: $xx/pax
+  - SGL: $xx/pax
+- Rating opcional
+
+Diseño:
+- Horizontal
+- Hover suave
+- Clickable
+
+---
+
+4. ACCIÓN PRINCIPAL (IMPORTANTE)
+- Al hacer click en un resultado:
+  → El servicio se agrega AUTOMÁTICAMENTE a la sección EXISTENTE de “Servicios seleccionados” (no crear una nueva sección)
+  → Debe insertarse como un nuevo item en la lista actual
+  → NO abrir modal
+  → NO pedir confirmación
+
+- Mostrar feedback visual:
+  → highlight temporal del item agregado o toast "Servicio agregado"
+
+---
+
+5. SECCIÓN “SERVICIOS SELECCIONADOS”
+- Mantener la sección actual, pero en formato LINEAL (no tarjetas grandes)
+- Estilo tipo lista moderna:
+  - Fondo claro
+  - Bordes redondeados tipo iOS
+  - Separadores sutiles
+
+Cada item debe permitir:
+- Editar (abre detalle completo)
+- Eliminar
+- Ver info resumida
+
+IMPORTANTE:
+- La edición es el único lugar donde se abre el detalle completo
+- Agregar debe ser inmediato y ligero
+
+---
+
+6. UX / PERFORMANCE
+- Debounce de búsqueda (300ms)
+- Estados:
+  - loading
+  - sin resultados
+- Scroll interno en dropdown
+
+---
+
+7. ESTILO VISUAL
+- Bordes redondeados tipo iOS
+- Sombras suaves
+- Animaciones sutiles (fade + slide)
+- UI moderna tipo SaaS premium
+
+---
+
+8. ELIMINAR FLUJO ANTERIOR
+Eliminar completamente:
+- Botón “Agregar servicio”
+- Selección de categoría en pasos previos
+- Cards grandes antes de agregar
+
+---
+
+RESUMEN FINAL:
+Usuario escribe → aparecen resultados → hace click → servicio se agrega inmediatamente en “Servicios seleccionados” → luego puede editar si necesita detalle.

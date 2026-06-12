@@ -1,0 +1,125 @@
+AJUSTE FINAL DE POPUPS Y RESPALDO DE SEGUIMIENTO
+
+No rediseñar toda la app.
+No tocar cálculos, PDF, correo, WhatsApp ni tarifas.
+Solo corregir estilo de popups y respaldo completo.
+
+1. POPUPS RÁPIDOS
+
+Problema:
+Los popups rápidos quedaron con borde muy oscuro y botones demasiado grandes.
+
+Aplicar a:
+- Estadía del hotel
+- Tarifas por noche
+- Precio por persona
+- Notas
+- Cualquier popup rápido de servicios seleccionados
+
+Cambios visuales:
+
+Borde del popup:
+Cambiar borde oscuro actual por borde suave:
+
+#D8E0EE
+
+Sombra:
+Usar sombra premium suave:
+
+0 12px 32px rgba(4,25,65,0.14)
+
+Radio:
+16px
+
+Fondo:
+#FFFFFF
+
+No usar borde negro/azul oscuro fuerte.
+
+2. BOTONES DE ACCIÓN
+
+Reducir tamaño de botones:
+
+Aplicar ✓:
+- 34x34px
+- fondo #004FBB
+- icono blanco
+- border-radius 10px
+- sin texto
+
+Restablecer ↺:
+- 34x34px
+- fondo blanco
+- borde #D8E0EE
+- icono #64748B
+- border-radius 10px
+- sin texto
+
+Cerrar X:
+- tamaño pequeño
+- color #94A3B8
+
+No usar botones grandes de texto en popups rápidos.
+
+3. POPUP DE NOTAS
+
+El popup de notas también debe seguir el mismo estilo.
+
+Cambiar botones:
+
+Cancelar / Guardar
+
+por iconos compactos:
+
+X para cerrar/cancelar
+✓ para guardar
+
+Si se mantiene texto, que sea solo en notas, pero con botón más pequeño y azul #004FBB, no celeste.
+
+4. CONSISTENCIA
+
+Todos los popups deben verse del mismo sistema visual:
+- borde suave
+- sombra suave
+- botones compactos
+- azul corporativo #004FBB
+- texto #041941
+- texto secundario #64748B
+
+5. RESPALDO COMPLETO
+
+Corregir respaldo completo para que también incluya Seguimiento.
+
+El respaldo completo debe exportar e importar:
+
+- oportunidades
+- cotizaciones guardadas
+- estados
+- prioridades
+- historial
+- recordatorios
+- notas internas
+- anuladas
+- finalizadas
+- fechas de actualización
+- relaciones con agencia/agente/counter
+
+Al importar respaldo completo:
+- restaurar Seguimiento completo
+- mantener historial
+- mantener prioridades
+- mantener recordatorios
+- mantener oportunidades anuladas/finalizadas
+
+6. VALIDACIÓN
+
+Confirmar:
+
+✓ Popups ya no tienen borde oscuro fuerte.
+✓ Botones son más pequeños.
+✓ Botón ✓ usa #004FBB.
+✓ Botón ↺ es pequeño y discreto.
+✓ Popup de notas se ve consistente.
+✓ Respaldo completo incluye Seguimiento.
+✓ Importar respaldo restaura Seguimiento.
+✓ App carga sin errores.

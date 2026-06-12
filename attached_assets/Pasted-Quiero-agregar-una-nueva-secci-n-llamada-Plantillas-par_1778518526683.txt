@@ -1,0 +1,217 @@
+Quiero agregar una nueva sección llamada **Plantillas** para crear cotizaciones rápidas reutilizables tipo circuito / multi-destino.
+NO reemplazar el flujo actual del cotizador. Debe coexistir con la cotización manual existente.
+
+OBJETIVO:
+Poder guardar estructuras frecuentes como:
+
+* Ciudad + Contadora
+* Ciudad + Bocas
+* Playa + Ciudad
+* Circuitos completos
+* Programas multi destino
+
+La idea es que una plantilla permita precargar:
+
+* hoteles
+* tours
+* traslados
+* textos personalizados
+* títulos de sección
+* notas
+* orden visual
+
+========================
+ESTRUCTURA GENERAL
+==================
+
+Agregar nueva sección en sidebar/menu:
+
+* Plantillas
+
+Dentro:
+
+1. Lista de plantillas guardadas
+2. Botón “Nueva plantilla”
+3. Duplicar plantilla
+4. Editar plantilla
+5. Eliminar plantilla
+6. Usar plantilla
+
+========================
+COMPORTAMIENTO
+==============
+
+Cuando el usuario presiona “Usar plantilla”:
+
+* se crea automáticamente una nueva cotización
+* se cargan hoteles/tours/traslados definidos
+* se respetan precios actuales del tarifario
+* el usuario luego puede editar normalmente
+
+La plantilla NO debe guardar precios fijos.
+Debe guardar:
+
+* referencias
+* estructura
+* orden
+* textos
+
+Los precios SIEMPRE deben venir del tarifario actual.
+
+========================
+ESTRUCTURA DE PLANTILLA
+=======================
+
+La plantilla debe permitir bloques dinámicos.
+
+Tipos de bloques:
+
+1. TEXTO
+   Texto libre editable.
+
+2. HOTEL
+   Permite agregar:
+
+* destino
+* hotel
+* categoría
+* notas
+
+3. TOUR
+   Permite seleccionar tours existentes.
+
+4. TRASLADO
+   Permite seleccionar traslados existentes.
+
+5. TÍTULO
+   Ejemplo:
+   “Hoteles en Ciudad de Panamá”
+
+6. NOTA
+   Texto destacado.
+
+========================
+ORDEN DRAG & DROP
+=================
+
+Los bloques deben poder:
+
+* mover arriba/abajo
+* reordenarse
+* duplicarse
+* eliminarse
+
+========================
+EJEMPLO VISUAL
+==============
+
+PLANTILLA:
+“Ciudad + Contadora + Bocas”
+
+BLOQUES:
+
+[TÍTULO]
+Hoteles en Ciudad de Panamá
+
+[HOTEL]
+Las Américas Golden Tower
+
+[HOTEL]
+Hotel El Panamá
+
+[NOTA]
+Tarifas netas por persona por noche.
+Incluye desayuno diario.
+
+[TÍTULO]
+Servicios y traslados
+
+[TRASLADO]
+Aeropuerto principal – Hotel – Aeropuerto
+
+[TRASLADO]
+Hotel – Puerto de ferry
+
+[TÍTULO]
+Tours en Ciudad
+
+[TOUR]
+City Tour & Canal
+
+[TOUR]
+Taboga Full Day
+
+[TÍTULO]
+Isla Contadora
+
+[TEXTO]
+Ferry a Contadora:
+Salida 07:30am
+Retorno 03:30pm
+
+[TÍTULO]
+Bocas del Toro
+
+[HOTEL]
+Playa Tortuga
+
+[HOTEL]
+Swan Cay
+
+[TOUR]
+Bahía de los Delfines
+
+========================
+IMPORTANTE
+==========
+
+La plantilla debe:
+
+* reutilizar los componentes actuales
+* reutilizar preview actual
+* reutilizar PDF/email/WhatsApp existentes
+* NO romper el flujo manual actual
+
+========================
+DATOS
+=====
+
+Guardar plantillas en localStorage inicialmente.
+
+Estructura sugerida:
+
+* id
+* nombre
+* bloques[]
+* createdAt
+* updatedAt
+
+========================
+UI
+==
+
+Diseño consistente con el sistema actual:
+
+* cards blancas
+* pills azules
+* bordes rounded
+* drag handles
+* botones compactos
+
+========================
+EXTRA
+=====
+
+Agregar botón:
+“Guardar cotización actual como plantilla”
+
+Debe convertir automáticamente:
+
+* hoteles actuales
+* tours actuales
+* traslados actuales
+* textos
+  en bloques reutilizables.
+
+NO implementar backend todavía.
+Todo local primero.

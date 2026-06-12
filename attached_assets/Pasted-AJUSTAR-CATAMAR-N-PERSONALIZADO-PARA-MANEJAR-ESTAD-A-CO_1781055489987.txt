@@ -1,0 +1,135 @@
+AJUSTAR CATAMARÁN PERSONALIZADO PARA MANEJAR ESTADÍA COMO ALOJAMIENTO
+
+Objetivo:
+El ítem personalizado de Catamarán debe manejar fechas tipo estadía, igual que los alojamientos, porque también se vende por noche.
+
+NO modificar otros servicios.
+
+==================================================
+1. REEMPLAZAR FECHA SIMPLE
+==================================================
+
+Actualmente Catamarán muestra:
+
+FECHA DEL SERVICIO
+[ 10/06/2026 ]
+
+Esto no es suficiente.
+
+Reemplazar por el mismo selector de calendario usado en Alojamiento:
+
+CHECK-IN
+CHECK-OUT
+
+Debe permitir seleccionar rango de fechas.
+
+Ejemplo:
+
+10/06/2026 → 12/06/2026
+
+==================================================
+2. USAR MISMO COMPONENTE DE CALENDARIO DE HOTELES
+==================================================
+
+No crear un calendario nuevo.
+
+Reutilizar exactamente el calendario/rango de fechas que ya usan los hoteles en Alojamiento.
+
+Debe tener el mismo comportamiento:
+
+- seleccionar fecha inicio
+- seleccionar fecha fin
+- calcular noches automáticamente
+- mostrar rango en la tarjeta
+- permitir editar desde la tarjeta
+
+==================================================
+3. FORMULARIO ÍTEM PERSONALIZADO
+==================================================
+
+Cuando Tipo de servicio = Catamarán, mostrar:
+
+ESTADÍA
+
+CHECK-IN
+[ calendario ]
+
+CHECK-OUT
+[ calendario ]
+
+NOCHES
+[ calculado automáticamente ]
+
+Ubicación sugerida:
+Debajo de Nombre del servicio y antes de Modalidad / Horario.
+
+==================================================
+4. TARJETA EN SERVICIOS SELECCIONADOS
+==================================================
+
+En la tarjeta de Catamarán mostrar igual que alojamiento:
+
+Regular · 10/06/2026 → 12/06/2026 · 2 noches
+
+La fecha/rango debe ser clickeable.
+
+Al hacer clic:
+abrir el mismo calendario de alojamiento.
+
+No usar popup pequeño de fecha simple.
+
+==================================================
+5. CÁLCULO
+==================================================
+
+Catamarán debe calcular por noche.
+
+Regla:
+
+Total catamarán = tarifa × cantidad de noches × pasajeros aplicables
+
+Si está en modo tarifas:
+mostrar tarifa por noche / por persona si aplica.
+
+Si está en modo total:
+incluir noches en el cálculo.
+
+==================================================
+6. EXPORTABLES
+==================================================
+
+En Vista previa, PDF y Correo mostrar:
+
+Catamarán personalizado
+Fechas: 10/06/2026 al 12/06/2026
+Noches: 2
+Modalidad: Regular
+Horario: 7:30 AM, si existe
+
+==================================================
+7. DUPLICADO
+==================================================
+
+Si se duplica el Catamarán:
+
+copiar también:
+- check-in
+- check-out
+- noches
+- horario
+- modalidad
+- tarifa
+- observaciones
+
+==================================================
+8. NO AFECTAR
+==================================================
+
+No modificar:
+- Hotelería
+- Traslados
+- Tours
+- Vuelos
+- Otros ítems personalizados
+
+Solo aplicar esta lógica al Catamarán personalizado.

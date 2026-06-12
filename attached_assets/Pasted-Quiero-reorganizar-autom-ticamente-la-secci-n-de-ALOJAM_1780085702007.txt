@@ -1,0 +1,89 @@
+Quiero reorganizar automáticamente la sección de ALOJAMIENTO en todas las salidas de la cotización (preview, PDF, correo y WhatsApp) para que los hoteles se agrupen por ubicación/destino y no se repita el nombre de la ciudad en cada fila.
+
+OBJETIVO:
+Si varios hoteles pertenecen a la misma ubicación, deben mostrarse dentro de un mismo bloque visual con un encabezado de destino.
+
+EJEMPLO ACTUAL:
+HOTEL
+The Executive
+CIUDAD DE PANAMÁ
+
+AC Hotel Panama City
+CIUDAD DE PANAMÁ
+
+Tropical Suites
+BOCAS DEL TORO
+
+NUEVO FORMATO DESEADO:
+
+━━━━━━━━━━━━━━━━━━
+📍 CIUDAD DE PANAMÁ
+━━━━━━━━━━━━━━━━━━
+
+• The Executive
+★★★★ · Deluxe
+Incluye desayuno buffet
+DBL: $37
+
+• AC Hotel Panama City by Marriott
+★★★★ · Standard
+Incluye desayuno buffet
+DBL: $52
+
+━━━━━━━━━━━━━━━━━━
+📍 BOCAS DEL TORO
+━━━━━━━━━━━━━━━━━━
+
+• Tropical Suites
+★★★ · Standard
+Incluye desayuno continental
+DBL: $85
+
+REGLAS IMPORTANTES:
+
+Agrupar automáticamente hoteles por ubicación.
+La agrupación debe usar el campo “ubicación” del hotel.
+Si hay 3 hoteles en “CIUDAD DE PANAMÁ”, todos van juntos.
+El nombre de la ubicación SOLO debe aparecer una vez como encabezado del grupo.
+No repetir la ciudad debajo de cada hotel.
+Mantener el diseño limpio y elegante:
+Nombre del hotel en negrita.
+Categoría y tipo de habitación en una misma línea.
+“Incluye desayuno buffet/continental/etc” en color secundario elegante.
+Precio alineado visualmente.
+Aplicar esta estructura en:
+Vista previa
+PDF
+WhatsApp
+Correo
+En WhatsApp usar formato optimizado:
+
+📍 CIUDAD DE PANAMÁ
+
+• The Executive
+★★★★ · Deluxe
+Incluye desayuno buffet
+DBL: $37
+
+• AC Hotel Panama City by Marriott
+★★★★ · Standard
+Incluye desayuno buffet
+DBL: $52
+
+En PDF y preview:
+usar separadores suaves entre destinos
+mantener la pill azul de “ALOJAMIENTO”
+agregar espacio visual entre bloques
+Si solo existe un hotel en una ubicación:
+igual debe mostrarse el encabezado del destino.
+NO romper la lógica actual de:
+totales
+noches
+acomodaciones
+descriptivos
+observaciones
+exportación PDF
+Crear helper reutilizable:
+groupHotelsByLocation()
+para que preview, PDF, correo y WhatsApp compartan la misma lógica.
+Ordenar los grupos en el mismo orden en que aparecen los hoteles agregados a la cotización.

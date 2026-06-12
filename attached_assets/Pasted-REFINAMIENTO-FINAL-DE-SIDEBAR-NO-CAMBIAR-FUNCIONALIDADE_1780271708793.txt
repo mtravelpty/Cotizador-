@@ -1,0 +1,161 @@
+REFINAMIENTO FINAL DE SIDEBAR (NO CAMBIAR FUNCIONALIDADES)
+
+La nueva dirección visual es correcta.
+NO rediseñar nuevamente la sidebar.
+Solo hacer ajustes finos para que se vea más premium y equilibrada.
+
+--------------------------------------------------
+1. ITEM ACTIVO MÁS COMPACTO
+--------------------------------------------------
+
+Actualmente el bloque activo (Cotizador) quedó un poco alto.
+
+Reducir altura aproximadamente 10%.
+
+Objetivo:
+
+- Mantener presencia.
+- Verse más elegante.
+- Menos sensación de botón gigante.
+
+Referencia:
+
+padding-top: 14px;
+padding-bottom: 14px;
+
+Mantener:
+
+- fondo azul suave
+- texto azul
+- icono azul
+- palito amarillo
+
+--------------------------------------------------
+2. PALITO AMARILLO
+--------------------------------------------------
+
+Mantener exactamente el indicador vertical amarillo.
+
+Pero acercarlo un poco más al contenido.
+
+Objetivo:
+
+Que se sienta integrado al bloque activo.
+
+Referencia:
+
+left: 14px;
+
+No aumentar grosor.
+
+Mantener:
+
+width: 4px;
+border-radius: 999px;
+
+Color:
+
+#E6AE33
+
+--------------------------------------------------
+3. HOVER PREMIUM
+--------------------------------------------------
+
+Al pasar el mouse por cualquier opción:
+
+background: rgba(0,79,187,0.05);
+
+transform: translateX(2px);
+
+transition: all .18s ease;
+
+Debe sentirse suave y moderno.
+
+No usar animaciones exageradas.
+
+--------------------------------------------------
+4. ICONOGRAFÍA
+--------------------------------------------------
+
+Mantener:
+
+Items normales:
+color: #07152F;
+
+Item activo:
+color: #004FBB;
+
+No usar negro puro.
+
+--------------------------------------------------
+5. SEPARACIÓN ENTRE OPCIONES
+--------------------------------------------------
+
+Aumentar levemente la respiración visual.
+
+gap: 6px;
+
+Resultado:
+
+Más elegante.
+Menos sensación de elementos pegados.
+
+--------------------------------------------------
+6. DIVISOR CONFIGURACIÓN
+--------------------------------------------------
+
+La línea divisoria debe ser más sutil.
+
+border-color:
+rgba(4,25,65,0.08);
+
+No usar gris oscuro.
+
+--------------------------------------------------
+7. LOGO
+--------------------------------------------------
+
+No modificar tamaño actual.
+
+Pero asegurar:
+
+image-rendering: auto;
+object-fit: contain;
+height: auto;
+
+Evitar cualquier escalado que genere borrosidad.
+
+Si existe una versión SVG del logo, usar SVG.
+
+--------------------------------------------------
+8. NO MODIFICAR
+--------------------------------------------------
+
+No tocar:
+
+- estructura del menú
+- sidebar glass
+- colores principales
+- header superior
+- cotizador
+- seguimiento
+- agencias
+- respaldos
+- rutas
+- funcionalidades
+
+--------------------------------------------------
+RESULTADO ESPERADO
+--------------------------------------------------
+
+Mantener exactamente la apariencia actual.
+
+Solo hacerla:
+
+✔ Más refinada
+✔ Más premium
+✔ Más limpia
+✔ Más moderna
+
+Sin cambios estructurales.
+Solo pulido visual de alta calidad.

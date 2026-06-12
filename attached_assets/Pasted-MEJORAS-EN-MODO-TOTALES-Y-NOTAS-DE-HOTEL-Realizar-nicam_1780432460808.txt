@@ -1,0 +1,128 @@
+MEJORAS EN MODO TOTALES Y NOTAS DE HOTEL
+
+Realizar únicamente estas dos mejoras.
+
+No modificar cálculos.
+No modificar diseño general.
+No modificar modo Tarifas.
+No modificar seguimiento.
+
+──────────────────────────────
+1. MOSTRAR FECHAS DE HOTEL EN MODO TOTALES
+──────────────────────────────
+
+Problema:
+En Servicios seleccionados sí se muestran las fechas específicas de cada hotel, por ejemplo:
+
+2-6-26 → 3-6-26
+
+Pero en la cotización final / modo Totales no aparecen.
+
+Comportamiento deseado:
+
+En la tabla de ALOJAMIENTO del modo Totales, mostrar debajo del nombre del hotel:
+
+- Fechas de estadía del hotel.
+- Formato compacto.
+
+Ejemplo:
+
+Hotel Faranda Express Soloy & Casino
+2-6-26 → 3-6-26
+Desayuno incluido
+
+Suites Ambassador
+3-6-26 → 4-6-26
+Desayuno incluido
+
+Orden recomendado debajo del nombre:
+
+1. Nombre del hotel
+2. Fechas del hotel
+3. Desayuno incluido
+4. Notas del hotel, si existen
+
+Estilo de las fechas:
+- Texto pequeño
+- Color secundario #64748B
+- Puede llevar ícono de calendario si ya existe en el sistema
+- No agrandar demasiado la fila
+
+Aplicar en:
+- Vista previa
+- PDF
+- Correo HTML si usa modo Totales
+
+──────────────────────────────
+2. NOTAS DE HOTEL CON FORMATO INTELIGENTE
+──────────────────────────────
+
+Problema:
+Cuando se pega un párrafo largo en las notas del hotel, queda como un bloque difícil de leer.
+
+Comportamiento deseado:
+
+Al pegar o escribir notas en el campo de notas del hotel, aplicar formato inteligente.
+
+Debe organizar el texto en líneas separadas cuando detecte:
+
+- Puntos seguidos.
+- Saltos de línea.
+- Punto y coma.
+- Guiones.
+- Numeraciones.
+- Frases largas con varias condiciones.
+
+Ejemplo de entrada pegada:
+
+Tarifa no reembolsable. Aplica suplemento en temporada alta. Check in 3:00 pm. Check out 12:00 md.
+
+Debe convertirse en:
+
+Tarifa no reembolsable.
+Aplica suplemento en temporada alta.
+Check in 3:00 pm.
+Check out 12:00 md.
+
+Si el texto contiene viñetas, conservarlas.
+
+Si el usuario pega varias líneas, respetar los saltos.
+
+No alterar palabras ni traducir texto.
+
+Solo mejorar separación visual.
+
+──────────────────────────────
+3. MOSTRAR NOTAS EN COTIZACIÓN FINAL
+──────────────────────────────
+
+Si un hotel tiene notas, mostrarlas debajo del desayuno o debajo de las fechas.
+
+Ejemplo:
+
+Hotel Faranda Express Soloy & Casino
+2-6-26 → 3-6-26
+Desayuno incluido
+Tarifa no reembolsable.
+Aplica suplemento en temporada alta.
+
+Estilo:
+- Texto pequeño
+- Color #64748B
+- Separación suave
+- No usar color azul fuerte
+- No parecer observación general
+
+──────────────────────────────
+4. VALIDACIÓN
+──────────────────────────────
+
+Confirmar:
+
+✓ Las fechas de cada hotel aparecen en modo Totales.
+✓ Las fechas aparecen en vista previa y PDF.
+✓ Las notas pegadas se separan automáticamente en líneas.
+✓ Las notas del hotel aparecen debajo del hotel correspondiente.
+✓ No se modifican cálculos.
+✓ Modo Tarifas sigue funcionando igual.
+✓ No hay pantalla blanca.

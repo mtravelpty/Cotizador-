@@ -1,0 +1,84 @@
+Ajustar formato de cotización en MODO PAQUETE.
+
+1. En la tabla “OPCIONES DE ALOJAMIENTO”, cambiar el orden de columnas a:
+
+OPCIÓN | ALOJAMIENTO | NOCHE ADICIONAL | PRECIO FINAL PAQUETE
+
+El precio final debe ir en la última columna.
+
+2. Dar más fuerza visual a la columna “PRECIO FINAL PAQUETE”:
+- Texto azul oscuro #041941
+- Negrita
+- Precio más grande que el resto
+- Mantener fondo blanco o gris muy claro
+- No usar verde
+
+3. En “NOCHE ADICIONAL”, mostrar solo tarifas por noche de hotelería:
+Ejemplo:
+DBL: USD 33
+TPL: USD 30
+
+4. En “PRECIO FINAL PAQUETE”, mostrar el precio completo por acomodación:
+Ejemplo:
+DBL: USD 446
+TPL: USD 406
+
+5. Cambiar “EL PAQUETE INCLUYE” para que sea específico según lo cotizado.
+No usar textos genéricos como “Traslados” o “Tours seleccionados”.
+
+Debe mostrar:
+- Nombre real del hotel o resumen de alojamiento
+- Nombre real del traslado cotizado
+- Nombre real del tour cotizado
+- Vuelos reales, si existen
+
+Ejemplo:
+✓ Hotel Faranda Express Soloy & Casino
+✓ Hotel Bocas del Toro
+✓ Aeropuerto → Riu Playa / Riu Ciudad → Aeropuerto
+✓ City Tour & Canal desde Playa Bonita
+✓ Desayuno incluido
+
+6. Reemplazar bullets normales por ganchitos:
+✓
+
+Usar color azul #334196 o dorado #e6ae33 para el gancho.
+
+7. Para evitar espacio vacío en “EL PAQUETE INCLUYE”, dividir el bloque en dos columnas:
+
+Columna izquierda:
+EL PAQUETE INCLUYE
+
+Columna derecha:
+HIGHLIGHTS / DETALLES DEL PROGRAMA
+
+Ejemplo:
+Incluye:
+✓ Hotel Faranda Express Soloy & Casino
+✓ Hotel Bocas del Toro
+✓ Traslado aeropuerto-hotel-aeropuerto
+✓ City Tour & Canal
+
+Highlights:
+✓ Desayuno incluido
+✓ 1 noche en Ciudad de Panamá
+✓ 1 noche en Bocas del Toro
+✓ Traslados en regular
+✓ Tarifas netas por persona
+
+8. No usar iconos ni imágenes.
+Debe seguir siendo compatible con Outlook Desktop:
+- tablas HTML
+- estilos inline
+- sin flexbox
+- sin CSS grid
+- sin sombras
+- sin gradientes
+
+9. Mantener los colores actuales:
+- Azul encabezado: #334196
+- Azul oscuro texto: #041941
+- Gris encabezado tabla: #f5f7fb
+- Gris separación: #eef2f8
+- Amarillo observaciones: #f7cb17
+- Naranja línea superior: #ef7b15

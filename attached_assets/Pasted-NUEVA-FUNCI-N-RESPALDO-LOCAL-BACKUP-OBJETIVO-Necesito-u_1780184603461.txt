@@ -1,0 +1,137 @@
+NUEVA FUNCIÓN: RESPALDO LOCAL (BACKUP)
+
+OBJETIVO
+
+Necesito una solución simple y ligera para no perder información mientras la aplicación sigue funcionando localmente.
+
+IMPORTANTE:
+
+* No agregar backend.
+* No agregar base de datos.
+* No agregar autenticación.
+* No agregar servicios externos.
+* No agregar almacenamiento en la nube.
+
+La solución debe funcionar completamente en el navegador utilizando archivos JSON.
+
+==================================================
+
+1. EXPORTAR RESPALDO
+   ==================================================
+
+Agregar un botón:
+
+Exportar respaldo
+
+Al hacer clic debe descargar un archivo JSON que contenga:
+
+* Plantillas
+* Descriptivos
+* Observaciones rápidas
+* Tarifas modificadas manualmente
+
+Nombre sugerido:
+
+RGE_Backup_YYYY-MM-DD.json
+
+Ejemplo:
+
+RGE_Backup_2026-05-30.json
+
+==================================================
+2. IMPORTAR RESPALDO
+====================
+
+Agregar un botón:
+
+Importar respaldo
+
+Debe permitir seleccionar un archivo JSON previamente exportado.
+
+Al importar:
+
+* Restaurar plantillas
+* Restaurar descriptivos
+* Restaurar observaciones rápidas
+* Restaurar tarifas modificadas
+
+Mostrar mensaje:
+
+"Respaldo restaurado correctamente"
+
+==================================================
+3. EXPORTAR SOLO PLANTILLAS
+===========================
+
+Agregar una opción adicional:
+
+Exportar plantillas
+
+Debe descargar únicamente:
+
+* Plantillas
+* Observaciones asociadas
+
+Sin descriptivos ni tarifas.
+
+==================================================
+4. IMPORTAR SOLO PLANTILLAS
+===========================
+
+Agregar opción:
+
+Importar plantillas
+
+Debe restaurar únicamente las plantillas.
+
+==================================================
+5. UBICACIÓN
+============
+
+Agregar una sección simple:
+
+Configuración → Respaldos
+
+o
+
+Plantillas → Respaldos
+
+Utilizar la opción que requiera menos cambios en la interfaz.
+
+==================================================
+6. VALIDACIÓN
+=============
+
+Si el archivo no tiene el formato correcto:
+
+Mostrar:
+
+"Archivo de respaldo inválido"
+
+No romper la aplicación.
+
+==================================================
+7. RENDIMIENTO
+==============
+
+Mantener la implementación lo más simple posible.
+
+Preferencias:
+
+✓ JSON
+✓ Descarga local
+✓ Carga local
+✓ Sin backend
+✓ Sin servicios externos
+
+Evitar:
+
+✗ Firebase
+✗ Supabase
+✗ Bases de datos
+✗ APIs
+✗ Autenticación
+
+OBJETIVO:
+
+Tener una forma rápida de respaldar y restaurar todo mi trabajo mientras la aplicación sigue funcionando localmente.

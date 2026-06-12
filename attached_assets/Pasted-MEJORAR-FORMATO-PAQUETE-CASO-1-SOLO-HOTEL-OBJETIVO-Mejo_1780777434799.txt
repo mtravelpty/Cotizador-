@@ -1,0 +1,227 @@
+MEJORAR FORMATO PAQUETE - CASO 1 SOLO HOTEL
+
+OBJETIVO
+
+Mejorar el diseño del formato PAQUETE cuando la cotización contiene únicamente 1 hotel.
+
+Actualmente la sección ALOJAMIENTO se ve muy vacía y demasiado extendida porque usa una estructura pensada para varias opciones.
+
+NO modificar cálculos.
+NO modificar lógica interna.
+NO modificar seguimiento.
+Solo ajustar presentación visual en vista previa, PDF y correo.
+
+==================================================
+1. REGLA PRINCIPAL
+==================================================
+
+Si presentationMode = package y existe solo 1 hotel:
+
+Usar diseño de ficha compacta premium.
+
+Si existen 2 o más hoteles:
+
+Mantener diseño actual de tabla comparativa de opciones.
+
+==================================================
+2. MEJORAR SECCIÓN INCLUYE
+==================================================
+
+Eliminar la tabla actual de 2 columnas en la sección INCLUYE.
+
+Reemplazar por una lista comercial agrupada por categoría.
+
+Debe verse así:
+
+INCLUYE
+
+ALOJAMIENTO
+✓ Hotel Faranda Express Soloy & Casino
+✓ 1 noche
+✓ Desayuno incluido
+
+TRASLADOS
+✓ Aeropuerto → Hotel → Aeropuerto
+
+TOURS Y EXPERIENCIAS
+✓ City Tour & Canal
+
+VUELOS
+✓ Panamá → Bocas del Toro → Panamá
+
+Solo mostrar categorías que tengan servicios cotizados.
+
+No mostrar categorías vacías.
+
+==================================================
+3. ESTILO DE INCLUYE
+==================================================
+
+Usar una sola columna.
+
+No usar:
+- tabla de dos columnas
+- divisiones verticales
+- celdas vacías
+- iconos complejos
+- imágenes
+- emojis
+
+Usar:
+- título de categoría en azul oscuro
+- check simple “✓”
+- texto claro
+- espaciado compacto
+
+Colores:
+- Encabezado INCLUYE: #334196
+- Texto principal: #041941
+- Checks: #334196
+- Líneas divisorias suaves: #e5eaf2
+
+Debe ser compatible con Outlook Desktop.
+
+==================================================
+4. NUEVA SECCIÓN ALOJAMIENTO PARA 1 HOTEL
+==================================================
+
+Cuando solo hay 1 hotel, no usar bloques separados grandes para:
+
+- Noche adicional por persona
+- Precio total por persona
+
+En su lugar crear una sola ficha compacta dentro de ALOJAMIENTO.
+
+Estructura:
+
+ALOJAMIENTO
+
+Hotel Faranda Express Soloy & Casino
+★★★
+Ciudad de Panamá
+1 noche
+Desayuno incluido
+
+Luego, dentro de la misma ficha:
+
+NOCHE ADICIONAL POR PERSONA
+DBL  USD 33
+
+PRECIO TOTAL POR PERSONA
+DBL  USD 166
+
+==================================================
+5. DISEÑO DE LA FICHA DE ALOJAMIENTO
+==================================================
+
+Debe ser una tarjeta limpia con:
+
+- Fondo blanco
+- Borde suave #e5eaf2
+- Separadores internos suaves
+- Sin grandes espacios vacíos
+- Sin tablas excesivamente altas
+
+Diseño sugerido:
+
+ALOJAMIENTO
+
+Hotel Faranda Express Soloy & Casino
+★★★
+1 noche
+Desayuno incluido
+
+--------------------------------------------------
+
+Noche adicional por persona
+DBL    USD 33
+
+--------------------------------------------------
+
+Precio total por persona
+DBL    USD 166
+
+El precio total debe tener más peso visual que la noche adicional.
+
+==================================================
+6. PRECIOS
+==================================================
+
+Noche adicional:
+- texto normal
+- tamaño medio
+
+Precio total por persona:
+- texto más grande
+- font-weight 700
+- color #041941
+
+Si hay varias acomodaciones:
+mostrar en filas compactas:
+
+DBL    USD 166
+TPL    USD 150
+CHD    USD 120
+
+No crear bloques gigantes por cada acomodación.
+
+==================================================
+7. COMPATIBILIDAD OUTLOOK
+==================================================
+
+El correo HTML debe usar:
+
+- tablas HTML simples
+- estilos inline
+- colores sólidos
+- sin flexbox
+- sin grid
+- sin sombras complejas
+- sin imágenes decorativas
+- sin iconos externos
+
+==================================================
+8. MANTENER PALETA ACTUAL
+==================================================
+
+Usar los mismos colores del formato actual:
+
+- Azul alojamiento: #363765
+- Azul incluye: #334196
+- Azul texto principal: #041941
+- Gris encabezados: #f5f7fb
+- Gris separador: #eef2f8
+- Amarillo observaciones: #f7cb17
+- Naranja línea superior: #ef7b15
+
+==================================================
+9. RESULTADO ESPERADO
+==================================================
+
+Cuando exista 1 solo hotel:
+
+La cotización debe verse más compacta, premium y comercial.
+
+Debe evitar:
+- espacios vacíos
+- filas gigantes
+- sensación de tabla técnica
+
+Cuando existan varios hoteles:
+
+Mantener la tabla comparativa actual de opciones.
+
+==================================================
+10. IMPORTANTE
+==================================================
+
+No afectar:
+- modo Tarifario
+- modo Grupo
+- varias opciones de Paquete
+- cálculos internos
+- seguimiento
+- exportación PDF
+- copiar correo
+
+Solo mejorar el diseño del Modo Paquete cuando hay un solo hotel y mejorar la sección INCLUYE.

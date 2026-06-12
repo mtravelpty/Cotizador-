@@ -1,0 +1,235 @@
+Modificar el formato visual del MODO TOTALES para que use el mismo estilo de tablas del modo Tarifas, pero manteniendo los cálculos y totales.
+
+OBJETIVO:
+El modo Totales debe verse como una cotización final clara, elegante y fácil de leer, usando tablas por sección con encabezados de color.
+
+NO modificar:
+- Cálculos.
+- Servicios seleccionados.
+- Modo Tarifas.
+- WhatsApp.
+- Email.
+- Lógica de cotizador.
+
+Solo modificar el formato visual/exportado del MODO TOTALES.
+
+──────────────────────────────
+1. ESTRUCTURA GENERAL
+──────────────────────────────
+
+En MODO TOTALES eliminar cualquier duplicado.
+
+Mostrar una sola cotización con tablas por sección:
+
+- Alojamiento
+- Traslados
+- Tours
+- Vuelos
+- Observaciones generales
+- Itinerario
+- Descriptivos
+
+No usar el título “Resumen de costos”.
+
+Usar:
+
+DETALLE DE COTIZACIÓN
+
+──────────────────────────────
+2. FORMATO DE TABLAS
+──────────────────────────────
+
+Cada sección debe usar el mismo estilo visual del modo Tarifas:
+
+- Barra superior de color.
+- Título en blanco.
+- Texto en mayúsculas.
+- Espaciado limpio.
+- Filas blancas.
+- Separadores suaves.
+- Tipografía clara.
+
+──────────────────────────────
+3. COLORES POR SECCIÓN
+──────────────────────────────
+
+Aplicar estos colores a la barra superior de cada sección:
+
+Hotelería / Alojamiento:
+#363765
+
+Traslados:
+#2F3D90
+
+Tours:
+#2557A2
+
+Vuelos:
+#1780C0
+
+Observaciones generales:
+#EF7B15
+
+Itinerario:
+#F7CB17
+
+Descriptivos:
+#2B4596
+
+Importante:
+Si el color de Itinerario es amarillo (#F7CB17), usar texto oscuro para buena legibilidad.
+
+──────────────────────────────
+4. TABLA DE ALOJAMIENTO
+──────────────────────────────
+
+Formato:
+
+ALOJAMIENTO
+
+Columnas:
+- Hotel
+- Categoría
+- Tipo Hab.
+- Tarifa/Noc.
+- Pax
+- Noc.
+- Total
+
+Debe mostrar:
+- Nombre del hotel
+- Observación/desayuno debajo del hotel si existe
+- Ciudad o destino como separador de grupo
+- Categoría con estrellas
+- Tipo de habitación
+- Tarifa por noche
+- Pax
+- Noches
+- Total
+
+──────────────────────────────
+5. TABLA DE TRASLADOS
+──────────────────────────────
+
+Color:
+#2F3D90
+
+Columnas:
+- Descripción
+- Tipo / Modalidad
+- Tarifa P/P
+- Pax
+- Total
+
+──────────────────────────────
+6. TABLA DE TOURS
+──────────────────────────────
+
+Color:
+#2557A2
+
+Columnas:
+- Descripción
+- Tipo / Modalidad
+- Tarifa P/P
+- Pax
+- Total
+
+──────────────────────────────
+7. TABLA DE VUELOS
+──────────────────────────────
+
+Color:
+#1780C0
+
+Columnas:
+- Descripción
+- Tipo / Modalidad
+- Tarifa P/P
+- Pax
+- Total
+
+──────────────────────────────
+8. OBSERVACIONES GENERALES
+──────────────────────────────
+
+Color:
+#EF7B15
+
+Mostrar solo si existen observaciones.
+
+Formato tipo bloque:
+
+OBSERVACIONES GENERALES
+
+- Observación 1
+- Observación 2
+
+──────────────────────────────
+9. ITINERARIO
+──────────────────────────────
+
+Color:
+#F7CB17
+
+Usar texto oscuro en el encabezado.
+
+Mostrar solo si está activo “Incluir itinerario”.
+
+Formato:
+
+ITINERARIO
+
+Día 1
+Detalle del itinerario
+
+Día 2
+Detalle del itinerario
+
+──────────────────────────────
+10. DESCRIPTIVOS
+──────────────────────────────
+
+Color:
+#2B4596
+
+Mostrar solo si está activo “Incluir descriptivo”.
+
+Formato:
+
+DESCRIPTIVOS
+
+Título del descriptivo
+Texto del descriptivo
+
+──────────────────────────────
+11. TOTAL FINAL
+──────────────────────────────
+
+Al final mostrar bloque destacado:
+
+TOTAL DE LA COTIZACIÓN · DBL
+
+$XXX
+
+Debe adaptarse al tipo activo:
+- SGL
+- DBL
+- TPL
+- CHD
+
+Usar azul corporativo oscuro y diseño limpio.
+
+──────────────────────────────
+12. VALIDACIÓN
+──────────────────────────────
+
+Verificar:
+
+✓ Modo Tarifas sigue igual.
+✓ Modo Totales ya no duplica información.
+✓ Modo Totales usa tablas con encabezados por color.
+✓ Los cálculos permanecen correctos.
+✓ PDF se genera correctamente.
+✓ Vista previa se ve igual al PDF.
+✓ WhatsApp y Email no se rompen.

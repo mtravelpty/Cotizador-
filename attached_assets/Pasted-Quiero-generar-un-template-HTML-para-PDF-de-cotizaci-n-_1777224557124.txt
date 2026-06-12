@@ -1,0 +1,172 @@
+Quiero generar un template HTML para PDF de cotización que replique EXACTAMENTE el diseño visual proporcionado.
+
+IMPORTANTE:
+- No improvisar diseño
+- Usar SOLO <table> (no flex, no grid)
+- Usar estilos INLINE
+- Fondo blanco obligatorio
+- Compatible con html2pdf
+
+--------------------------------------------------
+
+🖼️ LOGO (OBLIGATORIO)
+
+Usar esta imagen EXACTA:
+https://rgebooking.com/assets/images/logos/style-travel-blue.png
+
+Implementación:
+
+<img 
+  src="https://rgebooking.com/assets/images/logos/style-travel-blue.png"
+  alt="Style Travel"
+  style="height:70px; display:block;"
+/>
+
+Reglas:
+- Ubicado en la parte superior izquierda
+- NO centrar
+- NO deformar (mantener proporción)
+- NO usar rutas locales
+- NO usar base64
+
+--------------------------------------------------
+
+🎨 COLORES
+
+- Azul: #2f4ea2
+- Naranja: #f97316
+- Verde: #16a34a
+- Texto: #1f2937
+- Bordes: #e5e7eb
+
+--------------------------------------------------
+
+🔷 HEADER
+
+Tabla de 2 columnas:
+
+IZQUIERDA:
+→ Logo (imagen anterior)
+
+DERECHA:
+→ Título en forma de “pill”:
+  - background: #2f4ea2
+  - color: white
+  - border-radius: 999px
+  - padding: 10px 25px
+  - font-weight: bold
+  - texto: "PROPUESTA DE SERVICIOS"
+
+--------------------------------------------------
+
+📋 BLOQUE DE DATOS
+
+Tabla 2 columnas:
+
+IZQUIERDA:
+- Fecha de Emisión
+- Destino
+- Fecha de Viaje
+- Pasajeros
+
+DERECHA:
+- Nº de Cotización
+- Válida hasta
+- Tipo de Servicio
+- Noche(s)
+- Agente
+
+Separador:
+- línea naranja (#f97316)
+- altura 2px
+
+--------------------------------------------------
+
+🔵 TÍTULOS DE SECCIÓN (FORMATO EXACTO)
+
+Cada sección (ALOJAMIENTO, TRASLADOS, TOURS, VUELOS):
+
+- display: inline-block
+- background: #2f4ea2
+- color: white
+- padding: 6px 18px
+- border-radius: 999px
+- font-weight: bold
+- font-size: 14px
+
+--------------------------------------------------
+
+🏨 ALOJAMIENTO (TABLA)
+
+Columnas:
+- HOTEL - CATEGORIA
+- TIPO HAB.
+- NOCHES
+- DBL /noche
+- CHD /noche
+
+
+Detalles:
+- Nombre en negrita
+- Debajo: Ciudad 
+
+--------------------------------------------------
+
+🚐 TRASLADOS
+
+- Usar flechas:
+  Aeropuerto → Hotel → Aeropuerto
+
+- Precio alineado derecha
+
+- Nota adicional:
+  color verde (#16a34a)
+
+--------------------------------------------------
+
+🎟️ TOURS
+
+Mismo formato que traslados
+
+--------------------------------------------------
+
+✈️ VUELOS
+
+Formato:
+Panamá → Bocas del Toro → Panamá
+
+--------------------------------------------------
+
+🟠 ITINERARIO
+
+Título tipo pill en naranja:
+- background: #f97316
+- color: white
+- border-radius: 999px
+
+Tabla:
+Día | Fecha | Actividad
+
+--------------------------------------------------
+
+📐 CONTENEDOR
+
+- width: 800px
+- margin: auto
+- padding: 20px
+
+--------------------------------------------------
+
+⚠️ CRÍTICO
+
+- NO usar flexbox
+- NO usar grid
+- NO usar clases externas
+- TODO inline
+- TODO con tablas
+
+--------------------------------------------------
+
+🎯 RESULTADO
+
+PDF limpio, profesional, con logo visible y diseño EXACTO al mockup.

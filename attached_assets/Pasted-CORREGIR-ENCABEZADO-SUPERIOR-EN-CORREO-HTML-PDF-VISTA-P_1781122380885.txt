@@ -1,0 +1,142 @@
+CORREGIR ENCABEZADO SUPERIOR EN CORREO HTML / PDF / VISTA PREVIA
+
+Problema:
+En el encabezado superior de la cotización, los textos están quedando pegados en una misma línea.
+
+Ejemplo actual incorrecto:
+DESTINOCIUDAD DE PANAMÁ
+FECHAS DE ESTADÍA10 Jun 2026 – 11 Jun 2026
+NOCHES1
+PASAJEROS2 adultos
+
+Debe verse en 2 líneas separadas:
+Línea 1: etiqueta
+Línea 2: valor
+
+==================================================
+1. ESTRUCTURA CORRECTA
+==================================================
+
+Cada celda del encabezado debe tener esta estructura:
+
+DESTINO
+CIUDAD DE PANAMÁ
+
+FECHAS DE ESTADÍA
+10 Jun 2026 – 11 Jun 2026
+
+NOCHES
+1
+
+PASAJEROS
+2 adultos
+
+==================================================
+2. CORRECCIÓN HTML
+==================================================
+
+No colocar etiqueta y valor en el mismo texto.
+
+Usar bloques separados dentro de cada celda.
+
+Ejemplo:
+
+<td>
+  <div style="font-size:10px; font-weight:700; color:#63718a; text-transform:uppercase; letter-spacing:1px;">
+    DESTINO
+  </div>
+  <div style="font-size:15px; font-weight:700; color:#041941; margin-top:6px;">
+    CIUDAD DE PANAMÁ
+  </div>
+</td>
+
+Aplicar igual para:
+- Fechas de estadía
+- Noches
+- Pasajeros
+
+==================================================
+3. COMPATIBILIDAD OUTLOOK
+==================================================
+
+Como Outlook no siempre respeta bien flex/grid, usar tabla HTML clásica.
+
+Usar:
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" valign="middle">...</td>
+</tr>
+</table>
+
+No usar:
+- flexbox
+- grid
+- gap
+- position absolute
+
+==================================================
+4. TAMAÑOS RECOMENDADOS
+==================================================
+
+Etiqueta:
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 1px;
+color: #63718a;
+text-transform: uppercase;
+
+Valor:
+font-size: 15px;
+font-weight: 700;
+color: #041941;
+line-height: 1.25;
+margin-top: 6px;
+
+==================================================
+5. ANCHOS
+==================================================
+
+Distribución sugerida:
+
+Destino: 30%
+Fechas de estadía: 40%
+Noches: 12%
+Pasajeros: 18%
+
+Esto evita que las fechas se aprieten demasiado.
+
+==================================================
+6. APLICAR EN
+==================================================
+
+Aplicar esta corrección en:
+
+- Vista previa
+- PDF
+- Copiar correo HTML
+
+Especialmente en el HTML copiado al correo, que es donde se está rompiendo más.
+
+==================================================
+7. RESULTADO ESPERADO
+==================================================
+
+El encabezado debe verse limpio así:
+
+DESTINO
+CIUDAD DE PANAMÁ
+
+FECHAS DE ESTADÍA
+10 Jun 2026 – 11 Jun 2026
+
+NOCHES
+1
+
+PASAJEROS
+2 adultos
+
+Sin textos pegados.
+Sin valores encima de etiquetas.
+Sin desbordes.
+Sin columnas comprimidas.

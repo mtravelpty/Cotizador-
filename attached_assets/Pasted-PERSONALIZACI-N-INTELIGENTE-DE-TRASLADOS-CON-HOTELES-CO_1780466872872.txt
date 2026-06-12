@@ -1,0 +1,263 @@
+PERSONALIZACIÓN INTELIGENTE DE TRASLADOS CON HOTELES COTIZADOS
+
+Objetivo:
+Mejorar la presentación de la cotización final reemplazando automáticamente nombres genéricos de hoteles en los traslados por el hotel real que se está cotizando.
+
+Esta función debe ser opcional y controlada por el usuario.
+
+No modificar:
+- Tarifas
+- Cálculos
+- Totales
+- Tarifarios
+- PDFs existentes
+
+Solo cambiar el texto mostrado en la cotización.
+
+──────────────────────────────
+1. NUEVA CONFIGURACIÓN
+──────────────────────────────
+
+Agregar interruptor:
+
+✓ Personalizar nombres de traslados
+
+Ubicación:
+Configuración de cotización.
+
+Valor por defecto:
+ACTIVADO
+
+Si está desactivado:
+
+Mostrar exactamente el texto original del tarifario.
+
+──────────────────────────────
+2. DETECCIÓN AUTOMÁTICA DE HOTELES
+──────────────────────────────
+
+El sistema debe identificar automáticamente los hoteles seleccionados según destino.
+
+DESTINOS DE CIUDAD:
+
+- Ciudad de Panamá
+- Panamá City
+- Panamá
+
+DESTINOS DE PLAYA:
+
+- Riviera Pacífica
+- Playa Blanca
+- Farallón
+- Coronado
+- Buenaventura
+- Bijao
+- Santa Clara
+- Decameron
+
+DESTINOS BOCAS DEL TORO:
+
+- Bocas del Toro
+- Bocas Town
+- Isla Colón
+
+IMPORTANTE:
+
+Para esta funcionalidad:
+
+Bocas del Toro debe comportarse igual que un destino de playa.
+
+DESTINOS TIERRAS ALTAS:
+
+- Boquete
+- Volcán
+- Cerro Punta
+- Tierras Altas
+
+DESTINOS CHIRIQUÍ:
+
+- David
+- Chiriquí
+
+──────────────────────────────
+3. REEMPLAZOS AUTOMÁTICOS
+──────────────────────────────
+
+Si el traslado contiene:
+
+Hotel Ciudad
+
+Reemplazar por el hotel seleccionado en Ciudad de Panamá.
+
+Ejemplo:
+
+ANTES:
+Aeropuerto → Hotel Ciudad → Aeropuerto
+
+DESPUÉS:
+Aeropuerto → The Executive → Aeropuerto
+
+----------------------------------
+
+Si contiene:
+
+Hotel Playa
+
+Reemplazar por el hotel seleccionado en Riviera Pacífica o destino de playa.
+
+Ejemplo:
+
+ANTES:
+Aeropuerto → Hotel Playa → Aeropuerto
+
+DESPUÉS:
+Aeropuerto → Riu Playa Blanca → Aeropuerto
+
+----------------------------------
+
+Si contiene:
+
+Hotel Bocas
+
+o corresponde a un traslado de Bocas del Toro
+
+Reemplazar por el hotel seleccionado en Bocas del Toro.
+
+Ejemplo:
+
+ANTES:
+Aeropuerto Bocas → Hotel Bocas → Aeropuerto Bocas
+
+DESPUÉS:
+Aeropuerto Bocas → Tropical Suites → Aeropuerto Bocas
+
+----------------------------------
+
+Si contiene:
+
+Hotel Tierras Altas
+
+Reemplazar por el hotel seleccionado en:
+
+- Boquete
+- Volcán
+- Cerro Punta
+
+──────────────────────────────
+4. MÚLTIPLES HOTELES EN UN DESTINO
+──────────────────────────────
+
+Si existe un solo hotel en ese destino:
+
+Usar ese hotel.
+
+Si existen varios hoteles en el mismo destino:
+
+Usar el hotel que corresponda a las fechas del traslado.
+
+Ejemplo:
+
+02-06 al 04-06:
+The Executive
+
+04-06 al 06-06:
+Riu Playa Blanca
+
+El traslado asociado a ciudad debe usar:
+The Executive
+
+El traslado asociado a playa debe usar:
+Riu Playa Blanca
+
+──────────────────────────────
+5. SEGURIDAD
+──────────────────────────────
+
+Si el sistema no puede determinar el hotel correcto:
+
+NO reemplazar.
+
+Mantener el texto original del tarifario.
+
+Ejemplo:
+
+Aeropuerto → Hotel Playa → Aeropuerto
+
+queda igual.
+
+Nunca mostrar texto incorrecto.
+
+──────────────────────────────
+6. COMPATIBILIDAD
+──────────────────────────────
+
+Aplicar en:
+
+✓ Vista previa
+✓ PDF
+✓ Correo HTML
+✓ Modo Tarifas
+✓ Modo Totales
+
+No modificar los nombres internos del tarifario.
+
+El reemplazo debe ser solo visual.
+
+──────────────────────────────
+7. VALIDACIÓN
+──────────────────────────────
+
+Caso 1:
+
+Hotel Ciudad:
+The Executive
+
+Resultado:
+
+Aeropuerto → The Executive → Aeropuerto
+
+----------------------------------
+
+Caso 2:
+
+Hotel Playa:
+Riu Playa Blanca
+
+Resultado:
+
+Aeropuerto → Riu Playa Blanca → Aeropuerto
+
+----------------------------------
+
+Caso 3:
+
+Hotel Bocas:
+Tropical Suites
+
+Resultado:
+
+Aeropuerto Bocas → Tropical Suites → Aeropuerto Bocas
+
+----------------------------------
+
+Caso 4:
+
+No existe hotel asociado
+
+Resultado:
+
+Mantener texto original del tarifario.
+
+----------------------------------
+
+Confirmar:
+
+✓ Ciudad funciona.
+✓ Riviera Pacífica funciona.
+✓ Bocas del Toro funciona como destino de playa.
+✓ Tierras Altas funciona.
+✓ No cambia precios.
+✓ No cambia cálculos.
+✓ Solo modifica el texto mostrado.
+✓ PDF y vista previa muestran el mismo resultado.
+✓ La app carga sin errores.

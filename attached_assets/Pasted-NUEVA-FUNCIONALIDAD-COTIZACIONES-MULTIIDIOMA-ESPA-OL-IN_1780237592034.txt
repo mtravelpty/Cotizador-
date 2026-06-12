@@ -1,0 +1,199 @@
+NUEVA FUNCIONALIDAD: COTIZACIONES MULTIIDIOMA (ESPAÑOL / INGLÉS / PORTUGUÉS)
+
+Objetivo:
+Permitir generar la misma cotización en diferentes idiomas sin tener que crearla nuevamente.
+
+========================================
+1. NUEVO SELECTOR DE IDIOMA
+========================================
+
+Agregar una nueva sección dentro de "Configuración de cotización".
+
+Ubicación:
+Debajo de "Modo" y antes de "Opciones".
+
+Título:
+
+Idioma
+
+Control:
+
+[ Español ▼ ]
+
+Opciones:
+
+- Español
+- English
+- Português
+
+Estilo:
+Seguir exactamente el diseño visual actual del sistema.
+
+========================================
+2. COMPORTAMIENTO
+========================================
+
+Al seleccionar un idioma:
+
+- PDF debe generarse en ese idioma.
+- Vista previa debe mostrarse en ese idioma.
+- Correo debe generarse en ese idioma.
+- WhatsApp debe generarse en ese idioma.
+
+La cotización NO debe duplicarse.
+
+Simplemente cambia la presentación según el idioma seleccionado.
+
+========================================
+3. DICCIONARIO GLOBAL DE TEXTOS
+========================================
+
+Crear estructura preparada para múltiples idiomas.
+
+Ejemplo:
+
+ES:
+- Fecha de llegada
+- Fecha de salida
+- Noches
+- Pasajeros
+- Niños
+- Total
+- Incluye
+- Observaciones
+
+EN:
+- Arrival Date
+- Departure Date
+- Nights
+- Passengers
+- Children
+- Total
+- Includes
+- Notes
+
+PT:
+- Data de Chegada
+- Data de Saída
+- Noites
+- Passageiros
+- Crianças
+- Total
+- Inclui
+- Observações
+
+Todos los textos fijos del sistema deben venir de este diccionario.
+
+========================================
+4. DESCRIPTIVOS MULTIIDIOMA
+========================================
+
+Modificar la sección Descriptivos.
+
+Agregar pestañas:
+
+[ Español ]
+[ English ]
+[ Português ]
+
+Cada descriptivo debe poder almacenar:
+
+Título ES
+Descripción ES
+
+Título EN
+Descripción EN
+
+Título PT
+Descripción PT
+
+Ejemplo:
+
+ES:
+Canal de Panamá y Casco Antiguo
+
+EN:
+Panama Canal and Old Town
+
+PT:
+Canal do Panamá e Centro Histórico
+
+========================================
+5. BOTÓN DE TRADUCCIÓN AUTOMÁTICA
+========================================
+
+Dentro del editor de descriptivos agregar:
+
+[ Traducir a English ]
+[ Traducir a Português ]
+
+Al presionar:
+
+- Generar versión EN
+- Generar versión PT
+
+Sin borrar el texto original.
+
+El usuario puede editar después.
+
+========================================
+6. NO TRADUCIR
+========================================
+
+Mantener exactamente igual:
+
+- Nombre de hoteles
+- Nombre de proveedores
+- Nombre de agencias
+- Código RGE
+- Códigos internos
+
+Ejemplo:
+
+The Executive
+
+Debe permanecer:
+
+The Executive
+
+No traducir nombres comerciales.
+
+========================================
+7. EXPORTACIONES
+========================================
+
+PDF:
+Usar idioma seleccionado.
+
+Correo:
+Usar idioma seleccionado.
+
+WhatsApp:
+Usar idioma seleccionado.
+
+Vista previa:
+Usar idioma seleccionado.
+
+========================================
+8. PREPARAR PARA FUTURO
+========================================
+
+Diseñar la arquitectura para soportar fácilmente nuevos idiomas:
+
+- Francés
+- Italiano
+- Alemán
+
+Sin modificar la estructura actual.
+
+========================================
+OBJETIVO FINAL
+========================================
+
+Crear una sola cotización y poder presentarla instantáneamente en:
+
+- Español
+- Inglés
+- Portugués
+
+Con un solo cambio de idioma y sin duplicar información.

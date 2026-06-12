@@ -1,0 +1,152 @@
+AJUSTES VISUALES FINALES - DISTRIBUCIÓN DEL GRUPO
+
+Mantener toda la lógica actual.
+
+NO modificar:
+- cálculos
+- validaciones
+- distribución automática
+- contador de habitaciones
+- contador de pasajeros
+
+Solo aplicar los siguientes ajustes visuales.
+
+==================================================
+1. ELIMINAR NÚMEROS SOBRE LOS ICONOS DE TPL Y QDL
+==================================================
+
+Actualmente los iconos de:
+
+TPL
+QDL
+
+tienen pequeños números sobre la cama.
+
+Eliminar esos números.
+
+Utilizar exactamente el mismo icono base de cama para:
+
+SGL
+DBL
+TPL
+QDL
+
+Sin indicadores adicionales.
+
+Solo cambia la etiqueta:
+
+SGL
+DBL
+TPL
+QDL
+
+==================================================
+2. COLOR DEL TEXTO "COMPLETA"
+==================================================
+
+Actualmente el celeste es muy fuerte.
+
+Cambiar:
+
+✓ COMPLETA
+
+a:
+
+#8cd9fa
+
+Aplicar también al icono check.
+
+==================================================
+3. COLOR DEL TOTAL GRUPO
+==================================================
+
+Cambiar:
+
+- icono de dinero
+- texto USD
+- monto
+
+a:
+
+#f8d616
+
+Mantener:
+
+font-weight: 800
+
+==================================================
+4. MEJORAR VISIBILIDAD DEL TÍTULO
+==================================================
+
+Actualmente:
+
+DISTRIBUCIÓN DEL GRUPO
+
+se ve demasiado apagado.
+
+Aumentar contraste.
+
+Usar:
+
+color: rgba(255,255,255,0.85)
+
+font-weight: 700
+
+letter-spacing actual
+
+Debe verse más presente.
+
+==================================================
+5. REFINAR TARJETA ACTIVA
+==================================================
+
+Mantener el borde celeste.
+
+Reducir glow.
+
+La tarjeta activa debe destacar por:
+
+- color de fondo
+- borde
+
+No por brillo excesivo.
+
+==================================================
+6. AJUSTAR ESPACIADO INTERNO
+==================================================
+
+Reducir ligeramente espacio entre:
+
+icono cama
+texto acomodación
+contador
+
+Todo debe sentirse más compacto.
+
+==================================================
+7. MANTENER FORMATO ACTUAL
+==================================================
+
+Mantener exactamente:
+
+0 HAB | 0 PAX
+
+1 HAB | 2 PAX
+
+3 HAB | 6 PAX
+
+No volver a "Habitaciones" ni "Pasajeros" completos.
+
+==================================================
+RESULTADO ESPERADO
+==================================================
+
+Una barra más limpia y premium donde:
+
+- todos los iconos de acomodación sean iguales
+- desaparezcan los números encima de las camas
+- el estado COMPLETA use #8cd9fa
+- el TOTAL GRUPO use #f8d616
+- el título DISTRIBUCIÓN DEL GRUPO tenga mejor presencia
+- la tarjeta activa sea elegante sin exceso de brillo
+- toda la barra mantenga coherencia visual con la identidad de RGE Style Travel.

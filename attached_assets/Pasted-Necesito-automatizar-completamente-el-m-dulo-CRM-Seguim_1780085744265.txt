@@ -1,0 +1,211 @@
+Necesito automatizar completamente el módulo CRM / Seguimiento de cotizaciones.
+
+OBJETIVO:
+Que el sistema funcione como un mini CRM comercial automático para dar seguimiento a cotizaciones y aumentar cierres de ventas.
+
+---------------------------------------------------
+AUTOMATIZACIONES PRINCIPALES
+---------------------------------------------------
+
+1. CAMBIO AUTOMÁTICO DE ESTADO
+Cuando el usuario haga cualquiera de estas acciones:
+
+- Copiar WhatsApp
+- Copiar correo
+- Descargar PDF
+- Guardar cotización
+
+la cotización automáticamente debe cambiar de estado:
+
+"Nueva" → "Enviada"
+
+Si ya estaba en otro estado, no reemplazarlo.
+
+También guardar automáticamente:
+- fecha de envío
+- último seguimiento
+- tipo de acción realizada:
+  - whatsapp
+  - email
+  - pdf
+  - guardado
+
+---------------------------------------------------
+2. RECORDATORIOS AUTOMÁTICOS
+---------------------------------------------------
+
+Después de que una cotización pase a estado "Enviada":
+
+Crear automáticamente:
+- recordatorio en 2 días
+- alerta visual en 3 días
+
+Lógica:
+
+Día 0:
+Estado enviada → sin alerta
+
+Día 2:
+Mostrar alerta amarilla:
+"Dar seguimiento"
+
+Día 3+:
+Mostrar alerta roja:
+"Seguimiento vencido"
+
+---------------------------------------------------
+3. ALERTAS VISUALES EN TABLA
+---------------------------------------------------
+
+Agregar indicadores visuales automáticos:
+
+🟢 Al día
+- menos de 2 días
+
+🟡 Seguimiento pendiente
+- 2 días sin actividad
+
+🔴 Urgente
+- 3 días o más sin seguimiento
+
+⚫ Sin enviar
+- cotización nueva
+
+Mostrar alerta debajo del código de cotización.
+
+Ejemplo:
+
+RGE-RBYI1H
+🟡 Seguimiento pendiente
+
+---------------------------------------------------
+4. ACTIVIDAD RECIENTE
+---------------------------------------------------
+
+Guardar historial automático de acciones:
+
+- Cotización creada
+- WhatsApp copiado
+- Correo generado
+- PDF descargado
+- Estado actualizado
+- Nota agregada
+
+Mostrarlo en la pestaña:
+"Historial"
+
+Formato:
+
+28/05/2026 · 10:30 AM
+WhatsApp generado
+
+28/05/2026 · 10:32 AM
+Estado cambiado a Enviada
+
+---------------------------------------------------
+5. RECORDATORIOS MANUALES
+---------------------------------------------------
+
+Si el usuario escribe:
+- próxima acción
+- fecha recordatorio
+
+mostrar:
+- badge naranja en tabla
+- icono de campana
+
+Si la fecha vence:
+mostrar alerta roja automáticamente.
+
+---------------------------------------------------
+6. PANEL SUPERIOR DINÁMICO
+---------------------------------------------------
+
+Los KPIs superiores deben calcularse automáticamente:
+
+ACTIVAS
+= todas menos perdidas
+
+SEGUIMIENTO PENDIENTE
+= cotizaciones con alerta amarilla o roja
+
+CONFIRMADAS
+= estado Confirmada
+
+PERDIDAS
+= estado Perdida
+
+VENTAS DEL MES
+= confirmadas del mes actual
+
+---------------------------------------------------
+7. PRIORIZACIÓN AUTOMÁTICA
+---------------------------------------------------
+
+Si una cotización:
+- supera $500 → prioridad media
+- supera $1500 → prioridad alta
+
+Si pasan más de 3 días:
+subir automáticamente una prioridad.
+
+---------------------------------------------------
+8. UX / DISEÑO
+---------------------------------------------------
+
+Mantener diseño premium actual.
+
+Agregar:
+- animaciones suaves
+- badges modernos
+- tooltips
+- colores suaves y profesionales
+
+Estados:
+Nueva → azul
+Enviada → celeste
+Seguimiento → amarillo
+Negociación → naranja
+Confirmada → verde
+Perdida → rojo
+
+---------------------------------------------------
+9. NOTIFICACIONES
+---------------------------------------------------
+
+Agregar pequeño centro de notificaciones:
+
+Ejemplos:
+- "3 cotizaciones requieren seguimiento"
+- "1 recordatorio vence hoy"
+
+Mostrar contador visual.
+
+---------------------------------------------------
+10. BASE DE DATOS
+---------------------------------------------------
+
+Agregar campos nuevos:
+
+status
+priority
+lastFollowUp
+nextAction
+reminderDate
+sentAt
+lastAction
+activityLog
+alerts
+followUpLevel
+
+Migrar datos existentes sin romper compatibilidad.
+
+---------------------------------------------------
+11. REGLAS IMPORTANTES
+---------------------------------------------------
+
+- Todo debe ser automático.
+- No usar lógica manual innecesaria.
+- No romper funciones existentes.
+- Mantener compatibilidad con PDF, WhatsApp y Email.
+- El sistema debe sentirse como un CRM real.

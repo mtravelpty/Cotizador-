@@ -1,0 +1,107 @@
+Necesito ajustar la sección “Observaciones generales” y corregir cómo se renderizan en la cotización.
+
+========================================
+
+1. CAMBIAR TEXTO DEL BOTÓN
+   ========================================
+
+Cambiar el botón actual:
+
+“Insertar cláusula rápida”
+
+por:
+
+“Observaciones rápidas”
+
+Debe mantener el mismo estilo visual actual.
+
+Al hacer clic en “Observaciones rápidas” debe desplegar una lista de observaciones frecuentes seleccionables.
+
+Ejemplos:
+
+* Precios netos por persona / por noche en hotelería
+* Precios sujetos a disponibilidad al momento de solicitar la reserva
+* Pasajeros viajando solos aplican suplemento de $25 USD
+* Pasajeros viajando en vuelos nocturnos aplican suplemento adicional por vía
+
+Cuando el usuario seleccione una observación:
+
+* insertarla en una nueva línea
+* no pegarla junto a otra observación
+* evitar duplicados
+
+Actualmente las observaciones se están guardando/renderizando como un solo texto corrido.
+
+Corregir para que internamente se manejen como una lista:
+
+observaciones: string[]
+
+Cada observación debe ser un item independiente.
+
+En:
+
+* Vista previa
+* PDF
+* Correo
+* WhatsApp
+
+las observaciones deben mostrarse como bullets separados.
+
+Formato esperado:
+
+OBSERVACIONES
+
+• Precios netos por persona / por noche en hotelería
+• Precios sujetos a disponibilidad al momento de solicitar la reserva
+• Pasajeros viajando solos aplican suplemento de $25 USD
+
+NO debe verse todo en una sola línea.
+
+Si el usuario escribe observaciones manualmente en el textarea:
+
+* separar cada línea como una observación independiente
+* renderizar cada línea como bullet
+* ignorar líneas vacías
+
+Ejemplo:
+
+Textarea:
+Precios netos por persona / por noche en hotelería
+Precios sujetos a disponibilidad
+
+Render:
+• Precios netos por persona / por noche en hotelería
+• Precios sujetos a disponibilidad
+
+Mantener el título “OBSERVACIONES” como pill naranja.
+
+Debajo, mostrar un bloque limpio:
+
+* bullets alineados
+* buen espaciado
+* sin texto corrido
+* sin duplicados
+
+En WhatsApp usar:
+
+*OBSERVACIONES*
+
+• Precios netos por persona / por noche en hotelería
+• Precios sujetos a disponibilidad al momento de solicitar la reserva
+
+Cada observación debe ir en línea separada.
+
+No romper:
+
+* PDF
+* correo
+* WhatsApp
+* seguimiento
+* plantillas
+* descriptivos
+* totales
+* guardar cotización
+* duplicar cotización
+
+Mantener compatibilidad con observaciones guardadas anteriormente.
+Si hay observaciones antiguas como string, convertirlas automáticamente a lista separando por saltos de línea.

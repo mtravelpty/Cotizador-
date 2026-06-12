@@ -1,0 +1,161 @@
+MEJORAS UX/UI - SERVICIOS SELECCIONADOS
+
+Implementar las siguientes mejoras sin modificar la lógica de cotización ni los cálculos.
+
+━━━━━━━━━━━━━━━━━━━━━━
+1. ELIMINAR BOTÓN EDITAR (LÁPIZ)
+━━━━━━━━━━━━━━━━━━━━━━
+
+Eliminar el icono de lápiz (editar) de TODOS los servicios:
+
+- Alojamiento
+- Traslados
+- Tours
+- Vuelos
+- Ítems personalizados
+
+Motivo:
+Ahora existen controles de edición rápida directamente sobre los campos específicos del servicio, por lo que el botón general de edición es redundante.
+
+Mantener únicamente:
+- Notas / documentos (si aplica)
+- Eliminar
+- Otros iconos funcionales existentes
+
+Reducir ruido visual.
+
+━━━━━━━━━━━━━━━━━━━━━━
+2. DRAG & DROP SOLO DESDE LOS PUNTITOS
+━━━━━━━━━━━━━━━━━━━━━━
+
+Actualmente toda la tarjeta es arrastrable.
+
+Problema:
+Cuando intento seleccionar texto o hacer clic sobre información específica, el servicio se arrastra accidentalmente.
+
+Nuevo comportamiento:
+
+SOLO debe iniciarse el drag cuando el usuario haga clic sobre:
+
+⋮⋮
+(handle de puntitos)
+
+No permitir drag desde:
+- Nombre del servicio
+- Ubicación
+- Categoría
+- Fechas
+- Tarifas
+- Notas
+- Ningún otro elemento
+
+Implementar drag handle dedicado.
+
+Ejemplo:
+
+[⋮⋮] ← única zona arrastrable
+
+Todo lo demás debe comportarse como texto normal.
+
+━━━━━━━━━━━━━━━━━━━━━━
+3. EDICIÓN RÁPIDA POR CAMPOS
+━━━━━━━━━━━━━━━━━━━━━━
+
+Actualmente:
+
+CIUDAD DE PANAMÁ • ★★★★ • 6-6-26 → 7-6-26
+
+es una sola línea informativa.
+
+Convertir cada elemento en una acción independiente.
+
+━━━━━━━━━━━━━━
+UBICACIÓN
+━━━━━━━━━━━━━━
+
+Al hacer clic sobre:
+
+CIUDAD DE PANAMÁ
+
+abrir selector rápido de ubicación.
+
+Permitir:
+- cambiar ciudad
+- cambiar destino
+- cambiar región
+
+Sin abrir popup completo.
+
+━━━━━━━━━━━━━━
+CATEGORÍA
+━━━━━━━━━━━━━━
+
+Al hacer clic sobre:
+
+★★★★
+
+abrir selector rápido de estrellas.
+
+Opciones:
+
+★★★
+★★★★
+★★★★★
+
+Actualizar inmediatamente.
+
+Sin abrir popup completo.
+
+━━━━━━━━━━━━━━
+FECHAS
+━━━━━━━━━━━━━━
+
+Al hacer clic sobre:
+
+6-6-26 → 7-6-26
+
+abrir el calendario que ya existe actualmente.
+
+Mantener misma lógica actual.
+
+No crear un calendario nuevo.
+
+━━━━━━━━━━━━━━━━━━━━━━
+4. ESTADOS HOVER
+━━━━━━━━━━━━━━━━━━━━━━
+
+Cuando el usuario pase el cursor:
+
+Ubicación:
+- cambiar color
+- cursor pointer
+
+Categoría:
+- cambiar color
+- cursor pointer
+
+Fechas:
+- cambiar color
+- cursor pointer
+
+Mostrar visualmente que son editables.
+
+━━━━━━━━━━━━━━━━━━━━━━
+5. OBJETIVO
+━━━━━━━━━━━━━━━━━━━━━━
+
+Reducir clics.
+
+Que el usuario pueda modificar:
+
+- ciudad
+- categoría
+- fechas
+
+directamente desde la tarjeta del servicio.
+
+Sin abrir el editor completo.
+
+El editor completo seguirá existiendo para cambios avanzados.
+
+Pero las modificaciones más frecuentes deben realizarse directamente desde la tarjeta.

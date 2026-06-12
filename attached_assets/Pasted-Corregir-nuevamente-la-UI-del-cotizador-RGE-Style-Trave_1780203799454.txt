@@ -1,0 +1,77 @@
+Corregir nuevamente la UI del cotizador RGE Style Travel.
+
+1. BARRA DE ALOJAMIENTO
+La barra actual quedó demasiado vacía y no se parece a la referencia aprobada.
+
+Rediseñarla así:
+- Mantenerla debajo de “Datos del cliente”.
+- Mantener ancho completo de la columna principal izquierda.
+- Fondo azul premium con degradado:
+  linear-gradient(135deg, #0034b8 0%, #005be8 50%, #0a7eff 100%)
+- Agregar efecto visual interno sutil:
+  radial-gradient/círculos/ondas suaves en azul más claro y azul más oscuro.
+- Debe sentirse como una barra premium, no como una franja plana.
+- Reducir un poco la altura actual.
+- Alinear todos los elementos verticalmente al centro.
+- Los bloques NOCHES, PASAJEROS y NIÑOS deben verse como cápsulas horizontales, no como tarjetas altas.
+- Cada cápsula debe tener:
+  icono dorado #eec774
+  texto en blanco
+  número en blanco
+  fondo azul oscuro translúcido
+  borde azul claro sutil
+- Orden interno de cada cápsula:
+  icono + texto + número
+  Ejemplo: [icono] NOCHES 0
+- No poner el número arriba y el texto abajo.
+- Los textos NOCHES, PASAJEROS y NIÑOS deben ir en una sola línea.
+- Los botones SGL, DBL, TPL, CHD deben ir a la derecha.
+- DBL debe verse activo en azul brillante #1495ff.
+- SGL, TPL y CHD deben verse inactivos con fondo azul oscuro translúcido, borde azul claro y texto blanco.
+- Agregar separador vertical sutil entre contadores y botones.
+- Distribuir mejor el espacio para que no quede un gran vacío al lado derecho.
+- La composición debe parecerse a la imagen de referencia aprobada:
+  [NOCHES 0] [PASAJEROS 1] [NIÑOS 0] | [SGL] [DBL] [TPL] [CHD]
+
+2. LABELS DE DATOS DEL CLIENTE
+Cambiar el color de los textos:
+- NOMBRE
+- AGENCIA
+- AGENTE
+- CORREO ELECTRÓNICO
+- FECHA DE LLEGADA
+- FECHA DE SALIDA
+- VIGENCIA
+
+Deben usar el mismo color oscuro del título “Servicios seleccionados”.
+Usar color:
+#07152f
+
+Mantenerlos en mayúsculas y con el mismo peso visual, pero en color más oscuro.
+
+3. TOGGLES ACTIVOS
+Cuando los toggles de opciones estén activos:
+- No usar dorado.
+- Cambiar el estado activo al azul oscuro del modo “Tarifas”.
+- Usar color principal activo:
+#0047c7
+o el mismo azul oscuro usado en el borde/fondo activo de Tariff Mode.
+- El círculo interno del toggle debe seguir blanco.
+- El estado inactivo puede quedarse gris como está.
+
+4. ÍCONOS DE TARJETAS
+Asegurar que los íconos de:
+- Datos del cliente
+- Configuración de cotización
+- Servicios seleccionados
+- Acciones
+
+queden sin cuadrado, sin fondo, sin badge.
+Todos deben ser íconos simples en color #1495ff.
+
+5. NO CAMBIAR
+- No cambiar funcionalidades.
+- No cambiar estructura general.
+- No mover secciones.
+- No cambiar textos principales.
+- Solo corregir estilos, colores y composición visual.

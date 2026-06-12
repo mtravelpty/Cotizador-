@@ -1,0 +1,104 @@
+CORRECCIÓN DE FLUJO DE GUARDADO Y SEGUIMIENTO
+
+Modificar la lógica de los botones de acciones.
+
+COMPORTAMIENTO ACTUAL:
+- WhatsApp guarda la cotización.
+- Correo guarda la cotización.
+- PDF guarda la cotización.
+
+COMPORTAMIENTO DESEADO:
+
+──────────────────────────────
+1. BOTÓN WHATSAPP
+──────────────────────────────
+
+El botón "Copiar WhatsApp" NO debe:
+
+✗ Guardar la cotización.
+✗ Crear registro en seguimiento.
+✗ Crear cotización nueva.
+✗ Mover la cotización a la columna "Nuevas".
+✗ Generar historial.
+
+Debe únicamente:
+
+✓ Generar el mensaje de WhatsApp.
+✓ Copiar el contenido.
+✓ Abrir WhatsApp si corresponde.
+
+Es una acción de comunicación solamente.
+
+──────────────────────────────
+2. BOTÓN CORREO
+──────────────────────────────
+
+Al usar "Copiar correo":
+
+✓ Guardar automáticamente la cotización.
+✓ Crear registro en seguimiento.
+✓ Enviar la cotización a la columna "Nuevas".
+✓ Registrar fecha de creación.
+✓ Registrar agencia y agente.
+✓ Registrar importe total.
+
+Después de guardar:
+
+✓ Limpiar completamente el cotizador.
+✓ Reiniciar formulario.
+✓ Preparar nueva cotización.
+
+──────────────────────────────
+3. BOTÓN PDF
+──────────────────────────────
+
+Al usar "Descargar PDF":
+
+✓ Guardar automáticamente la cotización.
+✓ Crear registro en seguimiento.
+✓ Enviar la cotización a la columna "Nuevas".
+✓ Registrar todos los datos.
+
+Después:
+
+✓ Generar PDF.
+✓ Limpiar el cotizador.
+✓ Dejar listo para nueva cotización.
+
+──────────────────────────────
+4. VALIDACIÓN IMPORTANTE
+──────────────────────────────
+
+Realizar pruebas para verificar:
+
+Caso 1:
+WhatsApp
+Resultado esperado:
+NO aparece en Seguimiento.
+
+Caso 2:
+Correo
+Resultado esperado:
+Aparece inmediatamente en Seguimiento > Nuevas.
+
+Caso 3:
+PDF
+Resultado esperado:
+Aparece inmediatamente en Seguimiento > Nuevas.
+
+Caso 4:
+Guardar manual
+Resultado esperado:
+Aparece inmediatamente en Seguimiento > Nuevas.
+
+──────────────────────────────
+5. EVITAR DUPLICADOS
+──────────────────────────────
+
+Si la cotización ya fue guardada previamente:
+
+NO crear un nuevo registro.
+
+Actualizar el existente si corresponde.
+
+Nunca generar duplicados en Seguimiento.

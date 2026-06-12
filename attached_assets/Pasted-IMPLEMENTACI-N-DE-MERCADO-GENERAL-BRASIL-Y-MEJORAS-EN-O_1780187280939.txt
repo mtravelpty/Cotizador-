@@ -1,0 +1,188 @@
+IMPLEMENTACIÓN DE MERCADO (GENERAL / BRASIL) Y MEJORAS EN OBSERVACIONES
+
+IMPORTANTE:
+
+No modificar:
+
+* PDF
+* Correo
+* WhatsApp
+* CRM
+* Seguimiento
+* Plantillas
+* Respaldos
+* Descriptivos
+
+Mantener intacta la funcionalidad actual del cotizador.
+
+==================================================
+
+1. NUEVO SELECTOR DE MERCADO
+   ==================================================
+
+Agregar un nuevo selector a la izquierda del filtro:
+
+Diseño:
+
+[ General ▼ ] [ Todos ▼ ] [ Buscar hotel, traslado, tour... ]
+
+IMPORTANTE:
+
+El selector NO debe mostrar:
+
+Mercado: General
+Mercado: Brasil
+
+Debe mostrar únicamente:
+
+General
+Brasil
+
+Objetivo:
+
+Mantener la interfaz limpia y práctica.
+
+==================================================
+2. FUNCIONAMIENTO DEL MERCADO
+=============================
+
+Opciones:
+
+* General
+* Brasil
+
+General:
+Utiliza el tarifario general actual.
+
+Brasil:
+Utiliza el tarifario Brasil.
+
+IMPORTANTE:
+
+El mercado NO representa destino.
+
+El usuario puede seguir cotizando:
+
+* Ciudad de Panamá
+* Bocas del Toro
+* San Blas
+* Chiriquí
+* Etc.
+
+Lo único que cambia son los precios utilizados.
+
+==================================================
+3. TARIFARIOS SEPARADOS
+=======================
+
+Dentro de:
+
+Configuración → Tarifas
+
+Agregar soporte para:
+
+Tarifario General
+[ Subir / Reemplazar ]
+
+Tarifario Brasil
+[ Subir / Reemplazar ]
+
+Mantener ambos tarifarios cargados por separado.
+
+No mezclar información.
+
+==================================================
+4. BÚSQUEDA
+===========
+
+Cuando el usuario seleccione:
+
+General
+
+La búsqueda debe mostrar servicios usando precios del tarifario general.
+
+Cuando seleccione:
+
+Brasil
+
+La búsqueda debe mostrar servicios usando precios del tarifario Brasil.
+
+==================================================
+5. OBSERVACIONES - PEGADO INTELIGENTE
+=====================================
+
+Mejorar la nueva sección de observaciones.
+
+Actualmente las observaciones se agregan una por una.
+
+Agregar soporte para pegar múltiples líneas.
+
+Ejemplo:
+
+Si el usuario pega:
+
+Precios netos por persona / por noche en hotelería
+Precios sujetos a disponibilidad al momento de solicitar la reserva
+Pasajeros viajando solos aplican suplemento de USD 25 por noche
+
+El sistema debe convertir automáticamente en:
+
+• Precios netos por persona / por noche en hotelería
+
+• Precios sujetos a disponibilidad al momento de solicitar la reserva
+
+• Pasajeros viajando solos aplican suplemento de USD 25 por noche
+
+==================================================
+6. REGLAS DEL PEGADO
+====================
+
+* Detectar saltos de línea.
+* Crear un bullet independiente por cada línea.
+* Ignorar líneas vacías.
+* Mantener el texto original.
+* No duplicar bullets.
+* No romper observaciones existentes.
+
+==================================================
+7. EXPERIENCIA DE USUARIO
+=========================
+
+Después de procesar el texto pegado:
+
+* Limpiar el campo de entrada.
+* Mostrar las observaciones agregadas.
+* Mantener el mismo diseño actual.
+
+==================================================
+8. ESCALABILIDAD
+================
+
+Dejar preparado el selector de mercado para futuros mercados:
+
+* General
+* Brasil
+* Otros
+
+Pero implementar únicamente:
+
+* General
+* Brasil
+
+==================================================
+NO ROMPER
+=========
+
+No modificar:
+
+* Cálculos
+* PDF
+* Correo
+* WhatsApp
+* CRM
+* Seguimiento
+* Plantillas
+* Respaldos
+* Descriptivos
+
+Implementar únicamente las mejoras descritas arriba.

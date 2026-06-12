@@ -1,0 +1,83 @@
+Pulir la barra de alojamiento y filtros del cotizador RGE Style Travel siguiendo la referencia visual aprobada.
+
+1. BARRA DE ALOJAMIENTO
+
+Objetivo:
+La barra debe sentirse más llena, equilibrada y premium. Actualmente tiene demasiado espacio vacío.
+
+Cambios exactos:
+
+- Mantener la barra debajo de Datos del cliente.
+- Mantener el fondo azul degradado actual.
+- Agregar nuevamente un ícono de edificio a la izquierda de la barra.
+- El ícono de edificio debe ir suelto o dentro de una separación muy sutil, color #eec774.
+- No agregar el texto “ALOJAMIENTO”.
+- Después del ícono, agregar un separador vertical sutil.
+
+Nueva estructura:
+[ícono edificio] | [NOCHES 00] [PASAJEROS 01] [NIÑOS 00] | [SGL] [DBL] [TPL] [CHD]
+
+Contadores:
+- Hacer las cápsulas de NOCHES, PASAJEROS y NIÑOS más anchas.
+- Aumentar el área de los números para que tengan dos espacios visuales.
+- Mostrar números con dos dígitos:
+  00, 01, 02, etc.
+- Formato interno:
+  icono + texto + número
+- Todo debe ir en una sola línea.
+- Fondo de cápsulas: #001851 con transparencia ligera.
+- Borde azul claro sutil.
+- Texto blanco.
+- Iconos color #eec774.
+- Número blanco, más grande y semibold.
+
+Botones SGL, DBL, TPL, CHD:
+- Alargarlos un poco más.
+- Mínimo ancho aproximado: 82px.
+- Altura consistente con las cápsulas de contadores.
+- DBL activo: #1495ff.
+- Inactivos: fondo azul oscuro translúcido, borde azul claro, texto blanco.
+- Distribuirlos para que no queden pegados al extremo derecho.
+
+Distribución:
+- La barra debe ocupar visualmente casi todo el ancho con sus elementos.
+- Reducir espacios vacíos grandes.
+- Usar flex con gap controlado.
+- Grupo de icono + contadores: aproximadamente 58% del ancho.
+- Grupo de botones: aproximadamente 35% del ancho.
+- Separadores verticales sutiles entre:
+  ícono y contadores
+  contadores y botones
+- align-items: center;
+- justify-content: space-between;
+
+2. FILTROS Y BUSCADOR
+
+Resaltar visualmente:
+- Botón “General”
+- Botón “Todos”
+- Buscador
+
+Aplicar:
+- Borde azul #004fbb.
+- Sombra azul muy suave.
+- Fondo blanco.
+- Texto #07152f.
+- Iconos/flechas en azul grisáceo.
+- Border radius consistente.
+- Hover con borde #004fbb y sombra más visible.
+
+Cuando un filtro esté seleccionado, por ejemplo Brasil:
+- Fondo del botón seleccionado: #e6ae33.
+- Borde: #e6ae33.
+- Texto blanco.
+- Flecha/icono blanco.
+- Mantener estilo tipo botón premium.
+
+3. NO CAMBIAR
+
+- No cambiar funcionalidad.
+- No cambiar lógica de cálculo.
+- No mover secciones.
+- No cambiar textos fuera de lo indicado.
+- Solo modificar estilos visuales, espaciado, tamaños y estados selected/hover.

@@ -1,0 +1,203 @@
+MEJORAS EN TARIFAS / SERVICIOS / CORREO HTML
+
+OBJETIVO
+
+Agregar notas e imágenes a los servicios desde el módulo de Tarifas y mejorar el tamaño del formato que se copia para correo.
+
+Aplicar a:
+- Hoteles / Alojamiento
+- Traslados
+- Tours
+- Catamarán
+- Vuelos
+- Ítems personalizados
+
+No modificar cálculos.
+
+==================================================
+1. AGREGAR CAMPO NOTAS AL EDITAR SERVICIOS
+==================================================
+
+En el modal de edición de cada servicio agregar un campo:
+
+NOTAS
+
+Tipo:
+textarea
+
+Placeholder:
+Detalles, restricciones u observaciones del servicio...
+
+Debe guardarse dentro del objeto del servicio.
+
+Aplicar en:
+- editar hotel
+- editar traslado
+- editar tour
+- editar catamarán
+- editar vuelo
+- editar ítem personalizado
+
+==================================================
+2. MOSTRAR NOTAS EN SERVICIOS SELECCIONADOS
+==================================================
+
+Si un servicio tiene notas, mostrarlas en su tarjeta dentro de “Servicios seleccionados”.
+
+Diseño sugerido:
+
+Nota:
+Texto de la nota...
+
+Debe verse discreto:
+- texto pequeño
+- color gris/azul
+- estilo itálico opcional
+- debajo de los datos principales del servicio
+
+No mostrar “Nota” si el campo está vacío.
+
+==================================================
+3. MOSTRAR NOTAS EN COTIZACIÓN GENERADA
+==================================================
+
+Las notas deben aparecer también en:
+
+- Vista previa
+- PDF
+- Correo HTML
+
+Ubicación:
+Debajo del servicio correspondiente.
+
+Ejemplo:
+
+Hotel Faranda Express Soloy & Casino
+★★★
+Desayuno incluido
+Nota: Tarifa válida solo para temporada baja.
+
+No mostrar notas vacías.
+
+==================================================
+4. AGREGAR IMÁGENES AL EDITAR SERVICIOS
+==================================================
+
+En el modal de edición de cada servicio agregar sección:
+
+IMÁGENES DEL SERVICIO
+
+Debe permitir:
+- subir una o varias imágenes
+- visualizar miniaturas
+- eliminar imágenes cargadas
+
+Guardar imágenes asociadas al servicio.
+
+Aplicar a:
+- Hoteles
+- Traslados
+- Tours
+- Catamarán
+- Vuelos
+- Ítems personalizados
+
+==================================================
+5. MOSTRAR IMÁGENES EN SERVICIOS SELECCIONADOS
+==================================================
+
+Si el servicio tiene imágenes, mostrar un pequeño indicador en la tarjeta.
+
+Ejemplo:
+
+📷 2 imágenes
+
+No mostrar galería grande en la tarjeta para no recargar.
+
+==================================================
+6. MOSTRAR IMÁGENES EN COTIZACIÓN GENERADA
+==================================================
+
+En Vista previa, PDF y Correo HTML, si un servicio tiene imágenes:
+
+Mostrar miniaturas debajo del servicio.
+
+Reglas:
+- máximo 3 imágenes por servicio
+- tamaño pequeño/mediano
+- bordes redondeados
+- no deformar imágenes
+- mantener proporción
+- no romper el layout
+
+Si hay más de 3 imágenes, mostrar solo las primeras 3.
+
+==================================================
+7. COMPATIBILIDAD CORREO / OUTLOOK
+==================================================
+
+Para el correo HTML:
+- usar imágenes con tamaño fijo
+- usar tablas HTML
+- usar estilos inline
+- no usar grid
+- no usar flexbox
+- no usar CSS externo
+
+Tamaño sugerido imagen:
+width: 160px;
+height: auto;
+
+==================================================
+8. REDUCIR ANCHO DEL FORMATO PARA CORREO
+==================================================
+
+Actualmente al copiar y pegar en correo, el formato ocupa casi todo el ancho.
+
+Reducir el ancho del contenedor principal del HTML de correo.
+
+Configurar:
+
+max-width: 720px;
+
+Centrado:
+
+margin: 0 auto;
+
+Para Outlook usar tabla principal:
+
+width="720"
+
+No usar 100% como ancho principal del contenido.
+
+==================================================
+9. AJUSTAR TABLAS DEL CORREO
+==================================================
+
+Las tablas dentro del correo deben adaptarse al ancho reducido.
+
+Usar:
+- width: 100% dentro del contenedor de 720px
+- padding más compacto
+- font-size ligeramente menor si es necesario
+
+Objetivo:
+Que el correo se vea más elegante y no ocupe todo el espacio horizontal.
+
+==================================================
+10. NO AFECTAR
+==================================================
+
+No modificar:
+- precios
+- cálculos
+- modos de cotización
+- seguimiento
+- lógica de PDF
+- estructura principal del cotizador
+
+Solo agregar:
+- notas por servicio
+- imágenes por servicio
+- visualización de notas/imágenes
+- ancho más compacto del correo HTML

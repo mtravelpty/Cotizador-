@@ -1,0 +1,114 @@
+CORREGIR MODALES DE TARIFAS Y CAMPO CÓDIGO
+
+Problemas:
+1. En modales como Editar hotel aparece una X duplicada:
+- X arriba derecha para cerrar
+- X abajo junto al botón ✓
+
+2. En Tarifas, al agregar o editar hotel no aparece el campo Código.
+
+Objetivo:
+Corregir solo estos dos puntos.
+
+No tocar:
+- cálculos
+- cotizador
+- PDF
+- correo
+- WhatsApp
+- seguimiento
+
+──────────────────────────────
+1. ELIMINAR X DUPLICADA EN MODALES GRANDES
+──────────────────────────────
+
+En modales de formulario grandes como:
+
+- Nuevo hotel
+- Editar hotel
+- Nuevo traslado
+- Editar traslado
+- Nuevo tour
+- Editar tour
+- Nueva agencia
+- Editar agencia
+
+Mantener solo la X de la esquina superior derecha para cerrar.
+
+Eliminar la X inferior que aparece junto al botón ✓.
+
+En el footer dejar solo:
+
+- botón ✓ para guardar/confirmar
+
+Si existe acción de eliminar, mantenerla a la izquierda como está.
+
+No duplicar botones de cerrar.
+
+──────────────────────────────
+2. AGREGAR CAMPO CÓDIGO EN HOTEL
+──────────────────────────────
+
+En modal:
+
+- Nuevo hotel
+- Editar hotel
+
+Agregar campo:
+
+Código
+
+Ubicación:
+Debajo de “Nombre del hotel”.
+
+Placeholder:
+Ej: RGE-HOT-001
+
+Debe guardar y editar el código del hotel.
+
+──────────────────────────────
+3. AGREGAR CAMPO CÓDIGO EN TRASLADO
+──────────────────────────────
+
+En modal:
+
+- Nuevo traslado
+- Editar traslado
+
+Agregar campo:
+
+Código
+
+Ubicación:
+Debajo de descripción/nombre del traslado.
+
+Placeholder:
+Ej: RGE-TRF-001
+
+Debe guardar y editar el código del traslado.
+
+──────────────────────────────
+4. VISUALIZACIÓN Y BÚSQUEDA
+──────────────────────────────
+
+Si hotel o traslado tiene código:
+- mostrarlo discretamente debajo del nombre en gestión local
+- permitir buscar por código
+
+Registros antiguos sin código deben seguir funcionando.
+
+──────────────────────────────
+5. RESPALDO
+──────────────────────────────
+
+Incluir código en exportar/importar respaldo.
+
+Validar:
+✓ Ya no aparece X duplicada abajo.
+✓ Nuevo hotel muestra campo Código.
+✓ Editar hotel muestra campo Código.
+✓ Nuevo traslado muestra campo Código.
+✓ Editar traslado muestra campo Código.
+✓ Código se guarda.
+✓ Código se puede buscar.
+✓ App carga sin errores.

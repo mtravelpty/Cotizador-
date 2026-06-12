@@ -1,0 +1,93 @@
+Implementar FORMATO PAQUETE usando la misma paleta y estilo del formato actual de cotización.
+
+IMPORTANTE:
+No usar íconos ni imágenes en el HTML/PDF porque debe verse bien en Outlook Desktop.
+Usar tablas HTML simples, colores sólidos, bordes suaves y la misma estética actual.
+
+PALETA ACTUAL:
+- Azul alojamiento: #334196
+- Azul tours: #363765
+- Azul texto principal: #041941
+- Gris encabezados: #f5f7fb
+- Gris ciudad/separador: #eef2f8
+- Amarillo observaciones: #f7cb17
+- Naranja línea superior: #ef7b15
+
+==================================================
+MODO PAQUETE
+==================================================
+
+Cuando presentationMode === "package":
+
+1. Mantener el bloque superior de datos:
+DESTINO | FECHAS DE ESTADÍA | NOCHES | PASAJEROS
+
+2. Agregar debajo una sección:
+EL PAQUETE INCLUYE
+
+Debe usar una tabla simple con fondo blanco y encabezado azul.
+No usar íconos.
+Usar bullets normales:
+• Alojamiento
+• Desayuno incluido
+• Traslados
+• Tours seleccionados
+• Vuelos, si aplica
+
+3. Luego mostrar:
+OPCIONES DE ALOJAMIENTO
+
+Si hay 1 opción:
+Mostrar layout premium simple:
+- HOTEL SELECCIONADO
+- Nombre hotel 1
+- Nombre hotel 2, si aplica
+- PRECIOS DEL PAQUETE POR PERSONA:
+  DBL | TPL | CHD
+- NOCHE ADICIONAL POR PERSONA:
+  Hotel Panamá: DBL | TPL | CHD
+  Hotel Bocas: DBL | TPL | CHD, si aplica
+
+Si hay 2 a 4 opciones:
+Mostrar tabla comparativa:
+Columnas:
+OPCIÓN
+ALOJAMIENTO
+PRECIO FINAL PAQUETE
+NOCHE ADICIONAL
+
+Cada opción debe mostrar:
+- Opción 1, Opción 2, etc.
+- Nombre de hotel o combinación de hoteles
+- Precios paquete por acomodación:
+  DBL USD xxx
+  TPL USD xxx
+  CHD USD xxx
+- Noche adicional por hotel:
+  Hotel Panamá: DBL/TPL/CHD
+  Hotel Bocas: DBL/TPL/CHD, si aplica
+
+4. No mostrar precios de traslados, tours, vuelos ni subtotales internos.
+
+5. Mantener costos internos guardados en la cotización y seguimiento.
+El modo paquete solo cambia la presentación final, no los cálculos internos.
+
+6. Mantener bloque final:
+OBSERVACIONES
+
+Usar el mismo diseño amarillo actual.
+
+==================================================
+COMPATIBILIDAD OUTLOOK
+==================================================
+
+- Usar tablas HTML.
+- No usar CSS grid.
+- No usar flexbox.
+- No usar sombras complejas.
+- No usar iconos.
+- No usar imágenes decorativas.
+- No usar gradientes.
+- Estilos inline cuando sea posible.
+
+El resultado debe verse como una versión paquete del formato actual, no como un diseño nuevo.

@@ -1,0 +1,149 @@
+FASE 1 - REDISEÑO VISUAL DE SEGUIMIENTO A LISTA VERTICAL
+
+Objetivo:
+Cambiar visualmente la sección Seguimiento para que se parezca al mockup de lista vertical de oportunidades, sin hacer todavía una refactorización compleja.
+
+NO implementar todavía:
+- Agrupación avanzada real.
+- Historial complejo.
+- Recordatorios nuevos.
+- Cambios grandes de backend.
+
+Solo adaptar la vista usando los datos actuales.
+
+1. Reemplazar vista Kanban como vista principal
+
+Cambiar las columnas actuales por una lista vertical de oportunidades.
+
+Cada tarjeta debe ocupar el ancho disponible y mostrarse una debajo de otra.
+
+2. Encabezado
+
+Título:
+Seguimiento de oportunidades
+
+Subtítulo:
+Administra y da seguimiento a tus oportunidades comerciales
+
+Botón derecho:
++ Nueva oportunidad
+
+3. Barra superior de filtros
+
+Agregar botones:
+
+Ver por:
+[ Cliente ] [ Agencia ] [ Urgencia ]
+
+Luego:
+[ Estado ] [ Prioridad ] [ Buscar oportunidades ]
+
+Por ahora estos filtros pueden funcionar de forma simple con los datos existentes.
+
+4. Métricas superiores
+
+Mostrar cards pequeñas:
+
+- Total oportunidades
+- Prioritarias
+- Urgentes
+- Requieren seguimiento
+- Al día
+
+Colores:
+Prioritarias: amarillo suave
+Urgentes: rojo suave
+Requieren seguimiento: amarillo/naranja suave
+Al día: verde suave
+
+5. Tarjeta de oportunidad
+
+Cada tarjeta debe mostrar:
+
+Izquierda:
+- Logo de agencia o iniciales
+- Nombre principal: cliente o “Sin nombre”
+- Agencia · Destino
+- Pasajeros
+- Acomodación
+- Cantidad de cotizaciones
+
+Centro:
+- Total en USD
+- Última cotización RGE
+- Link: Ver cotizaciones
+
+Derecha:
+- Semáforo de urgencia
+- Texto: Urgente / Requiere seguimiento / Al día
+- Días sin actualización
+- Fecha de última actualización
+- Botón Abrir
+- Menú de tres puntos
+
+6. Semáforo visual
+
+Calcular usando última actualización disponible.
+
+Verde:
+0 a 3 días
+
+Amarillo:
+4 a 6 días
+
+Rojo:
+7 días o más
+
+Si no existe fecha, usar fecha de creación.
+
+7. Orden visual
+
+Ordenar tarjetas así:
+
+1. Prioridad manual, si existe
+2. Rojo
+3. Amarillo
+4. Verde
+5. Más antiguas primero
+
+Si todavía no existe prioridad manual, dejar preparado el campo visual para luego.
+
+8. Menú de tres puntos
+
+Mantener acciones actuales:
+
+- Editar
+- Duplicar
+- Seguimiento / CRM
+- Confirmar venta
+- Marcar como perdida
+- Anular
+
+No mostrar “Abrir cotización” si ya existe botón Abrir.
+
+9. Mantener reglas actuales
+
+WhatsApp NO guarda ni crea seguimiento.
+PDF SÍ guarda y crea seguimiento.
+Correo SÍ guarda y crea seguimiento.
+Guardar SÍ guarda y crea seguimiento.
+
+10. Diseño
+
+Mantener estilo actual:
+- Fondo claro
+- Cards blancas
+- Bordes suaves
+- Sombras suaves
+- Azul principal #004FBB
+- Azul oscuro #041941
+- Amarillo #E6AE33
+
+11. Validación
+
+Confirmar:
+- La app carga sin pantalla blanca.
+- Seguimiento muestra lista vertical.
+- Las oportunidades/cotizaciones actuales se ven en tarjetas.
+- Los botones Abrir y menú siguen funcionando.
+- No se rompe cotizador.

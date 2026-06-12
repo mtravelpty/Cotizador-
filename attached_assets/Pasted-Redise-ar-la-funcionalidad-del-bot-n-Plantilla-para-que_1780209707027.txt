@@ -1,0 +1,186 @@
+Rediseñar la funcionalidad del botón "Plantilla" para que sea escalable cuando existan muchas plantillas.
+
+OBJETIVO
+
+Eliminar la dependencia de un dropdown simple y reemplazarlo por un selector de plantillas profesional tipo SaaS.
+
+BOTÓN
+
+Mantener el botón actual:
+
+📋 Plantilla
+
+pero al hacer clic NO debe abrir un dropdown.
+
+Debe abrir un modal o drawer moderno.
+
+──────────────────────────────
+
+MODAL: SELECCIONAR PLANTILLA
+
+Título:
+
+Seleccionar plantilla
+
+Subtítulo:
+
+Busca y aplica una plantilla guardada.
+
+──────────────────────────────
+
+SECCIÓN 1: BUSCADOR
+
+Agregar un buscador arriba:
+
+🔍 Buscar plantilla...
+
+Debe filtrar en tiempo real por:
+- nombre
+- destino
+- categoría
+
+──────────────────────────────
+
+SECCIÓN 2: RECIENTES
+
+Mostrar las últimas plantillas utilizadas.
+
+Ejemplo:
+
+Recientes
+
+Panamá Express
+Costa Rica Premium
+Brasil Carnaval
+
+Máximo:
+5 plantillas recientes.
+
+──────────────────────────────
+
+SECCIÓN 3: FAVORITAS
+
+Mostrar plantillas marcadas con estrella.
+
+Ejemplo:
+
+⭐ Favoritas
+
+Panamá 4D
+Panamá Premium
+Colombia Express
+
+──────────────────────────────
+
+SECCIÓN 4: TODAS LAS PLANTILLAS
+
+Lista completa con scroll.
+
+Cada plantilla debe mostrarse como una tarjeta.
+
+Ejemplo:
+
+────────────────
+Panamá Express
+
+3 hoteles
+2 tours
+1 traslado
+
+Actualizada hace 5 días
+
+[Usar] [Editar]
+────────────────
+
+────────────────
+Costa Rica Premium
+
+2 hoteles
+4 tours
+2 traslados
+
+Actualizada hace 1 semana
+
+[Usar] [Editar]
+────────────────
+
+──────────────────────────────
+
+FILTROS
+
+Agregar filtros rápidos:
+
+Todos
+Panamá
+Costa Rica
+Brasil
+Colombia
+Multi destino
+
+Diseño tipo chips.
+
+──────────────────────────────
+
+ESTADOS VACÍOS
+
+Si no existen plantillas:
+
+Mostrar:
+
+📋
+
+Sin plantillas
+
+Crea plantillas desde la sección Plantillas.
+
+Botón:
+
+Crear plantilla
+
+Color:
+#004fbb
+
+──────────────────────────────
+
+ACCIÓN USAR
+
+Al hacer clic en:
+
+Usar
+
+Debe:
+
+- Limpiar servicios actuales (previa confirmación).
+- Cargar automáticamente la plantilla seleccionada.
+- Mantener pasajeros y noches configurados por el usuario.
+
+──────────────────────────────
+
+ACCIÓN EDITAR
+
+Al hacer clic en:
+
+Editar
+
+Debe abrir la plantilla en el módulo Plantillas.
+
+──────────────────────────────
+
+DISEÑO
+
+Mantener el estilo visual actual:
+
+- tarjetas blancas
+- bordes redondeados
+- sombras suaves
+- color principal #004fbb
+- fondo claro
+- tipografía consistente
+
+──────────────────────────────
+
+IMPORTANTE
+
+No implementar todavía la lógica completa de favoritos, recientes o categorías si no existen.
+
+Crear la estructura visual y arquitectura para que el sistema pueda crecer a cientos de plantillas sin necesidad de rediseñarlo nuevamente.

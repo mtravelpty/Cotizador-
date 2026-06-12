@@ -1,0 +1,156 @@
+Realizar únicamente las siguientes mejoras de bajo impacto técnico y alto valor operativo.
+
+IMPORTANTE:
+No crear nuevas arquitecturas.
+No refactorizar módulos existentes.
+No modificar funcionalidades que ya funcionan.
+No tocar Seguimiento ni Multiidioma en esta tarea.
+
+Objetivo:
+Consolidar el módulo Agencias y dejarlo listo para crecer más adelante.
+
+──────────────────────────────
+1. UBICACIÓN
+──────────────────────────────
+
+Mover "Agencias" dentro de CONFIGURACIÓN.
+
+Nueva estructura:
+
+CONFIGURACIÓN
+├ Plantillas
+├ Descriptivos
+├ Tarifas
+├ Agencias
+└ Respaldos
+
+Eliminar Agencias del menú principal.
+
+Mantener mismo icono y diseño.
+
+──────────────────────────────
+2. AGENCIAS BÁSICAS
+──────────────────────────────
+
+Mantener formulario simple.
+
+Campos:
+
+- Logo
+- Nombre agencia
+- Contacto principal
+- Teléfono
+- Correo
+
+No agregar más campos.
+
+No agregar agentes asociados.
+
+No agregar idiomas.
+
+No agregar monedas.
+
+──────────────────────────────
+3. AGENCIA PREDETERMINADA
+──────────────────────────────
+
+Agregar opción:
+
+✓ Agencia predeterminada
+
+Reglas:
+
+- Solo una agencia puede ser predeterminada.
+- Si se marca una nueva, desmarcar la anterior.
+- Mostrar badge visual:
+
+PREDETERMINADA
+
+Color:
+#E6AE33
+
+──────────────────────────────
+4. USO DEL LOGO
+──────────────────────────────
+
+Cuando exista logo:
+
+Mostrarlo en:
+
+- Seguimiento
+- Notificaciones
+- Futuras tarjetas Kanban
+
+Si no existe logo:
+
+Mostrar iniciales como fallback.
+
+No modificar diseño actual.
+
+──────────────────────────────
+5. RESPALDOS
+──────────────────────────────
+
+Actualizar respaldo completo.
+
+Debe incluir:
+
+✔ Agencias
+✔ Logos de agencias
+
+Actualizar descripción de respaldos:
+
+"Incluye plantillas, descriptivos, observaciones rápidas, tarifas modificadas, agencias y logos."
+
+──────────────────────────────
+6. IMPORTAR RESPALDO
+──────────────────────────────
+
+Restaurar:
+
+- Agencias
+- Logos
+
+Mantener compatibilidad con respaldos anteriores.
+
+──────────────────────────────
+7. LISTADO DE AGENCIAS
+──────────────────────────────
+
+Agregar buscador simple.
+
+Placeholder:
+
+Buscar agencia...
+
+Buscar por:
+
+- Nombre
+- Contacto
+- Correo
+
+Filtrado instantáneo.
+
+──────────────────────────────
+8. VALIDACIONES
+──────────────────────────────
+
+No permitir:
+
+- Nombre vacío.
+- Dos agencias predeterminadas.
+
+──────────────────────────────
+VALIDACIÓN FINAL
+──────────────────────────────
+
+Confirmar:
+
+✓ Agencias aparece dentro de Configuración.
+✓ Existe buscador.
+✓ Existe agencia predeterminada.
+✓ Logos se guardan correctamente.
+✓ Logos se restauran desde respaldo.
+✓ Respaldo completo incluye agencias.
+✓ La aplicación sigue cargando sin errores.
+✓ No se modificó ninguna funcionalidad existente.

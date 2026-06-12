@@ -1,0 +1,239 @@
+Necesito corregir y unificar el comportamiento visual de calendarios, popups y notas en todo el cotizador.
+
+OBJETIVO GENERAL:
+Unificar diseño y posición de botones de cerrar/guardar en todos los modales, popups y editores. Además, el calendario de “Vigencia” debe usar exactamente el mismo diseño premium del calendario de “Detalles del viaje / Estadía”.
+
+1. CALENDARIO DE VIGENCIA
+
+Actualmente el calendario que se despliega en Vigencia tiene un diseño diferente, más básico y no coincide con el calendario premium de Detalles del viaje.
+
+Corregir:
+
+- El datepicker de Vigencia debe usar el mismo componente visual que el calendario de Estadía / Detalles del viaje.
+- Mismo diseño:
+  - tarjeta blanca con bordes redondeados
+  - sombra suave
+  - navegación de mes con flechas
+  - días en español
+  - selección azul circular
+  - mismo tamaño de tipografía
+  - mismo estilo de botones
+  - mismo radio de bordes
+- No debe aparecer el calendario nativo del navegador ni otro diseño diferente.
+- Todo campo de fecha del sistema debe abrir el mismo calendario personalizado:
+  - llegada
+  - salida
+  - vigencia
+  - fecha de servicio
+  - check-in / check-out en edición de alojamiento
+
+IMPORTANTE:
+Centralizar el componente de calendario para no tener varios diseños distintos.
+
+2. BOTONES DE CERRAR Y GUARDAR EN MODALES
+
+Actualmente los botones de cerrar y guardar aparecen en posiciones diferentes según el modal:
+- algunos arriba
+- algunos abajo
+- algunos duplicados
+- algunos muy grandes
+- algunos con posición inconsistente
+
+Unificar en todos los modales.
+
+Regla general:
+
+- Todos los modales deben tener los botones de acción arriba a la derecha.
+- El botón cerrar debe ser una X pequeña.
+- El botón guardar debe ser un check pequeño.
+- Ambos deben estar dentro del header del modal.
+- Eliminar botones duplicados de la parte inferior.
+- Mantener solo una acción de cerrar y una acción de guardar por modal.
+- No debe quedar botón de cerrar abajo si ya está arriba.
+- No debe quedar botón de guardar abajo si ya está arriba.
+
+Aplicar a estos modales:
+
+- Seleccionar plantillas
+- Ítem personalizado
+- Editar alojamiento
+- Editar traslado
+- Editar tours
+- Editar vuelos
+- Tarifas por noche
+- Notas
+- Entradas
+- Calendario de estadía
+- Cualquier otro popup relacionado con servicios
+
+Diseño de botones:
+
+Cerrar:
+- tamaño aproximado: 34px x 34px en modales grandes
+- tamaño aproximado: 30px x 30px en popups pequeños
+- fondo blanco o muy claro
+- borde #d8e2f0
+- icono X color #6b7890
+- hover suave
+
+Guardar:
+- tamaño aproximado: 34px x 34px en modales grandes
+- tamaño aproximado: 30px x 30px en popups pequeños
+- fondo #0057c8 o azul principal actual
+- icono check blanco
+- sombra suave
+- hover ligeramente más oscuro
+
+3. POPUPS PEQUEÑOS
+
+Los popups pequeños deben verse más compactos.
+
+Aplicar a:
+
+- Tarifas por noche
+- Notas
+- Entradas
+
+Ajustes:
+
+- Reducir un poco el tamaño general del popup.
+- Reducir padding interno.
+- Reducir tamaño de botones cerrar/guardar.
+- Ubicar cerrar y guardar arriba a la derecha.
+- Eliminar footer inferior si solo contiene cerrar/guardar.
+- Mantener diseño premium, limpio y consistente.
+
+4. MODAL DE ÍTEM PERSONALIZADO
+
+Corregir:
+
+- El botón X del header está demasiado grande.
+- El botón guardar y cancelar inferior deben eliminarse.
+- Dejar únicamente:
+  - X arriba a la derecha
+  - check arriba a la derecha
+- Ambos pequeños y alineados.
+- El contenido del formulario debe mantener su diseño actual.
+
+5. MODALES GRANDES DE EDITAR SERVICIO
+
+Aplicar a:
+
+- Editar alojamiento
+- Editar traslado
+- Editar tour
+- Editar vuelo
+
+Corregir:
+
+- Eliminar botones inferiores de cancelar/guardar.
+- Mover acciones al header superior derecho.
+- Header debe quedar así:
+
+Izquierda:
+Título del modal
+
+Derecha:
+[X] [✓]
+
+- Botones compactos.
+- Mantener scroll y layout actual.
+- No romper funcionalidad de guardado.
+
+6. MODAL DE PLANTILLAS
+
+Actualmente solo tiene X arriba a la derecha.
+
+Ajustar:
+
+- Mantener X arriba a la derecha.
+- Hacerla más pequeña y consistente con los demás modales.
+- Si el modal requiere aplicar una plantilla, el botón de aplicar debe estar en la tarjeta de la plantilla, no duplicado en el footer.
+- El botón “Crear plantilla” puede mantenerse en el empty state.
+
+7. NOTAS IMPORTANTES EN SERVICIOS
+
+Necesito agregar una opción en todos los módulos donde se agregan notas a servicios.
+
+En cada sección de notas debe existir una casilla/toggle:
+
+Texto:
+“Marcar como importante”
+
+Funcionamiento:
+
+- Si está desactivado:
+  - La nota se muestra normal.
+  - Color de texto normal.
+- Si está activado:
+  - La nota debe aparecer en color naranja en la cotización final.
+  - Usar naranja #ef7b15.
+  - Debe funcionar en todos los módulos donde haya notas de servicios.
+
+Aplicar a notas de:
+
+- Alojamiento
+- Traslados
+- Tours
+- Vuelos
+- Ítem personalizado
+- Popups rápidos de notas
+- Edición completa de servicio
+
+Guardar en data model:
+
+Cada servicio debe poder guardar:
+
+notes: string
+notesImportant: boolean
+
+O el nombre equivalente que ya use el sistema, pero debe persistir.
+
+8. VISUAL DE NOTA IMPORTANTE EN EXPORTABLES
+
+Cuando notesImportant sea true:
+
+- En vista previa:
+  - mostrar la nota en color #ef7b15
+  - puede ir con etiqueta “Importante:” si ya existe un diseño para notas
+- En PDF:
+  - mostrar la nota en color #ef7b15
+- En email HTML:
+  - mostrar la nota en color #ef7b15
+  - usar estilos inline compatibles con Outlook desktop
+- En WhatsApp:
+  - como WhatsApp no permite color, anteponer:
+    “IMPORTANTE: ”
+
+Ejemplo WhatsApp:
+IMPORTANTE: Esta tarifa aplica solo para pagos antes del 15 de junio.
+
+9. CONSISTENCIA VISUAL
+
+Respetar estilo actual del sistema:
+
+- azul principal del cotizador
+- bordes redondeados premium
+- sombras suaves
+- inputs grandes y limpios
+- tipografía actual
+- no agregar íconos innecesarios
+- no cambiar la lógica de cálculo
+- no modificar tarifas
+- no modificar exportaciones más allá de las notas importantes
+
+10. PREVENCIÓN DE ERRORES
+
+Antes de terminar:
+
+- Revisar que no existan botones duplicados en modales.
+- Revisar que cerrar no guarde cambios.
+- Revisar que check sí guarde cambios.
+- Revisar que Escape o click fuera del modal no rompa nada si ya estaba configurado.
+- Revisar que todos los calendarios usen el mismo componente.
+- Revisar que Vigencia ya no use calendario nativo ni diseño distinto.
+- Revisar que notesImportant persista al editar, guardar, duplicar y exportar una cotización.
+
+NO hacer cambios grandes de lógica.
+NO rediseñar toda la app.
+Solo unificar calendarios, botones de modales y agregar notas importantes.

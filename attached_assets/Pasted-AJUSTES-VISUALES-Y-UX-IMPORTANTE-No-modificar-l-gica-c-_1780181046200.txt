@@ -1,0 +1,190 @@
+AJUSTES VISUALES Y UX
+
+IMPORTANTE:
+No modificar lógica, cálculos, PDF, correo, WhatsApp, CRM, seguimiento ni plantillas.
+Solo aplicar ajustes visuales.
+
+==================================================
+
+1. ENCABEZADO PRINCIPAL
+   ==================================================
+
+Eliminar completamente:
+
+* Cotizador de Viajes
+* Multi-acomodación · cálculo en tiempo real desde tarifario Excel
+
+No reemplazar por ningún subtítulo.
+
+Mantener únicamente un encabezado simple:
+
+Cotizador
+
+==================================================
+2. CAMPO NOMBRE
+===============
+
+Actualmente existe un placeholder tipo:
+
+Ej: FAMILIA PÉREZ
+
+Eliminar completamente cualquier ejemplo.
+
+Dejar el campo vacío.
+
+No mostrar:
+
+* Ejemplos
+* Familia Pérez
+* Cliente
+* Texto de ayuda
+
+Solo el campo vacío.
+
+==================================================
+3. CAMPO AGENCIA
+================
+
+Eliminar cualquier ejemplo o placeholder.
+
+No mostrar:
+
+Ej: RGE STYLE TRAVEL
+
+Dejar el campo vacío.
+
+==================================================
+4. SELECTOR DE AGENTE
+=====================
+
+Cambiar texto inicial:
+
+"Selecciona un agente..."
+
+Por:
+
+"Seleccionar"
+
+Mantener las opciones:
+
+JOHANNA C.
+MELISSA A.
+GABRIELA S.
+JONATHAN C.
+
+Mostrar siempre los nombres en MAYÚSCULAS.
+
+Cuando se seleccione un agente debe visualizarse también en MAYÚSCULAS.
+
+Ejemplo:
+
+JOHANNA C.
+
+No:
+
+Johanna C.
+
+==================================================
+5. GUARDAR COTIZACIÓN COMO PLANTILLA
+====================================
+
+Actualmente el botón quedó dentro de la tarjeta ACCIONES.
+
+Moverlo fuera de la tarjeta.
+
+Ubicación deseada:
+
+[Tarjeta ACCIONES]
+
+Vista previa
+Copiar WhatsApp
+Copiar correo
+Descargar PDF
+
+Guardar
+Limpiar
+
+(Fin de la tarjeta)
+
+---
+
+Guardar cotización como plantilla
+
+Debe quedar separado visualmente de la tarjeta ACCIONES como una acción independiente.
+
+Mantener ancho completo.
+
+==================================================
+6. MENÚ LATERAL
+===============
+
+Eliminar los contadores numéricos.
+
+Ejemplos:
+
+Seguimiento (1)
+Plantillas (2)
+
+Debe mostrarse solamente:
+
+Seguimiento
+Plantillas
+
+Sin badges ni contadores.
+
+==================================================
+7. DROPDOWN DE ÍTEM PERSONALIZADO
+=================================
+
+Actualmente utiliza el estilo nativo del navegador y rompe la estética visual de la aplicación.
+
+Reemplazar por el mismo componente visual utilizado en:
+
+* Selector de agente
+* Selector de modo
+* Filtros
+
+Debe tener:
+
+* Bordes redondeados
+* Hover corporativo
+* Sombra suave
+* Tipografía consistente
+* Mismo estilo visual del resto del sistema
+
+No utilizar select HTML nativo.
+
+==================================================
+8. CONSISTENCIA DE DROPDOWNS
+============================
+
+Todos los dropdowns del sistema deben utilizar el mismo componente visual.
+
+Unificar:
+
+* Selector de agente
+* Filtros
+* Modos
+* Item personalizado
+
+No mezclar dropdowns nativos con dropdowns personalizados.
+
+==================================================
+NO ROMPER
+=========
+
+No modificar:
+
+* Tarifas
+* Cálculos
+* Seguimiento
+* CRM
+* Descriptivos
+* Plantillas
+* PDF
+* Correo
+* WhatsApp
+* Exportaciones
+* Importaciones
+
+Aplicar únicamente los ajustes visuales descritos arriba.

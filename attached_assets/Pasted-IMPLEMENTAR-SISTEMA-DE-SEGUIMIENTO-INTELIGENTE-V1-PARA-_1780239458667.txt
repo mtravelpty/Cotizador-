@@ -1,0 +1,238 @@
+IMPLEMENTAR SISTEMA DE SEGUIMIENTO INTELIGENTE V1 PARA STYLE TRAVEL
+
+OBJETIVO
+
+Crear un sistema de seguimiento extremadamente simple, visual y práctico, enfocado en aumentar conversiones sin convertir el cotizador en un CRM complejo.
+
+La filosofía debe ser:
+
+"El asesor vende. El sistema organiza."
+
+NO crear workflows complejos.
+NO crear más de 5 estados.
+NO crear múltiples formularios de seguimiento.
+NO crear automatizaciones avanzadas.
+
+Debe funcionar prácticamente solo.
+
+---
+
+1. CENTRO DE NOTIFICACIONES (CAMPANA)
+
+La campana será el centro de seguimiento del sistema.
+
+Al hacer clic debe abrir un panel lateral (drawer) o modal moderno con las alertas agrupadas.
+
+Categorías:
+
+🔴 Requieren acción
+
+* Sin seguimiento por 3 días.
+* Sin seguimiento por 5 días.
+* Vigencia próxima a vencer.
+* Cotización importante sin actividad.
+
+🟡 Próximas a vencer
+
+* Vence en 5 días.
+* Vence en 3 días.
+* Vence mañana.
+
+🔵 Recordatorios
+
+Recordatorios creados manualmente por el usuario.
+
+🟢 Confirmadas
+
+Ventas cerradas recientemente.
+
+Cada alerta debe permitir:
+
+* Abrir cotización.
+* Marcar como atendida.
+* Posponer.
+
+---
+
+2. ESTADOS AUTOMÁTICOS
+
+Eliminar cualquier flujo complejo.
+
+Solo existirán:
+
+NUEVA
+ESPERANDO CLIENTE
+REQUIERE ACCIÓN
+CONFIRMADA
+PERDIDA
+
+Definiciones:
+
+NUEVA
+
+* Creada hoy.
+
+ESPERANDO CLIENTE
+
+* PDF enviado.
+* WhatsApp enviado.
+* Email enviado.
+
+REQUIERE ACCIÓN
+
+* Más de 3 días sin actividad.
+* Vigencia próxima.
+* Recordatorio pendiente.
+
+CONFIRMADA
+
+* Venta cerrada.
+
+PERDIDA
+
+* Cotización descartada o vencida.
+
+El usuario NO debe mover estados manualmente.
+
+El sistema los actualiza automáticamente.
+
+---
+
+3. REGLAS AUTOMÁTICAS
+
+Cuando:
+
+Enviar PDF
+Enviar WhatsApp
+Enviar Email
+
+Entonces:
+
+fechaUltimaActividad = ahora
+
+estado = ESPERANDO CLIENTE
+
+---
+
+Si pasan 3 días sin actividad:
+
+estado = REQUIERE ACCIÓN
+
+generar alerta automática.
+
+---
+
+Si faltan 5 días para vencer:
+
+generar alerta.
+
+---
+
+Si faltan 3 días:
+
+elevar prioridad.
+
+---
+
+Si falta 1 día:
+
+alerta urgente.
+
+---
+
+4. RECORDATORIOS RÁPIDOS
+
+Dentro de cada cotización agregar:
+
+Recordarme:
+
+[ Mañana ]
+
+[ En 3 días ]
+
+[ En 1 semana ]
+
+[ Personalizado ]
+
+Al seleccionar:
+
+Crear recordatorio asociado a la cotización.
+
+Ese recordatorio aparecerá en la campana.
+
+NO usar formularios complejos.
+
+---
+
+5. ESTRUCTURA DE DATOS
+
+Mantenerlo simple.
+
+Agregar únicamente:
+
+fechaCreacion
+fechaUltimaActividad
+fechaVencimiento
+estado
+recordatorio
+valorCotizacion
+
+No crear tablas innecesarias.
+
+---
+
+6. PRIORIDAD AUTOMÁTICA
+
+Ordenar alertas por:
+
+1. Vigencia más próxima.
+2. Más días sin seguimiento.
+3. Valor de cotización más alto.
+
+Ejemplo:
+
+$8,000 sin seguimiento
+debe aparecer antes que
+
+$300 sin seguimiento.
+
+---
+
+7. INTERFAZ
+
+Diseño consistente con Style Travel:
+
+Azul corporativo:
+#041941
+
+Amarillo corporativo:
+#E6AE33
+
+Campana:
+mismo color que la barra lateral.
+
+Drawer moderno.
+
+Contadores visuales.
+
+Sin tablas complejas.
+
+Sin exceso de información.
+
+Mostrar únicamente lo que requiere atención.
+
+---
+
+8. NO IMPLEMENTAR
+
+NO CRM completo.
+NO IA.
+NO secuencias automáticas.
+NO pipelines complejos.
+NO más de 5 estados.
+NO automatizaciones avanzadas.
+NO funciones experimentales.
+
+Objetivo:
+
+Obtener el 80% del beneficio de un CRM de seguimiento utilizando solo el 20% de la complejidad.

@@ -1,0 +1,153 @@
+REFINAR DISEÑO FINAL DE DISTRIBUCIÓN DEL GRUPO
+
+OBJETIVO
+
+Mantener la barra azul actual y las tarjetas de acomodación, pero hacerlas más limpias, compactas y rápidas de usar.
+
+==================================================
+DISEÑO DE TARJETAS
+==================
+
+Cada acomodación debe mostrar:
+
+* Icono ilustrativo lineal
+* Nombre de acomodación
+* Input numérico
+* Habitaciones
+* Pasajeros calculados
+
+Diseño:
+
+[Icono] DBL          [ 10 ]
+
+[10 hab.]   [20 pasajeros]
+
+==================================================
+ICONOGRAFÍA
+===========
+
+Usar SVG lineales simples.
+
+Color:
+blanco
+
+Tamaño:
+20-24px
+
+Ubicación:
+izquierda del nombre
+
+Ejemplos:
+
+[icono] SGL
+[icono] DBL
+[icono] TPL
+[icono] QDL
+
+No usar emojis.
+No usar PNG.
+
+==================================================
+INPUT NUMÉRICO
+==============
+
+Eliminar:
+
+[-] 10 [+]
+
+Reemplazar por:
+
+[ 10 ]
+
+Input numérico editable.
+
+Al escribir:
+
+DBL = 10
+
+Calcular automáticamente:
+
+20 pasajeros
+
+==================================================
+PILLS INFORMATIVAS
+==================
+
+Debajo del encabezado:
+
+[10 hab.]
+[20 pasajeros]
+
+Estilo:
+
+* fondo blanco translúcido
+* bordes suaves
+* texto blanco
+* altura pequeña
+
+==================================================
+COLORES
+=======
+
+Mantener colores actuales de la barra.
+
+Texto principal:
+blanco
+
+Eliminar texto amarillo en:
+SGL / DBL / TPL / QDL
+
+Reservar amarillo #e6ae33 únicamente para:
+
+Faltan X pasajeros
+
+==================================================
+TARJETAS MÁS COMPACTAS
+======================
+
+Reducir altura.
+
+Reducir espacios verticales.
+
+Toda la información debe verse de un vistazo.
+
+==================================================
+RESUMEN INFERIOR
+================
+
+Mantener:
+
+Habitaciones: X
+
+Pasajeros: X / Total
+
+Faltan: X pasajeros
+
+Total grupo: USD XXXX
+
+Todo en una sola línea.
+
+==================================================
+ANIMACIÓN
+=========
+
+Al activar Modo Grupo:
+
+fade-in + slide-down
+
+Duración:
+300ms
+
+Suave y profesional.
+
+==================================================
+NO CAMBIAR
+==========
+
+* cálculos
+* exportables
+* PDF
+* correo
+* lógica de grupos
+
+Solo mejorar experiencia visual y velocidad de uso.

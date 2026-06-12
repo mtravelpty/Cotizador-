@@ -1,0 +1,184 @@
+FASE 2 - LÓGICA REAL DE OPORTUNIDADES Y PRIORIDAD MANUAL
+
+Objetivo:
+Convertir Seguimiento en un sistema simple de oportunidades comerciales usando la lista vertical ya creada en Fase 1.
+
+No hacer rediseño completo.
+No cambiar cotizador.
+No tocar PDF, email, WhatsApp ni tarifas.
+Solo mejorar la lógica de Seguimiento.
+
+1. CONCEPTO DE OPORTUNIDAD
+
+Una oportunidad agrupa una o varias cotizaciones relacionadas.
+
+Crear/usar estructura:
+
+Opportunity {
+  id
+  agencyName
+  agencyId
+  agentName
+  counterName
+  quoteName
+  destination
+  status
+  priorityManual
+  lastUpdateAt
+  createdAt
+  quotes[]
+  totalLatest
+  latestQuoteCode
+}
+
+2. CUÁNDO CREAR O ACTUALIZAR OPORTUNIDAD
+
+Solo crean o actualizan oportunidad:
+
+- Guardar
+- Copiar correo
+- Descargar PDF
+
+WhatsApp NO crea.
+WhatsApp NO guarda.
+WhatsApp NO actualiza oportunidad.
+
+3. AGRUPACIÓN SIMPLE
+
+Cuando se genere una cotización:
+
+Buscar oportunidad existente con:
+
+- misma agencia
+- mismo agente
+- mismo nombre de cotización
+
+Si existe:
+- agregar la nueva cotización a esa oportunidad
+- actualizar totalLatest
+- actualizar latestQuoteCode
+- actualizar lastUpdateAt
+
+Si no existe:
+- crear nueva oportunidad
+
+Importante:
+No agrupar por destino todavía si complica.
+Usar quoteName como nombre principal de oportunidad.
+
+4. NOMBRE PRINCIPAL DE TARJETA
+
+En la lista vertical, mostrar como título principal:
+
+Nombre de cotización
+
+Si no existe:
+Sin nombre
+
+Debajo mostrar:
+
+Agencia · Agente
+
+Luego:
+Destino si existe
+
+5. COTIZACIONES DENTRO DE OPORTUNIDAD
+
+Cada oportunidad debe guardar lista de cotizaciones asociadas.
+
+Mostrar en tarjeta:
+
+Ver cotizaciones (N)
+
+Al hacer clic:
+abrir modal simple con:
+
+- Código RGE
+- Fecha
+- Total
+- Botón Abrir
+- Botón Duplicar
+
+6. PRIORIDAD MANUAL
+
+Agregar opción en menú de tres puntos:
+
+Marcar prioridad
+
+Si ya está marcada:
+
+Quitar prioridad
+
+Cuando está marcada:
+
+- priorityManual = true
+- mostrar badge “PRIORIDAD”
+- mostrar estrella
+- ordenar primero
+
+7. ORDENAMIENTO
+
+Ordenar oportunidades así:
+
+1. priorityManual = true
+2. semáforo rojo
+3. semáforo amarillo
+4. semáforo verde
+5. lastUpdateAt más antiguo primero
+
+8. SEMÁFORO
+
+Calcular según lastUpdateAt:
+
+Verde:
+0-3 días
+
+Amarillo:
+4-6 días
+
+Rojo:
+7+ días
+
+Actualizar lastUpdateAt cuando:
+
+- se guarda cotización
+- se crea PDF
+- se copia correo
+- se agrega seguimiento
+- se cambia estado
+- se marca prioridad
+
+9. ESTADOS
+
+Mantener estados simples:
+
+- Nueva
+- Enviada
+- Seguimiento
+- Confirmada
+- Perdida
+- Anulada
+
+10. ANULAR
+
+Si se anula oportunidad:
+
+- no borrar
+- status = Anulada
+- ocultar de Activas
+- mostrar en filtro Anuladas
+
+11. VALIDACIÓN
+
+Confirmar:
+
+- Guardar crea oportunidad.
+- PDF crea o actualiza oportunidad.
+- Correo crea o actualiza oportunidad.
+- WhatsApp no crea ni guarda.
+- Misma agencia + agente + nombre de cotización agrupa cotizaciones.
+- Ver cotizaciones muestra el historial simple.
+- Marcar prioridad funciona.
+- Prioridades aparecen primero.
+- Semáforo funciona.
+- App carga sin errores.

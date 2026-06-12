@@ -1,0 +1,153 @@
+Quiero generar un template HTML para PDF de cotización que replique EXACTAMENTE el diseño visual proporcionado.
+
+IMPORTANTE:
+- No improvisar diseño
+- Respetar formas, colores y jerarquía visual
+- Usar SOLO <table> (no flex, no grid)
+- Usar estilos INLINE
+- Fondo blanco obligatorio
+
+--------------------------------------------------
+
+🎨 COLORES EXACTOS:
+
+- Azul principal: #2f4ea2
+- Naranja: #f97316
+- Verde notas: #16a34a
+- Texto principal: #1f2937
+- Bordes: #e5e7eb
+
+--------------------------------------------------
+
+🔷 HEADER
+
+- Logo izquierda (height: 70px)
+- A la derecha: un “pill” (botón redondeado) con:
+  - Fondo azul (#2f4ea2)
+  - Texto blanco
+  - Border-radius: 999px (completamente redondo)
+  - Padding: 10px 25px
+  - Texto: “PROPUESTA DE SERVICIOS”
+
+--------------------------------------------------
+
+📋 BLOQUE DE DATOS
+
+- Usar tabla 2 columnas
+- Espaciado vertical amplio (padding: 6px 0)
+- Labels en gris oscuro
+- Valores en negro más fuerte
+
+- Línea separadora:
+  - color naranja (#f97316)
+  - altura: 2px
+  - margin: 15px 0
+
+--------------------------------------------------
+
+🔵 TÍTULOS DE SECCIÓN (MUY IMPORTANTE)
+
+Cada sección (ALOJAMIENTO, TRASLADOS, TOURS, VUELOS) debe usar:
+
+- Forma tipo “pill”:
+  - display: inline-block
+  - background: #2f4ea2
+  - color: white
+  - padding: 6px 18px
+  - border-radius: 999px
+  - font-weight: bold
+  - font-size: 14px
+
+NO usar headers normales.
+
+--------------------------------------------------
+
+🏨 TABLAS DE SERVICIOS
+
+- border-collapse: collapse
+- width: 100%
+
+Encabezados:
+- Texto en mayúscula
+- Color gris oscuro
+- border-bottom: 1px solid #e5e7eb
+- padding: 8px
+
+Filas:
+- padding: 10px
+- separación visual limpia
+
+Hotel:
+- Nombre en negrita
+- Debajo:
+  Ciudad · ★★★★
+
+Precios:
+- alineados a la derecha
+
+--------------------------------------------------
+
+🚐 TRASLADOS Y TOURS
+
+- Usar flechas:
+  Ejemplo:
+  Aeropuerto → Hotel → Aeropuerto
+
+- Texto adicional:
+  - Color verde (#16a34a)
+  - Tamaño menor
+  - Ejemplo:
+    “Entrada adicional: $23 por persona”
+
+--------------------------------------------------
+
+✈️ VUELOS
+
+- Mismo estilo que traslados
+- Formato:
+  Panamá → Bocas del Toro → Panamá
+
+--------------------------------------------------
+
+🟠 ITINERARIO
+
+Título tipo pill PERO en naranja:
+- background: #f97316
+- color: white
+- border-radius: 999px
+
+Tabla:
+- columnas:
+  Día | Fecha | Actividad
+
+Actividades:
+- usar flechas → para continuidad
+
+--------------------------------------------------
+
+📐 CONTENEDOR GENERAL
+
+- width: 800px
+- margin: auto
+- padding: 20px
+
+--------------------------------------------------
+
+⚠️ REGLAS CRÍTICAS
+
+- NO usar divs para layout principal
+- NO usar clases CSS externas
+- NO usar Tailwind
+- NO usar flexbox
+
+TODO debe ser inline + tablas
+
+--------------------------------------------------
+
+🎯 OBJETIVO FINAL
+
+El PDF debe verse:
+- limpio
+- profesional
+- idéntico al diseño de referencia
+- listo para enviar a cliente

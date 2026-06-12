@@ -1,0 +1,157 @@
+MEJORA DE UX - DISTRIBUCIÓN DEL GRUPO
+
+OBJETIVO
+
+Reemplazar los botones + y - por inputs numéricos directos para agilizar la creación de grupos medianos y grandes.
+
+La operación principal de una agencia de viajes consiste en ingresar rápidamente cantidades de habitaciones, por lo que el uso de botones + y - genera demasiados clics.
+
+==================================================
+CAMBIO PRINCIPAL
+================
+
+Eliminar:
+
+[-] 10 [+]
+
+Reemplazar por:
+
+[ 10 ]
+
+Input numérico editable.
+
+==================================================
+DISEÑO DE CADA TARJETA
+======================
+
+Diseño propuesto:
+
+DBL
+
+Habitaciones
+
+[ 10 ]
+
+20 pasajeros
+
+==================================================
+COMPORTAMIENTO
+==============
+
+Al escribir:
+
+DBL = 10
+
+Calcular automáticamente:
+
+20 pasajeros
+
+Al escribir:
+
+TPL = 4
+
+Calcular automáticamente:
+
+12 pasajeros
+
+Al escribir:
+
+SGL = 2
+
+Calcular automáticamente:
+
+2 pasajeros
+
+Al escribir:
+
+QDL = 1
+
+Calcular automáticamente:
+
+4 pasajeros
+
+Actualizar en tiempo real.
+
+==================================================
+VALIDACIONES
+============
+
+No permitir valores negativos.
+
+Mínimo:
+0
+
+Máximo:
+Según el total de pasajeros configurado.
+
+Ejemplo:
+
+Adultos = 10
+
+No permitir una distribución superior a 10 pasajeros.
+
+Si el usuario intenta exceder:
+
+Mostrar mensaje:
+
+"La distribución supera el total de pasajeros configurados."
+
+==================================================
+DISEÑO VISUAL
+=============
+
+Mantener:
+
+* Barra azul actual
+* Tarjetas actuales
+* Colores actuales
+* Animación actual
+
+Cambiar únicamente:
+
+1. Reemplazar + y -
+2. Input numérico centrado
+3. Texto más compacto
+
+==================================================
+TARJETAS
+========
+
+Ejemplo visual:
+
+┌─────────────────────┐
+│ DBL                 │
+│ Habitaciones        │
+│      [ 10 ]         │
+│    20 pasajeros     │
+└─────────────────────┘
+
+==================================================
+RESUMEN INFERIOR
+================
+
+Mantener:
+
+Habitaciones: X
+
+Pasajeros: X / Total
+
+Faltan: X pasajeros
+
+Total grupo: USD XXXX
+
+==================================================
+OBJETIVO FINAL
+==============
+
+Reducir clics.
+
+Permitir crear grupos de:
+
+* 10 habitaciones DBL
+* 20 habitaciones DBL
+* 15 habitaciones TPL
+
+simplemente escribiendo el número.
+
+Mantener el diseño limpio, profesional y optimizado para uso diario por agentes de viajes.

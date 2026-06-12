@@ -1,0 +1,172 @@
+Necesito hacer dos mejoras importantes en la propuesta y en la gestión de servicios.
+
+========================================
+
+1. ALINEACIÓN PERFECTA DE LA COLUMNA TOTAL
+   ========================================
+
+Actualmente la columna TOTAL no queda alineada entre:
+
+* alojamiento
+* traslados
+* tours
+* vuelos
+
+Quiero que TODAS las tablas compartan exactamente:
+
+* misma cantidad de columnas visuales
+* mismo ancho de columnas
+* misma posición de TOTAL
+* misma alineación vertical y horizontal
+
+========================================
+OBJETIVO VISUAL
+===============
+
+La columna TOTAL debe formar una sola línea visual vertical continua entre todas las secciones.
+
+Ahora mismo:
+
+* alojamiento tiene TOTAL más ancho
+* traslados queda corrido
+* tours probablemente también
+
+Eso debe corregirse.
+
+========================================
+SOLUCIÓN ESPERADA
+=================
+
+Usar:
+
+* grid consistente
+  o
+* table-layout fijo
+  o
+* widths compartidos
+
+para que:
+TOTAL quede exactamente alineado en todas las tablas.
+
+========================================
+2. MODALIDAD RÁPIDA (REGULAR / PRIVADO)
+=======================================
+
+Necesito habilitar una forma rápida y visual para cambiar modalidad en:
+
+* traslados
+* tours
+* experiencias
+* vuelos
+
+SIN tener que abrir edición completa.
+
+========================================
+REQUERIMIENTO
+=============
+
+Agregar un pequeño icono o toggle rápido directamente en cada servicio.
+
+Ejemplo:
+
+* badge clickable
+* icono swap
+* mini toggle
+* pill interactiva
+
+que permita alternar:
+REGULAR ↔ PRIVADO
+
+rápidamente.
+
+========================================
+COMPORTAMIENTO
+==============
+
+Al cambiar:
+
+* actualizar automáticamente:
+
+  * modalidad visible
+  * precios correspondientes
+  * PDF
+  * correo
+  * WhatsApp
+  * resumen de costos
+  * seguimiento
+
+sin necesidad de refrescar.
+
+========================================
+UBICACIONES DONDE DEBE EXISTIR
+==============================
+
+1. Lista de servicios:
+
+* traslados
+* tours
+
+2. Modal general de edición de servicios
+
+Ahí también debe existir selector rápido:
+
+* Regular
+* Privado
+
+========================================
+UX
+==
+
+Debe sentirse:
+
+* moderno
+* rápido
+* operativo
+* tipo sistema interno de agencia
+
+NO un formulario lento.
+
+========================================
+DISEÑO
+======
+
+Mantener:
+
+* diseño actual premium
+* pills
+* azul corporativo
+* estética limpia
+
+La modalidad debe verse elegante visualmente.
+
+========================================
+IMPORTANTE
+==========
+
+NO aplicar modalidad en:
+
+* hoteles
+* alojamiento
+
+La modalidad SOLO aplica a:
+
+* tours
+* traslados
+* experiencias
+* vuelos
+
+========================================
+NO ROMPER
+=========
+
+Mantener compatibilidad con:
+
+* PDF
+* correo
+* WhatsApp
+* descriptivos
+* plantillas
+* seguimiento
+* totales
+* modo solo tarifas
+* modo con totales

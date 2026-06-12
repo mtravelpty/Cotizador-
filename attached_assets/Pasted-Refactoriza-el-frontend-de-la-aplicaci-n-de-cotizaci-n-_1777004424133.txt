@@ -1,0 +1,165 @@
+Refactoriza el frontend de la aplicación de cotización para mejorar UX/UI basándote en estos cambios específicos.
+
+NO cambiar la lógica del backend. Solo mejorar estructura visual y comportamiento.
+
+---
+
+1. LAYOUT HORIZONTAL (IMPORTANTE)
+
+Crear un layout tipo workspace:
+
+* IZQUIERDA (70% ancho):
+
+  * Datos del cliente
+  * Parámetros del viaje
+  * Servicios seleccionados
+
+* DERECHA (30% ancho, sticky):
+
+  * Resumen de totales
+  * Botones:
+
+    * Vista Previa
+    * Copiar WhatsApp
+    * Descargar PDF
+
+Reducir scroll vertical y mejorar distribución.
+
+---
+
+2. SERVICIOS (REORGANIZACIÓN)
+
+NO mostrar listas completas de servicios.
+
+Mostrar solo:
+
+"Servicios seleccionados"
+
+Cada servicio en tarjeta (card):
+
+* Tipo (icono: 🏨 🚐 🗺️)
+* Nombre
+* Detalle relevante
+* Precio aplicado
+* Botones:
+  editar
+  eliminar
+
+---
+
+3. BOTÓN “AGREGAR SERVICIO” CON DROPDOWN
+
+Crear botón:
+
+* Agregar servicio ▼
+
+Opciones:
+
+* Alojamiento
+* Traslado
+* Tour / Actividad
+* Personalizado
+
+Cada opción abre un modal limpio.
+
+---
+
+4. TARIFAS DE TOURS Y TRASLADOS (CLAVE)
+
+NO mostrar todas las tarifas por rango.
+
+Ejemplo actual (incorrecto):
+1 pax: $80
+2-5 pax: $50
+6-10 pax: $45
+
+CAMBIO:
+
+* Detectar automáticamente cantidad de pasajeros
+* Seleccionar tarifa correcta según rango
+
+Ejemplo:
+Pasajeros = 3 → usar “2-5 pax”
+
+Mostrar SOLO:
+"Tarifa aplicada: $50 p/p"
+
+---
+
+5. OPCIÓN MANUAL (IMPORTANTE)
+
+Permitir override manual:
+
+Dropdown:
+[ 1 pax | 2-5 pax | 6-10 pax ]
+
+Si el usuario cambia:
+→ recalcular precio
+
+---
+
+6. BOTÓN “VISTA PREVIA”
+
+Agregar botón en panel derecho:
+
+"Vista Previa"
+
+Al hacer clic:
+
+* Abrir modal grande
+* Mostrar cotización como documento:
+
+  * Cliente
+  * Servicios
+  * Totales
+  * Itinerario (si está activo)
+
+SIN inputs ni botones de edición
+
+---
+
+7. ITINERARIO OPCIONAL
+
+Agregar toggle:
+
+[✓] Incluir itinerario en la cotización
+
+Estado:
+incluirItinerario (boolean)
+
+Si está desactivado:
+
+* NO mostrar itinerario en:
+
+  * Vista principal
+  * Vista previa
+  * PDF
+  * WhatsApp
+
+Si está activado:
+
+* Mostrar normalmente
+
+NO borrar el itinerario, solo ocultarlo
+
+---
+
+8. DISEÑO VISUAL
+
+* Cards blancas
+* Bordes redondeados (rounded-xl o 2xl)
+* Sombras suaves
+* Buen espaciado (p-4 / p-6)
+* Tipografía limpia
+* Íconos por tipo de servicio
+
+---
+
+OBJETIVO FINAL:
+
+Una interfaz clara, horizontal y profesional donde:
+
+* Solo se muestra lo necesario
+* Las tarifas se calculan automáticamente
+* El usuario puede ajustar manualmente si quiere
+* La cotización se puede previsualizar antes de enviarla

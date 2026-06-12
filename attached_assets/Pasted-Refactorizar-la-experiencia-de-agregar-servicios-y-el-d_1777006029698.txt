@@ -1,0 +1,193 @@
+Refactorizar la experiencia de agregar servicios y el diseño de la cotización final (preview/PDF) con base en estos requerimientos específicos.
+
+NO cambiar backend. Solo frontend + presentación.
+
+---
+
+1. MENÚ "AGREGAR SERVICIO" → FLUJO MEJORADO
+
+Al hacer clic en:
+
+* Agregar servicio ▼
+
+Opciones:
+
+* Alojamiento
+* Traslado
+* Tour / Actividad
+* Personalizado
+
+👉 Al seleccionar (ej: Traslado):
+NO abrir un modal simple.
+Abrir un PANEL / MODAL COMPLETO tipo formulario (como la imagen de referencia).
+
+---
+
+2. MODAL DE SERVICIO (ESTRUCTURA)
+
+El modal debe incluir:
+
+A. BUSCADOR DE CATÁLOGO
+
+* Dropdown o buscador
+* Mostrar:
+  CODIGO + Nombre del servicio
+
+Ejemplo:
+RGE-1085 - Traslado Aeropuerto - Hotel
+
+👉 El código SIEMPRE visible
+
+---
+
+B. CAMPOS DEL SERVICIO
+
+Dependiendo del tipo:
+
+TODOS:
+
+* Código (editable opcional)
+* Nombre (auto)
+* Notas (textarea)
+
+TRASLADOS / TOURS:
+
+* Toggle:
+  [✓] Usar fecha
+
+Si está activo:
+→ mostrar selector de fecha
+
+Si está desactivado:
+→ ocultar fecha
+
+👉 Esto permite servicios sin fecha fija
+
+---
+
+C. PASAJEROS PARA SERVICIO (CLAVE)
+
+Agregar selector independiente:
+
+"Cantidad de personas para este servicio"
+
+Opciones:
+
+* Auto (usar pasajeros globales)
+* Manual (input número)
+
+👉 Si es manual:
+usar ese número para calcular tarifa
+
+---
+
+D. TARIFA APLICADA (NO LISTA COMPLETA)
+
+NO mostrar todas las tarifas.
+
+Mostrar:
+
+"Tarifa aplicada: $XX p/p"
+
+Debajo:
+
+Selector manual:
+[ 1 pax | 2-5 pax | 6-10 pax ]
+
+👉 Permite override manual
+
+---
+
+E. BOTONES
+
+* Cancelar
+* Guardar servicio
+
+---
+
+3. DISEÑO DEL MODAL
+
+* Ancho grande (max-w-3xl o 4xl)
+* Espaciado limpio
+* Inputs agrupados
+* Tipografía clara
+* Secciones con títulos
+
+---
+
+4. DISEÑO DE COTIZACIÓN (PREVIEW / PDF)
+
+Basarse en formato tipo documento profesional como referencia.
+
+ESTRUCTURA:
+
+---
+
+A. SECCIÓN: ALOJAMIENTO
+
+Tabla:
+
+Hotel | Check-in | Check-out | Noches | DBL | TPL | Total
+
+Debajo del nombre:
+
+* Ciudad
+* Categoría (estrellas)
+* Vigencia
+
+---
+
+B. SECCIÓN: SERVICIOS ADICIONALES
+
+Tabla:
+
+Tipo | Descripción | Fecha | Total
+
+Ejemplo:
+TRASLADO | Texto | Fecha | $48
+
+---
+
+C. RESUMEN DE COSTOS (CARD DERECHA)
+
+Diseño tipo caja:
+
+Alojamiento: $XXX
+Traslados: $XXX
+Tours: $XXX
+
+---
+
+GRAN TOTAL: $XXXX
+
+👉 Destacar total en grande y color azul
+
+---
+
+5. COMPORTAMIENTO
+
+* Si servicio NO tiene fecha:
+  → mostrar "—" en columna fecha
+
+* Si múltiples acomodaciones:
+  → mostrar columnas correspondientes
+
+* Mantener formato limpio tipo documento (fondo blanco)
+
+---
+
+6. ESTILO VISUAL
+
+* Títulos en azul
+* Líneas divisoras suaves
+* Tipografía elegante
+* Espaciado amplio
+* Diseño tipo cotización formal (no dashboard)
+
+---
+
+OBJETIVO FINAL:
+
+* Flujo de agregar servicios mucho más profesional
+* Control total por servicio (fecha, pax, tarifa)
+* Cotización final con diseño tipo documento listo para cliente

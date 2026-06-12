@@ -1,0 +1,133 @@
+Necesito automatizar el régimen/desayuno en hotelería usando la información existente en la base de datos.
+
+========================================
+OBJETIVO
+========
+
+Cuando se agregue un hotel desde:
+
+* tarifario
+* plantillas
+* ítem personalizado
+* seguimiento
+* duplicar cotización
+
+el sistema debe detectar automáticamente el tipo de desayuno/régimen desde la base de datos y mostrarlo en la cotización SIN escribirlo manualmente.
+
+========================================
+LÓGICA
+======
+
+Ya existe en la base de datos una columna relacionada con:
+
+* desayuno
+* buffet
+* continental
+* all inclusive
+* alimentación completa
+  etc.
+
+Usar esa información automáticamente.
+
+========================================
+EJEMPLOS
+========
+
+Si en BD dice:
+“Buffet”
+
+mostrar:
+
+Incluye desayuno buffet
+
+---
+
+Si dice:
+“Continental”
+
+mostrar:
+
+Incluye desayuno continental
+
+---
+
+Si dice:
+“All Inclusive”
+
+mostrar:
+
+Todo incluido
+
+========================================
+UBICACIÓN EN LA COTIZACIÓN
+==========================
+
+Debajo del hotel:
+
+Hotel Hilton Garden Inn
+CIUDAD DE PANAMÁ
+Incluye desayuno buffet
+
+========================================
+ESTILO VISUAL
+=============
+
+La línea del régimen debe tener:
+
+* color elegante
+* naranja oscuro
+  o
+* celeste oscuro
+
+alineado a la paleta premium actual.
+
+Debe verse:
+
+* elegante
+* discreto
+* corporativo
+
+========================================
+IMPORTANTE
+==========
+
+1. NO escribir “Incluye desayuno” dos veces.
+
+2. Si el valor ya contiene:
+
+* desayuno
+* all inclusive
+* alimentación completa
+
+formatearlo inteligentemente.
+
+3. Si no existe información:
+   NO mostrar la línea.
+
+========================================
+COMPATIBILIDAD
+==============
+
+Debe funcionar en:
+
+* preview
+* PDF
+* correo
+* WhatsApp
+* plantillas
+* seguimiento
+* ítem personalizado
+
+========================================
+NO ROMPER
+=========
+
+Mantener:
+
+* diseño actual
+* tablas
+* totales
+* descriptivos
+* plantillas
+* modo tarifas
+* modo con totales

@@ -1,0 +1,75 @@
+Quiero rediseñar completamente la sección “Buscar y Agregar Servicios” para eliminar el flujo actual basado en múltiples pasos (Agregar servicio → seleccionar categoría → abrir card → agregar).
+
+El nuevo comportamiento debe ser tipo buscador inteligente/autocomplete (estilo Airbnb / Spotlight / iOS):
+
+OBJETIVO PRINCIPAL:
+Agregar servicios de forma inmediata, sin modales ni pasos intermedios.
+
+CAMBIOS REQUERIDOS:
+
+1. BUSCADOR SIEMPRE VISIBLE
+- Mostrar siempre un input de búsqueda + selector de categoría en la misma fila.
+- Placeholder: "Buscar hotel, traslado, tour..."
+- Categoría como dropdown compacto (Hotelería, Traslados, Tours, etc.)
+
+2. DROPDOWN FLOTANTE (AUTOCOMPLETE)
+- Al escribir 2-3 letras, mostrar un dropdown flotante debajo del input.
+- Debe aparecer en tiempo real (sin botón buscar).
+- Estilo moderno tipo floating panel con sombra, bordes redondeados.
+
+3. RESULTADOS (CADA ITEM)
+Cada resultado debe mostrar:
+- Icono según categoría
+- Nombre del servicio (resaltar coincidencia de texto)
+- Código (ej: RGE-387)
+- Rango de fechas
+- Precios rápidos alineados a la derecha:
+  - DBL: $xx/pax
+  - SGL: $xx/pax
+- Rating opcional (estrellas)
+
+Diseño:
+- Horizontal, limpio
+- Hover con fondo suave
+- Cursor pointer
+
+4. ACCIÓN PRINCIPAL (CLAVE)
+- Al hacer click en un resultado:
+  → Se agrega AUTOMÁTICAMENTE a "Servicios seleccionados"
+  → NO abrir modal
+  → NO pedir confirmación
+  → Mostrar feedback visual (ej: check, toast o highlight)
+
+5. EDICIÓN SEPARADA
+- Una vez agregado el servicio:
+  → En la lista de “Servicios seleccionados” debe existir botón “Editar”
+  → SOLO ahí se abre el detalle completo (modal o expandible)
+
+6. UX / PERFORMANCE
+- Debounce en búsqueda (300ms)
+- Manejar estado de:
+  - loading
+  - sin resultados
+- Scroll dentro del dropdown si hay muchos resultados
+
+7. ESTILO VISUAL
+- Bordes redondeados tipo iOS
+- Sombra suave (elevación)
+- Transiciones suaves (fade + slide)
+- Mantener consistencia con el sistema actual
+
+8. COMPORTAMIENTO GENERAL
+- Flujo debe ser rápido, directo y sin fricción
+- Priorizar velocidad sobre detalle en el momento de agregar
+- El detalle queda para la edición posterior
+
+RESUMEN DEL FLUJO FINAL:
+Usuario escribe → aparecen resultados → hace click → servicio agregado instantáneamente.
+
+IMPORTANTE:
+Eliminar completamente el flujo anterior basado en:
+- Botón “Agregar servicio”
+- Selección previa de categoría en otro paso
+- Cards grandes antes de agregar
+
+Este nuevo sistema debe reemplazarlo totalmente.

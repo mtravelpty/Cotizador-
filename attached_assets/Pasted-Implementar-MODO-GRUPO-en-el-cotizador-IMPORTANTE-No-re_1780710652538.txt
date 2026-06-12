@@ -1,0 +1,212 @@
+Implementar MODO GRUPO en el cotizador.
+
+IMPORTANTE:
+No reemplaza Individual ni Paquete.
+Es un tercer modo de trabajo orientado a grupos.
+
+==================================================
+ACTIVACIÓN
+==================================================
+
+Agregar selector:
+
+TIPO DE COTIZACIÓN
+
+○ Individual
+○ Grupo
+
+Por defecto:
+Individual
+
+==================================================
+DATOS DEL GRUPO
+==================================================
+
+Cuando se activa Grupo:
+
+Mostrar una tarjeta debajo de la barra de acomodaciones.
+
+Título:
+
+RESUMEN DEL GRUPO
+
+Campos:
+
+Adultos
+Niños
+Total pasajeros
+Habitaciones
+Acomodación base
+
+Ejemplo:
+
+Adultos: 40
+Niños: 6
+Total pasajeros: 46
+Habitaciones: 23
+Acomodación: DBL
+
+==================================================
+CÁLCULOS
+==================================================
+
+Calcular automáticamente:
+
+1. Total del grupo
+
+Suma de:
+- Hotelería
+- Traslados
+- Tours
+- Vuelos
+- Entradas
+- Extras
+
+2. Precio promedio por pasajero
+
+Total Grupo ÷ Total Pasajeros
+
+3. Total habitaciones
+
+Según acomodación seleccionada
+
+Ejemplo:
+
+46 pasajeros
+
+DBL
+
+23 habitaciones
+
+==================================================
+COTIZACIÓN FINAL
+==================================================
+
+En PDF y Correo mostrar:
+
+--------------------------------------------------
+DATOS DEL GRUPO
+--------------------------------------------------
+
+Destino
+Fechas
+Noches
+
+Adultos
+Niños
+Total pasajeros
+
+Habitaciones
+Acomodación base
+
+--------------------------------------------------
+RESUMEN ECONÓMICO
+--------------------------------------------------
+
+TOTAL DEL GRUPO
+
+USD 8,240
+
+PRECIO POR PERSONA
+
+USD 179
+
+--------------------------------------------------
+
+Luego mostrar normalmente:
+
+ALOJAMIENTO
+TRASLADOS
+TOURS
+VUELOS
+OBSERVACIONES
+
+==================================================
+MODO PAQUETE + GRUPO
+==================================================
+
+Si Grupo + Paquete están activos:
+
+Ocultar todos los costos individuales.
+
+Mostrar únicamente:
+
+INCLUYE
+
+✓ Hotel
+✓ Traslados
+✓ Tours
+✓ Vuelos
+
+--------------------------------------------------
+
+TOTAL DEL GRUPO
+
+USD 8,240
+
+--------------------------------------------------
+
+PRECIO POR PERSONA
+
+USD 179
+
+--------------------------------------------------
+
+OBSERVACIONES
+
+==================================================
+SEGUIMIENTO
+==================================================
+
+Guardar internamente:
+
+- Costos hotel
+- Costos traslados
+- Costos tours
+- Costos vuelos
+- Costos extras
+
+No perder desglose.
+
+Modo Grupo solamente cambia la presentación.
+
+==================================================
+TARJETA DE RESUMEN EN COTIZADOR
+==================================================
+
+Usar estilo actual del sistema.
+
+Mismos colores corporativos.
+
+Sin iconos.
+
+Sin imágenes.
+
+Mostrar:
+
+RESUMEN DEL GRUPO
+
+Adultos: XX
+Niños: XX
+Total pasajeros: XX
+
+Habitaciones: XX
+
+Total grupo: USD XXXX
+
+Precio por persona: USD XXX
+
+==================================================
+COMPATIBILIDAD
+==================================================
+
+Compatible con:
+
+✓ Individual
+✓ Grupo
+✓ Paquete
+✓ Grupo + Paquete
+
+No modificar cálculos existentes.
+
+Solo agregar la lógica de presentación y cálculos grupales.

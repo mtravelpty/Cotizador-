@@ -1,0 +1,141 @@
+Quiero mejorar completamente TODOS los campos de fechas de mi app (cotizador de viajes) con un diseño moderno y funcional.
+
+---
+
+### 🎯 Objetivo
+
+1. Reemplazar TODOS los inputs de fecha actuales por un sistema moderno.
+2. Usar un diseño tipo app (estilo Airbnb / fondo celeste con card).
+3. Implementar selección de rango (check-in / check-out).
+4. Aplicar el mismo diseño y comportamiento a todos los campos de fecha del proyecto.
+
+---
+
+### ⚙️ Requisitos técnicos
+
+1. Usar Flatpickr (vanilla JS).
+2. Usar selector global:
+
+   * aplicar a todos los inputs con clase `.date-range`
+3. Asegurar:
+
+   * CSS correctamente cargado
+   * JS ejecutándose después del DOM (DOMContentLoaded)
+
+---
+
+### 🧩 Implementación
+
+1. Todos los inputs de fecha deben usar:
+
+```html
+<input class="date-range" placeholder="Llegada → Salida">
+```
+
+2. Inicialización global:
+
+```javascript
+flatpickr(".date-range", {
+  mode: "range",
+  dateFormat: "d/m/Y",
+  minDate: "today",
+  showMonths: 2
+});
+```
+
+---
+
+### 🧠 Funcionalidad inteligente
+
+1. Selección tipo rango:
+
+   * Usuario selecciona IN → luego OUT
+
+2. Comportamiento:
+
+   * Al seleccionar IN:
+     → sugerir automáticamente OUT = IN + 1 día
+   * No permitir fechas pasadas
+   * No permitir OUT antes que IN
+
+3. UX:
+
+   * El calendario permanece abierto hasta completar el rango
+   * Se cierra automáticamente al terminar
+
+---
+
+### 🎨 Diseño (MUY IMPORTANTE)
+
+Quiero un diseño moderno tipo la referencia (fondo celeste + card centrada).
+
+#### Estilo general:
+
+* Fondo celeste suave en el contenedor
+* Card centrada con:
+
+  * bordes redondeados (16px–20px)
+  * sombra suave
+  * padding amplio
+
+#### Calendario:
+
+* Día IN (inicio):
+  → círculo azul sólido
+
+* Día OUT (fin):
+  → círculo azul sólido
+
+* Días intermedios:
+  → fondo azul claro (highlight)
+
+* Día actual:
+  → borde visible
+
+* Header:
+  → fondo ligeramente celeste
+
+---
+
+### 🎯 Estilos obligatorios para rango
+
+```css
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+}
+
+.flatpickr-day.inRange {
+  background: rgba(37, 99, 235, 0.2);
+}
+```
+
+---
+
+### 📱 UX adicional
+
+* Mostrar 2 meses lado a lado (desktop)
+* Responsive en móvil
+* Sin botones de confirmar o cerrar
+* Interacción rápida (tipo app moderna)
+
+---
+
+### 📦 Entrega
+
+* HTML actualizado
+* CSS personalizado completo
+* JS funcional
+* Integración sin romper el resto de la app
+
+---
+
+### ⚠️ Importante
+
+* NO usar el input nativo `<input type="date">`
+* TODO debe verse como un componente moderno real
+* Aplicar el mismo comportamiento a TODOS los campos de fecha
+
+---

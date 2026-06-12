@@ -1,0 +1,155 @@
+MEJORAS DE ORGANIZACIÓN Y UX
+
+IMPORTANTE:
+No modificar lógica, cálculos, PDF, correo, WhatsApp, CRM, seguimiento, plantillas ni respaldos.
+Solo aplicar mejoras de organización visual y experiencia de usuario.
+
+==================================================
+
+1. NUEVA SECCIÓN: CONFIGURACIÓN
+   ==================================================
+
+Actualmente existen en el menú lateral:
+
+* Plantillas
+* Descriptivos
+* Tarifas
+* Respaldos
+
+Mover estas opciones dentro de una nueva sección:
+
+CONFIGURACIÓN
+
+Estructura deseada:
+
+Cotizador
+Seguimiento
+
+Configuración
+├─ Plantillas
+├─ Descriptivos
+├─ Tarifas
+└─ Respaldos
+
+Objetivo:
+
+* Reducir ruido visual.
+* Mantener el menú más limpio.
+* Separar claramente el área operativa (cotizar y seguimiento) del área administrativa.
+
+==================================================
+2. OBSERVACIONES RÁPIDAS
+========================
+
+Actualmente existen muchas cláusulas que no se utilizan frecuentemente.
+
+Dejar como observaciones predeterminadas únicamente:
+
+✓ Precios netos por persona / por noche en hotelería.
+
+✓ Precios sujetos a disponibilidad al momento de solicitar la reserva.
+
+✓ Pasajeros viajando solos aplican suplemento de USD 25 por noche.
+
+✓ Pasajeros en vuelos nocturnos aplican suplemento adicional por vía.
+
+Estas deben aparecer siempre como las primeras opciones sugeridas.
+
+Las demás observaciones existentes deben mantenerse almacenadas, pero no mostrarse como prioritarias.
+
+==================================================
+3. OBSERVACIONES GENERALES
+==========================
+
+La caja de observaciones generales actualmente ocupa demasiado espacio visual.
+
+Reducir su altura aproximadamente entre un 35% y un 40%.
+
+Objetivo:
+
+* Mantener espacio suficiente para escribir.
+* Hacer la interfaz más limpia.
+* Dar más protagonismo a los servicios cotizados.
+
+Mantener el botón:
+
+Observaciones rápidas
+
+en la misma posición.
+
+==================================================
+4. RESPALDOS
+============
+
+Mejorar la legibilidad de los títulos:
+
+* Respaldo completo
+* Solo plantillas
+
+Actualmente tienen muy poco contraste visual.
+
+Aplicar:
+
+* Mayor peso tipográfico
+* Mayor contraste
+* Misma jerarquía visual utilizada en títulos de tarjetas
+
+==================================================
+5. ORDEN VISUAL DE RESPALDOS
+============================
+
+Mantener la estructura:
+
+RESPALDO COMPLETO
+
+[ Exportar respaldo ]
+[ Importar respaldo ]
+
+---
+
+SOLO PLANTILLAS
+
+[ Exportar plantillas ]
+[ Importar plantillas ]
+
+Asegurar consistencia visual:
+
+* Exportar = acción principal
+* Importar = acción secundaria
+
+Mantener el mismo diseño general ya implementado.
+
+==================================================
+6. PREPARACIÓN PARA FUTURAS OPCIONES
+====================================
+
+La nueva sección CONFIGURACIÓN debe quedar preparada para agregar posteriormente:
+
+* Observaciones rápidas
+* Agentes
+* Ubicaciones
+* Configuración general
+
+No implementarlas ahora.
+Solo dejar una estructura escalable.
+
+==================================================
+NO ROMPER
+=========
+
+No modificar:
+
+* Cotizador
+* Seguimiento
+* CRM
+* PDF
+* Correo
+* WhatsApp
+* Tarifario
+* Cálculos
+* Plantillas
+* Respaldos
+* Exportaciones
+* Importaciones
+
+Aplicar únicamente los cambios de organización y experiencia de usuario descritos arriba.

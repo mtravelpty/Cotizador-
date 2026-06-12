@@ -1,0 +1,211 @@
+Rediseñar la sección TARIFAS siguiendo la referencia visual aprobada.
+
+OBJETIVO:
+Mejorar la claridad, practicidad y consistencia visual de la pantalla de tarifas, separando claramente:
+
+1. Tarifarios por idioma
+2. Gestión local de hoteles, tours y traslados
+
+No modificar lógica de cálculo.
+No modificar cotizador.
+No romper carga de Excel.
+
+──────────────────────────────
+1. ENCABEZADO
+──────────────────────────────
+
+Mantener barra azul superior:
+
+TARIFAS
+
+A la derecha mantener botón:
+
+Exportar respaldo
+
+Estilo:
+- Botón secundario blanco.
+- Borde suave.
+- Ícono discreto.
+- Texto #07152f.
+- No debe competir con botones principales.
+
+──────────────────────────────
+2. SECCIÓN TARIFARIOS POR IDIOMA
+──────────────────────────────
+
+Crear bloque:
+
+TARIFARIOS POR IDIOMA
+
+Subtítulo:
+Gestiona y actualiza tus tarifarios Excel por idioma.
+
+Mostrar 3 cards en una fila:
+
+- 🇪🇸 Español
+- 🇺🇸 English
+- 🇧🇷 Português
+
+Cada card debe mostrar:
+
+- Bandera
+- Nombre del idioma
+- Estado:
+  Cargado / Sin archivo
+- Nombre del archivo:
+  TARIFARIO.xlsx
+  TARIFARIO_EN.xlsx
+  TARIFARIO_PT.xlsx
+- Conteos:
+  Hoteles
+  Tours
+  Traslados
+- Fecha de actualización
+- Botones:
+  Recargar
+  Reemplazar
+
+Si no hay archivo cargado:
+- Mostrar “Sin archivo cargado”
+- Botón principal: Subir tarifario
+- No mezclar idiomas en la interfaz.
+- Todo el UI debe mantenerse en español.
+
+Todas las cards deben tener:
+- mismo alto
+- mismo ancho
+- borde redondeado
+- sombra suave
+- fondo blanco
+- estilo premium SaaS
+
+Eliminar cualquier bloque separado de “Tarifario Brasil” como card independiente.
+
+──────────────────────────────
+3. GESTIÓN LOCAL
+──────────────────────────────
+
+Crear bloque debajo:
+
+GESTIÓN LOCAL
+
+Subtítulo:
+Administra tu base de datos local e importa datos desde los tarifarios Excel.
+
+Controles en una sola fila:
+
+Izquierda:
+[ Hoteles ] [ Tours ] [ Traslados ]
+
+Derecha o centro:
+Importar desde: [ General ] [ Brasil ]
+
+Los tabs deben mantener estilo limpio, con activo en azul #004FBB.
+
+──────────────────────────────
+4. BARRA DE IMPORTACIÓN
+──────────────────────────────
+
+Debajo de los tabs mostrar una barra blanca compacta.
+
+Debe cambiar dinámicamente según selección.
+
+Ejemplos:
+
+Si está seleccionado:
+Hoteles + General
+
+Mostrar:
+Importar hoteles desde General (148 registros)
+
+Si:
+Tours + Brasil
+
+Mostrar:
+Importar tours desde Brasil (55 registros)
+
+Texto secundario:
+Se agregarán solo los nuevos registros o se actualizarán los existentes.
+
+Botón derecho:
+Importar hoteles / Importar tours / Importar traslados
+
+Color botón:
+#004FBB
+
+──────────────────────────────
+5. BOTÓN NUEVO
+──────────────────────────────
+
+A la derecha, debajo de la barra de importación:
+
++ Nuevo hotel
++ Nuevo tour
++ Nuevo traslado
+
+Debe cambiar según el tab activo.
+
+Color:
+#004FBB
+
+Hover:
+#003F96
+
+──────────────────────────────
+6. ESTADO VACÍO
+──────────────────────────────
+
+El estado vacío debe cambiar según tab activo.
+
+Hoteles:
+Sin hoteles locales
+
+Tours:
+Sin tours locales
+
+Traslados:
+Sin traslados locales
+
+Texto:
+Los datos del tarifario Excel siguen disponibles en el cotizador para generar propuestas.
+
+Botón:
++ Crear hotel
++ Crear tour
++ Crear traslado
+
+Mantener:
+- contenedor blanco
+- borde dashed suave
+- icono central
+- diseño limpio y espacioso
+
+──────────────────────────────
+7. IMPORTANTE
+──────────────────────────────
+
+No cambiar:
+- lógica de importación
+- lectura de Excel
+- cálculo de tarifas
+- cotizador
+- PDF
+- WhatsApp
+- correo
+
+Solo mejorar:
+- layout
+- textos
+- agrupación visual
+- consistencia
+- estados vacíos
+- botones
+- cards
+
+Validar:
+✓ App carga sin errores.
+✓ Tarifarios por idioma se ven en 3 cards.
+✓ No aparece card separada de Tarifario Brasil.
+✓ Gestión local funciona.
+✓ Botones cambian según Hoteles/Tours/Traslados.
+✓ Importar desde General/Brasil sigue funcionando.

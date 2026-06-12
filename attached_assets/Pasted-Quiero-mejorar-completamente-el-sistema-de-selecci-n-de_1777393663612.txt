@@ -1,0 +1,98 @@
+Quiero mejorar completamente el sistema de selección de fechas de mi app (cotizador de viajes).
+
+Actualmente uso inputs tipo `<input type="date">`, pero quiero reemplazarlos por un datepicker moderno, más visual y práctico.
+
+### 🎯 Objetivo
+
+Crear un selector de fechas estilo Airbnb que sea intuitivo, rápido y visualmente atractivo.
+
+---
+
+### ✅ Requisitos funcionales
+
+1. Usar la librería Flatpickr (vanilla JS, no React).
+2. Implementar selección de rango (check-in y check-out en un solo calendario).
+3. El usuario debe:
+
+   * Seleccionar fecha de entrada (IN)
+   * Luego seleccionar fecha de salida (OUT) en el mismo flujo
+
+---
+
+### 🧠 Comportamiento inteligente
+
+1. Cuando el usuario selecciona la fecha IN:
+
+   * El calendario debe permanecer abierto
+   * Debe sugerir automáticamente OUT = IN + 1 día
+
+2. El calendario debe:
+
+   * Abrirse en el mes actual
+   * Si ya hay una fecha IN seleccionada, abrir en ese mismo mes
+
+3. Bloquear selección inválida:
+
+   * No permitir fechas OUT anteriores a IN
+
+---
+
+### 🎨 Diseño (muy importante)
+
+1. Estilo moderno tipo:
+
+   * Airbnb
+   * Booking
+
+2. Requisitos visuales:
+
+   * Colores personalizados (usa tonos azul oscuro / brand de la app)
+   * Bordes redondeados
+   * Hover states claros
+   * Rango seleccionado con fondo visible
+   * Día actual destacado
+
+3. Mostrar:
+
+   * Número de noches seleccionadas (ej: "3 noches")
+
+---
+
+### 🧩 Integración
+
+1. Debe reemplazar los campos actuales:
+
+   * Fecha de llegada
+   * Fecha de salida
+
+2. Mantener formato:
+
+   * dd/mm/yyyy
+
+3. Guardar los valores seleccionados en variables JS reutilizables
+
+---
+
+### ⚙️ Técnicamente
+
+* Usar Flatpickr CDN
+* Código limpio y modular
+* No romper el resto de la app
+* Compatible con el diseño actual
+
+---
+
+### 💡 Extra (si es posible)
+
+* Mostrar 2 calendarios lado a lado en desktop
+* Responsive para móvil
+* Animaciones suaves al abrir
+
+---
+
+Entrega:
+
+* Código listo para usar (HTML + CSS + JS)
+* Explicación breve de dónde integrar
+
+---

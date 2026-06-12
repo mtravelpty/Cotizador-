@@ -1,0 +1,248 @@
+REFINAMIENTO FINAL DEL MODO GRUPO (NIVEL PREMIUM)
+
+OBJETIVO
+
+El modo Grupo ya funciona correctamente. NO modificar ninguna lógica ni cálculos.
+
+El objetivo es únicamente mejorar la apariencia visual para que tenga el mismo nivel premium y coherencia que los modos:
+
+- Solo Tarifas
+- Paquete
+- Varias Opciones
+
+==================================================
+NO MODIFICAR
+==================================================
+
+NO tocar:
+
+- cálculos
+- distribución automática
+- total grupo
+- pasajeros
+- habitaciones
+- reglas de ocupación
+- lógica de acomodaciones
+
+Solo diseño visual.
+
+==================================================
+1. REDUCIR ALTURA GENERAL DEL BLOQUE
+==================================================
+
+Actualmente el bloque de Distribución del Grupo ocupa demasiado espacio vertical.
+
+Reducir aproximadamente entre 20% y 25%.
+
+Debe sentirse más compacto.
+
+Más ejecutivo.
+
+Más limpio.
+
+==================================================
+2. MEJORAR TÍTULO
+==================================================
+
+Actualmente:
+
+DISTRIBUCIÓN DEL GRUPO
+
+se ve demasiado apagado.
+
+Aumentar contraste.
+
+Color:
+
+rgba(255,255,255,0.80)
+
+Font weight:
+
+600
+
+Letter spacing:
+
+2px
+
+Mantener mayúsculas.
+
+==================================================
+3. REFINAR TARJETAS DE ACOMODACIÓN
+==================================================
+
+Mantener el nuevo diseño.
+
+NO volver a versiones anteriores.
+
+Mantener:
+
+- icono cama
+- nombre acomodación
+- contador
+- habitaciones
+- pasajeros
+
+Pero:
+
+Reducir padding interno.
+
+Reducir altura.
+
+Más compactas.
+
+==================================================
+4. CORREGIR JERARQUÍA VISUAL
+==================================================
+
+Actualmente:
+
+Habitaciones
+Pasajeros
+Distribución
+Total Grupo
+
+tienen prácticamente el mismo peso visual.
+
+Cambiar jerarquía.
+
+==================================================
+
+HABITACIONES
+
+Icono cama
+
+Texto secundario:
+
+14px
+
+Valor:
+
+28px
+
+==================================================
+
+PASAJEROS
+
+Icono pasajeros
+
+Texto secundario:
+
+14px
+
+Valor:
+
+30px
+
+==================================================
+
+DISTRIBUCIÓN
+
+Texto:
+
+✓ COMPLETA
+
+Color:
+
+#8cd9fa
+
+Font weight:
+
+700
+
+==================================================
+
+TOTAL GRUPO
+
+Debe ser el elemento visual más importante.
+
+Icono moneda:
+
+#f8d616
+
+Texto USD:
+
+#f8d616
+
+Valor:
+
+36px
+
+Font weight:
+
+800
+
+==================================================
+5. REDUCIR PROTAGONISMO DE LOS SEPARADORES
+==================================================
+
+Las líneas verticales del resumen inferior son demasiado visibles.
+
+Reducir opacidad:
+
+rgba(255,255,255,0.12)
+
+Más elegante.
+
+==================================================
+6. HACER QUE MODO GRUPO SE PAREZCA A LOS DEMÁS MODOS
+==================================================
+
+Actualmente Grupo parece otro módulo diferente.
+
+Debe verse como una extensión natural de:
+
+- Solo Tarifas
+- Paquete
+- Varias Opciones
+
+Por lo tanto:
+
+Reducir efectos exagerados.
+
+Reducir brillos.
+
+Reducir sombras.
+
+Mantener aspecto premium.
+
+==================================================
+7. TOTAL GRUPO MÁS DESTACADO
+==================================================
+
+Visualmente debe ser:
+
+1. Total Grupo
+2. Pasajeros
+3. Distribución
+4. Habitaciones
+
+El ojo debe ir automáticamente al monto.
+
+==================================================
+8. LIMPIAR INTERFAZ
+==================================================
+
+Eliminar cualquier bloque de:
+
+- Debug
+- Desglose técnico
+- Cálculos internos
+- Información de desarrollo
+
+El usuario final no necesita ver eso.
+
+==================================================
+RESULTADO ESPERADO
+==================================================
+
+Una barra de Grupo elegante, compacta y premium.
+
+Visualmente consistente con todo el cotizador.
+
+Con énfasis claro en:
+
+- Total Grupo
+- Estado de distribución
+- Cantidad de pasajeros
+
+Sin verse recargada ni ocupar demasiado espacio vertical.

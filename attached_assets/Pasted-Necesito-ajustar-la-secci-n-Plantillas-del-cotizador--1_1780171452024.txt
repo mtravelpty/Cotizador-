@@ -1,0 +1,140 @@
+Necesito ajustar la sección “Plantillas” del cotizador.
+
+========================================
+
+1. BOTONES/BLOQUES DEL EDITOR DE PLANTILLAS
+   ========================================
+
+Actualmente aparecen estos bloques:
+
+* Título
+* Hotel
+* Tour
+* Traslado
+* Nota
+* Texto
+
+El problema es que:
+
+* Título
+* Nota
+* Texto
+
+no se muestran correctamente cuando se carga la plantilla en la cotización, por lo que actualmente no aportan valor.
+
+Necesito hacer lo siguiente:
+
+A. Mantenerlos SOLO si se van a renderizar correctamente en la cotización final.
+B. Si no se van a renderizar, ocultarlos temporalmente del editor para no confundir.
+
+========================================
+2. AGREGAR NUEVOS BLOQUES
+=========================
+
+Agregar nuevos botones/bloques en el editor de plantillas:
+
+* Vuelo
+* Catamarán
+* Observaciones generales
+
+Deben aparecer junto a:
+
+* Hotel
+* Tour
+* Traslado
+
+========================================
+3. COMPORTAMIENTO DE BLOQUES NUEVOS
+===================================
+
+BLOQUE VUELO:
+
+* Debe permitir seleccionar o escribir un vuelo.
+* Al cargar la plantilla, debe agregarse a servicios seleccionados bajo la categoría Vuelos.
+* Debe respetar precios, pax y lógica actual de vuelos.
+
+BLOQUE CATAMARÁN:
+
+* Debe permitir seleccionar o escribir un servicio de catamarán.
+* Si no existe categoría Catamarán, crearla como categoría de servicio independiente.
+* Al cargar la plantilla, debe agregarse correctamente a servicios seleccionados.
+* Debe aparecer en preview, PDF, correo y WhatsApp.
+
+BLOQUE OBSERVACIONES GENERALES:
+
+* Debe permitir guardar observaciones dentro de la plantilla.
+* Al cargar la plantilla, esas observaciones deben llenar la sección “Observaciones generales”.
+* Deben mantenerse como bullets separados, no como texto corrido.
+* Deben aparecer en preview, PDF, correo y WhatsApp.
+
+========================================
+4. BUG AUTOCOMPLETE / MENÚ OCULTO
+=================================
+
+Hay un bug en los bloques de:
+
+* Hotel
+* Tour
+* Traslado
+
+Cuando escribo las primeras letras, el menú de resultados aparece recortado u oculto dentro de la tarjeta del bloque.
+
+Necesito corregirlo.
+
+Posibles causas:
+
+* overflow: hidden en la tarjeta
+* z-index bajo
+* dropdown no usa portal
+* contenedor padre está recortando el menú
+
+Solución esperada:
+
+* El dropdown debe mostrarse flotante por encima de la tarjeta.
+* No debe quedar cortado.
+* Debe poder sobresalir visualmente del bloque.
+* Usar z-index alto.
+* Si es necesario, usar portal/render fuera del contenedor padre.
+* No debe afectar el layout.
+
+========================================
+5. CARGA DE PLANTILLA
+=====================
+
+Al usar una plantilla desde el cotizador:
+
+* cargar hoteles
+* cargar tours
+* cargar traslados
+* cargar vuelos
+* cargar catamarán
+* cargar observaciones generales
+
+Respetando:
+
+* orden de bloques
+* precios actuales del tarifario
+* categorías correctas
+* estructura de servicios seleccionados
+
+========================================
+6. NO ROMPER
+============
+
+No romper:
+
+* cotizador manual
+* ítem personalizado
+* servicios seleccionados
+* PDF
+* correo
+* WhatsApp
+* descriptivos
+* observaciones generales
+* seguimiento
+* tarifas
+* modo tarifas
+* modo totales
+
+Objetivo:
+Que las plantillas sean realmente útiles para cargar circuitos completos y que el autocomplete funcione correctamente sin quedar oculto dentro de las tarjetas.

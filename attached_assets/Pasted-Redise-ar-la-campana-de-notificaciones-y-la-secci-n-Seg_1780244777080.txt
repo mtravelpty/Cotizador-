@@ -1,0 +1,230 @@
+Rediseñar la campana de notificaciones y la sección Seguimiento con un estilo más práctico, visual e intuitivo.
+
+OBJETIVO GENERAL
+
+Separar claramente:
+
+1. Campana = alertas inmediatas.
+2. Seguimiento = control visual del flujo de cotizaciones.
+
+No convertir la app en un CRM complejo.
+Debe ser simple, rápido y útil para saber qué cotizaciones requieren atención.
+
+──────────────────────────────
+1. CAMPANA DE NOTIFICACIONES
+──────────────────────────────
+
+La campana debe mostrar solo alertas inmediatas.
+
+No usar panel lateral grande.
+Reemplazar el drawer lateral por un dropdown flotante compacto.
+
+Ubicación:
+- Al hacer clic en la campana del encabezado azul.
+- El dropdown debe abrir debajo de la campana, alineado a la derecha.
+
+Diseño:
+- Fondo blanco.
+- Border radius grande.
+- Sombra suave.
+- Ancho aproximado: 360px a 420px.
+- No ocupar toda la altura de la pantalla.
+- No oscurecer toda la interfaz.
+- Mantener diseño limpio y no abrumador.
+
+Header del dropdown:
+- Título: Notificaciones
+- Subtítulo pequeño: Alertas que requieren atención
+- Acción pequeña: Marcar todas como leídas
+
+Badge de la campana:
+- Cambiar el badge rojo actual.
+- Usar color de la paleta del sistema:
+  #E6AE33
+- Texto blanco.
+- No usar rojo para el contador.
+
+Tipos de alerta:
+- Sin seguimiento hace 3 días.
+- Recordatorio para hoy.
+- Cotización vence mañana.
+- Cotización vence en X días.
+
+Cada alerta debe mostrar:
+- Icono según tipo.
+- Agencia, no nombre del cliente.
+- Código de cotización.
+- Monto.
+- Tiempo relativo.
+- Estado corto.
+
+Ejemplo:
+
+Global Agency
+RGE-TX622 · 890 US$
+Recordatorio hoy 3:00 PM
+
+Acciones por alerta:
+- Abrir
+- Atendida
+- Posponer
+
+Si la notificación ya fue vista:
+- Quitar punto azul o indicador de no leído.
+
+Máximo:
+- Mostrar solo 5 notificaciones visibles.
+- Al final agregar enlace:
+  Ver todas en Seguimiento
+
+──────────────────────────────
+2. SECCIÓN SEGUIMIENTO
+──────────────────────────────
+
+Mantener el encabezado azul actual:
+SEGUIMIENTO + campana
+
+Debajo mantener cards de resumen, pero mejorar textos:
+
+Cards:
+- Activas
+- Acción hoy
+- Seguimiento pendiente
+- Confirmadas
+- Ventas del mes
+
+Mantener estilo actual con tarjetas blancas, iconos suaves y números grandes.
+
+──────────────────────────────
+3. BLOQUE PRINCIPAL: REQUIEREN ATENCIÓN HOY
+──────────────────────────────
+
+Agregar un bloque visual antes del tablero.
+
+Título:
+Requieren atención hoy
+
+Subtítulo:
+Cotizaciones que necesitan seguimiento inmediato.
+
+Mostrar máximo 5 tarjetas.
+
+Cada tarjeta debe mostrar:
+- Agencia.
+- Código de cotización.
+- Monto.
+- Fecha de viaje o fecha de vigencia.
+- Motivo de alerta:
+  - Sin seguimiento hace X días
+  - Vence mañana
+  - Recordatorio hoy
+- Acciones:
+  - Abrir
+  - WhatsApp
+  - Atendida
+  - Posponer, solo si aplica
+
+Usar colores suaves:
+- Rojo suave solo para urgencia real.
+- Amarillo/dorado #E6AE33 para acción hoy.
+- Azul #004FBB para acciones principales.
+- Verde para confirmadas.
+
+Si no hay alertas:
+Mostrar estado vacío:
+Todo al día
+No tienes cotizaciones pendientes por atender.
+
+──────────────────────────────
+4. TABLERO DE SEGUIMIENTO TIPO KANBAN SIMPLE
+──────────────────────────────
+
+Debajo del bloque principal, reemplazar la tabla tradicional por un tablero visual de 5 columnas:
+
+1. Nuevas
+2. Enviadas
+3. Seguimiento
+4. Confirmadas
+5. Perdidas
+
+Cada columna debe ser una card vertical con:
+- Título.
+- Contador.
+- Color lateral sutil.
+- Lista de cotizaciones.
+- Botón “Ver todas”.
+
+Cada cotización dentro de la columna debe mostrarse como mini-card con:
+- Iniciales de la agencia.
+- Agencia.
+- Código.
+- Monto, si existe.
+- Fecha.
+- Indicador corto si aplica.
+
+Ejemplo columna Seguimiento:
+
+Seguimiento 5
+
+Global Agency
+RGE-TX622
+4 días sin actividad
+
+Johanna Travel
+RGE-TX621
+3 días sin actividad
+
+En esta columna los días sin seguimiento deben destacarse en naranja.
+
+──────────────────────────────
+5. AUTOMATIZACIÓN SIMPLE
+──────────────────────────────
+
+No hacer un CRM complejo.
+
+Estados automáticos:
+
+Nueva:
+- Cotización creada y no enviada.
+
+Enviada:
+- Cuando se usa Vista previa, PDF, WhatsApp o Correo.
+
+Seguimiento:
+- Si pasan 3 días sin actividad.
+- Si hay recordatorio pendiente.
+
+Confirmada:
+- Cuando el usuario marque como confirmada.
+
+Perdida:
+- Cuando el usuario marque como perdida.
+
+La campana solo debe mostrar lo urgente.
+La sección Seguimiento muestra el flujo completo.
+
+──────────────────────────────
+6. CRITERIOS IMPORTANTES
+──────────────────────────────
+
+- Usar agencia como dato principal, no nombre del cliente.
+- No hacer la campana abrumadora.
+- No usar drawer lateral enorme.
+- No usar badge rojo en la campana.
+- No crear más de 5 estados.
+- No crear formularios complejos.
+- No implementar IA.
+- No modificar PDF, WhatsApp ni cálculo de cotizaciones.
+- Mantener paleta actual:
+  Azul principal: #041941
+  Azul acción: #004FBB
+  Dorado: #E6AE33
+  Verde WhatsApp: #03A04E
+
+Validar:
+- La app carga correctamente.
+- La campana abre dropdown compacto.
+- El badge usa #E6AE33.
+- Seguimiento muestra bloque “Requieren atención hoy”.
+- Seguimiento muestra tablero con 5 columnas.
+- No aparece panel lateral enorme.

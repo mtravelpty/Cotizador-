@@ -1,0 +1,302 @@
+IMPLEMENTAR REDISEÑO FINAL DE LA BARRA "DISTRIBUCIÓN DEL GRUPO"
+
+OBJETIVO
+
+Tomar como referencia visual la última propuesta aprobada y simplificar completamente la sección de distribución del grupo.
+
+Eliminar cualquier elemento de depuración, desglose técnico o información redundante.
+
+La barra debe verse premium, limpia, compacta y fácil de entender en menos de 2 segundos.
+
+==================================================
+
+1. ELIMINAR COMPLETAMENTE
+   ==================================================
+
+Eliminar:
+
+* DEBUG
+* DESGLOSE TOTAL GRUPO
+* Ver cálculo
+* Hotelería
+* Traslados
+* Tours
+* Vuelos
+* Extras
+* Totales parciales
+* Cualquier panel desplegable
+
+NO mostrar información técnica.
+
+La barra debe ser exclusivamente para distribución.
+
+==================================================
+2. NUEVA ESTRUCTURA GENERAL
+===========================
+
+Mantener:
+
+Título superior:
+
+DISTRIBUCIÓN DEL GRUPO
+
+Debajo:
+
+Fila de acomodaciones:
+
+SGL
+DBL
+TPL
+QDL
+
+Debajo:
+
+Barra resumen compacta.
+
+==================================================
+3. NUEVO DISEÑO DE TARJETAS DE ACOMODACIÓN
+==========================================
+
+Rediseñar cada tarjeta.
+
+Distribución horizontal:
+
+[ ICONO CAMA ] [ SGL ] [ CONTADOR ] [ HAB/PAX ]
+
+Ejemplo:
+
+🛏  SGL      [ 0 ]      0 HAB
+0 PAX
+
+==================================================
+4. ICONOS
+=========
+
+Utilizar SVG lineales.
+
+NO emojis.
+
+NO iconos rellenos.
+
+Estilo:
+
+stroke-width: 2
+
+color: white
+
+Tamaño:
+
+24px
+
+Ubicación:
+
+A la izquierda del nombre de la acomodación.
+
+Ejemplos:
+
+SGL → cama individual
+
+DBL → cama matrimonial
+
+TPL → cama + indicador 3
+
+QDL → cama + indicador 4
+
+Todos visualmente consistentes.
+
+==================================================
+5. CONTADOR
+===========
+
+Mantener contador numérico actual.
+
+Diseño:
+
+* cuadrado redondeado
+* fondo azul translúcido
+* borde sutil blanco
+* tamaño aproximado 60x60
+
+Ejemplo:
+
+[ 2 ]
+
+Debe destacar.
+
+==================================================
+6. HABITACIONES Y PASAJEROS
+===========================
+
+Eliminar bloques separados.
+
+Mostrar a la derecha del contador:
+
+2 HAB
+4 PAX
+
+Formato:
+
+2 HAB
+─────
+4 PAX
+
+Compacto.
+
+Alineado verticalmente.
+
+==================================================
+7. TARJETA ACTIVA
+=================
+
+Cuando una acomodación tenga valor mayor a cero:
+
+* borde celeste corporativo
+* glow muy suave
+
+Color:
+
+#49c6ff
+
+NO utilizar amarillo.
+
+NO utilizar sombras exageradas.
+
+==================================================
+8. BARRA RESUMEN INFERIOR
+=========================
+
+Crear una sola barra horizontal.
+
+Dividida en 4 bloques.
+
+---
+
+[BLOQUE 1]
+
+Icono cama SVG
+
+HABITACIONES
+
+4
+
+---
+
+[BLOQUE 2]
+
+Icono pasajeros SVG
+
+PASAJEROS
+
+8 / 8
+
+---
+
+[BLOQUE 3]
+
+Icono check SVG
+
+DISTRIBUCIÓN
+
+COMPLETA
+
+Color:
+
+#49c6ff
+
+---
+
+[BLOQUE 4]
+
+Icono moneda SVG
+
+TOTAL GRUPO
+
+USD 5,696.00
+
+Color:
+
+#e6ae33
+
+Font-weight: 700
+
+Debe ser el elemento más importante visualmente.
+
+==================================================
+9. COLORES
+==========
+
+Fondo principal:
+
+Gradiente actual azul.
+
+Mantener.
+
+Tarjetas:
+
+Azul oscuro.
+
+Bordes:
+
+rgba(255,255,255,0.15)
+
+Estado activo:
+
+#49c6ff
+
+Valores monetarios:
+
+#e6ae33
+
+Texto:
+
+#ffffff
+
+==================================================
+10. ANIMACIÓN
+=============
+
+Cuando aparece la barra:
+
+animación suave.
+
+Duración:
+
+250ms
+
+Efecto:
+
+opacity 0 → 1
+
+translateY(8px) → 0
+
+Sin rebotes.
+
+Sin efectos exagerados.
+
+==================================================
+11. NO MODIFICAR
+================
+
+NO tocar:
+
+* lógica de cálculo
+* distribución automática
+* cálculo de pasajeros
+* cálculo de habitaciones
+* cálculo de total grupo
+
+Solamente rediseñar la interfaz.
+
+==================================================
+RESULTADO ESPERADO
+==================
+
+Una barra compacta y premium donde:
+
+* las acomodaciones ocupen una sola fila
+* los iconos estén a la izquierda del texto
+* el contador esté centrado
+* HAB y PAX estén compactos a la derecha
+* desaparezca completamente el panel de desglose
+* el resumen inferior destaque claramente Habitaciones, Pasajeros, Distribución y Total Grupo
+* mantenga coherencia visual con el resto del cotizador RGE Style Travel.

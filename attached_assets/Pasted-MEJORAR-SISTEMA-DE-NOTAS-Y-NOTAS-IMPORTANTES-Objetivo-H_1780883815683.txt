@@ -1,0 +1,154 @@
+MEJORAR SISTEMA DE NOTAS Y NOTAS IMPORTANTES
+
+Objetivo:
+Hacer que las notas sean más rápidas de agregar, más limpias visualmente y mejor organizadas.
+
+No tocar:
+- cálculos
+- tarifas
+- seguimiento
+- PDF/correo salvo visualización de notas
+
+──────────────────────────────
+1. PEGADO INTELIGENTE POR FILAS
+──────────────────────────────
+
+Cuando el usuario pegue texto con saltos de línea dentro del campo de nota:
+
+Ejemplo pegado:
+
+Tarifa aplica solo viernes
+No incluye impuestos
+Sujeto a disponibilidad
+
+El sistema debe crear automáticamente 3 notas separadas:
+
+• Tarifa aplica solo viernes
+• No incluye impuestos
+• Sujeto a disponibilidad
+
+Si es “Nota importante”, cada línea debe guardarse como nota importante independiente y en MAYÚSCULAS:
+
+IMPORTANTE
+TARIFA APLICA SOLO VIERNES
+
+IMPORTANTE
+NO INCLUYE IMPUESTOS
+
+IMPORTANTE
+SUJETO A DISPONIBILIDAD
+
+Ignorar líneas vacías.
+
+──────────────────────────────
+2. ENTER GUARDA LA NOTA
+──────────────────────────────
+
+Al presionar Enter dentro del campo:
+
+- guardar la nota
+- cerrar el popup
+- limpiar el campo
+
+Shift + Enter:
+- permite salto de línea dentro del textarea
+
+Si el texto tiene varias líneas:
+- Enter guarda todas las líneas como notas separadas
+
+──────────────────────────────
+3. MEJORA VISUAL DEL CUADRO
+──────────────────────────────
+
+Mejorar el campo de escritura:
+
+- Menos alto
+- Mejor padding interno
+- Borde más suave
+- Radio 14px
+- Fondo #FFFFFF
+- Placeholder más discreto
+- Sin borde naranja tan grueso
+
+Para nota importante:
+- borde naranja suave #EF7B15
+- no usar borde exagerado
+- fondo muy suave rgba(239,123,21,0.04)
+
+Para nota normal:
+- borde #D8E0EE
+- focus azul #004FBB
+
+──────────────────────────────
+4. ORDEN DE VISUALIZACIÓN
+──────────────────────────────
+
+En cada servicio, mostrar siempre primero las notas importantes.
+
+Orden:
+
+1. Notas importantes
+2. Notas normales
+
+Ejemplo:
+
+IMPORTANTE
+TARIFA APLICA SOLO VIERNES
+
+IMPORTANTE
+NO APLICA EN FERIADOS
+
+• Check-in desde las 3:00 pm.
+• No incluye impuesto municipal.
+
+Aunque la nota normal se haya agregado antes, las importantes deben aparecer primero.
+
+──────────────────────────────
+5. ICONO DE NOTA IMPORTANTE
+──────────────────────────────
+
+Sustituir el icono actual de alerta triangular por una alternativa más profesional.
+
+Usar una de estas opciones:
+
+- ícono de bandera
+- ícono de marcador/bookmark
+- ícono de estrella discreta
+- ícono de pin
+
+Preferencia:
+usar ícono de bandera o marcador.
+
+No usar triángulo de advertencia.
+
+Mantener color naranja #EF7B15.
+
+──────────────────────────────
+6. VISUALIZACIÓN EN SERVICIO
+──────────────────────────────
+
+Nota importante:
+- icono profesional naranja
+- texto en MAYÚSCULAS
+- color #EF7B15
+- peso semibold
+
+Nota normal:
+- bullet discreto
+- color texto normal/secundario
+
+──────────────────────────────
+7. VALIDACIÓN
+──────────────────────────────
+
+Confirmar:
+
+✓ Pegar varias líneas crea varias notas.
+✓ Enter guarda la nota.
+✓ Shift + Enter crea salto de línea.
+✓ Notas importantes aparecen primero.
+✓ Notas normales aparecen debajo.
+✓ Nota importante ya no usa triángulo.
+✓ Cuadro de nota se ve más limpio.
+✓ PDF/correo muestran el nuevo orden.
+✓ App carga sin errores.

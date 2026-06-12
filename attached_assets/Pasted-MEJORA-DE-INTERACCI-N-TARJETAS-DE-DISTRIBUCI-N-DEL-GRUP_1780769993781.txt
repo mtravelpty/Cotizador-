@@ -1,0 +1,126 @@
+MEJORA DE INTERACCIÓN - TARJETAS DE DISTRIBUCIÓN DEL GRUPO
+
+OBJETIVO
+
+Hacer que las tarjetas de acomodación funcionen como controles rápidos.
+
+==================================================
+COMPORTAMIENTO ACTUAL
+==================================================
+
+Al hacer clic en una acomodación:
+
+- se selecciona
+- cambia de color
+- se activa la tarjeta
+
+==================================================
+NUEVO COMPORTAMIENTO
+==================================================
+
+Si la acomodación está en:
+
+0 habitaciones
+
+Primer clic:
+
+0 → 1
+
+La tarjeta se activa automáticamente.
+
+==================================================
+
+Si la acomodación ya tiene valor:
+
+1 habitación
+
+Segundo clic:
+
+1 → 2
+
+==================================================
+
+Tercer clic:
+
+2 → 3
+
+==================================================
+
+Cuarto clic:
+
+3 → 4
+
+Y así sucesivamente.
+
+==================================================
+REGLA GENERAL
+==================================================
+
+Cada clic sobre la tarjeta completa debe:
+
+cantidadHabitaciones += 1
+
+Actualizar automáticamente:
+
+- habitaciones
+- pasajeros
+- total grupo
+- distribución
+
+==================================================
+INPUT NUMÉRICO
+==================================================
+
+Mantener el input actual.
+
+Debe seguir permitiendo:
+
+- escribir manualmente
+- aumentar o disminuir valores
+
+Pero el clic sobre la tarjeta debe actuar como acceso rápido.
+
+==================================================
+ESTADO VISUAL
+==================================================
+
+Tarjeta con 0 habitaciones:
+
+- apariencia atenuada
+- opacidad reducida
+
+Pero todas deben tener la MISMA intensidad.
+
+Actualmente QDL se ve más oscura que DBL.
+
+Corregir.
+
+Todas las tarjetas inactivas deben utilizar exactamente el mismo estilo.
+
+==================================================
+TARJETA ACTIVA
+==================================================
+
+Cuando valor > 0:
+
+- activar borde celeste
+- activar fondo iluminado
+- mantener diseño actual
+
+==================================================
+EXTRA
+==================================================
+
+Doble clic NO es necesario.
+
+Un clic = sumar una habitación.
+
+Esto permite crear rápidamente:
+
+DBL = 5
+
+simplemente haciendo cinco clics sobre la tarjeta DBL.
+
+OBJETIVO FINAL
+
+Convertir cada tarjeta en un contador visual rápido e intuitivo para construir la distribución del grupo sin necesidad de ir al input en cada ocasión.

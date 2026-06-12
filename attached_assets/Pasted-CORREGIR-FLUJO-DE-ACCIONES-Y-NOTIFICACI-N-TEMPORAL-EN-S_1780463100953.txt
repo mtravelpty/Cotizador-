@@ -1,0 +1,110 @@
+CORREGIR FLUJO DE ACCIONES Y NOTIFICACIÓN TEMPORAL EN SIDEBAR
+
+Objetivo:
+Ajustar el comportamiento de los botones de acciones del cotizador y agregar una confirmación visual temporal en Seguimiento.
+
+No rediseñar la app.
+No tocar tarifas, PDF visual, correo visual ni WhatsApp visual.
+Solo corregir lógica de guardado/validación y notificación.
+
+──────────────────────────────
+1. DESCARGAR PDF
+──────────────────────────────
+
+Al presionar “Descargar PDF”:
+
+- Validar campos obligatorios.
+- Guardar automáticamente la cotización.
+- Enviar/crear la oportunidad en Seguimiento.
+- Descargar PDF.
+- Limpiar formulario después de guardar correctamente.
+
+Si falta un campo obligatorio:
+- Mostrar validación.
+- No guardar.
+- No limpiar.
+
+──────────────────────────────
+2. COPIAR CORREO
+──────────────────────────────
+
+Al presionar “Copiar correo”:
+
+- Validar campos obligatorios.
+- Guardar automáticamente la cotización.
+- Enviar/crear la oportunidad en Seguimiento.
+- Copiar correo.
+- Limpiar formulario después de guardar correctamente.
+
+Si falta un campo obligatorio:
+- Mostrar validación.
+- No guardar.
+- No limpiar.
+
+──────────────────────────────
+3. WHATSAPP
+──────────────────────────────
+
+El botón “Copiar WhatsApp” NO debe exigir campos obligatorios.
+
+Debe funcionar aunque falten:
+
+- Agencia
+- Agente
+- Counter
+- Nombre de cotización
+- Correo
+- Fechas
+
+WhatsApp NO debe:
+
+- Guardar cotización.
+- Crear oportunidad.
+- Enviar a Seguimiento.
+- Limpiar formulario.
+
+Solo debe:
+- Generar/copiar mensaje de WhatsApp con la información disponible.
+
+──────────────────────────────
+4. NOTIFICACIÓN TEMPORAL EN SIDEBAR
+──────────────────────────────
+
+Cuando PDF o Correo guarden correctamente y envíen la cotización a Seguimiento:
+
+En la opción “Seguimiento” de la barra lateral mostrar una notificación temporal.
+
+Estilo:
+- Badge pequeño.
+- Color #E6AE33 o azul #004FBB.
+- Puede decir “+1” o mostrar un punto animado.
+- Debe aparecer junto al texto Seguimiento.
+
+Duración:
+2.5 segundos a 3 segundos.
+
+Luego debe desaparecer automáticamente.
+
+No debe quedarse fijo.
+No debe aumentar contador permanente.
+No debe mostrarse al usar WhatsApp.
+
+Texto opcional de tooltip/toast:
+“Cotización enviada a Seguimiento”
+
+──────────────────────────────
+5. VALIDACIÓN
+──────────────────────────────
+
+Confirmar:
+
+✓ Descargar PDF guarda y envía a Seguimiento.
+✓ Copiar correo guarda y envía a Seguimiento.
+✓ WhatsApp funciona sin campos obligatorios.
+✓ WhatsApp no guarda.
+✓ WhatsApp no crea seguimiento.
+✓ WhatsApp no limpia formulario.
+✓ La notificación temporal aparece en Seguimiento solo por 2.5–3 segundos.
+✓ La notificación desaparece sola.
+✓ No hay contador permanente en sidebar.
+✓ App carga sin errores.

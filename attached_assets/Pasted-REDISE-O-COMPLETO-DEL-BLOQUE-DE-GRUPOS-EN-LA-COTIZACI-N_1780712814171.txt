@@ -1,0 +1,161 @@
+REDISEÑO COMPLETO DEL BLOQUE DE GRUPOS EN LA COTIZACIÓN FINAL
+
+Objetivo:
+Transformar la sección de grupos para que se vea premium, moderna y fácil de entender para el cliente.
+
+Actualmente existen demasiadas tablas y encabezados repetidos.
+
+Eliminar completamente:
+
+- CONFIGURACIÓN DEL GRUPO
+- PRECIOS POR ACOMODACIÓN
+
+Reemplazar por una sola sección llamada:
+
+DETALLE DEL GRUPO
+
+──────────────────────────────
+1. RESUMEN VISUAL DEL GRUPO
+──────────────────────────────
+
+Crear una fila de tarjetas utilizando el mismo lenguaje visual de la sección "Detalles del viaje".
+
+Tarjetas:
+
+DBL
+2 habitaciones
+4 pasajeros
+
+TPL
+3 habitaciones
+9 pasajeros
+
+SGL
+1 habitación
+1 pasajero
+
+PASAJEROS
+14
+TOTAL
+
+Diseño:
+
+- mismas esquinas redondeadas de "Detalles del viaje"
+- mismo estilo visual
+- misma tipografía
+- mismo color de títulos
+- mismas proporciones
+
+No usar tablas.
+
+Debe verse como un resumen ejecutivo.
+
+──────────────────────────────
+2. TOTAL DEL GRUPO
+──────────────────────────────
+
+Debajo del resumen visual.
+
+Crear una tarjeta destacada.
+
+Título:
+
+TOTAL DEL GRUPO
+
+Monto centrado:
+
+USD 18,228
+
+Estilo:
+
+- tamaño grande
+- peso semibold o bold
+- centrado
+- visualmente protagonista
+
+Debe ser el dato más importante de toda la sección.
+
+──────────────────────────────
+3. TARIFAS POR PERSONA
+──────────────────────────────
+
+Eliminar la tabla actual.
+
+Reemplazar por una línea compacta:
+
+DBL USD 1,316 · TPL USD 1,232 · SGL USD 1,876
+
+o
+
+DBL: USD 1,316
+TPL: USD 1,232
+SGL: USD 1,876
+
+Tipografía secundaria.
+
+No usar tabla.
+
+No usar encabezados azules.
+
+──────────────────────────────
+4. TERMINOLOGÍA
+──────────────────────────────
+
+No mostrar:
+
+CONFIGURACIÓN DEL GRUPO
+
+Porque es una palabra interna del sistema.
+
+Mostrar:
+
+DETALLE DEL GRUPO
+
+o
+
+DISTRIBUCIÓN DEL GRUPO
+
+──────────────────────────────
+5. NIÑOS
+──────────────────────────────
+
+CHD NO ES ACOMODACIÓN.
+
+No mostrar CHD como habitación.
+
+Si existen niños:
+
+Mostrar una tarjeta adicional:
+
+NIÑOS
+3
+
+Si no existen niños:
+
+No mostrar nada relacionado a CHD.
+
+──────────────────────────────
+6. RESULTADO FINAL
+──────────────────────────────
+
+La jerarquía visual debe ser:
+
+1. DETALLE DEL GRUPO
+2. Tarjetas DBL / TPL / SGL / PASAJEROS
+3. TOTAL DEL GRUPO
+4. Tarifas por persona
+
+No más tablas repetidas.
+
+No más tres encabezados azules seguidos.
+
+Mantener una apariencia premium, limpia y moderna alineada con el nuevo diseño de "Detalles del viaje".
+
+Validar:
+
+✓ Menos altura vertical.
+✓ Más fácil de leer.
+✓ Diseño consistente con la aplicación.
+✓ El total del grupo destaca visualmente.
+✓ No aparecen tablas innecesarias.
+✓ CHD no se muestra como acomodación.

@@ -1,0 +1,170 @@
+Necesito mejorar visual y funcionalmente el modal de “Ítem personalizado” para hotelería.
+
+========================================
+OBJETIVO
+========
+
+El modal debe sentirse:
+
+* más profesional
+* más limpio
+* más organizado
+* tipo sistema premium de agencia
+
+Actualmente está muy básico visualmente.
+
+========================================
+CAMPOS NUEVOS PARA HOTELERÍA
+============================
+
+Cuando el tipo de servicio sea:
+HOTELERÍA
+
+mostrar automáticamente estos campos:
+
+1. UBICACIÓN
+
+* Select desplegable
+* Usar las ubicaciones ya registradas en el sistema
+* Orden alfabético
+
+Opciones:
+
+* BOCAS DEL TORO
+* CHIRIQUÍ
+* CIUDAD DE PANAMÁ
+* COCLÉ (RIVIERA PACÍFICA)
+* COLÓN
+* CONTADORA
+* SAN BLAS
+* TABOGA
+* VERAGUAS / SANTIAGO
+
+========================================
+2. CATEGORÍA
+============
+
+Select desplegable con:
+
+* ★★★
+* ★★★★
+* ★★★★★
+
+Guardar el valor correctamente.
+
+========================================
+3. TIPO DE HABITACIÓN
+=====================
+
+Agregar input/select para:
+
+* Standard
+* Deluxe
+* Suite
+* Junior Suite
+* Vista Jardín
+* Vista Mar
+
+Debe poder editarse manualmente también.
+
+========================================
+4. RÉGIMEN / DESAYUNO
+=====================
+
+Existe una columna en la base de datos:
+
+* desayunos
+* buffet
+* continental
+  etc.
+
+Necesito que eso se refleje automáticamente en la cotización.
+
+========================================
+FORMATO EN COTIZACIÓN
+=====================
+
+Debajo del hotel mostrar:
+
+Hotel Hilton Garden Inn
+CIUDAD DE PANAMÁ
+Incluye desayuno buffet
+
+o
+
+Incluye desayuno continental
+
+========================================
+DISEÑO VISUAL DEL RÉGIMEN
+=========================
+
+El texto:
+“Incluye desayuno buffet”
+
+debe tener:
+
+* color elegante
+* naranja oscuro
+  o
+* celeste oscuro
+
+acorde a la paleta premium actual.
+
+NO usar colores chillones.
+
+========================================
+MEJORAS VISUALES DEL MODAL
+==========================
+
+1. Reorganizar visualmente:
+
+* inputs
+* spacing
+* alineaciones
+
+2. Hacer el textarea de observaciones MÁS ANGOSTO visualmente.
+   Actualmente ocupa demasiado espacio vertical.
+
+3. Organizar campos en grid elegante:
+   Ejemplo:
+
+* ubicación | categoría
+* tipo habitación | precio
+* observaciones abajo
+
+4. Mantener:
+
+* bordes redondeados
+* estilo premium
+* diseño minimalista actual
+
+========================================
+UX
+==
+
+El modal debe sentirse:
+
+* rápido
+* limpio
+* moderno
+* operativo
+
+como una herramienta interna real de agencia.
+
+========================================
+IMPORTANTE
+==========
+
+NO romper:
+
+* PDF
+* correo
+* WhatsApp
+* plantillas
+* descriptivos
+* seguimiento
+* totales
+* modo tarifas
+* modo con totales
+
+Mantener compatibilidad total.

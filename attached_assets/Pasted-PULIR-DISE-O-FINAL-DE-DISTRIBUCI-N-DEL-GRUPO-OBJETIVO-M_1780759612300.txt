@@ -1,0 +1,148 @@
+PULIR DISEÑO FINAL DE DISTRIBUCIÓN DEL GRUPO
+
+OBJETIVO
+
+Mantener la estructura actual porque ya funciona bien visualmente, pero mejorar jerarquía visual, claridad y consistencia.
+
+==================================================
+
+1. INPUT NUMÉRICO MENOS DOMINANTE
+   ==================================================
+
+Actualmente el cuadro numérico es demasiado grande y roba protagonismo.
+
+Reducir:
+
+* ancho 15% a 20%
+* alto 15% a 20%
+
+Mantener buena legibilidad.
+
+El foco principal debe ser la acomodación (SGL, DBL, TPL, QDL), no el número.
+
+==================================================
+2. MEJORAR TARJETA ACTIVA
+=========================
+
+La acomodación utilizada debe destacar más.
+
+Cuando una acomodación tenga valor mayor a 0:
+
+* borde amarillo #e6ae33
+* sombra suave amarilla
+* leve glow exterior
+* transición suave 250ms
+
+No exagerar.
+
+Debe sentirse seleccionada.
+
+==================================================
+3. MEJORAR BADGES
+=================
+
+Cambiar:
+
+3 hab.
+6 pax
+
+por:
+
+3 HAB
+6 PAX
+
+Mantener formato tipo pill.
+
+Reducir un poco la altura.
+
+Mayor contraste.
+
+==================================================
+4. UNIFICAR ICONOGRAFÍA
+=======================
+
+Usar el mismo icono lineal de cama para:
+
+* SGL
+* DBL
+* TPL
+* QDL
+
+Eliminar iconos de grupo/personas.
+
+El texto ya identifica el tipo de acomodación.
+
+Mantener:
+
+[icono cama] SGL
+[icono cama] DBL
+[icono cama] TPL
+[icono cama] QDL
+
+Color:
+blanco
+
+Estilo:
+lineal
+
+==================================================
+5. MEJORAR RESUMEN INFERIOR
+===========================
+
+Mantener estructura actual:
+
+Habitaciones: X
+Pasajeros: X / X
+Distribución completa
+Total grupo: USD XXXX
+
+Pero aplicar:
+
+✓ Distribución completa
+
+Color:
+verde
+
+Total grupo:
+
+Color:
+#e6ae33
+
+Font-weight:
+700
+
+Debe ser el dato más importante visualmente.
+
+==================================================
+6. TRANSICIONES
+===============
+
+Agregar transición suave cuando:
+
+* cambia cantidad
+* se activa una acomodación
+* se completa la distribución
+
+Duración:
+
+250ms
+
+ease-out
+
+==================================================
+7. NO CAMBIAR
+=============
+
+No modificar:
+
+* lógica actual
+* cálculos
+* exportables PDF
+* exportables correo
+* estructura general
+
+Solo refinar visualmente la experiencia.
+
+OBJETIVO FINAL
+
+Conservar el diseño actual pero llevarlo a un aspecto más premium, limpio y profesional, alineado con el estilo general del cotizador RGE Style Travel.

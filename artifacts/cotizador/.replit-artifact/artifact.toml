@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Cotizador de Viajes"
+version = "1.0.0"
+id = "artifacts/cotizador"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26005
+
+[services.development]
+run = "/home/runner/workspace/node_modules/.pnpm/node_modules/.bin/vite --config /home/runner/workspace/artifacts/cotizador/vite.config.ts --host 0.0.0.0"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cotizador", "run", "build" ]
+publicDir = "artifacts/cotizador/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26005"
+BASE_PATH = "/"

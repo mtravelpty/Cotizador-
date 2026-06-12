@@ -1,0 +1,230 @@
+Quiero agregar una nueva sección administrativa llamada **Descriptivos** para poder gestionar directamente los descriptivos turísticos desde la app, SIN depender de documentos Word ni prompts.
+
+IMPORTANTE:
+
+* NO romper el sistema actual.
+* Mantener compatibilidad con el toggle “Incluir descriptivo”.
+* Mantener la lógica actual de PDF, correo y WhatsApp.
+* Mantener vinculación automática por código RGE.
+
+========================================
+OBJETIVO
+========
+
+Crear un panel interno tipo CMS para:
+
+* crear descriptivos
+* editar descriptivos
+* eliminar descriptivos
+* duplicar descriptivos
+* activar/desactivar descriptivos
+* vincular descriptivos automáticamente con tours y servicios del tarifario
+
+========================================
+NUEVA SECCIÓN
+=============
+
+Agregar nueva sección en sidebar/menu:
+
+* Descriptivos
+
+========================================
+LISTADO PRINCIPAL
+=================
+
+Mostrar tabla/cards con:
+
+* Código
+* Título
+* Categoría
+* Estado (Activo/Inactivo)
+* Última edición
+
+Acciones:
+
+* Editar
+* Duplicar
+* Eliminar
+* Activar/desactivar
+
+Agregar:
+
+* búsqueda
+* filtro por categoría
+* filtro por estado
+
+========================================
+ESTRUCTURA DEL DESCRIPTIVO
+==========================
+
+Cada descriptivo debe guardar:
+
+* id
+* codigoServicio
+* titulo
+* horario
+* duracion
+* categoria
+* parrafos[]
+* incluye[]
+* observaciones[]
+* recomendaciones[]
+* notaImportante[]
+* activo
+* createdAt
+* updatedAt
+
+========================================
+VINCULACIÓN AUTOMÁTICA
+======================
+
+MUY IMPORTANTE:
+
+El descriptivo debe vincularse automáticamente usando:
+
+codigoServicio
+
+Ejemplo:
+
+* servicio tarifario → RGE-020
+* descriptivo → RGE-020
+
+Cuando el usuario selecciona un tour/servicio:
+
+* automáticamente encuentra el descriptivo correspondiente
+* funciona con el toggle actual “Incluir descriptivo”
+
+NO usar IA.
+NO usar parsing de Word.
+NO usar matching por nombre.
+
+TODO debe funcionar por código.
+
+========================================
+EDITOR VISUAL
+=============
+
+Al crear/editar descriptivo mostrar:
+
+========================================
+DATOS GENERALES
+===============
+
+Inputs:
+
+* Código
+* Título
+* Horario
+* Duración
+* Categoría
+
+========================================
+CUERPO DEL DESCRIPTIVO
+======================
+
+NO usar un textarea gigante.
+
+Separar en bloques visuales:
+
+1. Párrafos descriptivos
+2. Incluye
+3. Observaciones
+4. Recomendaciones
+5. Nota importante
+
+Cada sección debe permitir:
+
+* agregar línea
+* eliminar línea
+* editar línea
+
+========================================
+EJEMPLO VISUAL
+==============
+
+Párrafos:
+[ + Agregar párrafo ]
+
+Incluye:
+[ Transporte ]
+[ Guía ]
+[ Casco Antiguo ]
+
+Observaciones:
+[ Entradas deben reservarse previamente ]
+
+========================================
+PREVIEW EN VIVO
+===============
+
+Agregar preview visual EXACTO como se verá en:
+
+* PDF
+* correo
+* WhatsApp
+
+Debe reutilizar el diseño actual:
+
+* pill naranja
+* título azul
+* cajas de incluye/observaciones
+* mismo formato actual
+
+========================================
+ALMACENAMIENTO
+==============
+
+Por ahora:
+
+* guardar en localStorage
+
+NO implementar backend todavía.
+
+Usar estructura JSON.
+
+========================================
+COMPATIBILIDAD
+==============
+
+MUY IMPORTANTE:
+NO romper:
+
+* PDFs actuales
+* correo HTML
+* WhatsApp
+* toggle “Incluir descriptivo”
+* generación de itinerario
+* preview actual
+
+La nueva sección debe integrarse con el sistema existente.
+
+========================================
+EXTRAS IMPORTANTES
+==================
+
+Agregar botón:
+
+* “Nuevo descriptivo”
+* “Duplicar descriptivo”
+
+Agregar confirmación antes de eliminar.
+
+========================================
+UI
+==
+
+Mantener diseño consistente:
+
+* cards blancas
+* bordes rounded
+* pills
+* spacing actual
+* tipografía actual
+* look profesional corporativo
+
+========================================
+IMPORTANTE
+==========
+
+NO eliminar la compatibilidad con los descriptivos existentes.
+Migrar automáticamente los descriptivos actuales al nuevo formato editable si es posible.

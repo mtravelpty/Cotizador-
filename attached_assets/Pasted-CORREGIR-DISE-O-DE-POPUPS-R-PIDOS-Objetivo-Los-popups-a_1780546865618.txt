@@ -1,0 +1,164 @@
+CORREGIR DISEÑO DE POPUPS RÁPIDOS
+
+Objetivo:
+Los popups actuales quedaron incongruentes con el diseño premium del cotizador. Deben ser más limpios, pequeños, rápidos y consistentes.
+
+No modificar cálculos.
+No modificar servicios.
+No modificar PDF/correo/WhatsApp.
+Solo corregir diseño y comportamiento visual de popups rápidos.
+
+1. REGLA GENERAL
+
+Todos los popups rápidos deben ser compactos.
+
+Eliminar botones con texto grande como:
+- Aplicar
+- Cancelar
+- Listo
+
+Usar solo iconos:
+
+↺ Restablecer
+✓ Aplicar
+X Cerrar
+
+2. ESTILO DE BOTONES
+
+Botón aplicar:
+
+- Solo icono ✓
+- Tamaño 40x40px
+- Fondo #004FBB
+- Icono blanco
+- Border-radius 12px
+
+Botón restablecer:
+
+- Solo icono ↺
+- Tamaño 40x40px
+- Fondo blanco
+- Borde #D8E0EE
+- Icono #64748B
+- Border-radius 12px
+
+Botón cerrar:
+
+- Solo X arriba derecha
+- Color #94A3B8
+
+3. POPUP PRECIO POR PERSONA
+
+Debe verse así:
+
+Título:
+Precio p/p
+
+Input:
+$ 50
+
+Abajo derecha:
+[↺] [✓]
+
+No mostrar textos explicativos.
+No mostrar botones grandes.
+No mostrar “Aplicar” escrito.
+
+4. POPUP TARIFAS DE HOTEL
+
+Debe verse así:
+
+Título:
+Tarifas por noche
+
+Campos:
+DBL  $33
+TPL  $30
+CHD  $16
+
+Abajo derecha:
+[↺] [✓]
+
+No mostrar botones grandes.
+No mostrar texto “Aplicar”.
+No usar azul celeste.
+Usar azul corporativo #004FBB.
+
+5. POPUP TARIFA PERSONALIZADA
+
+Debe verse así:
+
+Título:
+Tarifa
+
+Input:
+$ 75
+
+Abajo derecha:
+[↺] [✓]
+
+6. POPUP ESTADÍA DEL HOTEL
+
+Debe usar el mismo estilo del calendario de “Detalles del viaje”.
+
+No mostrar:
+- Check-in
+- Check-out
+- Campos duplicados
+- Botón “Listo”
+- Textos explicativos
+
+Debe mostrar solo:
+
+- Calendario compacto
+- Fecha inicio
+- Fecha fin
+- Noches
+- Botones [↺] [✓]
+
+El botón ✓ guarda y cierra.
+El botón ↺ restablece fechas originales.
+
+7. COLORES
+
+Usar colores consistentes:
+
+Azul principal:
+#004FBB
+
+Azul oscuro:
+#041941
+
+Bordes:
+#D8E0EE
+
+Texto:
+#041941
+
+Texto secundario:
+#64748B
+
+No usar azul celeste fuerte para botones principales.
+
+8. TAMAÑO Y POSICIÓN
+
+Los popups de precio deben ser pequeños:
+
+Ancho aprox:
+280px - 360px
+
+Los popups deben abrir cerca del elemento clicado.
+
+No deben tapar media pantalla.
+
+9. VALIDACIÓN
+
+Confirmar:
+
+✓ Botón aplicar es solo ✓.
+✓ Botón restablecer es solo ↺.
+✓ No hay botón grande “Aplicar”.
+✓ No hay textos innecesarios.
+✓ Calendario de hotel usa estilo de Detalles del viaje.
+✓ Popups se ven consistentes con el cotizador.
+✓ App carga sin errores.

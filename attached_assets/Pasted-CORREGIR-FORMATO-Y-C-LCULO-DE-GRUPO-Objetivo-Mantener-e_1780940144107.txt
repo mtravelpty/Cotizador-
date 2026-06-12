@@ -1,0 +1,141 @@
+CORREGIR FORMATO Y CÁLCULO DE GRUPO
+
+Objetivo:
+Mantener el formato grupo original, pero corregir cálculo por acomodación y limpiar bloques innecesarios.
+
+No tocar:
+- modo individual
+- modo paquete
+- seguimiento
+- plantillas
+- búsqueda
+
+1. FECHAS EN ALOJAMIENTO
+
+En la tabla de alojamiento, las fechas deben verse un poco más claras y legibles.
+
+Aumentar ligeramente:
+- tamaño
+- peso visual
+- color
+
+Ejemplo:
+
+8-6-26 → 9-6-26
+
+Debe notarse más, pero sin competir con el nombre del hotel.
+
+2. ELIMINAR BLOQUE “TOTALES SEGÚN ACOMODACIÓN”
+
+En modo grupo eliminar completamente el cuadro:
+
+TOTALES SEGÚN ACOMODACIÓN
+
+No mostrar ese bloque.
+
+3. MODIFICAR “DETALLE DEL GRUPO”
+
+El bloque Detalle del grupo debe mostrar:
+
+ACOMODACIÓN | HABITACIONES | PAX | TARIFA POR ACOMODACIÓN
+
+Ejemplo:
+
+TPL | 1 hab | 3 pax | USD $XXX
+QDL | 1 hab | 4 pax | USD $XXX
+
+Debajo:
+
+Total habitaciones: 2
+Total pasajeros: 7
+
+Y luego:
+
+TOTAL DEL GRUPO
+USD $XXX
+
+4. CORREGIR CÁLCULO POR ACOMODACIÓN
+
+Error actual:
+Está calculando cada alojamiento usando el total general de pasajeros, por ejemplo 7 pax para todas las acomodaciones.
+
+Eso está mal.
+
+Regla correcta:
+
+SGL:
+1 habitación = 1 pax
+
+DBL:
+1 habitación = 2 pax
+
+TPL:
+1 habitación = 3 pax
+
+QDL:
+1 habitación = 4 pax
+
+Cada fila de alojamiento debe calcularse usando los pasajeros de ESA acomodación, no el total general.
+
+Ejemplo:
+Si hay:
+
+TPL = 1 habitación = 3 pax
+QDL = 1 habitación = 4 pax
+
+Entonces:
+- filas TPL deben calcular con 3 pax
+- filas QDL deben calcular con 4 pax
+
+No usar 7 pax para ambas.
+
+5. QDL
+
+QDL usa tarifa TPL como precio base.
+
+Pero su cálculo debe usar 4 pax por habitación.
+
+Ejemplo:
+Tarifa TPL = $30
+QDL = 1 habitación
+Pax QDL = 4
+
+Total QDL hotel = $30 × 4 pax × noches
+
+No:
+$30 × 7 pax
+
+6. TOTAL DEL GRUPO
+
+Total del grupo debe ser la suma real de:
+
+Subtotal SGL + subtotal DBL + subtotal TPL + subtotal QDL
+
+Cada uno calculado con sus propios pax.
+
+7. VALIDAR
+
+Ejemplo de prueba:
+
+TPL 1 habitación
+QDL 1 habitación
+
+Hoteles:
+Hotel A TPL $30
+Hotel A QDL $30
+Hotel B TPL $23
+Hotel B QDL $23
+
+Resultado esperado:
+TPL calcula con 3 pax.
+QDL calcula con 4 pax.
+No usar 7 pax en cada fila.
+
+Confirmar:
+✓ Fechas más visibles.
+✓ Se elimina Totales según acomodación.
+✓ Detalle del grupo muestra acomodación, hab, pax y tarifa.
+✓ TPL usa 3 pax.
+✓ QDL usa 4 pax.
+✓ Total grupo suma correctamente.
+✓ PDF/correo/vista previa se mantienen.

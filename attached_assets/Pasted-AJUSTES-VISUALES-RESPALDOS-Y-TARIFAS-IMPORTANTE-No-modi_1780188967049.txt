@@ -1,0 +1,176 @@
+AJUSTES VISUALES: RESPALDOS Y TARIFAS
+
+IMPORTANTE:
+No modificar lógica, importación, exportación, datos, cálculos, PDF, correo, WhatsApp, plantillas ni descriptivos.
+Solo reorganizar visualmente y corregir iconos/legibilidad.
+
+==================================================
+
+1. MÓDULO RESPALDOS - LEGIBILIDAD
+   ==================================================
+
+En la sección Respaldos, los títulos casi no se leen.
+
+Corregir visualmente los títulos:
+
+* RESPALDO COMPLETO
+* SOLO PLANTILLAS
+
+Deben tener:
+
+* mayor contraste
+* mayor peso tipográfico
+* color visible sobre fondo oscuro
+* jerarquía clara
+* tamaño consistente con títulos de sección
+
+También mejorar el texto descriptivo debajo de cada título para que sea legible.
+
+Ejemplo:
+
+RESPALDO COMPLETO
+Incluye plantillas, descriptivos, observaciones rápidas y tarifas modificadas.
+
+SOLO PLANTILLAS
+Exporta o importa únicamente las plantillas y sus observaciones.
+
+==================================================
+2. MÓDULO RESPALDOS - ICONOS CORRECTOS
+======================================
+
+Corregir iconos de importación/exportación.
+
+Regla:
+
+EXPORTAR:
+
+* debe usar icono de flecha hacia afuera / hacia arriba
+* representa sacar información del sistema
+
+IMPORTAR:
+
+* debe usar icono de flecha hacia adentro / hacia abajo
+* representa ingresar información al sistema
+
+Aplicar a:
+
+* Exportar respaldo
+* Importar respaldo
+* Exportar plantillas
+* Importar plantillas
+
+Actualmente se perciben invertidos.
+
+==================================================
+3. MÓDULO RESPALDOS - ORDEN VISUAL
+==================================
+
+Mantener estructura:
+
+RESPALDO COMPLETO
+
+[ Exportar respaldo ]
+[ Importar respaldo ]
+
+---
+
+SOLO PLANTILLAS
+
+[ Exportar plantillas ]
+[ Importar plantillas ]
+
+Exportar debe verse como acción principal.
+Importar como acción secundaria.
+
+Mantener diseño premium actual.
+
+==================================================
+4. MÓDULO TARIFAS - JERARQUÍA VISUAL
+====================================
+
+En la sección Tarifas, los botones administrativos están demasiado arriba y ocupan mucho protagonismo:
+
+* Recargar tarifario
+* Subir nuevo
+* Subir tarifario Brasil
+
+Estas acciones no se usan constantemente.
+
+Moverlas al final de la página o al final del módulo de Tarifas.
+
+==================================================
+5. MÓDULO TARIFAS - PARTE SUPERIOR
+==================================
+
+En la parte superior del módulo Tarifas, dejar solamente las tarjetas informativas:
+
+TARIFARIO GENERAL
+
+* nombre del archivo
+* fecha de carga
+* cantidades de hoteles, tours y traslados
+
+TARIFARIO BRASIL
+
+* nombre del archivo
+* fecha de carga
+* cantidades si existen
+
+NO mostrar botones de recargar/subir en la parte superior.
+
+==================================================
+6. MÓDULO TARIFAS - HERRAMIENTAS AL FINAL
+=========================================
+
+Crear al final una sección llamada:
+
+HERRAMIENTAS DE TARIFARIO
+
+Dentro colocar:
+
+GENERAL
+[ Recargar tarifario ]
+[ Reemplazar / Subir nuevo ]
+
+BRASIL
+[ Recargar tarifario Brasil ]
+[ Reemplazar / Subir tarifario Brasil ]
+
+Debe verse como herramientas administrativas secundarias.
+
+==================================================
+7. OBJETIVO VISUAL
+==================
+
+Priorizar en la vista principal:
+
+* Tabs Hoteles / Tours / Traslados
+* Listado de tarifas
+* Edición de tarifas
+
+Y dejar las acciones administrativas de carga/recarga menos visibles.
+
+==================================================
+NO TOCAR
+========
+
+No modificar:
+
+* Observaciones rápidas
+* Cotizador
+* Seguimiento
+* CRM
+* Plantillas
+* Descriptivos
+* PDF
+* Correo
+* WhatsApp
+* Cálculos
+* Importación/exportación real
+* Estructura de datos
+
+Solo corregir:
+
+* legibilidad de Respaldos
+* iconos de Respaldos
+* ubicación visual de botones en Tarifas

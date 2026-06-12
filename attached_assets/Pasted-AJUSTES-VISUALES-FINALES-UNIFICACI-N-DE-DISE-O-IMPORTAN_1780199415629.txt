@@ -1,0 +1,329 @@
+AJUSTES VISUALES FINALES — UNIFICACIÓN DE DISEÑO
+
+IMPORTANTE
+
+No modificar:
+- Lógica
+- Tarifas
+- Cálculos
+- PDF
+- WhatsApp
+- Correo
+- Seguimiento
+- Plantillas
+- Respaldos
+- Importaciones
+- Exportaciones
+
+Aplicar únicamente cambios visuales.
+
+==================================================
+1. BARRA DE ALOJAMIENTO
+==================================================
+
+Actualmente la barra se desplazó visualmente debido a los iconos agregados.
+
+Ajustar el layout para que:
+
+- La barra vuelva a verse equilibrada.
+- El contenido no se vea comprimido.
+- Mantenga la misma alineación visual con el resto de la interfaz.
+- Aproveche mejor el ancho disponible.
+
+No reducir contenido.
+No ocultar elementos.
+
+==================================================
+2. NOCHES / PASAJEROS / NIÑOS
+==================================================
+
+Aplicar color:
+
+#001851
+
+a las tarjetas de:
+
+- NOCHES
+- PASAJEROS
+- NIÑOS
+
+Texto:
+
+#FFFFFF
+
+Los iconos deben mantenerse visibles.
+
+==================================================
+3. BOTONES SGL / DBL / TPL / CHD
+==================================================
+
+Estado inactivo:
+
+Fondo:
+#001851
+
+Texto:
+#FFFFFF
+
+Mantener consistencia visual con:
+
+- Noches
+- Pasajeros
+- Niños
+
+==================================================
+4. ICONOS DE ENCABEZADOS
+==================================================
+
+Aplicar a todos los encabezados de tarjetas:
+
+- Datos del cliente
+- Configuración de cotización
+- Servicios seleccionados
+- Acciones
+- Observaciones
+- Plantillas
+- Descriptivos
+- Tarifas
+- Respaldos
+
+Icono:
+
+Color:
+#0846A1
+
+Agregar detrás:
+
+- fondo suave con transparencia
+- bordes redondeados
+- estilo moderno tipo badge
+
+Ejemplo:
+
+Icono azul
+sobre contenedor azul muy claro translúcido.
+
+==================================================
+5. TÍTULO PRINCIPAL
+==================================================
+
+Actualmente:
+
+Cotizador con icono.
+
+Cambiar por:
+
+COTIZADOR
+
+Todo en MAYÚSCULAS.
+
+Eliminar icono actual.
+
+Reemplazar por:
+
+una línea vertical decorativa a la izquierda.
+
+Ejemplo:
+
+│ COTIZADOR
+
+Mantener la cinta azul existente.
+
+==================================================
+6. SUBTÍTULOS DE TARJETAS
+==================================================
+
+Aplicar color:
+
+#283165
+
+a todos los subtítulos y textos descriptivos de tarjetas.
+
+Ejemplos:
+
+- Busca un servicio arriba para agregarlo al instante
+- Añade condiciones y notas importantes
+- Textos secundarios
+- Descripciones de módulos
+
+Unificar toda la aplicación.
+
+==================================================
+7. TABS TARIFAS / TOTALES
+==================================================
+
+Cuando estén activas:
+
+Iconos:
+
+#0043BB
+
+Mantener consistencia visual.
+
+==================================================
+8. OPCIONES ACTIVAS
+==================================================
+
+Cuando una opción esté activa:
+
+- Incluir horarios
+- Incluir itinerario
+- Incluir descriptivo
+
+El icono debe cambiar a:
+
+#0043BB
+
+No solamente el toggle.
+
+==================================================
+9. ESTILO UNIFICADO DE FILTROS
+==================================================
+
+Aplicar mismo estilo visual a:
+
+- Mercado
+- Todos
+- Plantilla
+- Ítem personalizado
+- Dropdowns
+
+Utilizar:
+
+- mismo radio
+- mismo borde
+- misma altura
+- misma sombra
+- misma tipografía
+
+Color de subtítulos:
+
+#283165
+
+==================================================
+10. CINTAS DE MÓDULOS
+==================================================
+
+Aplicar el mismo estilo visual de la cinta de COTIZADOR a:
+
+- SEGUIMIENTO
+- PLANTILLAS
+- DESCRIPTIVOS
+- TARIFAS
+- RESPALDOS
+
+Reglas:
+
+- Solo mostrar el título
+- Todo en MAYÚSCULAS
+- Sin subtítulos
+- Misma altura
+- Mismo diseño
+- Mismo color
+
+==================================================
+11. MENÚ LATERAL
+==================================================
+
+Actualmente la selección utiliza un bloque resaltado.
+
+Eliminar ese comportamiento.
+
+Nuevo comportamiento:
+
+Cuando una opción esté activa:
+
+Mostrar únicamente una barra vertical amarilla a la izquierda.
+
+Color:
+
+#EEC774
+
+Ejemplo:
+
+│ COTIZADOR
+
+Mantener fondo normal.
+
+No utilizar tarjetas resaltadas.
+
+No utilizar sombreado amarillo.
+
+==================================================
+12. CONFIGURACIÓN
+==================================================
+
+Aplicar mismo comportamiento a:
+
+- Plantillas
+- Descriptivos
+- Tarifas
+- Respaldos
+
+Cuando estén seleccionados:
+
+mostrar únicamente la barra vertical amarilla.
+
+==================================================
+13. BOTONES DE MÓDULOS
+==================================================
+
+Actualizar todos los botones de:
+
+- Plantillas
+- Descriptivos
+- Tarifas
+- Respaldos
+
+para que utilicen la misma identidad visual corporativa.
+
+Basarse únicamente en esta paleta:
+
+Barra lateral:
+#041941
+
+Barra alojamiento:
+#002682
+
+Acciones:
+#001851
+
+Azul activo:
+#0043BB
+
+Azul secundario:
+#0846A1
+
+Dorado corporativo:
+#EEC774
+
+PDF:
+#E6AE33
+
+WhatsApp:
+#03A04E
+
+Correo:
+#044B9E
+
+==================================================
+14. CONSISTENCIA FINAL
+==================================================
+
+Toda la aplicación debe sentirse como un único producto.
+
+No debe existir:
+
+- estilos mezclados
+- botones con diseños distintos
+- iconos inconsistentes
+- encabezados diferentes
+- colores fuera de la paleta corporativa
+
+Objetivo:
+
+Aspecto SaaS premium.
+Más limpio.
+Más corporativo.
+Más elegante.
+Más coherente visualmente.

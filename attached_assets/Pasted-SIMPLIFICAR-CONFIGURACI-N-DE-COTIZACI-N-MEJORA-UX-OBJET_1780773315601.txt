@@ -1,0 +1,206 @@
+SIMPLIFICAR CONFIGURACIÓN DE COTIZACIÓN (MEJORA UX)
+
+OBJETIVO
+
+Reducir la cantidad de decisiones que debe tomar el usuario.
+
+Actualmente existen 3 bloques:
+
+- Tipo de cotización
+  - Individual
+  - Grupo
+
+- Modo
+  - Tarifas
+  - Totales
+
+- Presentación
+  - Detallada
+  - Paquete
+
+Esto genera demasiadas combinaciones y obliga al usuario a pensar cómo funciona el sistema internamente.
+
+La meta es que el usuario solo elija qué tipo de cotización desea generar.
+
+==================================================
+NUEVA ESTRUCTURA
+==================================================
+
+Reemplazar los bloques:
+
+- Tipo de cotización
+- Modo
+- Presentación
+
+Por un único bloque:
+
+FORMATO DE COTIZACIÓN
+
+Con 3 opciones:
+
+○ Tarifario
+○ Paquete
+○ Grupo
+
+==================================================
+OPCIÓN 1
+TARIFARIO
+==================================================
+
+Descripción:
+
+Mostrar tarifas unitarias.
+
+Hoteles:
+- SGL
+- DBL
+- TPL
+- QDL
+
+Tours:
+- tarifa por persona
+
+Traslados:
+- tarifa por persona
+
+Vuelos:
+- tarifa por persona
+
+Sin totalización.
+
+==================================================
+CONFIGURACIÓN INTERNA AUTOMÁTICA
+==================================================
+
+Tipo:
+Individual
+
+Modo:
+Tarifas
+
+Presentación:
+Detallada
+
+==================================================
+OPCIÓN 2
+PAQUETE
+==================================================
+
+Descripción:
+
+Generar propuesta comercial.
+
+Mostrar:
+
+- Incluye
+- Alojamiento
+- Tours
+- Traslados
+- Vuelos
+- Noche adicional
+- Precio total por persona
+
+==================================================
+CONFIGURACIÓN INTERNA AUTOMÁTICA
+==================================================
+
+Tipo:
+Individual
+
+Modo:
+Totales
+
+Presentación:
+Paquete
+
+==================================================
+OPCIÓN 3
+GRUPO
+==================================================
+
+Descripción:
+
+Cotización para grupos.
+
+Mostrar:
+
+- Distribución del grupo
+- Habitaciones
+- Pasajeros
+- Totales por acomodación
+- Total general del grupo
+
+==================================================
+CONFIGURACIÓN INTERNA AUTOMÁTICA
+==================================================
+
+Tipo:
+Grupo
+
+Modo:
+Totales
+
+Presentación:
+Detallada
+
+==================================================
+IMPORTANTE
+==================================================
+
+NO eliminar la lógica actual.
+
+NO eliminar estados actuales.
+
+NO modificar cálculos.
+
+NO modificar PDF.
+
+NO modificar correos.
+
+Simplemente ocultar la complejidad al usuario.
+
+Internamente el sistema puede seguir utilizando:
+
+- Individual
+- Grupo
+- Tarifas
+- Totales
+- Detallada
+- Paquete
+
+Pero el usuario solo debe ver:
+
+FORMATO DE COTIZACIÓN
+
+○ Tarifario
+○ Paquete
+○ Grupo
+
+==================================================
+DISEÑO
+==================================================
+
+Utilizar exactamente el mismo estilo visual actual:
+
+- tarjetas seleccionables
+- iconos
+- check de selección
+- colores corporativos
+
+Solo cambiar la estructura y simplificar la experiencia.
+
+==================================================
+RESULTADO ESPERADO
+==================================================
+
+El usuario ya no necesita pensar:
+
+"¿Debo elegir Individual + Totales + Paquete?"
+
+Simplemente selecciona:
+
+○ Tarifario
+○ Paquete
+○ Grupo
+
+Y el sistema configura automáticamente todo lo demás.

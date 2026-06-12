@@ -1,0 +1,163 @@
+Necesito mejorar completamente la estructura y presentación de los mensajes compartidos por WhatsApp para que se vean más profesionales, organizados y fáciles de leer en móvil.
+
+IMPORTANTE:
+
+* Mantener TODA la información actual.
+* Solo mejorar formato, jerarquía visual y legibilidad.
+* NO romper generación de PDF/correo.
+* Aplicar únicamente a WhatsApp.
+
+========================================
+OBJETIVO
+========
+
+El mensaje debe sentirse:
+
+* limpio
+* premium
+* profesional
+* fácil de leer
+* visualmente organizado
+
+========================================
+FORMATO GENERAL
+===============
+
+Usar:
+
+* separadores visuales
+* espaciado consistente
+* emojis moderados
+* negritas bien aplicadas
+* alineación clara
+* bloques separados
+
+NO usar:
+
+* bloques compactados
+* líneas pegadas
+* exceso de mayúsculas
+* exceso de símbolos
+
+========================================
+ENCABEZADO
+==========
+
+Usar EXACTAMENTE:
+
+Hola! Un gusto saludarte ✨
+
+A continuación comparto los detalles de su cotización:
+
+Luego:
+
+📅 *Fechas:* 28-05-2026 al 29-05-2026
+👥 *Pasajeros:* 2
+
+========================================
+SEPARADORES
+===========
+
+Usar este separador para todas las secciones:
+
+━━━━━━━━━━━━━━━━━━
+
+========================================
+SECCIONES
+=========
+
+Usar títulos así:
+
+🏨 *ALOJAMIENTO*
+🚐 *TRASLADOS*
+🌴 *TOURS Y EXPERIENCIAS*
+
+========================================
+FORMATO ALOJAMIENTOS
+====================
+
+Formato EXACTO:
+
+• *Hotel Faranda Express Soloy & Casino* · ★★★
+📍 28-05-2026 → 29-05-2026 · 1 noche
+🛏 Habitación: Standard
+💲 DBL: $33 por noche, por persona
+🍽 Desayuno incluido
+
+REGLAS:
+
+* Nombre hotel en negrita
+* Estrellas visibles
+* Fechas alineadas
+* Singular/plural automático:
+
+  * 1 noche
+  * 2 noches
+* Mantener spacing consistente
+* No compactar líneas
+
+========================================
+NOTAS DE ALOJAMIENTO
+====================
+
+Mostrar así:
+
+ℹ️ Tarifas netas por persona y por noche.
+ℹ️ Disponibilidad sujeta al momento de la reserva.
+
+========================================
+FORMATO TRASLADOS
+=================
+
+Formato:
+
+• Traslado Puerto → Full Day Zona Libre → Hotel ciudad
+🚐 Modalidad: Regular
+💲 Tarifa: $62 por persona
+
+========================================
+FORMATO TOURS
+=============
+
+Formato:
+
+• *City Tour & Canal*
+🕒 Ma, Ju, Sá, Do · 07:15 AM · 5 hrs aprox.
+🎟 No incluye entradas
+💲 Tarifa: $30 por persona
+
+========================================
+REGLAS IMPORTANTES
+==================
+
+1. Mantener compatibilidad con:
+
+* descriptivos
+* plantillas
+* PDF
+* correo
+* seguimiento
+
+2. Mantener estructura dinámica actual.
+
+3. NO hardcodear hoteles/tours.
+
+4. Aplicar a todos los tipos de cotización.
+
+5. Fechas siempre en formato:
+   DD-MM-YYYY
+
+========================================
+UX IMPORTANTE
+=============
+
+El mensaje debe verse bien:
+
+* en iPhone
+* Android
+* modo oscuro
+* chats compactos
+
+Debe sentirse tipo:
+“agencia profesional premium”
+y no texto técnico generado automáticamente.

@@ -1,0 +1,128 @@
+==================================================
+BUG #2
+SINCRONIZAR ACOMODACIÓN ENTRE INDIVIDUAL Y GRUPO
+==================================================
+
+Actualmente:
+
+si el usuario está en Individual y selecciona:
+
+DBL
+
+al cambiar a Grupo la distribución aparece vacía.
+
+Esto genera trabajo innecesario.
+
+==================================================
+COMPORTAMIENTO DESEADO
+==================================================
+
+Cuando el usuario cambia de:
+
+INDIVIDUAL → GRUPO
+
+la distribución debe inicializarse automáticamente utilizando la acomodación activa.
+
+Ejemplos:
+
+==================================================
+
+Si Individual tiene:
+
+SGL
+
+Grupo debe iniciar con:
+
+1 SGL
+
+==================================================
+
+Si Individual tiene:
+
+DBL
+
+Grupo debe iniciar con:
+
+1 DBL
+
+==================================================
+
+Si Individual tiene:
+
+TPL
+
+Grupo debe iniciar con:
+
+1 TPL
+
+==================================================
+
+Si Individual tiene:
+
+QDL
+
+Grupo debe iniciar con:
+
+1 QDL
+
+==================================================
+
+Además:
+
+La cantidad de pasajeros debe calcularse automáticamente.
+
+Ejemplos:
+
+SGL → 1 pasajero
+DBL → 2 pasajeros
+TPL → 3 pasajeros
+QDL → 4 pasajeros
+
+==================================================
+SINCRONIZACIÓN INVERSA
+==================================================
+
+Cuando el usuario regrese:
+
+GRUPO → INDIVIDUAL
+
+seleccionar automáticamente la acomodación predominante.
+
+Ejemplo:
+
+si solo existe:
+
+DBL = 1
+
+activar DBL.
+
+Si solo existe:
+
+TPL = 1
+
+activar TPL.
+
+Si existen varias acomodaciones simultáneas:
+
+mantener la última acomodación seleccionada por el usuario.
+
+==================================================
+RESULTADO ESPERADO
+==================================================
+
+El sistema debe sentirse inteligente.
+
+El usuario no debe tener que volver a configurar:
+
+- idioma
+- modo
+- presentación
+- opciones
+
+en cada cotización.
+
+Y la transición entre:
+
+Individual ↔ Grupo
+
+debe respetar automáticamente la acomodación activa para evitar pasos repetitivos.

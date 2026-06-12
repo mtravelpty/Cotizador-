@@ -1,0 +1,159 @@
+Hay un problema al cargar plantillas: no está cargando correctamente los nuevos tipos de bloque.
+
+Actualmente al usar una plantilla aparece el mensaje:
+“cargada (sin coincidencias en el tarifario actual)”
+
+y además NO se cargan las Observaciones generales guardadas en la plantilla.
+
+Necesito corregir la carga de plantillas para soportar TODOS los tipos de bloque.
+
+========================================
+TIPOS DE BLOQUE A SOPORTAR
+==========================
+
+La función que carga una plantilla debe reconocer y procesar:
+
+* hotel
+* tour
+* traslado
+* vuelo
+* catamaran
+* observacionesGenerales
+* nota
+* texto
+* titulo
+
+========================================
+OBSERVACIONES GENERALES
+=======================
+
+Si la plantilla tiene un bloque de observaciones generales:
+
+* debe cargarlo en la sección “Observaciones generales” del cotizador
+* debe conservar observaciones como lista separada
+* no debe convertirlas en texto corrido
+* debe evitar duplicados
+* debe reflejarse en:
+
+  * preview
+  * PDF
+  * correo
+  * WhatsApp
+
+Ejemplo:
+
+bloque observacionesGenerales:
+[
+"Precios sujetos a disponibilidad",
+"No incluye impuestos hoteleros"
+]
+
+Debe cargar:
+• Precios sujetos a disponibilidad
+• No incluye impuestos hoteleros
+
+========================================
+VUELOS
+======
+
+Si la plantilla tiene bloque tipo vuelo:
+
+* debe agregarse a servicios seleccionados bajo categoría “Vuelos”
+* si no existe en tarifario, cargarlo como servicio manual de tipo vuelo
+* no debe bloquear la carga completa de la plantilla
+
+========================================
+CATAMARÁN
+=========
+
+Si la plantilla tiene bloque tipo catamaran:
+
+* debe agregarse a servicios seleccionados bajo categoría “Catamarán”
+* si no existe en tarifario, cargarlo como servicio manual de tipo catamaran
+* debe aparecer en preview, PDF, correo y WhatsApp
+* no debe bloquear la carga completa de la plantilla
+
+========================================
+TÍTULO / TEXTO / NOTA
+=====================
+
+Si estos bloques existen:
+
+* cargarlos como bloques informativos de la cotización
+* si todavía no se renderizan en la propuesta final, al menos no deben generar error ni afectar la carga de los servicios
+* opcionalmente mostrarlos dentro de observaciones generales o notas internas según corresponda
+
+========================================
+NO BLOQUEAR CARGA
+=================
+
+Muy importante:
+Si un bloque no encuentra coincidencia exacta en el tarifario:
+
+NO debe impedir cargar la plantilla.
+
+En su lugar:
+
+* cargarlo como item manual
+* mostrar advertencia específica
+* continuar con el resto
+
+========================================
+DIAGNÓSTICO DETALLADO
+=====================
+
+Reemplazar mensaje genérico:
+
+“sin coincidencias en el tarifario actual”
+
+por un resumen detallado:
+
+Plantilla cargada parcialmente:
+
+* 2 hoteles cargados
+* 1 tour cargado
+* 1 vuelo cargado como manual
+* 1 catamarán cargado como manual
+* 2 observaciones cargadas
+
+No encontrados:
+• [Tour] Nombre del tour
+• [Hotel] Nombre del hotel
+
+========================================
+MATCHING
+========
+
+Intentar resolver servicios por este orden:
+
+1. código/id si existe
+2. nombre exacto normalizado
+3. nombre parcial normalizado
+4. si no encuentra, crear item manual
+
+Normalizar:
+
+* trim
+* lowercase
+* quitar tildes
+* quitar dobles espacios
+
+========================================
+NO ROMPER
+=========
+
+No romper:
+
+* cotizador manual
+* servicios seleccionados
+* observaciones generales
+* PDF
+* correo
+* WhatsApp
+* seguimiento
+* descriptivos
+* tarifas
+* plantillas existentes
+
+Objetivo:
+Que las plantillas carguen todo lo que contienen aunque algunos servicios no existan en el tarifario actual, especialmente vuelos, catamarán y observaciones generales.

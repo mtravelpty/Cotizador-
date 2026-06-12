@@ -1,0 +1,204 @@
+IMPLEMENTAR FASE 1 DEL MODO PAQUETE: OPCIONES HOTELERAS
+
+IMPORTANTE:
+No implementar circuitos.
+No implementar opciones de circuito.
+No crear paneles laterales.
+No crear drawers.
+No crear modales nuevos.
+
+Objetivo:
+Permitir mostrar varias alternativas de hotelería utilizando exactamente los mismos servicios compartidos.
+
+──────────────────────────────
+CONCEPTO
+──────────────────────────────
+
+Actualmente:
+
+Servicios seleccionados
+
+- Hotel Executive
+- Traslado
+- Tour
+- Vuelo
+
+Debe evolucionar para permitir:
+
+OPCIÓN HOTELERA 1
+- Hotel Executive
+
+OPCIÓN HOTELERA 2
+- Hotel Marriott
+
+OPCIÓN HOTELERA 3
+- Hotel Riu
+
+Mientras que:
+
+- Traslados
+- Tours
+- Vuelos
+- Cortesías
+- Observaciones
+
+son compartidos por todas las opciones.
+
+──────────────────────────────
+CAMBIO EN SERVICIOS SELECCIONADOS
+──────────────────────────────
+
+Cuando Formato = Paquete
+
+Mostrar encima de los servicios:
+
+OPCIONES HOTELERAS
+
+[ Opción 1 ] [ Opción 2 ] [+ Nueva opción]
+
+Por defecto:
+
+Opción 1
+
+──────────────────────────────
+FUNCIONAMIENTO
+──────────────────────────────
+
+Cada opción hotelera tendrá sus propios hoteles.
+
+Ejemplo:
+
+Opción 1
+- Executive
+- Playa Blanca
+
+Opción 2
+- Marriott
+- Playa Blanca
+
+Opción 3
+- Riu
+- Playa Blanca
+
+Los hoteles agregados deben pertenecer únicamente a la opción activa.
+
+──────────────────────────────
+SERVICIOS COMPARTIDOS
+──────────────────────────────
+
+Los siguientes servicios NO cambian entre opciones:
+
+- Traslados
+- Tours
+- Vuelos
+- Catamaranes
+- Cortesías
+- Observaciones
+
+Deben mantenerse una sola vez.
+
+No duplicarlos.
+
+No copiarlos por cada opción.
+
+──────────────────────────────
+INTERFAZ
+──────────────────────────────
+
+Mantener la tarjeta actual de Servicios seleccionados.
+
+NO abrir paneles laterales.
+
+NO abrir overlays.
+
+NO abrir drawers.
+
+Todo debe ocurrir dentro de la tarjeta existente.
+
+──────────────────────────────
+COTIZACIÓN FINAL
+──────────────────────────────
+
+Crear una sección:
+
+OPCIONES DE ALOJAMIENTO
+
+Ejemplo:
+
+OPCIÓN 1
+
+1 noche | Hotel Executive | Desayuno incluido
+2 noches | Playa Blanca | Todo incluido
+
+DBL USD XXX
+TPL USD XXX
+
+──────────────────────────────
+
+OPCIÓN 2
+
+1 noche | Marriott | Desayuno incluido
+2 noches | Playa Blanca | Todo incluido
+
+DBL USD XXX
+TPL USD XXX
+
+──────────────────────────────
+
+OPCIÓN 3
+
+1 noche | Riu | Desayuno incluido
+2 noches | Playa Blanca | Todo incluido
+
+DBL USD XXX
+TPL USD XXX
+
+──────────────────────────────
+INCLUYE
+──────────────────────────────
+
+Mostrar una sola vez:
+
+INCLUYE
+
+✓ Traslados
+✓ Tours
+✓ Vuelos
+✓ Cortesías
+✓ Observaciones
+
+No repetir esta sección por cada opción hotelera.
+
+──────────────────────────────
+CÁLCULOS
+──────────────────────────────
+
+Cada opción hotelera calcula sus propios precios.
+
+Los servicios compartidos se incluyen automáticamente en todas las opciones.
+
+Cada opción genera:
+
+DBL
+TPL
+QDL
+SGL
+
+independientemente.
+
+──────────────────────────────
+VALIDAR
+──────────────────────────────
+
+✓ No se modifica Tarifario.
+✓ No se modifica Grupo.
+✓ No existen circuitos todavía.
+✓ No existen paneles laterales.
+✓ Todo funciona dentro de Servicios seleccionados.
+✓ PDF funciona.
+✓ Correo funciona.
+✓ Outlook funciona.
+✓ No romper cotizaciones existentes.
+✓ No alterar seguimiento.
+✓ No alterar plantillas.
+✓ Aplicar únicamente al formato Paquete.

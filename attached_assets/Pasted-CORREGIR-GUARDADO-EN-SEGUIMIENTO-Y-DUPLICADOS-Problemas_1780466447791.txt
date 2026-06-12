@@ -1,0 +1,149 @@
+CORREGIR GUARDADO EN SEGUIMIENTO Y DUPLICADOS
+
+Problemas actuales:
+
+1. Al presionar:
+- Descargar PDF
+- Copiar correo
+
+la cotización NO pasa a Seguimiento.
+
+2. Cuando edito una cotización desde Seguimiento y presiono Guardar, se duplica en vez de actualizar la existente.
+
+Objetivo:
+Corregir solo la lógica de guardado/actualización.
+
+No tocar diseño.
+No tocar PDF visual.
+No tocar correo visual.
+No tocar WhatsApp.
+No tocar tarifas.
+
+──────────────────────────────
+1. PDF Y CORREO DEBEN CREAR/ACTUALIZAR SEGUIMIENTO
+──────────────────────────────
+
+Al presionar Descargar PDF:
+
+- Validar campos obligatorios.
+- Guardar cotización.
+- Crear o actualizar oportunidad en Seguimiento.
+- Generar PDF.
+- Limpiar formulario solo si guardó correctamente.
+
+Al presionar Copiar correo:
+
+- Validar campos obligatorios.
+- Guardar cotización.
+- Crear o actualizar oportunidad en Seguimiento.
+- Copiar correo.
+- Limpiar formulario solo si guardó correctamente.
+
+WhatsApp NO debe:
+- Guardar.
+- Crear seguimiento.
+- Actualizar seguimiento.
+- Limpiar formulario.
+- Exigir campos obligatorios.
+
+──────────────────────────────
+2. EVITAR DUPLICADOS AL EDITAR
+──────────────────────────────
+
+Cuando una cotización se abre desde Seguimiento para editar:
+
+- Guardar su quoteId / opportunityId en estado.
+- Activar modo edición:
+  isEditing = true
+
+Al presionar Guardar:
+
+Si existe quoteId u opportunityId:
+- Actualizar la cotización existente.
+- Actualizar la oportunidad existente.
+- NO crear una nueva.
+- NO duplicar tarjeta en Seguimiento.
+
+Si NO existe quoteId:
+- Crear nueva cotización.
+- Crear nueva oportunidad.
+
+──────────────────────────────
+3. ID ÚNICO
+──────────────────────────────
+
+Cada cotización debe tener un ID único persistente.
+
+Ejemplo:
+
+quoteId
+
+Cada oportunidad debe tener un ID único persistente.
+
+Ejemplo:
+
+opportunityId
+
+Estos IDs deben mantenerse al:
+- abrir desde Seguimiento
+- editar
+- guardar
+- generar PDF
+- copiar correo
+
+──────────────────────────────
+4. HISTORIAL
+──────────────────────────────
+
+Si se actualiza una cotización existente:
+
+Agregar al historial:
+“Cotización modificada”
+
+No crear:
+“Oportunidad creada”
+
+Si es nueva:
+
+Agregar:
+“Oportunidad creada”
+“Cotización creada”
+
+──────────────────────────────
+5. VALIDACIÓN FINAL
+──────────────────────────────
+
+Probar:
+
+Caso A:
+Crear cotización nueva → Descargar PDF
+Resultado:
+Aparece en Seguimiento.
+
+Caso B:
+Crear cotización nueva → Copiar correo
+Resultado:
+Aparece en Seguimiento.
+
+Caso C:
+Crear cotización nueva → WhatsApp
+Resultado:
+NO aparece en Seguimiento.
+
+Caso D:
+Abrir cotización desde Seguimiento → editar → Guardar
+Resultado:
+Se actualiza la misma.
+NO se duplica.
+
+Caso E:
+Abrir cotización desde Seguimiento → Descargar PDF
+Resultado:
+Actualiza la misma.
+NO se duplica.
+
+Caso F:
+Abrir cotización desde Seguimiento → Copiar correo
+Resultado:
+Actualiza la misma.
+NO se duplica.

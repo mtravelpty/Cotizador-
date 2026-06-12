@@ -1,0 +1,174 @@
+AJUSTES VISUALES Y FUNCIONALES
+
+IMPORTANTE:
+No modificar cálculos, PDF, correo, WhatsApp, CRM, seguimiento ni plantillas.
+Solo aplicar los cambios descritos.
+
+==================================================
+
+1. ELIMINAR TÍTULO "COTIZADOR"
+   ==================================================
+
+Actualmente aparece un encabezado superior que dice:
+
+Cotizador
+
+Eliminar completamente ese título.
+
+No reemplazarlo por ningún otro texto.
+
+La pantalla debe comenzar directamente con el formulario de la cotización.
+
+==================================================
+2. CONTADOR EN SEGUIMIENTO
+==========================
+
+Actualmente al guardar una cotización aparece un número al lado de:
+
+Seguimiento
+
+Ejemplo:
+
+Seguimiento (1)
+
+No quiero mostrar contadores en el menú lateral.
+
+Eliminar completamente cualquier badge numérico de:
+
+* Seguimiento
+* Plantillas
+
+Debe mostrarse únicamente:
+
+Seguimiento
+Plantillas
+
+Sin números.
+
+==================================================
+3. MAYÚSCULAS AUTOMÁTICAS
+=========================
+
+Los campos:
+
+* Nombre
+* Agencia
+
+deben convertirse automáticamente a MAYÚSCULAS mientras el usuario escribe.
+
+Ejemplo:
+
+style travel
+
+↓
+
+STYLE TRAVEL
+
+juan pérez
+
+↓
+
+JUAN PÉREZ
+
+==================================================
+4. CAMPOS OBLIGATORIOS
+======================
+
+Únicamente deben ser obligatorios:
+
+✓ Agencia
+✓ Agente
+
+No obligar:
+
+* Nombre
+* Correo electrónico
+* Fecha de salida
+* Vigencia
+
+Mantener el resto opcional.
+
+==================================================
+5. CONFIGURACIÓN DE COTIZACIÓN
+==============================
+
+En la tarjeta:
+
+CONFIGURACIÓN DE COTIZACIÓN
+
+Sección:
+
+OPCIONES
+
+Eliminar completamente los textos descriptivos.
+
+Actualmente aparece algo como:
+
+* Horario debajo de cada tour...
+* Tabla día a día...
+* Sección con descripción...
+
+Eliminar esos textos.
+
+Dejar únicamente:
+
+✓ Incluir horarios
+✓ Incluir itinerario
+✓ Incluir descriptivo
+
+Solo los títulos.
+
+==================================================
+6. BOTÓN LIMPIAR
+================
+
+Actualmente utiliza icono de papelera/basura.
+
+Reemplazar por un icono de:
+
+* Escoba
+  o
+* Limpiar
+
+que represente mejor la acción de limpiar la cotización.
+
+Mantener el mismo estilo visual del sistema.
+
+==================================================
+7. ÍTEM PERSONALIZADO
+=====================
+
+Agregar las siguientes opciones al selector de tipo de servicio:
+
+* Catamarán
+* Otros
+
+Lista final:
+
+* Hotelería
+* Traslado
+* Tours
+* Vuelos
+* Catamarán
+* Otros
+
+Verificar que estas opciones funcionen correctamente al crear un ítem personalizado.
+
+==================================================
+NO ROMPER
+=========
+
+No modificar:
+
+* Tarifario
+* Cálculos
+* CRM
+* Seguimiento
+* Plantillas
+* PDF
+* Correo
+* WhatsApp
+* Exportaciones
+* Importaciones
+
+Aplicar únicamente los cambios indicados arriba.

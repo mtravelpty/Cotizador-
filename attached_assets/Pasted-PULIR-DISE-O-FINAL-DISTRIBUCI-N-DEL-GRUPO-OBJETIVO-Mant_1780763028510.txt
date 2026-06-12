@@ -1,0 +1,258 @@
+PULIR DISEÑO FINAL - DISTRIBUCIÓN DEL GRUPO
+
+OBJETIVO
+
+Mantener toda la lógica actual del Modo Grupo, pero mejorar significativamente la presentación visual para que se vea más limpia, profesional y consistente con el resto del cotizador RGE Style Travel.
+
+==================================================
+
+1. CAMBIAR ICONO DEL RESUMEN DE HABITACIONES
+   ==================================================
+
+Actualmente se utiliza un icono de casa.
+
+Reemplazarlo por un icono lineal de cama.
+
+Debe coincidir visualmente con los iconos utilizados en las acomodaciones:
+
+* SGL
+* DBL
+* TPL
+* QDL
+
+Estilo:
+
+* SVG lineal
+* color blanco
+* grosor uniforme
+* apariencia moderna
+* mismo lenguaje visual que los iconos de Configuración y Sidebar
+
+==================================================
+2. CAMBIAR COLOR DEL TOTAL GRUPO
+================================
+
+Actualmente:
+
+USD 5,696.00
+
+Utiliza amarillo intenso.
+
+Cambiar a:
+
+#e6ae33
+
+Mismo color corporativo utilizado en:
+
+* logo
+* detalles premium
+* acentos de marca
+
+Aplicar también al icono de moneda.
+
+Mantener:
+
+font-weight: 700
+
+==================================================
+3. CAMBIAR ACENTOS CELESTES
+===========================
+
+Actualmente algunos elementos utilizan verde.
+
+Cambiar a celeste corporativo acorde a la paleta existente.
+
+Utilizar:
+
+#49c6ff
+
+Aplicar a:
+
+* texto "Distribución completa"
+* bordes activos
+* detalles visuales de estado
+
+No utilizar verde.
+
+==================================================
+4. REDISEÑAR TARJETAS DE ACOMODACIÓN
+====================================
+
+ELIMINAR COMPLETAMENTE EL DISEÑO ACTUAL DE BADGES.
+
+NO utilizar:
+
+* chips flotantes
+* badges HAB
+* badges PAX
+
+Nuevo diseño:
+
+---
+
+## IZQUIERDA
+
+Mostrar:
+
+[ICONO CAMA] SGL
+
+o
+
+[ICONO CAMA] DBL
+
+o
+
+[ICONO CAMA] TPL
+
+o
+
+[ICONO CAMA] QDL
+
+El texto de acomodación debe ser grande, visible y fácil de identificar.
+
+---
+
+## CENTRO
+
+Mantener contador grande.
+
+Ejemplo:
+
+[ 3 ]
+
+Debe seguir siendo el elemento principal de la tarjeta.
+
+Representa:
+
+Cantidad de habitaciones.
+
+---
+
+## DERECHA
+
+Mostrar:
+
+3 HAB
+──────
+6 PAX
+
+o
+
+1 HAB
+──────
+4 PAX
+
+La información debe estar alineada verticalmente.
+
+NO utilizar badges.
+
+NO utilizar píldoras.
+
+Debe verse más limpio y profesional.
+
+---
+
+## ESTADO INACTIVO
+
+Si una acomodación tiene:
+
+0 habitaciones
+
+Mostrarla con:
+
+* menor opacidad
+* menos protagonismo visual
+
+Manteniendo legibilidad.
+
+==================================================
+5. REFINAR BORDES ACTIVOS
+=========================
+
+Reducir borde activo a:
+
+1px
+
+Color:
+
+#49c6ff
+
+Evitar sensación de resaltado excesivo.
+
+Debe verse elegante.
+
+==================================================
+6. RESUMEN INFERIOR
+===================
+
+Mantener estructura actual.
+
+Mostrar:
+
+Habitaciones: X
+Pasajeros: X/X
+Distribución completa
+Total grupo
+
+Pero mejorar jerarquía visual.
+
+Orden de importancia:
+
+1. Total grupo
+2. Distribución completa
+3. Pasajeros
+4. Habitaciones
+
+==================================================
+7. ANIMACIÓN DE APARICIÓN
+=========================
+
+Cuando se activa el Modo Grupo:
+
+Aplicar animación suave.
+
+Duración:
+
+250ms a 350ms
+
+Efecto:
+
+* fade in
+* slide down muy sutil
+
+No utilizar efectos llamativos.
+
+Debe sentirse premium.
+
+==================================================
+8. MANTENER
+===========
+
+NO modificar:
+
+* lógica actual
+* cálculo de habitaciones
+* cálculo de pasajeros
+* distribución automática
+* contador grande
+* resumen inferior
+* cálculos económicos
+
+Solo mejorar presentación visual.
+
+==================================================
+RESULTADO ESPERADO
+==================
+
+Una barra de distribución moderna y profesional donde cada acomodación se vea así:
+
+[🛏 SGL]     [ 1 ]     1 HAB
+1 PAX
+
+[🛏 DBL]     [ 2 ]     2 HAB
+4 PAX
+
+[🛏 TPL]     [ 1 ]     1 HAB
+3 PAX
+
+Con mejor lectura visual, menos ruido gráfico y una apariencia consistente con el resto del cotizador RGE Style Travel.

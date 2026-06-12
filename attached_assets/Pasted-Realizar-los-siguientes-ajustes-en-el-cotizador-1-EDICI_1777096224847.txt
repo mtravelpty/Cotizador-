@@ -1,0 +1,108 @@
+Realizar los siguientes ajustes en el cotizador:
+
+==============================
+1. EDICIÓN MANUAL DE TARIFA (TOURS Y TRASLADOS)
+==============================
+
+En las cards/modales de "Tour" y "Traslado":
+
+- El campo "Total por persona ($ p/p)" debe ser EDITABLE manualmente.
+- Debe comportarse así:
+
+  - Por defecto: se autocompleta según el tarifario
+  - El usuario puede modificar el valor manualmente
+  - Si el usuario edita:
+    - ese valor sobrescribe la tarifa automática
+    - NO debe volver a cambiar aunque cambie el rango
+
+- UI:
+  - input tipo number
+  - con formato moneda
+  - visualmente destacado (es un campo importante)
+
+==============================
+2. FIX VISUAL – CAMPO RANGO
+==============================
+
+- El selector de "Rango" actualmente no se ve (texto blanco).
+- Corregir estilos:
+
+  - texto: color oscuro (#1f2937)
+  - fondo: claro (#ffffff o gris suave)
+  - placeholder visible
+  - estado disabled claramente distinguible (gris)
+
+==============================
+3. FORMATO PDF – ESTRUCTURA POR BLOQUES
+==============================
+
+Reestructurar completamente el PDF de cotización:
+
+ORDEN:
+
+1. ALOJAMIENTO
+2. TRASLADOS
+3. TOURS
+4. ITINERARIO (si aplica)
+
+---
+
+### 🔹 ALOJAMIENTO
+- Mantener tabla actual
+
+---
+
+### 🔹 TRASLADOS
+- Mostrar:
+  - Descripción (SIN código)
+  - Fecha (si aplica)
+  - Tarifa p/p o total según modo
+
+❌ NO mostrar códigos tipo "RGE-001"
+
+---
+
+### 🔹 TOURS
+- Igual que traslados:
+
+  - Descripción limpia
+  - Fecha (si aplica)
+  - Tarifa
+
+❌ NO mostrar códigos
+
+---
+
+### 🔹 IMPORTANTE
+- Separar visualmente cada bloque con:
+  - título claro
+  - spacing consistente
+  - línea divisoria o padding
+
+==============================
+4. ITINERARIO – AJUSTE
+==============================
+
+- Eliminar completamente la columna "Hotel" del itinerario.
+
+Debe quedar solo:
+
+- Día
+- Fecha
+- Actividad
+
+---
+
+==============================
+5. REGLAS GENERALES
+==============================
+
+- Mantener consistencia visual con el diseño actual
+- No romper lógica existente
+- Aplicar cambios tanto en:
+  - Vista previa
+  - PDF exportado
+
+- Respetar modo:
+  - SOLO TARIFAS → sin totales
+  - CALCULAR → con totales

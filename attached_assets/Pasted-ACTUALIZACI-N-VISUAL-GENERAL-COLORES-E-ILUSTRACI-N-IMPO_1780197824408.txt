@@ -1,0 +1,225 @@
+ACTUALIZACIÓN VISUAL GENERAL — COLORES E ILUSTRACIÓN
+
+IMPORTANTE:
+No modificar lógica, cálculos, PDF, correo, WhatsApp, CRM, seguimiento, plantillas, tarifas ni respaldos.
+Solo aplicar cambios visuales generales.
+
+==================================================
+
+1. PALETA DE COLORES EXACTA
+   ==================================================
+
+Aplicar estos colores exactos en toda la aplicación:
+
+Barra lateral:
+#041941
+
+Barra de alojamiento:
+#002682
+
+Botones internos de la barra de alojamiento:
+#0a7eed
+
+Iconos de la barra de alojamiento:
+#eec774
+
+Vista previa:
+#041433
+
+WhatsApp:
+#03a04e
+
+Correo:
+#044b9e
+
+PDF:
+#e6ae33
+
+Toggle activo:
+#e6ae33
+
+==================================================
+2. BARRA LATERAL
+================
+
+Aplicar color de fondo:
+
+#041941
+
+Mantener contraste alto en:
+
+* logo
+* textos
+* navegación
+* configuración
+* usuario/agente
+
+Los estados activos deben verse modernos y consistentes con la nueva paleta.
+
+==================================================
+3. BARRA DE ALOJAMIENTO
+=======================
+
+Aplicar fondo:
+
+#002682
+
+Los botones/chips dentro de la barra deben usar:
+
+#0a7eed
+
+Aplicar a:
+
+* noches
+* pasajeros
+* niños
+* SGL
+* DBL
+* TPL
+* CHD
+
+==================================================
+4. ICONOS EN BARRA DE ALOJAMIENTO
+=================================
+
+Agregar iconos únicamente dentro de la barra de alojamiento para:
+
+* Noches
+* Pasajeros
+* Niños
+
+Los iconos deben ser:
+
+* lineales
+* modernos
+* no infantiles
+* estilo outline / Lucide
+* color exacto: #eec774
+
+No agregar estos iconos en otras secciones.
+
+==================================================
+5. BOTONES DE ACCIONES
+======================
+
+Aplicar colores exactos:
+
+Vista previa:
+#041433
+
+Copiar WhatsApp:
+#03a04e
+
+Copiar correo:
+#044b9e
+
+Descargar PDF:
+#e6ae33
+
+Mantener texto blanco y buen contraste.
+
+==================================================
+6. TOGGLES
+==========
+
+Cuando un toggle esté activo, usar:
+
+#e6ae33
+
+Aplicar a:
+
+* Incluir horarios
+* Incluir itinerario
+* Incluir descriptivo
+
+==================================================
+7. CINTA / HEADER DEL TÍTULO COTIZADOR
+======================================
+
+Agregar una cinta superior para el título del cotizador.
+
+Color:
+#00247e
+
+Debe:
+
+* no estar pegada a los bordes
+* tener bordes redondeados
+* tener padding cómodo
+* verse como una tarjeta horizontal premium
+* mantener el texto “Cotizador”
+
+No ocupar demasiado alto.
+
+==================================================
+8. ILUSTRACIÓN EN SERVICIOS SELECCIONADOS
+=========================================
+
+Cuando no haya servicios agregados, reemplazar el estado vacío actual por una ilustración moderna estilo viaje.
+
+Debe incluir visualmente:
+
+* maleta
+* palmera
+* señal turística
+* estilo limpio
+* colores suaves acordes a la paleta azul/dorado
+
+Texto debajo:
+“Aún no has agregado servicios”
+
+Subtexto:
+“Usa el buscador para encontrar hoteles, traslados o tours.”
+
+La ilustración debe verse profesional, no infantil.
+
+==================================================
+9. FONDO GENERAL
+================
+
+Aclarar el fondo general de la aplicación con un tono azul grisáceo claro, manteniendo la barra lateral oscura.
+
+Objetivo:
+
+* menos fatiga visual
+* más luminosidad
+* más contraste con tarjetas blancas
+* estética SaaS moderna
+
+No cambiar el color de la barra lateral.
+
+==================================================
+10. CONSISTENCIA
+================
+
+Aplicar la nueva paleta de forma coherente en:
+
+* botones
+* estados activos
+* chips
+* toggles
+* tarjetas
+* bordes
+* iconos
+
+Mantener el diseño limpio, profesional y corporativo.
+
+==================================================
+NO ROMPER
+=========
+
+No modificar:
+
+* Tarifas
+* Cálculos
+* PDF
+* Correo
+* WhatsApp
+* CRM
+* Seguimiento
+* Plantillas
+* Descriptivos
+* Respaldos
+* Importación/exportación
+
+Solo aplicar cambios visuales con la paleta indicada.

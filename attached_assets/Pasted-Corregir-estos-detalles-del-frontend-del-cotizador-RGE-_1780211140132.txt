@@ -1,0 +1,108 @@
+Corregir estos detalles del frontend del cotizador RGE Style Travel:
+
+1. BARRA DE ALOJAMIENTO
+
+Problema:
+Los números de NOCHES, PASAJEROS y NIÑOS quedan mal ubicados y visualmente desalineados dentro de las cápsulas.
+
+Solución:
+Reestructurar internamente cada cápsula con flex estable.
+
+Cada cápsula debe usar esta estructura:
+
+[icono] [texto] [número]
+
+Ejemplo:
+🌙 NOCHES 1
+👥 PASAJEROS 2
+👶 NIÑOS 0
+
+CSS recomendado para cada cápsula:
+
+.counter-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 16px;
+  min-width: 150px;
+  white-space: nowrap;
+}
+
+.counter-pill .label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.counter-pill .value {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  min-width: 16px;
+  text-align: center;
+}
+
+Importante:
+- El número debe quedar centrado verticalmente.
+- El número no debe subirse ni bajarse.
+- No usar position absolute para los números.
+- No usar line-height diferente que rompa la alineación.
+- No usar columnas internas.
+- Mantener una sola línea horizontal.
+- Mantener “PASAJEROS”, no “PAX”.
+
+2. QUITAR BADGES NUMÉRICOS DEL SIDEBAR
+
+Actualmente al guardar una cotización o crear una plantilla aparecen numeritos en el menú lateral, por ejemplo:
+- Seguimiento 1
+- Plantillas 1
+
+Eliminar completamente esa función visual.
+
+Cambios:
+- No mostrar badges, contadores, burbujas ni números en ningún ítem del sidebar.
+- Aplica para:
+  Cotizador
+  Seguimiento
+  Plantillas
+  Descriptivos
+  Tarifas
+  Respaldos
+- No reservar espacio para esos badges.
+- No alterar la lógica interna si se usa para estadísticas, solo ocultar o eliminar la visualización en el sidebar.
+
+3. BOTÓN “GENERAL” / TARIFARIO GENERAL
+
+El botón “General” representa el tarifario general y debe distinguirse mejor.
+
+Cambiar el texto visible de:
+General
+
+a:
+Tarifario general
+
+Estilo:
+- Fondo blanco.
+- Borde azul #004fbb.
+- Texto #004fbb.
+- Ícono/flecha #004fbb.
+- Border-radius consistente.
+- Sombra suave azul.
+
+Cuando esté activo:
+- Fondo #004fbb.
+- Texto blanco.
+- Flecha blanca.
+- Borde #004fbb.
+
+Cuando no esté activo:
+- Fondo blanco.
+- Texto #004fbb.
+- Borde #004fbb.
+
+Importante:
+- No cambiar funcionalidad del filtro.
+- Solo cambiar texto y estilo visual.

@@ -1,0 +1,238 @@
+Necesito hacer una mejora completa en la estructura visual y lógica de las tablas de la propuesta cuando el modo seleccionado sea “Con totales”.
+
+========================================
+OBJETIVO
+========
+
+La propuesta debe verse:
+
+* limpia
+* corporativa
+* premium
+* perfectamente alineada
+* profesional tipo agencia de viajes
+
+Todas las tablas deben mantener:
+
+* mismas proporciones
+* misma alineación
+* misma altura de filas
+* misma posición de columnas
+* misma ubicación de TOTAL
+
+========================================
+ALINEACIÓN GENERAL
+==================
+
+La columna:
+TOTAL
+
+debe mantenerse SIEMPRE alineada al extremo derecho en:
+
+* alojamiento
+* traslados
+* tours
+* vuelos
+* cualquier servicio futuro
+
+La posición visual debe ser idéntica en todas las tablas.
+
+========================================
+ALOJAMIENTO
+===========
+
+La tabla de alojamiento debe mantener:
+
+HOTEL | CATEGORÍA | TIPO HAB. | NOCHES | DBL | TPL | TOTAL
+
+NO agregar:
+
+* Regular
+* Privado
+
+Eso NO aplica para hotelería.
+
+========================================
+DETALLES HOTEL
+==============
+
+Debajo del nombre del hotel mostrar:
+
+1. UBICACIÓN
+   Ejemplo:
+   CIUDAD DE PANAMÁ
+
+2. RÉGIMEN
+   Ejemplos:
+
+* Desayuno incluido
+* Alimentación completa
+* Todo incluido
+* Solo alojamiento
+
+========================================
+FORMATO VISUAL HOTEL
+====================
+
+Ejemplo esperado:
+
+MARINN PLACE Financial District
+CIUDAD DE PANAMÁ
+Desayuno incluido
+
+========================================
+TOTALES EN ALOJAMIENTO
+======================
+
+La columna TOTAL debe calcular:
+
+(Tarifa por noche) × (cantidad de noches)
+
+Ejemplo:
+
+DBL = $42
+Noches = 2
+
+TOTAL = $84
+
+Mantener lógica actual de acomodaciones.
+
+========================================
+TRASLADOS
+=========
+
+Agregar columna:
+MODALIDAD
+
+La tabla debe quedar:
+
+DESCRIPCIÓN | MODALIDAD | TARIFA P/P | PAX | TOTAL
+
+Ejemplo:
+
+Aeropuerto → Hotel → Aeropuerto
+Regular
+$24
+2
+$48
+
+========================================
+TOURS Y EXPERIENCIAS
+====================
+
+Agregar columna:
+MODALIDAD
+
+La tabla debe quedar:
+
+DESCRIPCIÓN | MODALIDAD | TARIFA P/P | PAX | TOTAL
+
+Ejemplo:
+
+City Tour & Canal
+Regular
+$30
+2
+$60
+
+========================================
+VUELOS
+======
+
+Los vuelos también deben usar:
+
+DESCRIPCIÓN | MODALIDAD | TARIFA P/P | PAX | TOTAL
+
+========================================
+CÁLCULO DE TOTALES
+==================
+
+Traslados / tours / vuelos:
+(Tarifa por persona) × (cantidad de pasajeros)
+
+========================================
+RESUMEN DE COSTOS
+=================
+
+Mantener la sección:
+RESUMEN DE COSTOS
+
+Pero mejorar:
+
+* alineación
+* subtotales
+* espaciado
+* jerarquía visual
+
+Mostrar:
+
+* subtotal alojamiento
+* subtotal tours
+* subtotal traslados
+* subtotal vuelos
+* total general
+
+========================================
+FORMATO MONETARIO
+=================
+
+Usar:
+$135
+
+NO:
+USD 135.00
+
+========================================
+DISEÑO
+======
+
+Mantener:
+
+* pills azules
+* estilo minimalista
+* tablas elegantes
+* espacios amplios
+* diseño actual premium
+
+Mejorar:
+
+* consistencia visual
+* lectura rápida
+* alineación
+* jerarquía de información
+
+========================================
+REGLAS IMPORTANTES
+==================
+
+1. SOLO aplicar cuando el modo sea:
+   “Con totales”
+
+2. En:
+   “Solo tarifas”
+   NO mostrar columna TOTAL.
+
+3. Mantener compatibilidad con:
+
+* PDF
+* correo
+* WhatsApp
+* descriptivos
+* plantillas
+* seguimiento
+
+4. NO romper lógica actual.
+
+5. Mantener comportamiento responsive.
+
+========================================
+UX IMPORTANTE
+=============
+
+La propuesta debe sentirse como:
+
+* propuesta comercial premium
+* documento corporativo elegante
+* cotización profesional de agencia
+
+NO como tablas técnicas desalineadas.

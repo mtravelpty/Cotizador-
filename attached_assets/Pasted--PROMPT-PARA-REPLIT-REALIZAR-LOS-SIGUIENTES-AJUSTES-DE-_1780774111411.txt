@@ -1,0 +1,193 @@
+**PROMPT PARA REPLIT**
+
+REALIZAR LOS SIGUIENTES AJUSTES DE UI/UX. NO MODIFICAR LÓGICA, SOLO DISEÑO Y DISTRIBUCIÓN VISUAL.
+
+---
+
+# 1. AMPLIAR PANEL DERECHO
+
+Actualmente el panel:
+
+**Configuración de cotización**
+**Acciones**
+
+se siente comprimido.
+
+Aumentar el ancho del panel derecho aproximadamente entre 10% y 15%.
+
+Reducir ligeramente el ancho de la columna central para compensar.
+
+Objetivo:
+
+* Más espacio para botones.
+* Mejor lectura.
+* Menos sensación de elementos apretados.
+
+---
+
+# 2. ESTIRAR BARRA AZUL DE DISTRIBUCIÓN
+
+La barra de:
+
+**Distribución del grupo**
+
+debe aprovechar mejor el ancho disponible.
+
+Ajustar layout para que:
+
+* llegue más cerca del borde izquierdo
+* llegue más cerca del borde derecho
+* se vea más integrada al ancho del contenido
+
+Mantener altura actual.
+
+---
+
+# 3. ESTIRAR PANEL DE ACCIONES
+
+El módulo:
+
+**Acciones**
+
+también debe utilizar el nuevo ancho disponible.
+
+Objetivo:
+
+* botones más amplios
+* menos espacio desperdiciado
+* alineación visual con Configuración de cotización
+
+---
+
+# 4. ELIMINAR TEXTO DE PERSONALIZAR TRASLADOS
+
+Actualmente aparece:
+
+"Reemplaza nombres genéricos con el hotel cotizado"
+
+Eliminar completamente ese texto.
+
+Mantener únicamente:
+
+🚌 Personalizar traslados
+
+* toggle
+
+Nada más.
+
+La tarjeta debe reducir automáticamente su altura.
+
+---
+
+# 5. CORREGIR MODAL DE VISTA PREVIA
+
+Actualmente existen DOS botones para cerrar:
+
+❌ superior derecha
+
+❌ inferior derecha
+
+Eliminar completamente:
+
+* botón superior derecho
+
+Mantener solamente:
+
+* botón inferior derecho
+
+---
+
+# 6. ELIMINAR SUBTÍTULO DEL MODAL
+
+Actualmente debajo de:
+
+**Propuesta de Servicios**
+
+aparece:
+
+"Vista previa idéntica al PDF y correo · El itinerario es editable"
+
+Eliminar completamente esa línea.
+
+No reemplazarla por ningún texto.
+
+---
+
+# 7. AGREGAR TÍTULO DINÁMICO SEGÚN FORMATO
+
+En el encabezado del modal de vista previa mostrar claramente el formato generado.
+
+Ubicación:
+
+alineado a la derecha del título principal.
+
+Ejemplos:
+
+Si formato = Tarifario
+
+Mostrar:
+
+TARIFARIO
+
+---
+
+Si formato = Paquete
+
+Mostrar:
+
+PAQUETE
+
+---
+
+Si formato = Grupo
+
+Mostrar:
+
+GRUPO
+
+---
+
+Estilo:
+
+* mayúsculas
+* font-weight 700
+* color #2b4596
+* tamaño ligeramente menor que "Propuesta de Servicios"
+
+Debe verse elegante y profesional.
+
+---
+
+# 8. LIMPIEZA GENERAL DEL HEADER DEL MODAL
+
+El encabezado debe quedar únicamente con:
+
+Izquierda:
+
+**Propuesta de Servicios**
+
+Derecha:
+
+**TARIFARIO**
+o
+**PAQUETE**
+o
+**GRUPO**
+
+Sin subtítulos.
+Sin textos adicionales.
+Sin botón de cierre superior.
+
+Diseño limpio y premium.
+
+---
+
+# RESULTADO ESPERADO
+
+* Panel derecho más amplio y cómodo.
+* Botones mejor distribuidos.
+* Configuración más limpia.
+* Vista previa más profesional.
+* Un solo botón de cierre.
+* Formato de cotización claramente identificado en el encabezado.
+* Menos ruido visual y mejor aprovechamiento del espacio.

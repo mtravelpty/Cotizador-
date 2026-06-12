@@ -1,0 +1,150 @@
+Ajustar formato de cotización en Modo Totales y Modo Tarifas.
+
+OBJETIVO:
+Pulir el diseño del PDF / vista previa para que sea más claro y consistente.
+
+No modificar cálculos.
+No modificar cotizador.
+No modificar servicios seleccionados.
+Solo ajustar presentación visual.
+
+──────────────────────────────
+1. ALOJAMIENTO EN MODO TOTALES
+──────────────────────────────
+
+Problema:
+Actualmente DBL / TPL aparecen como badges dentro del nombre del hotel.
+
+Eliminar esos badges.
+
+Crear una columna independiente para la acomodación.
+
+Nueva estructura de columnas:
+
+Hotel | Categoría | Tipo Hab. | Acom. | Tarifa/Noc | Pax | Noc. | Total
+
+Ejemplo:
+
+Hotel Faranda Express Soloy & Casino
+Incluye desayuno buffet
+
+Categoría: ★★★
+Tipo Hab.: Standard
+Acom.: DBL
+Tarifa/Noc: $33
+Pax: 2
+Noc.: 1
+Total: $66
+
+Si hay TPL, debe aparecer en la columna Acom., no como badge junto al hotel.
+
+──────────────────────────────
+2. TOTALES SEGÚN ACOMODACIÓN
+──────────────────────────────
+
+Cambiar encabezado del bloque final.
+
+Actualmente dice:
+DETALLE DE COTIZACIÓN
+
+Cambiar a:
+TOTALES SEGÚN ACOMODACIÓN
+
+Dentro del bloque mostrar:
+
+DBL     $214
+TPL     $208
+
+No repetir:
+“DETALLE DE COTIZACIÓN · DBL”
+
+Debe verse más limpio.
+
+Formato recomendado:
+
+TOTALES SEGÚN ACOMODACIÓN
+
+DBL                                      $214
+TPL                                      $208
+
+Mantener diseño elegante con borde azul y fondo azul claro.
+
+──────────────────────────────
+3. UBICACIÓN DE OBSERVACIONES
+──────────────────────────────
+
+Mover la sección OBSERVACIONES para que aparezca debajo de:
+
+TOTALES SEGÚN ACOMODACIÓN
+
+Es decir, el orden final debe ser:
+
+1. Alojamiento
+2. Traslados
+3. Tours
+4. Vuelos
+5. Totales según acomodación
+6. Observaciones
+7. Itinerario, si aplica
+8. Descriptivos, si aplica
+
+──────────────────────────────
+4. COLORES POR SECCIÓN
+──────────────────────────────
+
+Aplicar estos mismos colores tanto en Modo Totales como en Modo Tarifas.
+
+Alojamiento / Hotelería:
+#363765
+
+Traslados:
+#2F3D90
+
+Tours:
+#2557A2
+
+Vuelos:
+#1780C0
+
+Observaciones:
+#EF7B15
+
+Itinerario:
+#F7CB17
+Usar texto oscuro si el fondo es amarillo.
+
+Descriptivos:
+#2B4596
+
+──────────────────────────────
+5. MODO TARIFAS
+──────────────────────────────
+
+El modo Tarifas debe conservar su lógica actual, pero usar los mismos colores por sección.
+
+No cambiar estructura del modo Tarifas.
+
+Solo cambiar:
+- Color de encabezados de sección.
+- Consistencia visual con modo Totales.
+
+Ejemplo:
+Alojamiento debe usar #363765.
+Traslados debe usar #2F3D90.
+Tours debe usar #2557A2.
+Vuelos debe usar #1780C0.
+Observaciones debe usar #EF7B15.
+
+──────────────────────────────
+6. VALIDACIÓN
+──────────────────────────────
+
+Confirmar:
+
+✓ DBL/TPL ya no aparecen como badges junto al hotel.
+✓ DBL/TPL aparecen en columna Acom.
+✓ Bloque final dice “TOTALES SEGÚN ACOMODACIÓN”.
+✓ Observaciones aparecen debajo de los totales.
+✓ Modo Tarifas usa los mismos colores por sección.
+✓ Cálculos no cambian.
+✓ PDF y vista previa se ven iguales.

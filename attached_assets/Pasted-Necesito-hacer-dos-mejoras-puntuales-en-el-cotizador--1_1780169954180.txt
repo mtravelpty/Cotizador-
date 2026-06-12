@@ -1,0 +1,118 @@
+Necesito hacer dos mejoras puntuales en el cotizador:
+
+========================================
+
+1. BOTÓN “PLANTILLA” EN SERVICIOS SELECCIONADOS
+   ========================================
+
+En la sección “Servicios seleccionados”, agregar un nuevo botón al lado del botón actual “+ Ítem personalizado”.
+
+Nuevo botón:
+“Plantilla”
+
+Ubicación:
+
+* En el header de “Servicios seleccionados”
+* A la izquierda o junto al botón “+ Ítem personalizado”
+* Mismo estilo visual premium, pero diferenciado ligeramente
+
+Comportamiento:
+
+* Al hacer clic en “Plantilla”, desplegar un menú/modal con las plantillas de cotización ya creadas previamente.
+* Mostrar nombre de la plantilla.
+* Si es posible, mostrar resumen breve:
+
+  * cantidad de hoteles
+  * cantidad de tours
+  * cantidad de traslados
+
+Al seleccionar una plantilla:
+
+* cargar automáticamente todos los servicios que contiene:
+
+  * alojamientos
+  * tours
+  * traslados
+  * vuelos
+  * textos / notas si aplica
+  * observaciones si aplica
+* respetar el orden original de la plantilla
+* recalcular precios con el tarifario actual
+* mantener edición normal después de cargarla
+
+IMPORTANTE:
+
+* No duplicar servicios si la misma plantilla se carga dos veces sin confirmar.
+* Mostrar confirmación si ya hay servicios cargados:
+  “Esta acción agregará los servicios de la plantilla a la cotización actual. ¿Continuar?”
+* No romper el botón “Ítem personalizado”.
+* No romper plantillas existentes.
+
+========================================
+2. AJUSTES VISUALES EN FORMATO DE COTIZACIÓN
+============================================
+
+En la vista previa, PDF, correo y WhatsApp si corresponde, ajustar la tabla de alojamiento agrupada por ubicación.
+
+Objetivo:
+
+* hacer la tabla más compacta
+* reducir altura innecesaria
+* mantener lectura profesional
+
+Cambios:
+
+A. FILA DE UBICACIÓN
+
+* La fila donde aparece la ubicación, por ejemplo:
+  “CIUDAD DE PANAMÁ”
+  “BOCAS DEL TORO”
+  debe ser más angosta/compacta.
+* Reducir padding vertical.
+* Reducir altura de fila.
+* Mantener fondo suave actual.
+* No usar iconos.
+
+B. FILAS DE HOTEL
+
+* Reducir un poco el padding vertical de cada fila de hotel.
+* Que la tabla se vea más compacta sin perder legibilidad.
+* Mantener alineación correcta de columnas.
+
+C. OBSERVACIONES / RÉGIMEN DEL HOTEL
+
+* El texto debajo del hotel, por ejemplo:
+  “Incluye desayuno buffet”
+  “Incluye desayuno continental”
+  “Americano”
+  debe mostrarse en negrita.
+* Mantener color elegante actual.
+* No hacerlo demasiado grande.
+
+Ejemplo:
+
+The Executive
+Incluye desayuno buffet
+
+La línea “Incluye desayuno buffet” debe ir en negrita.
+
+========================================
+NO ROMPER
+=========
+
+No romper:
+
+* PDF
+* correo
+* WhatsApp
+* modo Tarifas
+* modo Totales
+* plantillas
+* descriptivos
+* observaciones generales
+* seguimiento
+* duplicar cotización
+* ítem personalizado
+
+Objetivo final:
+hacer más rápido el uso de plantillas desde “Servicios seleccionados” y pulir visualmente la cotización para que se vea más compacta y profesional.

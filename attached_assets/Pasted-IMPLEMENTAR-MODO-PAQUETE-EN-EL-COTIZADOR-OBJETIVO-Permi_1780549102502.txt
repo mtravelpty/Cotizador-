@@ -1,0 +1,209 @@
+IMPLEMENTAR MODO PAQUETE EN EL COTIZADOR
+
+OBJETIVO
+
+Permitir generar cotizaciones tipo "Paquete" donde el cliente vea únicamente los servicios incluidos y el valor final del paquete, sin exponer precios individuales de hoteles, traslados, tours o vuelos.
+
+==================================================
+1. NUEVA CONFIGURACIÓN
+==================================================
+
+Agregar dentro de "Configuración de cotización":
+
+PRESENTACIÓN
+
+○ Detallada
+○ Paquete
+
+Valor por defecto:
+Detallada
+
+No eliminar los modos existentes:
+- Tarifas
+- Totales
+
+La presentación debe ser independiente del modo de cálculo.
+
+==================================================
+2. COMPORTAMIENTO DEL MODO PAQUETE
+==================================================
+
+Cuando se active:
+
+✓ El sistema sigue calculando internamente todos los precios.
+✓ El agente sigue viendo todos los costos dentro del cotizador.
+✓ La vista previa cambia.
+✓ El PDF cambia.
+✓ El correo HTML cambia.
+✓ WhatsApp cambia.
+
+==================================================
+3. VISTA PREVIA
+==================================================
+
+Ocultar:
+
+- Tarifas por noche
+- Tarifas por persona
+- Subtotales
+- Totales por servicio
+- Códigos RGE
+- Desglose de costos
+
+Mostrar únicamente:
+
+ALOJAMIENTO
+
+Hotel Faranda Express Soloy & Casino
+1 noche
+Desayuno incluido
+
+TRASLADOS
+
+Aeropuerto → Hotel → Aeropuerto
+Incluido
+
+TOURS Y EXPERIENCIAS
+
+City Tour & Canal
+Incluido
+
+VUELOS
+
+Panamá → Bocas del Toro → Panamá
+Incluido
+
+==================================================
+4. BLOQUE DE INCLUSIONES
+==================================================
+
+Antes de los servicios agregar:
+
+EL PAQUETE INCLUYE
+
+✓ Alojamiento
+✓ Desayuno
+✓ Traslados
+✓ Tours seleccionados
+✓ Vuelos (si aplica)
+✓ Entradas (si aplica)
+
+Generar automáticamente según los servicios agregados.
+
+==================================================
+5. PRECIO FINAL
+==================================================
+
+Al final mostrar un bloque destacado:
+
+VALOR DEL PAQUETE
+
+USD 599 POR PERSONA
+
+o
+
+TOTAL PAQUETE
+
+USD 5,990
+
+según el modo de cálculo activo.
+
+Diseño:
+
+- Fondo azul #041941
+- Texto blanco
+- Precio destacado en color #e6ae33
+- Bordes redondeados
+
+==================================================
+6. MODO MIXTO FUTURO
+==================================================
+
+Preparar la estructura para futuras ampliaciones.
+
+Crear propiedad:
+
+presentationMode
+
+Valores:
+
+- detailed
+- package
+
+No crear lógica hardcodeada.
+
+==================================================
+7. PDF
+==================================================
+
+Cuando presentationMode = package
+
+Cambiar el título principal:
+
+PAQUETE DE SERVICIOS
+
+o
+
+PAQUETE TURÍSTICO
+
+Ocultar:
+
+- Tarifas individuales
+- Subtotales
+- Totales internos
+
+Mostrar:
+
+- Servicios incluidos
+- Itinerario
+- Descriptivos
+- Observaciones
+- Precio final del paquete
+
+==================================================
+8. CORREO HTML
+==================================================
+
+Aplicar exactamente la misma lógica.
+
+Compatible con Outlook Desktop.
+
+Usar tablas HTML.
+
+No usar layouts complejos.
+
+==================================================
+9. WHATSAPP
+==================================================
+
+Generar formato resumido:
+
+PAQUETE TURÍSTICO
+
+Incluye:
+
+✓ Hotel
+✓ Traslados
+✓ Tours
+✓ Desayuno
+
+Valor del paquete:
+
+USD 599 por persona
+
+Vigencia:
+xx/xx/xxxx
+
+==================================================
+10. IMPORTANTE
+==================================================
+
+No modificar la lógica de cálculo existente.
+
+No afectar:
+- Tarifas
+- Totales
+- Seguimiento
+- Plantillas
+
+El modo Paquete solo cambia la forma de presentar la cotización al cliente.

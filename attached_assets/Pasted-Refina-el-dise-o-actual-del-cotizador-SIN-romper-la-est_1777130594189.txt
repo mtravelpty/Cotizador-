@@ -1,0 +1,126 @@
+Refina el diseño actual del cotizador SIN romper la estructura existente. Solo aplicar mejoras visuales y de UX.
+
+========================
+1. BLOQUE SUPERIOR
+========================
+
+- Reemplazar el campo “Notas internas” por:
+  → “Vigencia de la cotización”
+
+- Debe ser un input normal con placeholder:
+  "Ej: Válido hasta 30/09/2026"
+
+- Mantener alineación en el grid (3 columnas)
+
+========================
+2. BARRA DE ALOJAMIENTO
+========================
+
+- Cambiar el color de fondo de la barra a:
+  → #eb7309
+
+- Mantener texto blanco
+
+- Botones SGL, DBL, TPL, CHD:
+  ✔ Activo → fondo blanco, texto #eb7309
+  ✔ Inactivo → fondo blanco con opacidad (20%), texto blanco
+
+------------------------
+MEJORA IMPORTANTE (UX):
+------------------------
+
+Los bloques actuales de:
+- Noches
+- Pasajeros
+- Niños
+
+NO deben parecer botones.
+
+Cambiar a diseño tipo “badge informativo”:
+
+✔ Fondo blanco con leve transparencia
+✔ Sin sombra fuerte
+✔ Sin efecto hover de botón
+✔ Texto en mayúscula pequeño
+✔ Número destacado
+
+Ejemplo visual:
+
+[ NOCHES  1 ]   [ PASAJEROS  2 ]   [ NIÑOS  0 ]
+
+Estilo:
+- rounded-full
+- px-4 py-2
+- bg-white/20
+- texto blanco
+- número en font-semibold
+
+NO deben ser clickeables.
+
+========================
+3. BUSCADOR DE SERVICIOS
+========================
+
+Rediseñar el bloque completo para parecer un selector moderno tipo “command palette / autocomplete”.
+
+------------------------
+INPUT:
+------------------------
+
+- Input con icono 🔍 a la izquierda
+- Borde destacado (focus: color #eb7309)
+- Placeholder: "Buscar servicio..."
+
+------------------------
+RESULTADOS:
+------------------------
+
+Cada resultado debe ser una fila clickable con:
+
+IZQUIERDA:
+- Icono según categoría (hotel, tour, traslado)
+- Nombre del servicio
+- Código + vigencia en texto pequeño
+
+DERECHA:
+- Estrellas (si es hotel)
+- Tarifas (ej: DBL: $37/pax · SGL: $68/pax)
+
+------------------------
+COMPORTAMIENTO:
+------------------------
+
+✔ Mientras el usuario escribe → filtrar en tiempo real
+✔ Resaltar coincidencias en el nombre (ej: "Th" en negrita)
+✔ Hover → fondo suave (#f9fafb)
+✔ Click → agrega el servicio
+
+------------------------
+ESTILO TARJETA RESULTADOS:
+------------------------
+
+- Bordes redondeados (rounded-xl)
+- Separación entre items
+- Hover suave
+- Padding cómodo (p-3 / p-4)
+
+------------------------
+EXTRA UX:
+------------------------
+
+Si no hay resultados:
+→ Mostrar mensaje:
+"No se encontraron servicios"
+
+========================
+4. REGLAS GENERALES
+========================
+
+- Mantener TailwindCSS
+- NO cambiar lógica existente
+- NO romper estados ni handlers
+- Solo mejorar UI/UX
+- Mantener consistencia visual tipo iOS / SaaS moderno
+
+Objetivo:
+Que el cotizador se vea más limpio, profesional y fácil de usar, especialmente en el buscador y barra de alojamiento.

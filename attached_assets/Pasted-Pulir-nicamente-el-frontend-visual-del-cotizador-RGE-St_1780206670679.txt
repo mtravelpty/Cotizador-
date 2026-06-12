@@ -1,0 +1,73 @@
+Pulir únicamente el frontend visual del cotizador RGE Style Travel con estos ajustes:
+
+1. BARRA DE ALOJAMIENTO
+La barra actual tiene los elementos demasiado dispersos. Ajustarla para que los contadores y botones ocupen casi todo el ancho de la barra.
+
+Cambios:
+- Mantener la barra debajo de Datos del cliente.
+- Mantener el degradado azul actual.
+- Reducir espacios vacíos internos.
+- Los grupos deben distribuirse mejor a lo largo de toda la barra.
+- La estructura debe ser:
+  [NOCHES 1] [PASAJEROS 2] [NIÑOS 0] | [SGL] [DBL] [TPL] [CHD]
+- El grupo de NOCHES/PASAJEROS/NIÑOS debe ocupar aproximadamente 45% del ancho.
+- El grupo SGL/DBL/TPL/CHD debe ocupar aproximadamente 40% del ancho.
+- El separador vertical debe quedar centrado entre ambos grupos.
+- Usar:
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+- Evitar que los botones queden amontonados al extremo derecho.
+- Evitar grandes espacios vacíos en el centro.
+- Mantener cápsulas horizontales, no verticales.
+
+2. TAMAÑO DE TÍTULOS DE TARJETAS
+Unificar el tamaño de letra de estos títulos:
+- Datos del cliente
+- Servicios seleccionados
+- Acciones
+- Configuración de cotización
+
+Todos deben tener el mismo tamaño que “Servicios seleccionados”.
+
+Aplicar:
+- font-size: 20px;
+- font-weight: 700;
+- color: #07152f;
+- line-height consistente.
+
+3. BOTÓN ÍTEM PERSONALIZADO
+Cambiar el color del botón “Ítem personalizado” a:
+
+#004fbb
+
+Aplicar:
+- fondo sólido #004fbb
+- texto blanco
+- ícono blanco
+- hover: #003f96
+- border-radius tipo cápsula
+- sin degradado celeste
+
+4. BOTONES DE AGREGAR
+Aplicar también el color #004fbb a todos los botones principales de agregar, incluyendo:
+- Botón “Agregar” del modal de Ítem personalizado.
+- Botón “Nueva plantilla”.
+- Botón “Crear primera plantilla”.
+- Botón “Nuevo descriptivo”.
+- Botón “Crear descriptivo”.
+
+Estilo:
+- background: #004fbb;
+- color: white;
+- iconos blancos;
+- hover: #003f96;
+- border-radius redondeado consistente;
+- sombra suave.
+
+5. NO CAMBIAR
+- No cambiar funcionalidad.
+- No cambiar estructura.
+- No mover secciones.
+- No cambiar datos ni lógica.
+- Solo estilos visuales, tamaños, colores y distribución.

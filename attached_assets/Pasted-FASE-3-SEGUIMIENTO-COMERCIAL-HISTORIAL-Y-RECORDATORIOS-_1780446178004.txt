@@ -1,0 +1,163 @@
+FASE 3 - SEGUIMIENTO COMERCIAL, HISTORIAL Y RECORDATORIOS SIMPLES
+
+Objetivo:
+Completar el módulo de oportunidades con seguimiento comercial práctico.
+
+No rediseñar todo.
+No tocar cotizador, tarifas, PDF, correo ni WhatsApp.
+Solo trabajar sobre Seguimiento / Oportunidades.
+
+1. PANEL DE DETALLE DE OPORTUNIDAD
+
+Al presionar “Abrir” en una oportunidad, mostrar panel/modal con pestañas:
+
+- Resumen
+- Cotizaciones
+- Seguimiento
+- Historial
+
+2. RESUMEN
+
+Mostrar:
+
+- Nombre de cotización
+- Agencia
+- Agente
+- Counter
+- Destino
+- Pasajeros
+- Acomodación
+- Total más reciente
+- Estado
+- Semáforo
+- Última actualización
+
+3. COTIZACIONES
+
+Mostrar cotizaciones asociadas:
+
+- Código RGE
+- Fecha
+- Total
+- Botón Abrir
+- Botón Duplicar
+
+4. SEGUIMIENTO
+
+Agregar campos simples:
+
+- Próxima acción
+- Fecha de recordatorio
+- Prioridad manual
+- Nota interna
+
+Botones rápidos:
+
+- Marcar atendida
+- Posponer 1 día
+- Posponer 3 días
+- Confirmar venta
+- Marcar perdida
+- Anular
+
+5. RECORDATORIOS
+
+Si existe fecha de recordatorio:
+
+- Mostrar en métricas “Acción hoy”
+- Mostrar en campana de notificaciones
+- Mostrar en “Requieren atención”
+
+Si el recordatorio vence hoy o ya venció:
+- Semáforo mínimo amarillo.
+- Si además tiene más de 6 días sin actualización, rojo.
+
+6. MARCAR ATENDIDA
+
+Al marcar atendida:
+
+- Actualizar lastUpdateAt a fecha actual.
+- Registrar evento en historial.
+- Si estaba rojo o amarillo, recalcular semáforo.
+- Mantener estado actual.
+
+7. POSPONER
+
+Botones:
+
+- Posponer 1 día
+- Posponer 3 días
+
+Al posponer:
+- Actualizar fecha de recordatorio.
+- Registrar evento en historial.
+- No cambiar estado.
+
+8. HISTORIAL
+
+Registrar eventos:
+
+- Oportunidad creada
+- Cotización agregada
+- PDF generado
+- Correo generado
+- Prioridad activada
+- Prioridad quitada
+- Nota agregada
+- Recordatorio creado
+- Recordatorio pospuesto
+- Marcada como atendida
+- Estado cambiado
+- Venta confirmada
+- Marcada como perdida
+- Anulada
+- Restaurada
+
+Mostrar historial en orden descendente.
+
+9. FINALIZADAS Y ANULADAS
+
+Agregar filtros:
+
+- Activas
+- Finalizadas
+- Anuladas
+
+Finalizadas incluye:
+- Confirmadas
+- Perdidas
+
+Anuladas incluye:
+- Anuladas manualmente
+
+No borrar definitivamente.
+
+Permitir restaurar anuladas.
+
+10. CAMPANA
+
+La campana debe mostrar solo alertas importantes:
+
+- Recordatorios de hoy
+- Recordatorios vencidos
+- Oportunidades rojas
+- Vigencias próximas
+
+No mostrar oportunidades verdes.
+
+11. VALIDACIÓN
+
+Confirmar:
+
+- Abrir oportunidad muestra panel.
+- Se ven resumen, cotizaciones, seguimiento e historial.
+- Recordatorios aparecen en campana.
+- Marcar atendida actualiza semáforo.
+- Posponer cambia fecha.
+- Confirmar venta mueve a finalizadas.
+- Marcar perdida mueve a finalizadas.
+- Anular mueve a anuladas.
+- Restaurar funciona.
+- WhatsApp sigue sin guardar ni crear oportunidad.
+- PDF, correo y guardar sí actualizan oportunidad.
+- App carga sin errores.

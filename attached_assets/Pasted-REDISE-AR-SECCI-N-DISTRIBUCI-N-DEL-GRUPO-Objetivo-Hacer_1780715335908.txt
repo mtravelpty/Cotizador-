@@ -1,0 +1,149 @@
+REDISEÑAR SECCIÓN: DISTRIBUCIÓN DEL GRUPO
+
+Objetivo:
+Hacer la sección más compacta, moderna y consistente con el sistema actual.
+
+No tocar:
+- cálculos generales
+- PDF
+- correo
+- seguimiento
+- tarifas base
+
+──────────────────────────────
+1. BARRA DE ACOMODACIÓN
+──────────────────────────────
+
+Mantener la barra superior de acomodaciones con los colores actuales.
+
+Orden correcto:
+
+SGL | DBL | TPL | QDL
+
+Agregar QDL si aún no existe.
+
+Regla QDL:
+- QDL significa cuádruple.
+- QDL usa la misma tarifa que TPL.
+- No mostrar texto “Tarifa TPL” debajo de QDL.
+
+──────────────────────────────
+2. ENCABEZADO DE LA SECCIÓN
+──────────────────────────────
+
+Cambiar el encabezado azul sólido actual por un encabezado limpio tipo card, como en la referencia:
+
+Icono + título + subtítulo.
+
+Título:
+
+DISTRIBUCIÓN DEL GRUPO
+
+Subtítulo:
+
+Configure la distribución de habitaciones para su grupo
+
+No usar cinta azul completa en esta sección.
+
+──────────────────────────────
+3. CONTROLES DE HABITACIONES
+──────────────────────────────
+
+Mostrar las 4 acomodaciones en una sola fila:
+
+SGL | DBL | TPL | QDL
+
+Cada bloque debe mostrar:
+
+- icono pequeño
+- código de acomodación
+- control [-] número [+]
+- total de pasajeros debajo
+
+Ejemplo:
+
+SGL
+[-] 0 [+]
+0 pasajeros
+
+DBL
+[-] 2 [+]
+4 pasajeros
+
+TPL
+[-] 3 [+]
+9 pasajeros
+
+QDL
+[-] 1 [+]
+4 pasajeros
+
+No mostrar descripción debajo como:
+- Sencilla
+- Doble
+- Triple
+- Cuádruple
+- Tarifa TPL
+
+Eso ocupa demasiado espacio.
+
+──────────────────────────────
+4. RESUMEN COMPACTO
+──────────────────────────────
+
+Debajo de las acomodaciones, mostrar solo 2 tarjetas horizontales:
+
+Izquierda:
+TOTAL PASAJEROS
+17
+
+Derecha:
+TOTAL DEL GRUPO
+USD $18,228
+
+Mantener estilo premium:
+- fondo claro
+- bordes suaves
+- sombra sutil
+- texto principal fuerte
+
+──────────────────────────────
+5. ELIMINAR REPETICIONES
+──────────────────────────────
+
+No mostrar nuevamente montos por acomodación en esta sección.
+
+Eliminar líneas tipo:
+
+SGL: USD ...
+DBL: USD ...
+TPL: USD ...
+QDL: USD ...
+
+La sección debe quedar más compacta.
+
+──────────────────────────────
+6. ALTURA
+──────────────────────────────
+
+Reducir el alto total de la sección.
+
+Debe sentirse compacta y no ocupar tanto espacio vertical.
+
+Evitar grandes espacios en blanco.
+
+──────────────────────────────
+7. VALIDACIÓN
+──────────────────────────────
+
+Confirmar:
+
+✓ Orden correcto: SGL, DBL, TPL, QDL.
+✓ QDL existe.
+✓ QDL usa tarifa TPL internamente.
+✓ No aparece texto “Tarifa TPL”.
+✓ No aparecen descripciones debajo de cada acomodación.
+✓ Total pasajeros calcula correctamente.
+✓ Total grupo calcula correctamente.
+✓ Diseño más compacto.
+✓ App carga sin errores.

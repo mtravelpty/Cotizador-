@@ -1,0 +1,169 @@
+Necesito mejorar la presentación de la sección “Resumen de costos” cuando el modo seleccionado sea “Con totales”.
+
+Actualmente solo muestra tarifas unitarias.
+Quiero que calcule y muestre el TOTAL por línea basado en:
+
+* cantidad de noches
+* cantidad de pasajeros
+* tipo de servicio
+
+========================================
+OBJETIVO
+========
+
+La propuesta debe verse mucho más profesional y clara visualmente.
+
+Cada línea debe mostrar:
+
+* tarifa unitaria
+* cantidad aplicada
+* total calculado
+
+========================================
+ALOJAMIENTO
+===========
+
+Agregar una nueva columna al final:
+
+* TOTAL
+
+Cálculo:
+(Tarifa por persona por noche) × (cantidad de noches)
+
+Ejemplo:
+
+DBL = $25
+Noches = 3
+
+TOTAL = $75
+
+Si son múltiples pasajeros:
+usar la lógica actual del sistema según acomodación.
+
+========================================
+FORMATO TABLA
+=============
+
+HOTEL | CATEGORÍA | TIPO HAB. | NOCHES | DBL | TOTAL
+
+Ejemplo visual:
+
+MARINN PLACE Financial District | ★★★★ | Deluxe | 3 | $25 | $75
+
+========================================
+TRASLADOS
+=========
+
+Los traslados deben calcular:
+(Tarifa por persona) × (cantidad de pasajeros)
+
+Ejemplo:
+
+Traslado = $35
+Pasajeros = 2
+
+TOTAL = $70
+
+Agregar columna:
+
+* TOTAL
+
+========================================
+TOURS Y EXPERIENCIAS
+====================
+
+Los tours deben calcular:
+(Tarifa por persona) × (cantidad de pasajeros)
+
+Ejemplo:
+
+City Tour = $30
+Pasajeros = 2
+
+TOTAL = $60
+
+Agregar columna:
+
+* TOTAL
+
+========================================
+VUELOS
+======
+
+Los vuelos también deben calcular:
+(Tarifa por persona) × (cantidad de pasajeros)
+
+Agregar columna:
+
+* TOTAL
+
+========================================
+RESUMEN FINAL
+=============
+
+Mantener la sección:
+“RESUMEN DE COSTOS”
+
+Pero ahora sumar:
+
+* hoteles
+* tours
+* traslados
+* vuelos
+
+Mostrar:
+
+* subtotal por categoría
+* total general
+
+========================================
+FORMATO MONETARIO
+=================
+
+Usar:
+$135
+
+NO:
+USD 135.00
+
+========================================
+REGLAS IMPORTANTES
+==================
+
+1. SOLO aplicar cuando el modo sea:
+   “Con totales”
+
+2. En modo:
+   “Solo tarifas”
+   NO mostrar columna total.
+
+3. Mantener compatibilidad con:
+
+* PDF
+* correo
+* WhatsApp
+* seguimiento
+* plantillas
+* descriptivos
+
+4. Mantener diseño actual:
+
+* limpio
+* premium
+* espaciado uniforme
+* tablas elegantes
+
+5. NO romper lógica actual de acomodaciones.
+
+========================================
+UX IMPORTANTE
+=============
+
+El objetivo es que el cliente:
+
+* entienda rápidamente costos
+* vea subtotales claros
+* perciba una cotización profesional
+
+y que visualmente se sienta tipo:
+“propuesta comercial premium”.

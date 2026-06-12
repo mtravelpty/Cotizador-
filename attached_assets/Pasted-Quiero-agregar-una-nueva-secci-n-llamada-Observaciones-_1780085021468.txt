@@ -1,0 +1,159 @@
+Quiero agregar una nueva sección llamada:
+
+“Observaciones generales”
+
+debajo de:
+“Servicios seleccionados”
+
+La intención es hacer las cotizaciones:
+
+* más profesionales
+* más rápidas de construir
+* más organizadas
+* más operativas para ventas
+
+NO quiero solamente un textarea vacío.
+
+Quiero un sistema híbrido:
+
+1. Observaciones rápidas predeterminadas
+2. Observación manual opcional
+
+Agregar un nuevo card visual premium debajo de:
+“Servicios seleccionados”
+
+Mantener:
+
+* misma estética
+* mismo border radius
+* misma paleta
+* mismo estilo moderno
+
+El bloque debe tener:
+
+---
+
+## TÍTULO
+
+Observaciones generales
+
+Subtexto:
+“Añade condiciones y notas importantes para el cliente”
+
+========================================
+
+1. OBSERVACIONES RÁPIDAS
+   ========================================
+
+Agregar pills / chips seleccionables.
+
+Visual moderno.
+
+Al hacer clic:
+
+* se activan
+* cambian color
+* quedan seleccionadas
+
+ 
+
+☑ Precios netos por persona / por noche en hotelería
+
+☑ Precios sujetos a disponibilidad al momento de solicitar la reserva
+
+☑ Pasajeros viajando solos aplican suplemento de $25 USD
+
+☑ Pasajeros viajando en vuelos nocturnos aplican suplemento adicional por vía
+
+  
+
+Debajo agregar:
+
+Textarea pequeño y elegante.
+
+NO demasiado alto.
+
+Placeholder:
+“Agregar observación personalizada…”
+
+Las observaciones seleccionadas deben aparecer automáticamente en:
+
+* preview
+* PDF
+* correo
+* WhatsApp
+
+Mostrar:
+
+OBSERVACIONES
+
+• Tarifas sujetas a disponibilidad
+• No incluye impuestos hoteleros
+• Traslados en modalidad compartida
+
+• Observación personalizada escrita por el agente
+
+Agregar lógica inteligente.
+
+Según los servicios agregados:
+
+Sugerir automáticamente:
+
+* Tarifas sujetas a disponibilidad
+* Check-in / Check-out
+* No incluye impuestos hoteleros
+
+Sugerir:
+
+* Opera con mínimo de pasajeros
+* Sujeto a clima
+
+Sugerir:
+
+* Servicio en modalidad compartida
+
+Quiero algo:
+
+* moderno
+* limpio
+* premium
+* corporativo
+* fácil de usar rápido
+
+Usar:
+
+* pills modernas
+* hover states
+* transiciones suaves
+
+Guardar correctamente:
+
+* observaciones seleccionadas
+* observación manual
+
+para que no se pierdan:
+
+* al guardar
+* duplicar
+* editar
+* abrir seguimiento
+
+NO romper:
+
+* seguimiento
+* descriptivos
+* totales
+* plantillas
+* PDF
+* correo
+* WhatsApp
+* exportación Excel
+
+Preparar arquitectura para futuro panel administrativo donde:
+
+* pueda crear nuevas observaciones
+* editar observaciones
+* ocultarlas
+* clasificarlas
+
+No hardcodear toda la lógica.

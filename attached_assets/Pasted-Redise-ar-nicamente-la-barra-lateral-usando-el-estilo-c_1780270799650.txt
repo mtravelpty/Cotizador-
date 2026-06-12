@@ -1,0 +1,108 @@
+Rediseñar únicamente la barra lateral usando el estilo claro de la última referencia.
+
+OBJETIVO:
+Cambiar la sidebar actual a una versión más fresca, elegante y ligera, manteniendo la estructura del sistema y sin modificar funcionalidades.
+
+1. SIDEBAR CLARA TIPO GLASS
+
+Aplicar a la barra lateral:
+
+- Fondo claro semi-transparente.
+- Efecto glass suave.
+- Bordes redondeados grandes.
+- Sombra premium muy ligera.
+- Separación del borde de la ventana.
+
+CSS sugerido:
+
+background: rgba(255, 255, 255, 0.88);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px);
+border: 1px solid rgba(255, 255, 255, 0.6);
+box-shadow: 0 12px 40px rgba(4, 25, 65, 0.08);
+border-radius: 24px;
+
+2. COLOR DEL TEXTO
+
+Como la sidebar será clara:
+
+- Texto principal: #07152f
+- Texto secundario: #64748b
+- Iconos: #07152f
+- Sección CONFIGURACIÓN: #64748b
+
+3. LOGO
+
+Mantener logo arriba.
+
+- Centrado.
+- Más visible.
+- No recortar.
+- No deformar.
+- max-width aproximado: 150px.
+
+4. MENÚ ACTIVO
+
+El menú activo debe verse moderno y suave.
+
+Estilo:
+
+background: #edf4ff;
+color: #004fbb;
+border-left: 4px solid #004fbb;
+border-radius: 14px;
+
+Icono activo:
+#004fbb
+
+Texto activo:
+#07152f o #004fbb
+
+No usar fondo azul oscuro en el item activo.
+
+5. HOVER
+
+Al pasar mouse sobre opciones:
+
+background: rgba(0, 79, 187, 0.06);
+color: #004fbb;
+
+Transición suave:
+
+transition: all 0.2s ease;
+
+6. ESPACIADO
+
+Mantener sidebar de 240px.
+
+Separación entre sidebar y contenido:
+24px.
+
+Padding interno:
+18px.
+
+7. NO MODIFICAR
+
+No cambiar:
+- Rutas
+- Funcionalidades
+- Cotizador
+- Seguimiento
+- Tarifas
+- Agencias
+- Respaldos
+- Header superior azul
+- Cards internas
+
+Solo modificar la apariencia de la barra lateral.
+
+8. IMPORTANTE
+
+No agregar perfil de usuario abajo todavía.
+No agregar avatar.
+No agregar cerrar sesión.
+No cambiar el header principal azul.
+No cambiar la estructura del menú.
+
+Resultado esperado:
+Una sidebar clara, flotante, moderna, con efecto glass, similar a una app premium tipo Linear/Notion/Apple, pero conservando la identidad visual de Style Travel.

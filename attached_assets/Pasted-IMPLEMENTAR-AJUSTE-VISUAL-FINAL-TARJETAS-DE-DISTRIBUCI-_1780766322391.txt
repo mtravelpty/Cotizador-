@@ -1,0 +1,210 @@
+IMPLEMENTAR AJUSTE VISUAL FINAL - TARJETAS DE DISTRIBUCIÓN DEL GRUPO
+
+OBJETIVO
+
+Mantener exactamente el diseño actual de las tarjetas de acomodación porque la estructura ya funciona bien, pero refinar la composición visual para que se vea más equilibrada, profesional y premium.
+
+NO modificar lógica.
+
+NO modificar cálculos.
+
+Solo mejorar apariencia.
+
+==================================================
+
+1. MANTENER ESTRUCTURA ACTUAL
+   ==================================================
+
+Mantener:
+
+[ ICONO CAMA ] [ ACOMODACIÓN ] [ CONTADOR ]
+
+Debajo:
+
+HABITACIONES | PASAJEROS
+
+Ejemplo:
+
+🛏 SGL          [ 2 ]
+
+2 HABITACIONES | 2 PASAJEROS
+
+==================================================
+2. ELIMINAR BULLET CENTRAL
+==========================
+
+Actualmente:
+
+2 HABITACIONES • 2 PASAJEROS
+
+Cambiar por:
+
+2 HABITACIONES | 2 PASAJEROS
+
+La línea vertical debe ser:
+
+* más elegante
+* más limpia
+* menos invasiva visualmente
+
+Color:
+
+rgba(255,255,255,0.35)
+
+==================================================
+3. ALINEACIÓN SUPERIOR
+======================
+
+El icono cama, el texto de acomodación y el contador deben compartir la misma línea visual.
+
+Actualmente el icono parece quedar ligeramente separado.
+
+Ajustar para que:
+
+* icono
+* texto
+* contador
+
+queden perfectamente centrados verticalmente.
+
+==================================================
+4. DAR MÁS PROTAGONISMO AL ÁREA SUPERIOR
+========================================
+
+La parte superior de la tarjeta debe ocupar aproximadamente el 70% del espacio visual.
+
+Distribución:
+
+[ ICONO ] [ SGL ]           [ CONTADOR ]
+
+Debe sentirse amplia y dominante.
+
+Evitar espacios muertos.
+
+==================================================
+5. ICONO DE CAMA
+================
+
+Mantener SVG lineal.
+
+Tamaño:
+
+28px
+
+Color:
+
+#FFFFFF
+
+Alineado verticalmente con el texto.
+
+==================================================
+6. TEXTO DE ACOMODACIÓN
+=======================
+
+Ejemplos:
+
+SGL
+DBL
+TPL
+QDL
+
+Aumentar ligeramente tamaño.
+
+Sugerencia:
+
+font-size: 24px
+font-weight: 700
+
+Color blanco.
+
+Debe verse tan importante como el contador.
+
+==================================================
+7. CONTADOR
+===========
+
+Mantener diseño actual.
+
+Pero:
+
+* centrar perfectamente
+* misma altura visual que icono + acomodación
+* ocupar aproximadamente el mismo peso visual
+
+Proporción equilibrada:
+
+[🛏 SGL] ≈ [2]
+
+No debe verse ni muy pequeño ni excesivamente dominante.
+
+==================================================
+8. REDUCIR ESPACIOS VACÍOS
+==========================
+
+Acercar ligeramente:
+
+* icono al texto
+* texto al contador
+
+Sin que se vea apretado.
+
+Objetivo:
+
+que los tres elementos ocupen gran parte del ancho útil de la tarjeta.
+
+Evitar sensación de vacío entre bloques.
+
+==================================================
+9. LÍNEA INFERIOR
+=================
+
+Mantener:
+
+2 HABITACIONES | 2 PASAJEROS
+
+Centrada horizontalmente.
+
+Tipografía:
+
+font-size: 14px
+
+font-weight: 600
+
+Color:
+
+rgba(255,255,255,0.85)
+
+==================================================
+10. TARJETA ACTIVA
+==================
+
+Mantener:
+
+* borde celeste
+* glow suave
+
+Color:
+
+#49c6ff
+
+No utilizar amarillo.
+
+No utilizar sombras exageradas.
+
+==================================================
+RESULTADO ESPERADO
+==================
+
+Cada tarjeta debe verse así:
+
+[🛏 SGL]                     [2]
+
+2 HABITACIONES | 2 PASAJEROS
+
+Con:
+
+* icono y acomodación alineados en una sola línea
+* contador visualmente equilibrado
+* línea inferior compacta y elegante
+* mejor aprovechamiento del espacio horizontal
+* apariencia premium consistente con el resto del cotizador RGE Style Travel.

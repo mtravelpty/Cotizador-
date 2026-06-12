@@ -1,0 +1,162 @@
+MEJORAS - ÍTEM PERSONALIZADO (ALOJAMIENTO) Y SERVICIOS SELECCIONADOS
+
+Implementar las siguientes mejoras sin afectar la lógica actual del cotizador.
+
+━━━━━━━━━━━━━━━━━━━━━━
+1. VALORES POR DEFECTO
+ÍTEM PERSONALIZADO → ALOJAMIENTO
+━━━━━━━━━━━━━━━━━━━━━━
+
+Cuando el usuario cree un nuevo:
+
+Ítem personalizado → Hotelería
+
+precargar automáticamente:
+
+UBICACIÓN:
+Ciudad de Panamá
+
+CATEGORÍA:
+★★★
+
+TIPO DE HABITACIÓN:
+Standard
+
+RÉGIMEN / DESAYUNO:
+Desayuno incluido
+
+Objetivo:
+
+Evitar que el usuario tenga que completar siempre los mismos campos.
+
+━━━━━━━━━━━━━━━━━━━━━━
+2. CATEGORÍA MÁS LIMPIA
+━━━━━━━━━━━━━━━━━━━━━━
+
+Actualmente el selector muestra:
+
+★★★ Tres estrellas
+★★★★ Cuatro estrellas
+★★★★★ Cinco estrellas
+
+Cambiar para mostrar únicamente:
+
+★★★
+★★★★
+★★★★★
+
+Sin texto descriptivo.
+
+Más compacto.
+Más visual.
+Más profesional.
+
+El valor seleccionado también debe mostrarse únicamente con estrellas.
+
+Ejemplo:
+
+★★★
+
+No:
+
+★★★ Tres estrellas
+
+━━━━━━━━━━━━━━━━━━━━━━
+3. NUEVO BOTÓN DUPLICAR
+SERVICIOS SELECCIONADOS
+━━━━━━━━━━━━━━━━━━━━━━
+
+Agregar un nuevo icono de duplicar en todas las tarjetas de:
+
+- Alojamiento
+- Traslados
+- Tours
+- Vuelos
+- Ítems personalizados
+
+Ubicación:
+
+Junto a los iconos existentes del lado derecho.
+
+Orden sugerido:
+
+Duplicar
+Notas/Documento (si aplica)
+Eliminar
+
+━━━━━━━━━━━━━━━━━━━━━━
+4. COMPORTAMIENTO DEL DUPLICADO
+━━━━━━━━━━━━━━━━━━━━━━
+
+Al hacer clic en duplicar:
+
+Crear una copia EXACTA del servicio.
+
+Debe copiar:
+
+- nombre
+- ubicación
+- categoría
+- fechas
+- régimen
+- observaciones
+- notas
+- tarifas
+- horarios
+- entradas
+- configuraciones
+- modificaciones manuales
+- cualquier ajuste realizado por el usuario
+
+La copia debe ser idéntica al servicio original.
+
+━━━━━━━━━━━━━━━━━━━━━━
+5. INDEPENDENCIA DE LOS SERVICIOS
+━━━━━━━━━━━━━━━━━━━━━━
+
+Después de duplicar:
+
+Si modifico el original:
+
+NO modificar la copia.
+
+Si modifico la copia:
+
+NO modificar el original.
+
+Cada servicio debe ser completamente independiente.
+
+Ejemplo:
+
+Hotel A
+↓ duplicar
+
+Hotel A (copia)
+
+Si luego cambio:
+
+Hotel A → 4 estrellas
+
+La copia debe seguir igual.
+
+━━━━━━━━━━━━━━━━━━━━━━
+6. EXPERIENCIA ESPERADA
+━━━━━━━━━━━━━━━━━━━━━━
+
+Caso típico:
+
+Crear hotel personalizado.
+Guardar.
+
+Duplicar.
+
+Obtener una segunda versión idéntica.
+
+Modificar únicamente:
+- tarifa
+- categoría
+- ubicación
+
+Sin tener que volver a llenar todo desde cero.
+
+Esto acelerará muchísimo la creación de variantes y opciones para el cliente.

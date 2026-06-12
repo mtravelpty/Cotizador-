@@ -1,0 +1,137 @@
+Modificar la interfaz para que se parezca a la imagen de referencia enviada, manteniendo el azul actual de Style Travel y corrigiendo errores funcionales.
+
+1. SIDEBAR
+
+Rediseñar la barra lateral con el estilo de la referencia:
+
+- Mantener el color azul oscuro actual.
+- Convertir la sidebar en una tarjeta vertical redondeada.
+- Bordes redondeados grandes, especialmente esquinas superior e inferior.
+- Separarla ligeramente del borde de la ventana.
+- Agregar sombra suave exterior.
+- Agregar leve efecto glass/transparencia sin cambiar el color base.
+- Mantener logo arriba.
+- Mantener menú actual.
+
+
+No cambiar estructura del menú.
+NO agregar usuario/perfil abajo todavía.
+NO crear sección de perfil.
+NO agregar avatar.
+NO agregar cerrar sesión.
+
+2. CORRECCIÓN: COTIZACIÓN GUARDADA DEBE CAER EN “NUEVAS”
+
+Actualmente al guardar una cotización no aparece en la columna “Nuevas”.
+
+Corregir:
+
+Cuando se guarde una cotización nueva desde el cotizador:
+- Crear registro en Seguimiento.
+- Estado inicial: NUEVA.
+- Mostrarla automáticamente en la columna “Nuevas”.
+- Incrementar contador de Nuevas.
+- Incrementar contador de Activas.
+
+Importante:
+- Si la cotización ya existía y se está editando, actualizarla, no duplicarla.
+- Si se envía por WhatsApp, correo o PDF, puede pasar a “Enviadas”.
+- Pero si solo se guarda por primera vez, debe quedar en “Nuevas”.
+
+3. ACCIONES DE TARJETA EN SEGUIMIENTO
+
+En cada tarjeta del Kanban mantener:
+
+- Botón azul “Abrir”.
+- Menú de tres puntos “...”.
+
+Quitar del menú la opción:
+- “Abrir cotización”
+
+porque ya existe el botón azul Abrir.
+
+El menú debe mostrar solo:
+- Editar
+- Duplicar
+- Seguimiento / CRM
+- Confirmar venta
+- Marcar como perdida
+- Anular / Eliminar
+
+4. MENÚ DE TRES PUNTOS NO DEBE CORTARSE
+
+Actualmente el desplegable se corta y no deja ver todas las opciones.
+
+Corregir:
+- El menú debe abrir por encima de otros elementos.
+- Usar z-index alto.
+- Si está cerca del borde inferior, abrir hacia arriba.
+- Si está cerca del borde derecho, alinearse hacia la izquierda.
+- No debe quedar oculto dentro de la columna Kanban.
+- Revisar overflow hidden en cards, columnas o contenedores padres.
+
+5. NOMBRE PRINCIPAL EN TARJETA
+
+En las tarjetas de seguimiento:
+
+- Mostrar como nombre principal el nombre del cliente.
+- El logo o iniciales identifican la agencia.
+- Debajo del cliente mostrar la agencia.
+
+Ejemplo:
+
+[Logo agencia] Juan Pérez
+BCD Travel · RGE-U7DOG · 255 US$
+
+Si no hay nombre de cliente:
+- Mostrar “Sin nombre”
+- Debajo mostrar agencia y código.
+
+6. AGENCIA EN COTIZADOR: AUTOCOMPLETE
+
+El desplegable de Agencia se corta y no es práctico.
+
+Reemplazarlo por un autocomplete/buscador.
+
+Comportamiento:
+- El usuario puede escribir las primeras letras.
+- Mostrar sugerencias filtradas en tiempo real.
+- Buscar por nombre de agencia.
+- Al seleccionar una agencia, guardar su ID/nombre/logo.
+- Si no existe, permitir usar texto escrito como agencia manual.
+
+El dropdown de sugerencias:
+- Debe abrir debajo del input.
+- No cortarse.
+- z-index alto.
+- Altura máxima con scroll.
+- Diseño limpio.
+- Mostrar logo si existe, si no icono de edificio.
+
+7. ESTILO GENERAL
+
+Mantener diseño actual:
+- Azul principal actual.
+- Acento dorado #E6AE33.
+- Tarjetas blancas.
+- Bordes redondeados.
+- Sombras suaves.
+- Kanban actual.
+
+No cambiar:
+- Cálculos.
+- PDF.
+- WhatsApp.
+- Email.
+- Tarifarios.
+- Multiidioma.
+
+Validar:
+- La app carga sin pantalla blanca.
+- Guardar cotización nueva la coloca en “Nuevas”.
+- Enviar PDF/WhatsApp/Email la coloca en “Enviadas”.
+- El menú de tres puntos no se corta.
+- El menú ya no muestra “Abrir cotización”.
+- La tarjeta muestra cliente como nombre principal.
+- Agencia autocomplete funciona y no se corta.
+- Sidebar queda como tarjeta redondeada azul similar a la referencia.

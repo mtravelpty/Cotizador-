@@ -1,0 +1,247 @@
+Quiero transformar la sección “Seguimiento” en un mini CRM comercial interno para dar seguimiento real a las cotizaciones y ayudar a concretar más ventas.
+
+NO quiero solo una tabla estática.
+Quiero un sistema más inteligente y operativo.
+
+========================================
+OBJETIVO GENERAL
+================
+
+La sección de seguimiento debe ayudar a:
+
+* identificar cotizaciones olvidadas
+* dar seguimiento a clientes
+* detectar ventas calientes
+* visualizar oportunidades
+* organizar el trabajo del agente
+
+Manteniendo el diseño premium actual.
+
+========================================
+
+1. NUEVOS ESTADOS COMERCIALES
+   ========================================
+
+Agregar estos estados:
+
+* Nueva
+* Enviada
+* Seguimiento
+* Negociación
+* Confirmada
+* Perdida
+
+Cada estado debe tener:
+
+* color visual
+* badge elegante
+* filtro funcional
+
+========================================
+COLORES SUGERIDOS
+=================
+
+Nueva → azul
+Enviada → celeste
+Seguimiento → amarillo
+Negociación → naranja
+Confirmada → verde
+Perdida → gris o rojo suave
+
+========================================
+2. ALERTAS AUTOMÁTICAS
+======================
+
+Agregar lógica automática de seguimiento.
+
+========================================
+REGLAS
+======
+
+Si una cotización:
+
+* tiene más de 2 días sin actualizar
+  → marcar:
+  “Seguimiento pendiente”
+
+Si tiene:
+
+* más de 5 días
+  → marcar:
+  “Urgente”
+
+Si está:
+
+* confirmada
+  → quitar alertas
+
+========================================
+VISUAL
+======
+
+Mostrar:
+
+* badges
+* pequeños indicadores
+* íconos discretos
+
+Ejemplo:
+🟡 Seguimiento pendiente
+🔴 Urgente
+🟢 Al día
+
+========================================
+3. NUEVAS COLUMNAS
+==================
+
+Agregar columnas en la tabla:
+
+* Último seguimiento
+* Próxima acción
+* Prioridad
+* Agente
+
+========================================
+4. PRIORIDAD
+============
+
+Agregar:
+
+* Alta
+* Media
+* Baja
+
+Con colores visuales.
+
+========================================
+5. RECORDATORIOS
+================
+
+Cada cotización debe poder guardar:
+
+* fecha de seguimiento
+* próxima llamada
+* nota rápida
+
+Ejemplos:
+
+* Llamar mañana
+* Esperando aprobación
+* Cliente quiere hotel 4*
+* Pendiente de pago
+
+========================================
+IMPORTANTE
+==========
+
+Estas notas NO deben aparecer en:
+
+* PDF
+* correo
+* WhatsApp
+
+Son internas.
+
+========================================
+6. PANEL SUPERIOR (DASHBOARD)
+=============================
+
+Arriba de la tabla agregar tarjetas KPI:
+
+* Cotizaciones activas
+* Seguimientos pendientes
+* Confirmadas
+* Perdidas
+* Ventas del mes
+
+========================================
+7. FILTROS AVANZADOS
+====================
+
+Agregar filtros por:
+
+* estado
+* agente
+* prioridad
+* destino
+* fecha
+
+========================================
+8. HISTORIAL / ACTIVIDAD
+========================
+
+Cada cotización debe registrar:
+
+* creada
+* editada
+* PDF enviado
+* WhatsApp enviado
+* correo enviado
+* duplicada
+* confirmada
+
+Mostrar mini timeline elegante.
+
+========================================
+9. WIDGET “PENDIENTES DE HOY”
+=============================
+
+Arriba mostrar:
+
+Seguimientos pendientes hoy:
+
+* Cliente Pérez
+* Panamá + Bocas
+* Hace 3 días sin respuesta
+
+========================================
+10. EXPERIENCIA VISUAL
+======================
+
+Mantener:
+
+* estilo premium actual
+* diseño corporativo
+* minimalismo
+* pills modernas
+* colores actuales
+
+Debe sentirse:
+
+* rápido
+* profesional
+* operativo
+
+como un CRM ligero de agencia.
+
+========================================
+11. IMPORTANTE
+==============
+
+NO romper:
+
+* seguimiento actual
+* PDF
+* correo
+* WhatsApp
+* descriptivos
+* plantillas
+* totales
+* exportación Excel
+* duplicar cotización
+
+Mantener compatibilidad total.
+
+========================================
+12. EXTRA MUY IMPORTANTE
+========================
+
+Agregar persistencia real:
+
+* guardar alertas
+* notas
+* estados
+* recordatorios
+* historial
+
+para que no se pierdan al refrescar.

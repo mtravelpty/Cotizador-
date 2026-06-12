@@ -1,0 +1,79 @@
+Corregir la UI del cotizador RGE Style Travel siguiendo exactamente la referencia aprobada.
+
+1. BARRA LATERAL
+Corregir el error donde varios ítems quedan sombreados después de hacer clic.
+
+Debe funcionar así:
+- Solo UN ítem puede estar activo a la vez.
+- Al seleccionar una opción, eliminar el estado activo de todas las demás.
+- No dejar fondos, sombras, bordes ni focus persistente en opciones anteriores.
+- El único ítem sombreado debe ser el seleccionado actualmente.
+- Mantener el indicador vertical amarillo #e6ae33 solo en el ítem activo.
+- Revisar y limpiar estados hover, focus, focus-visible, active, selected y current.
+- Usar una única variable activeSection, no múltiples estados activos.
+
+2. BARRA DE ALOJAMIENTO
+Rediseñar la barra para que quede exactamente como la referencia:
+
+- Debe ir debajo de “Datos del cliente”.
+- Debe ocupar solo el ancho de la columna principal izquierda.
+- No debe invadir la columna derecha.
+- Eliminar el texto “ALOJAMIENTO”.
+- Eliminar el ícono de edificio.
+- Volver a mostrar los textos:
+  NOCHES
+  PASAJEROS
+  NIÑOS
+- Estructura:
+  [NOCHES 0] [PASAJEROS 1] [NIÑOS 0] | [SGL] [DBL] [TPL] [CHD]
+- Fondo con degradado azul premium:
+  linear-gradient(135deg, #0034b8 0%, #005be8 50%, #0a7eff 100%)
+- Agregar brillos/curvas internas sutiles en azul para efecto moderno.
+- Cápsulas de Noches, Pasajeros y Niños con fondo azul oscuro translúcido.
+- Textos en blanco.
+- Iconos de Noches, Pasajeros y Niños en dorado #eec774.
+- Botones SGL, DBL, TPL, CHD en cápsulas.
+- Botón activo DBL en azul brillante #1495ff.
+- Botones inactivos con fondo azul oscuro translúcido, borde azul claro y texto blanco.
+- Separador vertical sutil entre contadores y botones.
+- Todo debe quedar en una sola línea en desktop, con buen espaciado y sin verse comprimido.
+
+3. ÍCONOS DE TARJETAS
+Quitar el cuadradito/badge con fondo que tienen los íconos de:
+- Datos del cliente
+- Configuración de cotización
+- Servicios seleccionados
+- Acciones
+
+Nuevo estilo:
+- Íconos sueltos, sin cuadrado, sin fondo, sin badge.
+- Todos los íconos deben tener el mismo color azul brillante: #1495ff.
+- Mantenerlos alineados verticalmente con el título.
+- No cambiar los títulos.
+
+4. BOTONES “PLANTILLA” E “ÍTEM PERSONALIZADO”
+Actualizar colores para que coincidan con la referencia:
+
+Botón Plantilla:
+- Fondo azul navy profundo #001851
+- Texto blanco
+- Icono blanco
+- Border radius alto tipo cápsula
+- Hover ligeramente más claro #002682
+
+Botón Ítem personalizado:
+- Fondo azul brillante con degradado:
+  linear-gradient(135deg, #005be8 0%, #1495ff 100%)
+- Texto blanco
+- Icono blanco
+- Border radius alto tipo cápsula
+- Hover con brillo suave
+- Mantener el texto “Ítem personalizado” en una sola línea si hay espacio suficiente.
+
+5. CONSISTENCIA GENERAL
+- No cambiar funcionalidad.
+- No cambiar campos.
+- No mover secciones salvo la barra de alojamiento debajo de Datos del cliente.
+- Mantener diseño premium SaaS.
+- Mantener sombras suaves, bordes redondeados y espaciado limpio.
+- Todo debe verse como la referencia aprobada.

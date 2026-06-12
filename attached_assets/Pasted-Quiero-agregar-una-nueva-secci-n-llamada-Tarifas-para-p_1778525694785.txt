@@ -1,0 +1,235 @@
+Quiero agregar una nueva sección llamada “Tarifas” para poder administrar tarifas directamente desde la app SIN depender siempre del Excel.
+
+IMPORTANTE:
+
+* Esto debe ser una versión MVP/simple y práctica.
+* NO reemplazar todavía el importador Excel existente.
+* El Excel debe seguir funcionando como respaldo/importador.
+* NO romper el cotizador actual.
+
+========================================
+OBJETIVO
+========
+
+Poder:
+
+* agregar tarifas
+* editar tarifas
+* duplicar tarifas
+* activar/desactivar tarifas
+
+directamente desde la interfaz.
+
+========================================
+NUEVA SECCIÓN
+=============
+
+Agregar en el sidebar:
+
+* Tarifas
+
+========================================
+ESTRUCTURA
+==========
+
+Dentro de “Tarifas” crear 3 tabs:
+
+1. Hoteles
+2. Tours
+3. Traslados
+
+Cada categoría debe manejarse por separado.
+NO usar una tabla universal gigante.
+
+========================================
+
+1. HOTELES
+   ========================================
+
+Mostrar tabla con:
+
+* Nombre
+* Categoría
+* Ubicación
+* Régimen
+* DBL
+* TPL
+* SGL
+* Estado
+
+Acciones:
+
+* Editar
+* Duplicar
+* Activar/desactivar
+
+========================================
+EDITAR HOTEL
+============
+
+Campos editables:
+
+* Nombre hotel
+* Categoría
+* Ubicación
+* Régimen
+* Tipo habitación
+* Vigencia
+* DBL
+* TPL
+* SGL
+* CHD
+* Observaciones
+
+Dropdown categoría:
+
+* ★★★
+* ★★★★
+* ★★★★★
+
+Dropdown ubicación:
+
+* BOCAS DEL TORO
+* CHIRIQUÍ
+* CIUDAD DE PANAMÁ
+* COCLÉ (RIVIERA PACÍFICA)
+* COLÓN
+* CONTADORA
+* SAN BLAS
+* TABOGA
+* VERAGUAS / SANTIAGO
+
+========================================
+2. TOURS
+========
+
+Mostrar tabla con:
+
+* Código
+* Tour
+* Tipo servicio
+* Tarifa
+* Estado
+
+Acciones:
+
+* Editar
+* Duplicar
+* Activar/desactivar
+
+========================================
+EDITAR TOUR
+===========
+
+Campos:
+
+* Código RGE
+* Nombre tour
+* Tipo servicio:
+
+  * Regular
+  * Privado
+* Tarifa
+* Categoría
+* Horario
+* Duración
+
+MUY IMPORTANTE:
+Mantener compatibilidad con descriptivos usando el código RGE.
+
+========================================
+3. TRASLADOS
+============
+
+Mostrar tabla con:
+
+* Ruta
+* Modalidad
+* Tarifa
+* Estado
+
+Acciones:
+
+* Editar
+* Duplicar
+* Activar/desactivar
+
+========================================
+EDITAR TRASLADO
+===============
+
+Campos:
+
+* Ruta origen
+* Ruta destino
+* Modalidad
+* Tipo servicio
+* Tarifa
+* Observaciones
+
+========================================
+FUNCIONALIDADES IMPORTANTES
+===========================
+
+1. Guardar en localStorage inicialmente.
+   NO backend todavía.
+
+2. Mantener compatibilidad con:
+
+* Cotizador
+* Plantillas
+* Descriptivos
+* Seguimiento
+* PDF
+* Correo
+* WhatsApp
+
+3. Cuando una tarifa se edite:
+   debe reflejarse automáticamente en nuevas cotizaciones.
+
+4. Cuando una tarifa esté desactivada:
+   NO debe aparecer en selección del cotizador.
+
+========================================
+IMPORTADOR EXCEL
+================
+
+Mantener el sistema actual de importar Excel.
+
+Agregar botón:
+
+* “Importar Excel”
+* “Exportar respaldo”
+
+El Excel sigue siendo respaldo/importador temporal.
+
+========================================
+UI / UX
+=======
+
+Diseño consistente con el sistema:
+
+* cards blancas
+* tablas limpias
+* modales compactos
+* pills
+* botones pequeños
+* rounded corners
+* spacing actual
+
+Objetivo:
+que sea rápido y práctico para operación diaria.
+
+========================================
+NO HACER TODAVÍA
+================
+
+NO implementar:
+
+* login
+* multiusuario
+* backend complejo
+* permisos
+* base de datos externa
+
+Mantener MVP simple y estable.

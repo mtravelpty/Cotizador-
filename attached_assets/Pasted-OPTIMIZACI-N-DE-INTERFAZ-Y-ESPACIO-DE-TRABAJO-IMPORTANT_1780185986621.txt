@@ -1,0 +1,209 @@
+OPTIMIZACIÓN DE INTERFAZ Y ESPACIO DE TRABAJO
+
+IMPORTANTE:
+
+No modificar:
+
+* Tarifas
+* Cálculos
+* PDF
+* Correo
+* WhatsApp
+* CRM
+* Seguimiento
+* Plantillas
+* Respaldos
+
+Aplicar únicamente los cambios descritos.
+
+==================================================
+
+1. ELIMINAR TARJETA "OBSERVACIONES GENERALES"
+   ==================================================
+
+La tarjeta actual ocupa demasiado espacio para el uso real que tiene.
+
+Eliminar completamente la tarjeta:
+
+"Observaciones generales"
+
+incluyendo:
+
+* Título
+* Icono
+* Caja de texto
+* Botón de observaciones rápidas dentro de esa tarjeta
+
+==================================================
+2. NUEVO SISTEMA DE OBSERVACIONES
+=================================
+
+Mover las observaciones al final de la tarjeta:
+
+SERVICIOS SELECCIONADOS
+
+Debajo del listado de servicios.
+
+Diseño deseado:
+
+---
+
+Observaciones
+
+[ Escribir observación... ]
+
+---
+
+Funcionamiento:
+
+* Campo de una sola línea.
+* Al presionar ENTER:
+
+  * Se agrega la observación.
+  * Se limpia automáticamente el campo.
+  * Permite escribir la siguiente.
+
+Ejemplo visual:
+
+• Precios netos por persona / por noche en hotelería
+
+• Precios sujetos a disponibilidad al momento de solicitar la reserva
+
+• Pasajeros viajando solos aplican suplemento de USD 25 por noche
+
+• Pasajeros en vuelos nocturnos aplican suplemento adicional por vía
+
+==================================================
+3. OBSERVACIONES RÁPIDAS
+========================
+
+Mantener el botón:
+
+Observaciones rápidas
+
+Pero colocarlo junto al nuevo campo de observaciones.
+
+Al seleccionar una observación rápida:
+
+* Debe agregarse automáticamente como un nuevo bullet.
+* No reemplazar las observaciones existentes.
+
+==================================================
+4. CONFIGURACIÓN EN MENÚ LATERAL
+================================
+
+Actualmente la sección Configuración quedó muy arriba.
+
+Agregar más separación visual respecto a Seguimiento.
+
+Estructura deseada:
+
+Cotizador
+Seguimiento
+
+---
+
+Configuración
+• Plantillas
+• Descriptivos
+• Tarifas
+• Respaldos
+
+Debe sentirse como una sección administrativa independiente.
+
+==================================================
+5. TARIFARIO
+============
+
+Eliminar del menú lateral principal:
+
+* Recargar tarifario
+* Subir nuevo tarifario
+
+No eliminarlos del sistema.
+
+Mover estas acciones dentro de:
+
+Configuración → Tarifas
+
+Ejemplo:
+
+Tarifario actual
+
+[ Recargar tarifario ]
+[ Subir nuevo tarifario ]
+
+Objetivo:
+
+Mantener el cotizador principal limpio y enfocado únicamente en cotizar.
+
+==================================================
+6. RESPALDOS
+============
+
+Corregir los iconos.
+
+Actualmente parecen invertidos.
+
+Debe ser:
+
+EXPORTAR
+→ flecha hacia afuera / descarga
+
+IMPORTAR
+→ flecha hacia adentro / carga
+
+Usar iconografía estándar.
+
+==================================================
+7. RESPALDOS - LEGIBILIDAD
+==========================
+
+Mejorar el contraste de los títulos:
+
+* Respaldo completo
+* Solo plantillas
+
+Actualmente tienen muy poca visibilidad.
+
+Aplicar:
+
+* Mayor contraste
+* Mayor peso tipográfico
+* Misma jerarquía visual utilizada en títulos de tarjetas
+
+==================================================
+8. OBJETIVO GENERAL
+===================
+
+Reducir altura ocupada por elementos poco utilizados.
+
+Liberar espacio vertical.
+
+Priorizar:
+
+* Servicios seleccionados
+* Cotización
+* Búsqueda de servicios
+
+Mantener la aplicación rápida, limpia y enfocada en la venta.
+
+==================================================
+NO ROMPER
+=========
+
+No modificar:
+
+* Cálculos
+* Tarifas
+* Seguimiento
+* CRM
+* PDF
+* Correo
+* WhatsApp
+* Plantillas
+* Respaldos
+* Exportaciones
+* Importaciones
+
+Aplicar únicamente los cambios de interfaz descritos arriba.

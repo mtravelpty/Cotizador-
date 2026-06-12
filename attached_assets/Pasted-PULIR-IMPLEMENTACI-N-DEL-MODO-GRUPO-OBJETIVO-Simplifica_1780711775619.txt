@@ -1,0 +1,180 @@
+PULIR IMPLEMENTACIÓN DEL MODO GRUPO
+
+OBJETIVO:
+Simplificar el modo grupo para adaptarlo a la operación real de una agencia de viajes.
+
+==================================================
+ELIMINAR
+========
+
+Eliminar completamente:
+
+* Acomodación base
+* Precio por persona promedio global
+* Tarjeta de resumen duplicando destino, fechas y noches
+* Cualquier dato que ya aparezca en el encabezado principal de la cotización
+
+Actualmente la cotización ya muestra:
+
+* Destino
+* Fechas de estadía
+* Noches
+* Pasajeros
+
+No volver a mostrar esta información.
+
+==================================================
+NUEVO CONCEPTO
+==============
+
+El modo grupo debe enfocarse en:
+
+1. Distribución de habitaciones
+2. Total pasajeros
+3. Total del grupo
+
+Nada más.
+
+==================================================
+DISTRIBUCIÓN DE HABITACIONES
+============================
+
+Permitir múltiples acomodaciones simultáneas.
+
+Ejemplos reales:
+
+2 SGL
+10 DBL
+4 TPL
+
+o
+
+15 DBL
+3 TPL
+
+o
+
+20 DBL
+5 CHD
+
+No asumir una sola acomodación para todo el grupo.
+
+==================================================
+INTERFAZ DEL COTIZADOR
+======================
+
+Reemplazar la tarjeta actual por una tarjeta compacta.
+
+Título:
+
+CONFIGURACIÓN DEL GRUPO
+
+Mostrar:
+
+SGL: X habitaciones
+DBL: X habitaciones
+TPL: X habitaciones
+CHD: X habitaciones
+
+Total pasajeros: XX
+
+Total grupo: USD XXXX
+
+No mostrar:
+
+* Acomodación base
+* Precio promedio general
+
+==================================================
+COTIZACIÓN FINAL
+================
+
+Eliminar bloque:
+
+DATOS DEL GRUPO
+
+No es necesario porque la información principal ya aparece en el encabezado.
+
+Agregar únicamente:
+
+CONFIGURACIÓN DEL GRUPO
+
+SGL × 2 habitaciones
+DBL × 10 habitaciones
+TPL × 4 habitaciones
+
+Total pasajeros: 37
+
+==================================================
+PRECIOS
+=======
+
+NO mostrar un único:
+
+PRECIO POR PERSONA
+
+porque puede ser incorrecto cuando existen varias acomodaciones.
+
+Ejemplo:
+
+SGL = USD 160
+DBL = USD 119
+TPL = USD 98
+
+Por lo tanto:
+
+Eliminar "Precio por persona" global.
+
+==================================================
+MOSTRAR EN SU LUGAR
+===================
+
+Si existen múltiples acomodaciones:
+
+PRECIOS POR ACOMODACIÓN
+
+SGL USD XXX
+DBL USD XXX
+TPL USD XXX
+CHD USD XXX
+
+Solo mostrar acomodaciones utilizadas en la cotización.
+
+==================================================
+TOTAL DEL GRUPO
+===============
+
+Mantener visible:
+
+TOTAL DEL GRUPO
+
+USD XXXX
+
+Este será el dato financiero principal.
+
+==================================================
+COMPATIBILIDAD
+==============
+
+Debe funcionar con:
+
+* Individual
+* Grupo
+* Paquete
+* Grupo + Paquete
+
+Sin modificar cálculos existentes.
+
+Solo ajustar presentación y lógica de distribución de habitaciones.
+
+==================================================
+OBJETIVO FINAL
+==============
+
+Que el modo grupo refleje la realidad operativa de una agencia:
+
+* Múltiples acomodaciones simultáneas
+* Distribución de habitaciones
+* Total grupo
+
+Evitar duplicar información y eliminar datos que puedan generar confusión.

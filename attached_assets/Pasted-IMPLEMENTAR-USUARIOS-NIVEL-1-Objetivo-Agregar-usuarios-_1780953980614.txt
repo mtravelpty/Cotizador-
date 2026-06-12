@@ -1,0 +1,98 @@
+IMPLEMENTAR USUARIOS NIVEL 1
+
+Objetivo:
+Agregar usuarios simples al cotizador para identificar quién crea, edita y gestiona cada cotización.
+
+No implementar roles complejos.
+No implementar permisos avanzados.
+No implementar multiempresa.
+No tocar tarifas ni cálculos.
+
+──────────────────────────────
+1. LOGIN SIMPLE
+──────────────────────────────
+
+Crear pantalla de acceso con:
+
+- Correo
+- Contraseña
+- Botón Iniciar sesión
+
+Usuarios guardados localmente o en la base actual del proyecto.
+
+Campos de usuario:
+
+- id
+- nombre
+- correo
+- contraseña
+- activo
+- createdAt
+
+──────────────────────────────
+2. USUARIO ACTIVO
+──────────────────────────────
+
+Después de iniciar sesión, guardar usuario activo en sesión/localStorage.
+
+Mostrar en la interfaz:
+
+Nombre del usuario activo
+Botón cerrar sesión
+
+──────────────────────────────
+3. COTIZACIONES
+──────────────────────────────
+
+Cada cotización guardada debe registrar:
+
+- createdByUserId
+- createdByName
+- updatedByUserId
+- updatedByName
+- createdAt
+- updatedAt
+
+──────────────────────────────
+4. SEGUIMIENTO
+──────────────────────────────
+
+En cada oportunidad mostrar de forma discreta:
+
+Creada por: Nombre usuario
+
+En historial registrar:
+
+- Cotización creada por X
+- Cotización editada por X
+- Correo copiado por X
+- PDF descargado por X
+- Estado cambiado por X
+
+──────────────────────────────
+5. RESPALDO
+──────────────────────────────
+
+Incluir usuarios en respaldo completo.
+
+Incluir datos createdBy / updatedBy en cotizaciones y seguimiento.
+
+──────────────────────────────
+6. SEGURIDAD BÁSICA
+
+No mostrar contraseñas en pantalla.
+
+Si el sistema ya tiene backend, guardar contraseña hasheada.
+Si está local, dejar estructura preparada para migrar a backend.
+
+──────────────────────────────
+7. VALIDACIÓN
+
+✓ Puedo iniciar sesión.
+✓ Puedo cerrar sesión.
+✓ Cada cotización guarda quién la creó.
+✓ Cada edición guarda quién la modificó.
+✓ Seguimiento muestra creador.
+✓ Historial registra usuario.
+✓ Respaldo incluye usuarios.
+✓ App carga sin errores.

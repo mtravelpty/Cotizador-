@@ -1,0 +1,227 @@
+Necesito ajustar el diseño y la lógica de la propuesta cuando el modo seleccionado sea “Totales”.
+
+IMPORTANTE:
+No romper modo “Tarifas”. Estos cambios aplican principalmente a modo “Totales”, salvo el rediseño general de títulos.
+
+========================================
+
+1. DISEÑO GENERAL DE TÍTULOS
+   ========================================
+
+Actualmente los títulos de sección usan pills pequeñas como:
+ALOJAMIENTO
+TRASLADOS
+TOUR Y EXPERIENCIAS
+RESUMEN DE COSTOS
+
+Quiero cambiar ese estilo porque ocupa espacio innecesario.
+
+Nuevo estilo:
+
+* Usar una fila completa horizontal con el color acentuado corporativo.
+* El título debe estar dentro de esa fila.
+* La fila debe estar más pegada a la tabla.
+* Reducir espacios verticales innecesarios.
+* Mantener estilo premium/corporativo.
+
+Ejemplo:
+[ barra azul completa ] ALOJAMIENTO
+[ tabla inmediatamente debajo ]
+
+Aplicar a:
+
+* Alojamiento
+* Traslados
+* Tour y experiencias
+* Vuelos
+* Observaciones
+* Descriptivos
+* Resumen de costos
+
+========================================
+2. UBICACIÓN EN ALOJAMIENTO
+===========================
+
+Eliminar el icono/pin al lado de la ubicación.
+
+No usar:
+📍
+
+La ubicación debe mostrarse como texto limpio, sin iconos informales.
+
+========================================
+3. MODO TOTALES — TABLAS PRINCIPALES
+====================================
+
+Cuando el modo sea “Totales”:
+
+NO mostrar columna TOTAL en las tablas principales de:
+
+* Alojamiento
+* Traslados
+* Tours y experiencias
+* Vuelos
+
+La columna total por fila es innecesaria porque los cálculos deben estar en “Resumen de costos”.
+
+========================================
+4. ALOJAMIENTO EN MODO TOTALES
+==============================
+
+En la tabla principal de alojamiento NO mostrar columna NOCHES.
+
+Motivo:
+Puede confundir al cliente pensando que la tarifa mostrada es por todas las noches.
+
+La tabla debe mostrar únicamente datos de tarifa:
+
+HOTEL | CATEGORÍA | TIPO HAB. | DBL | TPL | CHD
+
+Las tarifas deben representar:
+precio por noche por persona.
+
+Ejemplo:
+DBL: $37
+TPL: $28
+CHD: $14
+
+NO mostrar total por fila.
+NO mostrar noches en esa tabla.
+
+========================================
+5. TRASLADOS / TOURS / VUELOS EN MODO TOTALES
+=============================================
+
+En las tablas principales mostrar solo tarifas unitarias:
+
+DESCRIPCIÓN | MODALIDAD | TARIFA P/P
+
+No mostrar:
+
+* PAX
+* TOTAL
+
+El cálculo por cantidad de pasajeros debe pasar al resumen de costos.
+
+========================================
+6. RESUMEN DE COSTOS — NUEVA LÓGICA
+===================================
+
+El Resumen de costos debe ser el lugar donde se expliquen y calculen los totales.
+
+Para ALOJAMIENTO mostrar columnas explicativas:
+
+CONCEPTO | ACOMODACIÓN | TARIFA | PAX | NOCHES | TOTAL
+
+Ejemplo:
+The Executive | DBL | $37 | 4 | 2 | $296
+
+Cálculo:
+tarifa por persona por noche × pasajeros × noches
+
+Ejemplo:
+$37 × 4 pasajeros × 2 noches = $296
+
+Para TRASLADOS / TOURS / VUELOS mostrar:
+
+CONCEPTO | MODALIDAD | TARIFA P/P | PAX | TOTAL
+
+Ejemplo:
+City Tour & Canal | Regular | $30 | 4 | $120
+
+Cálculo:
+tarifa por persona × pasajeros
+
+========================================
+7. TOTALES POR ACOMODACIÓN
+==========================
+
+Si hay varias acomodaciones seleccionadas o disponibles:
+
+* mostrar total DBL
+* total TPL
+* total CHD
+* total SGL si aplica
+
+Pero cambiar etiquetas:
+
+NO usar:
+TOTAL GENERAL · DBL
+TOTAL GENERAL · TPL
+
+Usar:
+TOTAL DBL
+TOTAL TPL
+TOTAL CHD
+TOTAL SGL
+
+========================================
+8. ESTILO DE TOTALES
+====================
+
+Todos los totales por acomodación deben verse con el mismo estilo visual.
+
+No destacar solo uno en azul grande como si fuera el total final.
+
+Regla:
+
+* TOTAL DBL, TOTAL TPL, TOTAL CHD, TOTAL SGL deben tener:
+
+  * mismo tamaño de letra
+  * mismo peso visual
+  * mismo color
+  * mismo alto de fila
+  * mismo fondo
+
+Esto evita confusión visual.
+
+========================================
+9. TOTAL FINAL
+==============
+
+Si se necesita mostrar un total final único, debe ser aparte y claramente identificado.
+
+Pero si se muestran varios escenarios por acomodación:
+
+* no resaltar uno sobre otro
+* todos deben verse equivalentes
+
+========================================
+10. COMPATIBILIDAD
+==================
+
+Aplicar cambios a:
+
+* Vista previa
+* PDF
+* Correo
+* WhatsApp si corresponde
+
+No romper:
+
+* modo Tarifas
+* observaciones
+* descriptivos
+* plantillas
+* seguimiento
+* duplicar cotización
+* exportación Excel
+
+========================================
+11. OBJETIVO UX
+===============
+
+La cotización debe ser fácil de entender:
+
+Arriba:
+tarifas unitarias claras.
+
+Abajo:
+resumen de costos con explicación de cantidades:
+
+* pax
+* noches
+* tarifa
+* total
+
+Esto debe evitar confusión al cliente y verse como una propuesta comercial profesional.

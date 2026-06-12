@@ -1,0 +1,189 @@
+REDISEÑAR COMPLETAMENTE LAS CARDS DE SEGUIMIENTO.
+
+Tomar como referencia exacta la estructura visual adjunta.
+
+OBJETIVO:
+Eliminar el diseño actual dividido en columnas grandes y reemplazarlo por una card horizontal compacta y moderna.
+
+ESTRUCTURA:
+
+┌─────────────────────────────────────────────────────────────┐
+│ Borde color │ Logo │ Datos │ Precio │ Estado │ Acciones │
+└─────────────────────────────────────────────────────────────┘
+
+======================================================
+SECCIÓN 1 - BORDE DE ESTADO
+======================================================
+
+Agregar una barra vertical izquierda de 5px.
+
+Color según prioridad:
+
+Urgente = #ef4444
+Requiere seguimiento = #e6ae33
+Prioritaria = #f2c94c
+Nueva = #0b63ff
+Al día = #03a04e
+
+Altura completa de la card.
+
+======================================================
+SECCIÓN 2 - LOGO
+======================================================
+
+Logo de agencia.
+
+Contenedor:
+60x60 px
+
+Fondo blanco.
+Borde suave.
+Esquinas redondeadas.
+
+Centrado verticalmente.
+
+======================================================
+SECCIÓN 3 - INFORMACIÓN PRINCIPAL
+======================================================
+
+A la derecha del logo:
+
+Línea 1:
+Nombre de la cotización
+(font-weight 700)
+
+Ejemplo:
+CARLOS RAMÍREZ
+
+Línea 2:
+Agencia • Destino
+
+Ejemplo:
+PRICE TRAVEL • CANCÚN + RIVIERA MAYA
+
+Color gris oscuro.
+
+Línea 3:
+Metadatos pequeños
+
+👥 2 ADULTOS
+• DBL
+• 1 COTIZACIÓN
+
+Color gris.
+
+Todo alineado a la izquierda.
+
+======================================================
+SECCIÓN 4 - MONTO
+======================================================
+
+Centrado verticalmente.
+
+Valor principal:
+
+USD 1,098
+
+Color:
+#044b9e
+
+Font-weight:
+700
+
+Debajo:
+
+Última:
+RGE-UM10ZX
+
+Debajo:
+
+VER COTIZACIONES (1)
+
+Como enlace azul.
+
+======================================================
+SECCIÓN 5 - ESTADO
+======================================================
+
+Mostrar:
+
+● URGENTE
+
+con punto de color.
+
+Debajo:
+
+6 DÍAS SIN ACTUALIZACIÓN
+
+En color rojo.
+
+Debajo:
+
+ACTUALIZADO:
+15 MAY 2026
+
+Color gris.
+
+Todo alineado a la izquierda.
+
+======================================================
+SECCIÓN 6 - ACCIONES
+======================================================
+
+Botón principal:
+
+ABRIR
+
+Color:
+#044b9e
+
+Texto blanco.
+
+Altura uniforme.
+
+A la derecha:
+
+Botón circular de tres puntos.
+
+Mismo alto que el botón abrir.
+
+======================================================
+ESTILO GENERAL
+======================================================
+
+Altura card:
+110px a 125px
+
+Fondo:
+#ffffff
+
+Radio:
+16px
+
+Sombra:
+Muy sutil.
+
+Hover:
+- elevar ligeramente
+- sombra más visible
+
+NO usar separadores verticales internos.
+
+NO usar cajas individuales para precio.
+
+NO usar cajas individuales para estado.
+
+Todo debe verse como una única tarjeta horizontal limpia.
+
+======================================================
+RESPONSIVE
+======================================================
+
+Desktop:
+Todo en una sola fila.
+
+Tablet:
+Reducir espacios.
+
+Móvil:
+Apilar bloques manteniendo el mismo orden visual.

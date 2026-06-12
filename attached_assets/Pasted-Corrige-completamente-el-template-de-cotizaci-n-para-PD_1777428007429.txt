@@ -1,0 +1,88 @@
+Corrige completamente el template de cotización para PDF y correo e implementa un diseño premium profesional.
+
+PROBLEMAS ACTUALES:
+
+Columnas desalineadas
+Precios pegados al borde derecho
+PDF cortado o mal distribuido
+Outlook rompe el diseño
+Uso de flex/grid incompatible con PDF/email
+Falta de jerarquía visual (se ve plano y poco profesional)
+
+SOLUCIÓN OBLIGATORIA:
+
+CREAR TEMPLATE ESPECÍFICO PARA PDF Y CORREO
+NO usar flex
+NO usar grid
+Usar únicamente tablas HTML ()
+Todo con estilos INLINE (importante para Outlook)
+CONTENEDOR PRINCIPAL
+Ancho máximo: 700px
+Centrado
+Fondo blanco
+TIPOGRAFÍA
+font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+Títulos: 16–18px, font-weight 600
+Texto principal: 14px, font-weight 500
+Texto secundario: 12–13px, color #6B7280
+COLORES
+Azul principal: #1E3A8A
+Naranja acento: #F97316 (usar solo en detalles)
+Texto principal: #1F2937
+Líneas suaves: #E5E7EB
+ESTRUCTURA CON TABLAS
+
+ALOJAMIENTO:
+| HOTEL (50%) | CATEGORÍA (15%) | TIPO HAB (15%) | PRECIO (10%) | ESPACIO VACÍO (10%) |
+
+TRASLADOS / TOURS / VUELOS:
+| DESCRIPCIÓN (65%) | TIPO (15%) | PRECIO (10%) | ESPACIO VACÍO (10%) |
+
+REGLAS IMPORTANTES:
+
+SIEMPRE dejar la última columna vacía (aire visual premium)
+Precios alineados a la derecha
+Textos alineados a la izquierda
+Todo perfectamente alineado
+ESTILO PREMIUM
+
+SECCIONES (ALOJAMIENTO, TRASLADOS, etc):
+
+Título tipo “pill”
+Fondo azul (#1E3A8A)
+Texto blanco
+Border-radius: 20px
+Padding: 6px 14px
+Margen superior e inferior
+
+TABLAS:
+
+Sin bordes gruesos
+Separadores suaves (#E5E7EB)
+Padding interno: 10px–14px
+Espaciado vertical generoso
+
+PRECIOS:
+
+Font-weight 600
+Ligeramente más grandes
+NO pegados al borde (gracias a columna vacía)
+
+JERARQUÍA:
+
+Nombre del hotel/descripción → principal
+Ubicación/categoría → secundario (gris)
+Precios → destacados pero elegantes
+PDF
+Evitar cortes: page-break-inside: avoid;
+Cada fila debe mantenerse completa
+EMAIL (OUTLOOK)
+Todo con estilos inline
+No usar clases externas
+No usar position, flex ni grid
+RESULTADO FINAL
+PDF y correo deben verse IGUALES
+Diseño limpio, alineado, elegante
+Apariencia de cotización de agencia premium
+Nada pegado a los bordes
+Columnas perfectamente organizadas

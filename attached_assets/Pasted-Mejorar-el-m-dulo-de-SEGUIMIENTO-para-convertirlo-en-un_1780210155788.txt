@@ -1,0 +1,267 @@
+Mejorar el módulo de SEGUIMIENTO para convertirlo en una herramienta real de gestión comercial y seguimiento de cotizaciones.
+
+OBJETIVO
+
+Permitir que el sistema genere alertas automáticas y ayude al agente a no perder oportunidades de venta.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 1: NUEVOS CAMPOS DE SEGUIMIENTO
+
+Agregar a cada cotización los siguientes campos:
+
+- Fecha de creación
+- Fecha último seguimiento
+- Fecha próxima acción
+- Tipo de próxima acción
+- Observación de seguimiento
+
+Tipos de acción:
+
+- Llamar
+- WhatsApp
+- Correo
+- Esperar respuesta
+- Confirmar pago
+- Reenviar propuesta
+- Recordatorio general
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 2: COLUMNA "PRÓXIMA ACCIÓN"
+
+Actualmente existe la columna:
+
+Próxima acción
+
+y suele aparecer:
+
+Sin acción
+
+Modificar para que:
+
+- Cada cotización tenga una próxima acción asignable.
+- Mostrar icono + acción + fecha.
+
+Ejemplos:
+
+📞 Llamar
+02 Jun
+
+💬 WhatsApp
+03 Jun
+
+📧 Correo
+05 Jun
+
+⏳ Esperar respuesta
+07 Jun
+
+Si no existe acción:
+
+Mostrar:
+Sin programar
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 3: MOTOR DE ALERTAS AUTOMÁTICAS
+
+Crear reglas automáticas.
+
+🟡 Seguimiento pendiente
+
+Si:
+Último seguimiento > 3 días
+
+Generar alerta:
+Seguimiento pendiente
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🟠 Seguimiento vencido
+
+Si:
+Último seguimiento > 7 días
+
+Generar alerta:
+Seguimiento vencido
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔴 Riesgo de perder cliente
+
+Si:
+Último seguimiento > 14 días
+
+Generar alerta:
+Riesgo de perder cliente
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 Acción para hoy
+
+Si:
+Fecha próxima acción = hoy
+
+Generar alerta:
+
+- Llamar hoy
+- WhatsApp hoy
+- Correo hoy
+- Confirmar pago hoy
+
+según corresponda.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 4: TARJETAS SUPERIORES
+
+Actualmente:
+
+- Activas
+- Seguimiento pendiente
+- Confirmadas
+- Perdidas
+- Ventas del mes
+
+Modificar a:
+
+- Activas
+- Acción hoy
+- Seguimiento pendiente
+- Confirmadas
+- Ventas del mes
+
+Nueva tarjeta:
+
+Acción hoy
+
+Debe mostrar cantidad de acciones programadas para el día actual.
+
+Color sugerido:
+#e6ae33
+
+Icono:
+Calendario o campana.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 5: CAMPANA DE NOTIFICACIONES
+
+Agregar una campana en la parte superior derecha de la aplicación.
+
+Diseño:
+
+🔔
+
+Con badge rojo.
+
+Ejemplo:
+
+🔔 5
+
+El número debe representar:
+
+- acciones para hoy
+- seguimientos vencidos
+- alertas pendientes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PANEL DE NOTIFICACIONES
+
+Al hacer clic en la campana:
+
+Abrir panel lateral derecho o dropdown grande.
+
+Título:
+
+Notificaciones
+
+Ejemplos:
+
+🔴 Riesgo de perder cliente
+
+María Pérez
+14 días sin seguimiento
+
+━━━━━━━━
+
+🟠 Seguimiento vencido
+
+Carlos Gómez
+7 días sin seguimiento
+
+━━━━━━━━
+
+📞 Llamar hoy
+
+Juan Rodríguez
+
+━━━━━━━━
+
+💬 WhatsApp hoy
+
+Ana López
+
+━━━━━━━━
+
+Cada notificación debe permitir:
+
+- Abrir cotización
+- Marcar como realizada
+- Posponer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 6: ESTADOS VISUALES
+
+Agregar indicador de alerta en la tabla.
+
+Nueva columna:
+
+Alerta
+
+Posibles estados:
+
+🟢 Al día
+
+🟡 Pendiente
+
+🟠 Vencido
+
+🔴 Riesgo
+
+Usar colores consistentes.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FASE 7: PREPARACIÓN FUTURA
+
+Preparar la estructura para futuras funciones:
+
+- Favoritos
+- Recordatorios automáticos
+- Seguimiento por agente
+- Seguimiento por destino
+- Estadísticas de conversión
+
+No implementar todavía estas funciones.
+
+Solo dejar la arquitectura lista.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMPORTANTE
+
+No modificar cálculos del cotizador.
+
+No cambiar PDF.
+
+No cambiar WhatsApp.
+
+No cambiar correos.
+
+Mantener el diseño visual actual.
+
+Agregar únicamente las funcionalidades y estructura de seguimiento y notificaciones descritas arriba.

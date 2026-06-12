@@ -1,0 +1,110 @@
+Implementar el diseño del PDF y del correo de cotización EXACTAMENTE como el layout de referencia proporcionado (imagen adjunta). No reinterpretar, no simplificar: replicar estructura, jerarquía visual y orden de la información.
+
+1. ENCABEZADO
+
+* Logo alineado a la izquierda.
+
+* Título centrado: “PROPUESTA DE SERVICIOS” dentro de una barra azul.
+
+* Debajo, dos columnas de información:
+
+  Columna izquierda:
+
+  * Fecha de Emisión
+  * Destino
+  * Fecha de Viaje
+  * Pasajeros
+
+  Columna derecha:
+
+  * Nº de Cotización
+  * Válida hasta
+  * Tipo de Servicio
+  * Noche(s)
+  * Asesor
+
+* Línea divisora horizontal en color naranja debajo del bloque.
+
+2. SECCIONES DE SERVICIOS
+   Cada sección debe mostrarse con un header tipo “pill” azul:
+
+A. ALOJAMIENTO
+
+* Columnas:
+
+  * Hotel
+  * Tipo Hab.
+  * Noches
+  * DBL /noche
+  * CHD /noche
+
+* Mostrar:
+
+  * Nombre del hotel
+  * Ubicación + estrellas debajo del nombre
+  * Tipo de habitación
+  * Número de noches
+  * Tarifas alineadas a la derecha
+
+B. TRASLADOS
+
+* Columnas:
+
+  * Descripción
+  * Tipo
+  * Tarifa p/p
+
+* Mostrar debajo de la descripción (si aplica):
+
+  * Nota en verde: “Entrada adicional: $XX por persona”
+
+C. TOUR Y EXPERIENCIAS
+
+* Igual estructura que TRASLADOS:
+
+  * Descripción
+  * Tipo
+  * Tarifa p/p
+
+3. ITINERARIO SUGERIDO
+
+* Header en color naranja tipo pill: “ITINERARIO SUGERIDO”
+
+* Tabla con columnas:
+
+  * Día
+  * Fecha
+  * Actividad
+
+* Actividades en formato:
+
+  * “Llegada · …”
+  * “Salida · …”
+  * Actividades intermedias normales
+
+4. ESTILO VISUAL
+
+* Mantener exactamente:
+
+  * Espaciados amplios
+  * Líneas divisoras suaves
+  * Tipografía limpia y jerárquica
+  * Colores:
+
+    * Azul corporativo (headers)
+    * Naranja (divisores / itinerario)
+    * Verde (notas adicionales)
+* Alineaciones:
+
+  * Precios siempre a la derecha
+  * Textos a la izquierda
+
+5. REGLAS IMPORTANTES
+
+* El PDF y el contenido del correo deben tener EXACTAMENTE el mismo formato visual.
+* No mostrar elementos del sistema (botones, inputs, labels técnicos).
+* Todo debe verse como documento limpio, listo para cliente final.
+* Respetar mayúsculas en títulos de secciones.
+
+Objetivo:
+Que la cotización generada sea visualmente idéntica al diseño proporcionado, con apariencia profesional tipo propuesta comercial lista para envío.

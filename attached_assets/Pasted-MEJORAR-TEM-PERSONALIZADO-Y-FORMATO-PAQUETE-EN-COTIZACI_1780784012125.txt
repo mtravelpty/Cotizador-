@@ -1,0 +1,182 @@
+MEJORAR ÍTEM PERSONALIZADO Y FORMATO PAQUETE EN COTIZACIÓN FINAL
+
+Objetivo:
+Hacer que cada tipo de ítem personalizado tenga campos propios y que la cotización final tipo paquete muestre la hotelería de forma más clara.
+
+No tocar cálculos generales.
+No tocar seguimiento.
+No tocar búsqueda de tarifario.
+
+──────────────────────────────
+1. COTIZACIÓN FINAL / SECCIÓN INCLUYE
+──────────────────────────────
+
+En presentación tipo paquete, dentro de la sección INCLUYE, mostrar la hotelería con este formato:
+
+ALOJAMIENTO
+
+✓ 2 noches | AC Hotel Panama City by Marriott | Desayuno incluido
+✓ 1 noche | Punta Caracol | Media pensión
+
+Reglas:
+
+- Mostrar cantidad de noches del hotel.
+- Mostrar nombre del hotel.
+- Mostrar régimen/alimentación.
+- Separar con “ | ”.
+- Si no hay régimen, ocultar esa parte.
+- No repetir “1 noche” en una línea separada.
+- No repetir “desayuno incluido” como línea independiente.
+
+Ejemplo incorrecto actual:
+✓ AC Hotel Panama City by Marriott
+✓ 1 noche
+✓ Desayuno incluido
+
+Ejemplo correcto:
+✓ 1 noche | AC Hotel Panama City by Marriott | Desayuno incluido
+
+──────────────────────────────
+2. ÍTEM PERSONALIZADO: ICONO SEGÚN TIPO
+──────────────────────────────
+
+En el modal “Ítem personalizado”, al seleccionar el tipo de servicio, cambiar el icono del encabezado automáticamente.
+
+Hotelería → icono hotel
+Traslado → icono vehículo/shuttle
+Tours → icono ubicación/pin
+Vuelos → icono avión
+Catamarán → icono barco
+Otros → icono etiqueta/estrella
+
+El icono debe mantener el mismo estilo visual actual.
+
+──────────────────────────────
+3. CAMPOS PROPIOS POR TIPO DE SERVICIO
+──────────────────────────────
+
+Actualmente el formulario usa casi los mismos campos para todo.
+
+Cambiar para que cada tipo tenga sus propios campos.
+
+────────────────
+HOTELERÍA
+────────────────
+
+Mostrar:
+
+- Nombre del hotel
+- Ubicación
+- Categoría / estrellas
+- Tipo de habitación
+- Precio por noche
+- Régimen / desayuno
+- Observaciones
+
+Mantener el diseño actual de hotelería.
+
+────────────────
+TRASLADO
+────────────────
+
+Mostrar:
+
+- Nombre / descripción del traslado
+- Ruta / trayecto
+- Modalidad: Regular / Privado
+- Tarifa p/p
+- Tarifa niño si Niños > 0
+- Observaciones
+
+No mostrar campos de hotel como:
+- estrellas
+- tipo de habitación
+- régimen desayuno
+
+────────────────
+TOURS
+────────────────
+
+Mostrar:
+
+- Nombre del tour
+- Modalidad: Regular / Privado
+- Horario
+- Duración
+- Tarifa p/p
+- Tarifa niño si Niños > 0
+- Entradas adicionales si aplica
+- Observaciones
+
+No mostrar campos de hotelería.
+
+────────────────
+VUELOS
+────────────────
+
+Mostrar:
+
+- Ruta / nombre del vuelo
+- Origen
+- Destino
+- Ida y vuelta
+- Tarifa p/p
+- Tarifa niño si Niños > 0
+- Observaciones
+
+No mostrar estrellas ni desayuno.
+
+────────────────
+CATAMARÁN
+────────────────
+
+Mostrar:
+
+- Nombre del servicio
+- Modalidad
+- Horario
+- Tarifa p/p
+- Tarifa niño si Niños > 0
+- Observaciones
+
+────────────────
+OTROS
+────────────────
+
+Mostrar formulario simple:
+
+- Nombre del servicio
+- Descripción
+- Tarifa
+- Observaciones
+
+──────────────────────────────
+4. PRECIO
+──────────────────────────────
+
+Para Hotelería:
+usar “Precio por noche”.
+
+Para Traslados, Tours, Vuelos, Catamarán:
+usar “Precio por persona”.
+
+Para Otros:
+usar “Tarifa”.
+
+──────────────────────────────
+5. VALIDACIÓN
+──────────────────────────────
+
+Confirmar:
+
+✓ El ícono cambia según el tipo seleccionado.
+✓ Hotelería mantiene campos de hotel.
+✓ Traslado no muestra campos de hotelería.
+✓ Tours tiene sus propios campos.
+✓ Vuelos tiene sus propios campos.
+✓ Catamarán tiene sus propios campos.
+✓ Otros queda simple.
+✓ En paquete, hotelería se muestra como:
+  noches | hotel | alimentación
+✓ No se repiten noches y desayuno como líneas separadas.
+✓ App carga sin errores.

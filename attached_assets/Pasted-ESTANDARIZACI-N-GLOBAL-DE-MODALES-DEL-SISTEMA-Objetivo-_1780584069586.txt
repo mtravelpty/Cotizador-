@@ -1,0 +1,142 @@
+ESTANDARIZACIÓN GLOBAL DE MODALES DEL SISTEMA
+
+Objetivo:
+Unificar todos los modales, popups y ventanas emergentes del sistema utilizando el nuevo lenguaje visual compacto.
+
+No modificar lógica.
+No modificar funcionalidades.
+Solo estandarizar acciones y apariencia.
+
+APLICAR A:
+
+- Hoteles
+- Traslados
+- Tours
+- Vuelos
+- Agencias
+- Agentes
+- Plantillas
+- Seguimiento
+- Tarifas
+- Importaciones
+- Respaldos
+- Notas
+- Edición de precios
+- Estadías
+- Cualquier modal nuevo o existente
+
+====================================
+BOTONES DE ACCIÓN
+====================================
+
+Eliminar botones tradicionales:
+
+Guardar
+Aplicar
+Aceptar
+Cancelar
+Cerrar
+
+y reemplazar por:
+
+✓ Confirmar acción
+✕ Cancelar/Cerrar
+
+====================================
+ESTILO BOTÓN CONFIRMAR
+====================================
+
+Tamaño:
+36x36px
+
+Color:
+#004FBB
+
+Icono:
+✓ blanco
+
+Border radius:
+12px
+
+Hover:
+#003E96
+
+Sombra suave.
+
+====================================
+ESTILO BOTÓN CANCELAR
+====================================
+
+Tamaño:
+36x36px
+
+Fondo:
+#FFFFFF
+
+Borde:
+#D8E0EE
+
+Icono:
+✕ color #64748B
+
+Hover:
+#F5F7FA
+
+====================================
+UBICACIÓN
+====================================
+
+Siempre alineados a la derecha.
+
+Ejemplo:
+
+[✕] [✓]
+
+Nunca:
+
+[Cancelar] [Guardar]
+
+====================================
+EXCEPCIÓN
+====================================
+
+Solo mantener texto en:
+
+- Confirmar venta
+- Eliminar definitivamente
+- Restaurar respaldo
+
+porque son acciones críticas.
+
+====================================
+ENCABEZADOS
+====================================
+
+Reducir texto innecesario.
+
+Ejemplos:
+
+"PRECIO POR PERSONA"
+→ "P/P"
+
+"TARIFAS POR NOCHE"
+→ "TARIFAS"
+
+"EDITAR FECHAS DE ESTADÍA"
+→ "ESTADÍA"
+
+"OBSERVACIONES DEL HOTEL"
+→ "NOTAS"
+
+====================================
+VALIDACIÓN
+====================================
+
+Confirmar:
+
+✓ Todos los modales usan mismo diseño.
+✓ Todos los modales usan botones ✕ y ✓.
+✓ No quedan botones Guardar/Cancelar antiguos.
+✓ No se rompe ninguna funcionalidad.
+✓ Mantener compatibilidad con escritorio y móvil.
+✓ App compila sin errores.

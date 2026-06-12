@@ -1,0 +1,85 @@
+Necesito hacer ajustes de UX en el buscador de servicios y en la edición de servicios agregados.
+
+---
+
+1. PROBLEMA EN INPUT DE BÚSQUEDA
+
+- Actualmente al hacer clic en el input, el texto que se escribe no se visualiza correctamente (parece blanco o muy claro).
+
+CORRECCIÓN:
+- Asegurar que el color del texto ingresado tenga suficiente contraste (ej: #1F2937 o similar).
+- El placeholder puede ser gris claro, pero el texto ingresado debe ser oscuro y legible.
+- Revisar estados:
+  - focus
+  - active
+  - filled
+
+---
+
+2. DROPDOWN NO SE CIERRA AL SELECCIONAR
+
+- Actualmente al hacer clic en un resultado del buscador, el dropdown permanece abierto y solo se cierra manualmente con la “X”.
+
+CORRECCIÓN:
+- Al hacer clic en un resultado:
+  ✔ Agregar el servicio automáticamente
+  ✔ Cerrar inmediatamente el dropdown
+  ✔ Limpiar el input (opcional pero recomendado)
+  ✔ Quitar estado focus del input
+
+- El dropdown solo debe permanecer abierto mientras el usuario está escribiendo o navegando resultados.
+
+---
+
+3. ELIMINAR BUSCADOR EN MODO EDICIÓN
+
+- Actualmente al editar un servicio ya agregado, se muestra nuevamente un buscador de catálogo en la parte superior.
+
+PROBLEMA:
+- Esto es redundante y confuso, porque el servicio ya está seleccionado.
+
+CORRECCIÓN:
+- Eliminar completamente el buscador dentro del modo edición.
+- No permitir cambiar el servicio desde esa vista.
+
+---
+
+4. REDISEÑO DE LA VISTA DE EDICIÓN
+
+- La vista de edición debe ser directa, limpia y enfocada en configurar el servicio.
+
+REQUERIMIENTO:
+- Mostrar directamente:
+  - Código
+  - Nombre
+  - Fechas (check-in / check-out)
+  - Ubicación
+  - Categoría
+  - Vigencia
+  - Precios por acomodación
+  - Notas
+
+- Sin elementos innecesarios arriba
+- Sin pasos intermedios
+
+DISEÑO:
+- Layout compacto
+- Secciones claras pero sin exceso de separación
+- Flujo vertical natural (scroll hacia abajo)
+
+---
+
+5. PRINCIPIO DE UX A RESPETAR
+
+- Agregar servicio = rápido (buscador)
+- Editar servicio = profundo (configuración)
+
+No mezclar ambos flujos en la misma vista.
+
+---
+
+OBJETIVO FINAL:
+
+- Buscador rápido, limpio y sin fricción
+- Dropdown que se comporta correctamente (abre al escribir, cierra al seleccionar)
+- Edición enfocada solo en configurar, sin distracciones

@@ -1,0 +1,157 @@
+Los cambios NO se aplicaron en el modal correcto.
+
+Necesito modificar específicamente el modal:
+“Ítem personalizado”
+
+El que abre cuando doy clic en:
+Agregar ítem personalizado.
+
+========================================
+IMPORTANTE
+==========
+
+NO quiero cambios solamente en la cotización.
+
+Quiero cambios DIRECTAMENTE en el formulario/modal visual.
+
+Debes modificar el componente real del modal.
+
+========================================
+CAMBIOS REQUERIDOS
+==================
+
+Cuando el tipo de servicio sea:
+HOTELERÍA
+
+mostrar automáticamente estos campos nuevos:
+
+========================================
+
+1. UBICACIÓN
+   ========================================
+
+Agregar un SELECT desplegable.
+
+Opciones:
+
+* BOCAS DEL TORO
+* CHIRIQUÍ
+* CIUDAD DE PANAMÁ
+* COCLÉ (RIVIERA PACÍFICA)
+* COLÓN
+* CONTADORA
+* SAN BLAS
+* TABOGA
+* VERAGUAS / SANTIAGO
+
+Orden alfabético.
+
+========================================
+2. CATEGORÍA
+============
+
+Agregar SELECT desplegable:
+
+* ★★★
+* ★★★★
+* ★★★★★
+
+========================================
+3. TIPO DE HABITACIÓN
+=====================
+
+Agregar input o select editable.
+
+Ejemplos:
+
+* Standard
+* Deluxe
+* Suite
+* Junior Suite
+* Vista Jardín
+* Vista Mar
+
+========================================
+4. RÉGIMEN / DESAYUNO
+=====================
+
+Agregar input para:
+
+* desayuno buffet
+* desayuno continental
+* todo incluido
+* solo alojamiento
+
+========================================
+ORGANIZACIÓN VISUAL
+===================
+
+Reorganizar el modal visualmente.
+
+Usar grid elegante:
+
+Fila 1:
+Ubicación | Categoría
+
+Fila 2:
+Tipo habitación | Precio
+
+Fila 3:
+Régimen
+
+Fila 4:
+Observaciones
+
+========================================
+OBSERVACIONES
+=============
+
+Hacer el textarea MÁS PEQUEÑO visualmente.
+Actualmente ocupa demasiado alto.
+
+Reducir altura.
+
+========================================
+IMPORTANTE
+==========
+
+Estos campos deben guardarse correctamente y reflejarse en:
+
+* preview
+* PDF
+* correo
+* WhatsApp
+
+========================================
+FORMATO EN COTIZACIÓN
+=====================
+
+Debajo del hotel mostrar:
+
+Hotel Hilton Garden Inn
+CIUDAD DE PANAMÁ
+Incluye desayuno buffet
+
+========================================
+ESTILO DEL RÉGIMEN
+==================
+
+El texto:
+“Incluye desayuno buffet”
+
+debe tener color elegante:
+
+* naranja oscuro
+  o
+* celeste oscuro
+
+acorde a la paleta actual.
+
+========================================
+MUY IMPORTANTE
+==============
+
+Modificar el componente REAL del modal de:
+“Ítem personalizado”
+
+NO solamente el render final de la cotización.

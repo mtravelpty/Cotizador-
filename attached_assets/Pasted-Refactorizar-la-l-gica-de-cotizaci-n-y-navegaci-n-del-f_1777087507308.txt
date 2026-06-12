@@ -1,0 +1,174 @@
+Refactorizar la lógica de cotización y navegación del frontend con los siguientes cambios específicos.
+
+NO modificar backend.
+
+---
+
+1. ELIMINAR BLOQUE ACTUAL
+
+Eliminar completamente el bloque:
+
+"Opciones de cotización"
+
+* Incluir itinerario
+* Incluir descriptivos
+
+Ese bloque ya NO debe existir en la UI.
+
+---
+
+2. NUEVO MODO DE COTIZACIÓN (CLAVE)
+
+Agregar un selector tipo toggle o botones:
+
+[ Solo tarifas ]   [ Calcular total ]
+
+Estado global:
+modoCotizacion = "tarifas" | "calculo"
+
+Por defecto:
+"tarifas"
+
+---
+
+3. COMPORTAMIENTO: SOLO TARIFAS
+
+Cuando modo = "tarifas":
+
+A. NO mostrar:
+
+* Totales
+* Subtotales
+* Gran total
+
+B. Mostrar SOLO tarifas unitarias:
+
+ALOJAMIENTO:
+
+* Precio por noche / por persona
+* Mostrar por acomodación (DBL, TPL, etc.)
+* NO multiplicar por noches ni pasajeros
+
+TRASLADOS / TOURS:
+
+* Precio por persona (p/p)
+* NO calcular total
+
+C. APLICAR A TODO:
+
+* Vista principal
+* Vista previa
+* PDF
+* WhatsApp
+* Email
+
+👉 Debe ser consistente en todos lados
+
+---
+
+4. COMPORTAMIENTO: CALCULAR TOTAL
+
+Cuando modo = "calculo":
+
+A. Activar cálculos:
+
+ALOJAMIENTO:
+
+* precio × noches × personas
+
+TRASLADOS / TOURS:
+
+* precio × personas
+
+B. Mostrar:
+
+* Subtotales por categoría
+* Gran total
+
+---
+
+5. UI DEL SELECTOR
+
+Ubicación:
+Dentro del panel de resumen (lado derecho)
+
+Diseño:
+Botones tipo switch:
+
+[ Solo tarifas ] (activo por defecto)
+[ Calcular total ]
+
+Resaltar activo con color
+
+---
+
+6. ADAPTACIÓN DE COMPONENTES
+
+Actualizar lógica en:
+
+* Resumen.jsx
+* ServiciosSeleccionados.jsx
+* PreviewModal.jsx
+* Generador PDF
+* Generador WhatsApp
+
+Todos deben leer:
+modoCotizacion
+
+---
+
+7. CAMBIO EN NAVEGACIÓN (IMPORTANTE)
+
+Mover:
+
+"Cotizaciones guardadas"
+
+Desde:
+parte inferior derecha
+
+Hacia:
+MENÚ LATERAL IZQUIERDO
+
+---
+
+8. NUEVA SECCIÓN: SEGUIMIENTO
+
+En sidebar reemplazar:
+
+"Cotizaciones guardadas"
+
+por:
+
+"Seguimiento"
+
+Función:
+
+* Listar cotizaciones creadas
+* Mostrar:
+
+  * Nombre cliente
+  * Fecha
+  * Total (solo si modo = cálculo)
+* Permitir:
+
+  * Ver
+  * Editar
+
+---
+
+9. COMPORTAMIENTO DE DATOS
+
+Guardar en cada cotización:
+
+* modoCotizacion usado
+* servicios
+* totales (si aplica)
+
+---
+
+OBJETIVO FINAL:
+
+* Poder cotizar en modo "solo tarifas" sin totales
+* Cambiar fácilmente a modo "cálculo"
+* Mantener consistencia en todos los outputs
+* Mejor organización con módulo de seguimiento

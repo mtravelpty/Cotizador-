@@ -1,0 +1,188 @@
+Crea una aplicación web completa (frontend + backend) tipo cotizador de viajes profesional, conectada a un archivo Excel como fuente de datos.
+
+ARQUITECTURA:
+
+* Monorepo con dos carpetas:
+  /backend
+  /frontend
+
+TECNOLOGÍAS:
+
+* Frontend: React + TailwindCSS
+* Backend: Node.js + Express
+* Lectura de Excel: xlsx
+* PDF: Puppeteer
+* Email: Nodemailer
+* WhatsApp: wa.me link
+
+---
+
+BACKEND:
+
+1. Cargar automáticamente un archivo llamado TARIFARIO.xlsx ubicado en /backend
+
+2. El Excel debe tener 3 hojas:
+
+* "Hoteles"
+  Columnas: ID, Nombre, SGL, DBL, TPL
+
+* "Traslados"
+  Columnas: ID, Nombre, Precio
+
+* "Tours"
+  Columnas: ID, Nombre, Precio, Descripcion
+
+3. Convertir el Excel a JSON con esta estructura:
+
+* hoteles:
+  { id, nombre, categoria: "hotel", precios: { SGL, DBL, TPL } }
+
+* traslados:
+  { id, nombre, categoria: "traslado", precio_por_persona }
+
+* tours:
+  { id, nombre, categoria: "tour", precio_por_persona, descripcion }
+
+4. Crear endpoints:
+
+* GET /api/hoteles
+* GET /api/traslados
+* GET /api/tours
+* POST /api/reload (recargar Excel)
+
+5. Crear función de cálculo:
+
+calcularCotizacion({
+servicios,
+acomodaciones,
+noches,
+pasajeros
+})
+
+Debe:
+
+* Calcular total por cada acomodación seleccionada
+* Hoteles: precio * noches
+* Tours/traslados: precio * pasajeros
+
+6. Generar itinerario automático:
+
+* Día 1: llegada + traslado
+* Último día: salida
+* Intermedios: tours en orden
+
+---
+
+FRONTEND:
+
+1. Crear UI tipo dashboard:
+
+* Sidebar izquierda
+* Panel principal
+* Diseño:
+
+  * Fondo: #0f172a
+  * Primario: #38bdf8
+  * Cards blancas con sombra
+
+2. Formulario:
+
+* Nombre cliente
+* Fechas
+* Pasajeros
+* Noches
+
+3. SELECTOR MULTI-ACOMODACIÓN (CLAVE):
+
+* Opciones: SGL, DBL, TPL
+* Permitir múltiples selecciones
+* UI tipo botones toggle
+* Mostrar todas las seleccionadas simultáneamente
+
+4. Mostrar servicios desde API:
+
+* Hoteles
+* Tours
+* Traslados
+
+5. VISUALIZACIÓN DINÁMICA:
+   Si selecciona DBL + TPL:
+
+Mostrar así:
+
+Hotel:
+DBL: $34
+TPL: $30
+
+Tour:
+DBL: $50
+TPL: $50
+
+6. TOGGLE:
+
+* "Ver tarifas"
+* "Ver total"
+
+7. Mostrar TOTALES POR ACOMODACIÓN:
+
+Ejemplo:
+DBL: $540
+TPL: $490
+
+8. Itinerario automático en tabla:
+   Día | Fecha | Actividad | Hotel
+
+9. Botón incluir descriptivos
+
+---
+
+EXPORTACIONES:
+
+1. WHATSAPP:
+
+* Generar mensaje dinámico
+* Incluir totales por acomodación
+* Abrir con wa.me
+
+2. EMAIL:
+
+* Enviar HTML
+
+3. PDF:
+
+* Generar con Puppeteer
+* Formato tipo documento:
+
+  * Tablas
+  * Columnas por acomodación
+  * Totales separados
+
+---
+
+FUNCIONES EXTRA:
+
+* Agregar servicio manual
+* Guardar cotización
+* Botón limpiar
+
+---
+
+REQUISITOS IMPORTANTES:
+
+* Manejar múltiples acomodaciones correctamente
+* Calcular todo por cada acomodación (no mezclar)
+* UI reactiva en tiempo real
+* Código modular y limpio
+* Componentes separados:
+
+  * ClientForm
+  * SelectorAcomodacion
+  * Servicios
+  * Totales
+  * Itinerario
+  * Exportaciones
+
+OBJETIVO FINAL:
+Una app profesional de cotización para agencias de viajes que permita trabajar con múltiples acomodaciones al mismo tiempo, usando un Excel como base de datos, generando cotizaciones automáticas exportables.
+
+No simplifiques la lógica. Implementa correctamente la multi-acomodación.

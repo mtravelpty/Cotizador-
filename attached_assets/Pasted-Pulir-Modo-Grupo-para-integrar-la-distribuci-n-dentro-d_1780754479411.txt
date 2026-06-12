@@ -1,0 +1,113 @@
+Pulir Modo Grupo para integrar la distribución dentro de la barra de acomodaciones.
+
+OBJETIVO:
+Eliminar la sección separada “Distribución del grupo” y mover los contadores directamente dentro de los botones de acomodación.
+
+Aplicar SOLO cuando Tipo de cotización = Grupo.
+
+==================================================
+1. ELIMINAR SECCIÓN ACTUAL
+==================================================
+
+Cuando esté activo Modo Grupo, ocultar/eliminar la tarjeta:
+
+DISTRIBUCIÓN DEL GRUPO
+
+También eliminar las tarjetas individuales DBL/TPL/QDL con botones + y -.
+
+==================================================
+2. NUEVA BARRA DE ACOMODACIÓN EN MODO GRUPO
+==================================================
+
+La barra azul de acomodación debe extenderse verticalmente un poco y mostrar:
+
+Título:
+DISTRIBUCIÓN DEL GRUPO
+
+Debajo, los botones:
+
+SGL | DBL | TPL | QDL
+
+Cada botón debe incluir:
+- Nombre de acomodación
+- Contador de habitaciones
+- Botón menos
+- Botón más
+- Cantidad de pasajeros calculada
+
+Ejemplo dentro del botón:
+
+DBL
+[-] 10 [+]
+20 pasajeros
+
+TPL
+[-] 4 [+]
+12 pasajeros
+
+SGL
+[-] 2 [+]
+2 pasajeros
+
+QDL
+[-] 0 [+]
+0 pasajeros
+
+==================================================
+3. QUITAR ICONOS
+==================================================
+
+Eliminar iconos de cama.
+No usar iconos en la barra de acomodación.
+
+Solo texto y contadores.
+
+==================================================
+4. CÁLCULOS
+==================================================
+
+Calcular pasajeros así:
+
+SGL = habitaciones × 1
+DBL = habitaciones × 2
+TPL = habitaciones × 3
+QDL = habitaciones × 4
+
+Total pasajeros = suma de todas las acomodaciones activas.
+
+==================================================
+5. RESUMEN COMPACTO
+==================================================
+
+Dentro de la misma barra, al final o debajo de los botones, mostrar una línea compacta:
+
+Total pasajeros: XX    Total grupo: USD XXXX
+
+No mostrar precio promedio por persona.
+
+==================================================
+6. DISEÑO
+==================================================
+
+Mantener estética actual:
+- Barra azul principal
+- Botones tipo pill
+- Texto blanco
+- Activo en azul más claro
+- Inactivo en azul oscuro
+- Sin tarjetas adicionales
+- Sin iconos
+- Menos altura total que la versión actual con tarjeta separada
+
+==================================================
+7. NO MODIFICAR
+==================================================
+
+No cambiar:
+- Cálculos internos existentes
+- Servicios seleccionados
+- PDF/correo
+- Modo Individual
+- Modo Paquete
+
+Solo reorganizar visualmente la distribución del grupo dentro de la barra de acomodaciones.

@@ -1,0 +1,104 @@
+Necesito ajustar el modal “Editar alojamiento” para mejorar la edición de hoteles.
+
+OBJETIVOS
+1. Categoría debe ser un desplegable de estrellas
+2. Ubicación debe ser un dropdown predefinido
+3. Reorganizar layout para que:
+   Categoría + Tipo de habitación + Vigencia
+   estén en la MISMA línea
+
+IMPORTANTE
+No romper:
+- persistencia
+- PDF
+- vista previa
+- seguimiento
+- WhatsApp
+- correo
+- cálculos
+- edición existente
+
+========================================
+1. CATEGORÍA COMO DROPDOWN
+========================================
+
+Reemplazar el input libre de “Categoría” por un select/dropdown.
+
+Opciones EXACTAS:
+
+★★★
+★★★★
+★★★★★
+
+Guardar el valor seleccionado igual que ahora.
+
+Si no hay categoría:
+mostrar “—”
+
+En tablas y vista previa debe seguir renderizando las estrellas.
+
+========================================
+2. UBICACIÓN COMO DROPDOWN
+========================================
+
+Reemplazar el input libre “Ubicación” por un select con estas opciones EXACTAS y ORDENADAS ALFABÉTICAMENTE:
+
+BOCAS DEL TORO
+CHIRIQUÍ
+CIUDAD DE PANAMÁ
+COCLÉ (RIVIERA PACÍFICA)
+COLÓN
+CONTADORA
+SAN BLAS
+TABOGA
+VERAGUAS / SANTIAGO
+
+Mantener persistencia y edición.
+
+========================================
+3. REORGANIZAR LAYOUT
+========================================
+
+Actualmente:
+- Categoría ocupa una fila
+- Tipo de habitación otra
+- Vigencia otra
+
+Necesito reorganizar visualmente así:
+
+FILA 1
+Check-in | Check-out | Ubicación
+
+FILA 2
+Categoría | Tipo de habitación | Vigencia
+
+Mantener:
+- mismo estilo visual
+- mismos tamaños
+- responsive
+- alineación consistente
+
+========================================
+4. VIGENCIA
+========================================
+
+El bloque de “Aplicar vigencia” debe mantenerse funcional,
+solo moverlo visualmente para compartir fila con:
+- Categoría
+- Tipo de habitación
+
+No cambiar lógica.
+
+========================================
+5. UI
+========================================
+
+Mantener el diseño actual del modal:
+- bordes
+- spacing
+- tipografía
+- inputs
+- colores
+- tamaños
+
+Solo reorganizar y convertir inputs a dropdowns.

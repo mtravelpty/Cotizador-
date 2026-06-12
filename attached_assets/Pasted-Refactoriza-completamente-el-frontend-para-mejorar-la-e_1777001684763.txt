@@ -1,0 +1,133 @@
+Refactoriza completamente el frontend para mejorar la experiencia de usuario (UX) y diseño (UI). El problema actual es que toda la información se muestra al mismo tiempo sin jerarquía visual.
+
+OBJETIVO:
+Convertir la app en una herramienta profesional, limpia y enfocada en flujo de cotización.
+
+---
+
+CAMBIOS DE UX (MUY IMPORTANTE):
+
+1. DISEÑO POR SECCIONES CLARAS (tipo wizard pero en una sola pantalla):
+
+* Sección 1: Datos del cliente
+* Sección 2: Parámetros del viaje
+* Sección 3: Selección de acomodaciones
+* Sección 4: Servicios (colapsable)
+* Sección 5: Servicios seleccionados (resumen limpio)
+* Sección 6: Totales
+* Sección 7: Exportaciones
+
+---
+
+2. SERVICIOS COMO PANEL COLAPSABLE
+
+* NO mostrar todos los servicios por defecto
+* Mostrar botón: "Agregar servicio"
+* Al hacer click → abrir modal o panel lateral
+* Dentro:
+
+  * Tabs: Hoteles / Tours / Traslados
+  * Buscador
+  * Lista limpia tipo cards
+
+---
+
+3. RESUMEN DE SERVICIOS (MUY IMPORTANTE)
+
+Mostrar solo lo seleccionado:
+
+Ejemplo:
+
+🏨 Hotel Faranda
+DBL: $33
+TPL: $30
+
+🗺️ Tour Canal
+$50 p/p
+
+* Cada item editable
+* Botón eliminar
+* Diseño tipo tarjeta limpia
+
+---
+
+4. PANEL DERECHO FIJO (como tu diseño anterior)
+
+* Resumen de totales
+* Botones:
+
+  * WhatsApp
+  * Email
+  * PDF
+
+Siempre visible
+
+---
+
+5. MULTI-ACOMODACIÓN (MEJOR UX)
+
+* Botones tipo pills:
+  [ SGL ] [ DBL ✓ ] [ TPL ✓ ]
+
+* Mostrar solo columnas activas
+
+---
+
+6. TOGGLE TARIFA / TOTAL
+
+Botón tipo switch arriba:
+[ Solo tarifas ] [ Calcular total ]
+
+---
+
+7. ESTILO VISUAL (IMPORTANTE)
+
+* Fondo oscuro elegante (#0f172a)
+* Cards blancas
+* Bordes redondeados (rounded-2xl)
+* Sombras suaves (shadow-md)
+* Espaciado amplio (p-6)
+* Tipografía moderna
+
+---
+
+8. MODALES LIMPIOS
+
+Editar servicio debe abrir modal centrado con:
+
+* Inputs organizados
+* Sección de tarifas clara
+* Botones claros
+
+---
+
+9. NO MOSTRAR DATOS INNECESARIOS
+
+* No mostrar todos los tours en pantalla principal
+* Solo mostrar lo que el usuario selecciona
+
+---
+
+10. COMPONENTES
+
+Separar en:
+
+* ClientForm
+* TravelParams
+* AcomodacionSelector
+* ServiciosModal
+* ServiciosSeleccionados
+* TotalesPanel
+* ExportButtons
+
+---
+
+OBJETIVO FINAL:
+
+Una interfaz limpia, profesional y fácil de usar donde:
+
+* El usuario no se sienta abrumado
+* Solo vea lo necesario
+* Todo tenga jerarquía visual
+
+No cambies la lógica, solo mejora UX/UI.

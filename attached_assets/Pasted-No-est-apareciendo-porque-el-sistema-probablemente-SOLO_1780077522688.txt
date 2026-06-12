@@ -1,0 +1,153 @@
+No está apareciendo porque el sistema probablemente SOLO está renderizando el texto si el campo existe manualmente, pero NO está leyendo correctamente el valor desde la BD al construir la propuesta.
+
+Necesitas corregir la lógica de mapeo de datos del hotel.
+
+Haz exactamente esto:
+
+========================================
+PROBLEMA
+========
+
+La información del desayuno/régimen existe en la base de datos pero NO está llegando al render de:
+
+* preview
+* PDF
+* correo
+* WhatsApp
+
+Actualmente el sistema muestra:
+
+Hotel
+Ubicación
+
+pero NO:
+“Incluye desayuno buffet”
+
+========================================
+SOLUCIÓN
+========
+
+Localizar dónde se construye el objeto del hotel antes de renderizarlo.
+
+Buscar algo similar a:
+
+* hotel.mealPlan
+* hotel.breakfast
+* hotel.regimen
+* hotel.desayuno
+* hotel.notes
+
+o el campo real proveniente del tarifario/API.
+
+========================================
+OBJETIVO
+========
+
+El valor del desayuno debe viajar desde:
+BD/API → estado → propuesta → render
+
+========================================
+IMPLEMENTACIÓN
+==============
+
+Agregar al modelo del hotel un campo:
+
+mealPlan
+o
+regimen
+
+y mapear automáticamente desde la BD.
+
+Ejemplo:
+
+{
+hotelName,
+location,
+category,
+roomType,
+mealPlan
+}
+
+========================================
+RENDER
+======
+
+Debajo del hotel mostrar:
+
+Hotel Hilton Garden Inn
+CIUDAD DE PANAMÁ
+Incluye desayuno buffet
+
+========================================
+FORMATEO INTELIGENTE
+====================
+
+Si el valor contiene:
+“buffet”
+
+mostrar:
+Incluye desayuno buffet
+
+---
+
+Si contiene:
+“continental”
+
+mostrar:
+Incluye desayuno continental
+
+---
+
+Si contiene:
+“all inclusive”
+
+mostrar:
+Todo incluido
+
+---
+
+Si contiene:
+“solo alojamiento”
+
+mostrar:
+Solo alojamiento
+
+========================================
+IMPORTANTE
+==========
+
+Si NO existe información:
+NO renderizar la línea.
+
+========================================
+ESTILO VISUAL
+=============
+
+La línea del régimen debe verse:
+
+* elegante
+* discreta
+* corporativa
+
+Usar:
+
+* naranja oscuro
+  o
+* celeste oscuro
+
+acorde a la paleta premium actual.
+
+========================================
+DEBUG NECESARIO
+===============
+
+Antes de renderizar, hacer console.log del objeto hotel para confirmar que:
+mealPlan/regimen/desayuno
+
+realmente está llegando desde la BD.
+
+El problema actual probablemente es:
+
+* el campo existe en BD
+  PERO
+* nunca se está enviando al frontend/render.
