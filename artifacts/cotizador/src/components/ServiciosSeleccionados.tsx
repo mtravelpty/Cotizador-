@@ -843,7 +843,7 @@ function ServicioRow({
                 title="Cambiar modalidad (Regular / Privado)"
                 className={`flex-shrink-0 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded cursor-pointer transition-colors ${
                   (servicio.tipoServicio ?? "Regular") === "Privado"
-                    ? "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
+                    ? "bg-[#f3e8ef] text-[#6b2252] hover:bg-[#edd8e6]"
                     : "bg-emerald-50 text-emerald-600 hover:bg-emerald-100"
                 }`}
               >
@@ -973,7 +973,7 @@ function ServicioRow({
                     <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-slate-700">
                       <Calendar className="w-3 h-3" />
                       {fmtDMA(servicio.fechaInicio)} → {fmtDMA(servicio.fechaFin)}
-                      <span className="ml-0.5 text-[10px] font-bold bg-teal-50 text-teal-700 px-1.5 py-0.5 rounded">
+                      <span className="ml-0.5 text-[10px] font-bold bg-[#fdf4f9] text-[#802d62] px-1.5 py-0.5 rounded">
                         {nightsBetween(servicio.fechaInicio, servicio.fechaFin)}n
                       </span>
                     </span>

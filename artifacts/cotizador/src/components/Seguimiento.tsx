@@ -58,7 +58,7 @@ const ESTADO_OPP_OPTIONS: { value: EstadoOportunidad; label: string }[] = [
 
 const ESTADO_OPP_STYLES: Record<EstadoOportunidad, { bg: string; text: string; ring: string; dot: string }> = {
   nueva:       { bg: "bg-[#f9f0f5]", text: "text-[#802d62]",   ring: "ring-[#e8d5e0]",   dot: "bg-[#802d62]"  },
-  enviada:     { bg: "bg-sky-50",     text: "text-sky-700",     ring: "ring-sky-200",     dot: "bg-sky-500"     },
+  enviada:     { bg: "bg-[#f3e8ef]",  text: "text-[#6b2252]",   ring: "ring-[#d4b0c4]",   dot: "bg-[#b78ca4]"  },
   seguimiento: { bg: "bg-amber-50",   text: "text-amber-700",   ring: "ring-amber-200",   dot: "bg-amber-500"   },
   confirmada:  { bg: "bg-emerald-50", text: "text-emerald-700", ring: "ring-emerald-200", dot: "bg-emerald-500" },
   perdida:     { bg: "bg-slate-100",  text: "text-slate-500",   ring: "ring-slate-200",   dot: "bg-slate-400"   },

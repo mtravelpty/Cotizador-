@@ -148,12 +148,12 @@ const BLOCK_META: Record<
   },
   vuelo: {
     label: "Vuelo",
-    badgeCls: "bg-indigo-100 text-indigo-700",
+    badgeCls: "bg-[#f3e8ef] text-[#6b2252]",
     icon: <Plane className="w-3 h-3" />,
   },
   catamaran: {
     label: "Catamarán",
-    badgeCls: "bg-teal-100 text-teal-700",
+    badgeCls: "bg-[#fdf4f9] text-[#802d62]",
     icon: <Ship className="w-3 h-3" />,
   },
   observaciones: {

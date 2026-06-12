@@ -566,7 +566,7 @@ export default function ServicioFormModal(props: Props) {
                   className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium border transition-colors ${
                     tipoServicio === m
                       ? m === "Privado"
-                        ? "bg-indigo-600 text-white border-indigo-600"
+                        ? "bg-[#802d62] text-white border-[#802d62]"
                         : "bg-emerald-600 text-white border-emerald-600"
                       : "border-slate-200 text-slate-700 hover:bg-slate-50"
                   }`}
@@ -1191,7 +1191,7 @@ function CatalogResultRow({
       ? "bg-amber-50 text-amber-600"
       : tipo === "tour"
         ? "bg-emerald-50 text-emerald-600"
-        : "bg-sky-50 text-sky-600";
+        : "bg-[#fdf4f9] text-[#802d62]";
 
   let rightContent: React.ReactNode = null;
   let metaLine = "";

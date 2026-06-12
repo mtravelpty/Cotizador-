@@ -793,14 +793,14 @@ export function AlojamientoBar({
 
   // ── shared: decorations & container style ─────────────────────────────────
   const sectionStyle: React.CSSProperties = {
-    background: "linear-gradient(135deg, #0034b8 0%, #005be8 50%, #0a7eff 100%)",
-    boxShadow: "0 4px 20px rgba(0,52,184,0.35)",
+    background: "linear-gradient(135deg, #6b2252 0%, #802d62 50%, #a03878 100%)",
+    boxShadow: "0 4px 20px rgba(128,45,98,0.35)",
   };
 
   const decorations = (
     <>
-      <span className="pointer-events-none absolute -top-8 -right-8 w-40 h-40 rounded-full opacity-15" style={{ background: "radial-gradient(circle, #60a5fa 0%, transparent 70%)" }} />
-      <span className="pointer-events-none absolute bottom-0 left-1/3 w-28 h-28 rounded-full opacity-10" style={{ background: "radial-gradient(circle, #93c5fd 0%, transparent 70%)" }} />
+      <span className="pointer-events-none absolute -top-8 -right-8 w-40 h-40 rounded-full opacity-15" style={{ background: "radial-gradient(circle, #b78ca4 0%, transparent 70%)" }} />
+      <span className="pointer-events-none absolute bottom-0 left-1/3 w-28 h-28 rounded-full opacity-10" style={{ background: "radial-gradient(circle, #d4b0c4 0%, transparent 70%)" }} />
       <span className="pointer-events-none absolute top-0 left-0 right-0 h-1/2 rounded-t-2xl opacity-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.35) 0%, transparent 100%)" }} />
     </>
   );
