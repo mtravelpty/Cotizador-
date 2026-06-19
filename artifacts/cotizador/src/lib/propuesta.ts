@@ -846,11 +846,6 @@ function buildTotalesView(d: PropuestaData): string {
         }
         for (const a of validAcoms) {
           const tarifa = h.preciosPorAcomodacion[a];
-          const pax =
-            String(a).toUpperCase() === "CHD"
-              ? (d.cliente.ninos ?? 0)
-              : d.result.pasajeros;
-          const total = h.totalesPorAcomodacion[a];
           const regimenFmt = formatRegimen(h.desayuno);
           const regimenLine = regimenFmt
             ? `<div style="font-size:11px;color:#4B4C7A;font-weight:600;margin-top:4px;">${escape(regimenFmt)}</div>`
@@ -859,14 +854,11 @@ function buildTotalesView(d: PropuestaData): string {
           const notasHotelLines = renderNotasHTML(h.notas, h.notesImportant, h.notasList, STYLES.cellNote);
           const imagesHotelLines = renderImagesHTML(h.images);
           rows += `<tr style="page-break-inside:avoid;">
-            <td style="${tdBase};font-weight:600;width:30%;">${escape(h.nombre)}${regimenLine}${fechaHotelLine}${notasHotelLines}${imagesHotelLines}</td>
-            <td style="${tdCtr};width:9%;">${escape(h.estrellas || "—")}</td>
-            <td style="${tdBase};width:11%;">${escape(h.tipoHabitacion || "—")}</td>
-            <td style="${tdCtr};width:8%;font-weight:700;color:#475569;">${escape(String(a))}</td>
-            <td style="${tdNum};width:11%;">${escape(fmt(tarifa))}</td>
-            <td style="${tdCtr};width:6%;">${escape(String(pax))}</td>
-            <td style="${tdCtr};width:6%;">${escape(String(hotelNoches))}</td>
-            <td style="${tdNum};width:15%;color:${C_TOT_ALOJAMIENTO};">${escape(fmt(total))}</td>
+            <td style="${tdBase};font-weight:600;width:35%;">${escape(h.nombre)}${regimenLine}${fechaHotelLine}${notasHotelLines}${imagesHotelLines}</td>
+            <td style="${tdCtr};width:12%;">${escape(h.estrellas || "—")}</td>
+            <td style="${tdBase};width:15%;">${escape(h.tipoHabitacion || "—")}</td>
+            <td style="${tdCtr};width:10%;font-weight:700;color:#475569;">${escape(String(a))}</td>
+            <td style="${tdNum};width:28%;">${escape(fmt(tarifa))}</td>
           </tr>`;
         }
       }
@@ -877,14 +869,11 @@ function buildTotalesView(d: PropuestaData): string {
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
         <thead>
           <tr>
-            <th style="${STYLES.th};width:30%;">${escape(T.hotel)}</th>
-            <th style="${STYLES.thCenter};width:9%;">${escape(T.categoria)}</th>
-            <th style="${STYLES.th};width:11%;">${escape(T.tipoHab)}</th>
-            <th style="${STYLES.thCenter};width:8%;">${escape(T.acom)}</th>
-            <th style="${STYLES.thNum};width:11%;">TARIFA<div style="font-weight:400;color:#94a3b8;font-size:9px;margin-top:2px;line-height:1.2;white-space:nowrap;">PAX/NOCHE</div></th>
-            <th style="${STYLES.thCenter};width:6%;">${escape(T.pax)}</th>
-            <th style="${STYLES.thCenter};width:6%;">${escape(T.noc)}</th>
-            <th style="${STYLES.thNum};width:15%;color:${C_TOT_ALOJAMIENTO};">${escape(T.total)}</th>
+            <th style="${STYLES.th};width:35%;">${escape(T.hotel)}</th>
+            <th style="${STYLES.thCenter};width:12%;">${escape(T.categoria)}</th>
+            <th style="${STYLES.th};width:15%;">${escape(T.tipoHab)}</th>
+            <th style="${STYLES.thCenter};width:10%;">${escape(T.acom)}</th>
+            <th style="${STYLES.thNum};width:28%;">TARIFA<div style="font-weight:400;color:#94a3b8;font-size:9px;margin-top:2px;line-height:1.2;white-space:nowrap;">PAX/NOCHE</div></th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -1394,6 +1383,8 @@ function grupoDetalleBlock(d: PropuestaData): string {
   const tdStyle = `padding:10px 14px;font-size:13px;color:${C_DARK};border-bottom:1px solid ${C_BORDER};vertical-align:middle;`;
   const tdRightStyle = `padding:10px 14px;font-size:13px;font-weight:700;color:${C_BLUE};border-bottom:1px solid ${C_BORDER};vertical-align:middle;text-align:right;`;
 
+  const grupoNoches = d.cliente.noches ?? 0;
+
   const dataRows = roomAcoms.map((a) => {
     const hab = d.grupoHabitacionesPorAcom[a] ?? 0;
     const pax = hab * rp(a);
@@ -1402,7 +1393,7 @@ function grupoDetalleBlock(d: PropuestaData): string {
       <td style="${tdStyle}">
         <span style="display:inline-block;background:#e8eeff;color:${C_BLUE};padding:3px 10px;border-radius:5px;font-size:12px;font-weight:800;letter-spacing:0.5px;">${escape(String(a))}</span>
       </td>
-      <td style="${tdStyle}">${escape(String(hab))} hab</td>
+      <td style="${tdStyle}">${escape(String(grupoNoches))} noc</td>
       <td style="${tdStyle}">${escape(String(pax))} pax</td>
       <td style="${tdRightStyle}">USD ${escape(fmt(total))}</td>
     </tr>`;
@@ -1416,7 +1407,7 @@ function grupoDetalleBlock(d: PropuestaData): string {
         <thead>
           <tr>
             <th style="${thStyle}width:18%;">Acomodación</th>
-            <th style="${thStyle}width:22%;">Habitaciones</th>
+            <th style="${thStyle}width:22%;">Noches</th>
             <th style="${thStyle}width:20%;">Pax</th>
             <th style="${thStyle}width:40%;text-align:right;">Tarifa por acomodación</th>
           </tr>
