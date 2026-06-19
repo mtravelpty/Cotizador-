@@ -408,14 +408,14 @@ const COLOR_TEXTO = "#1f2937";
 const COLOR_BORDE = "#e5e7eb";
 const COLOR_LABEL = "#6b7280";
 
-const C_TOT_ALOJAMIENTO = "#2F3D90";
-const C_TOT_TRASLADOS = "#2F3D90";
-const C_TOT_TOURS = "#363765";
-const C_TOT_VUELOS = "#1780C0";
-const C_TOT_OBSERVACIONES = "#F7CB17";
-const C_TOT_OBSERVACIONES_TEXT = "#041941";
-const C_TOT_ITINERARIO = "#EF7B15";
-const C_TOT_DESCRIPTIVOS = "#363765";
+const C_TOT_ALOJAMIENTO = "#802d62";
+const C_TOT_TRASLADOS = "#802d62";
+const C_TOT_TOURS = "#802d62";
+const C_TOT_VUELOS = "#802d62";
+const C_TOT_OBSERVACIONES = "#802d62";
+const C_TOT_OBSERVACIONES_TEXT = "#ffffff";
+const C_TOT_ITINERARIO = "#802d62";
+const C_TOT_DESCRIPTIVOS = "#802d62";
 
 const STYLES = {
   pillBlue: `display:inline-block;background:${COLOR_AZUL};color:#ffffff;padding:6px 14px;border-radius:20px;font-weight:600;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;`,

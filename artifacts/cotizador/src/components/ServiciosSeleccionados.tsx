@@ -1432,107 +1432,100 @@ function ServicioRow({
           </Popover>
         )}
 
-        {/* 📝 Nota normal */}
+        {/* 📝 Nota (unificada: normal + importante) */}
+        {(() => {
+          const hasImportant = (servicio.notasList ?? []).some(n => n.type === "important" || n.important === true) || (servicio.notas && servicio.notesImportant);
+          const hasNormal = (servicio.notasList ?? []).some(n => n.type !== "important" && !n.important) || (servicio.notas && !servicio.notesImportant);
+          const hasAny = hasImportant || hasNormal;
+          return (
+            <Popover
+              open={openEditor === "notes"}
+              onOpenChange={(o) => setOpenEditor(o ? "notes" : null)}
+            >
+              <PopoverTrigger asChild>
+                <button
+                  type="button"
+                  className={`p-1.5 rounded-lg transition-colors ${hasAny ? "opacity-100" : "text-slate-500 hover:bg-slate-100"}`}
+                  style={
+                    hasImportant
+                      ? { color: "#ef7b15", backgroundColor: "#fff3eb" }
+                      : hasNormal
+                        ? { color: "#b45309", backgroundColor: "#fef3c7" }
+                        : {}
+                  }
+                  aria-label="Agregar nota"
+                  title="Agregar nota"
+                >
+                  <StickyNote className="w-3.5 h-3.5" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent
+                align="end"
+                className="w-[290px] p-3 z-[60]"
+                onOpenAutoFocus={(e) => e.preventDefault()}
+              >
+                <UnifiedNoteEditor
+                  onSave={(text, important) => {
+                    const now = new Date().toISOString();
+                    const prev = servicio.notasList ?? [];
+                    const newNote = {
+                      id: `note-${Date.now()}-0`,
+                      type: important ? "important" as const : "normal" as const,
+                      text: important ? text.trim().toUpperCase() : text.trim(),
+                      important,
+                      createdAt: now,
+                    };
+                    onUpdate({ ...servicio, notasList: [...prev, newNote] });
+                    setOpenEditor(null);
+                  }}
+                  onClose={() => setOpenEditor(null)}
+                />
+              </PopoverContent>
+            </Popover>
+          );
+        })()}
+
+        {/* 🗑 Eliminar con confirmación */}
         <Popover
-          open={openEditor === "notes"}
-          onOpenChange={(o) => setOpenEditor(o ? "notes" : null)}
+          open={openEditor === "confirm-delete"}
+          onOpenChange={(o) => setOpenEditor(o ? "confirm-delete" : null)}
         >
           <PopoverTrigger asChild>
             <button
               type="button"
-              className={`p-1.5 rounded-lg transition-colors ${
-                (servicio.notasList ?? []).some(n => n.type !== "important" && !n.important) || (servicio.notas && !servicio.notesImportant)
-                  ? "text-amber-600 bg-amber-50 hover:bg-amber-100 opacity-100"
-                  : "text-slate-500 hover:bg-slate-100"
-              }`}
-              aria-label="Agregar nota"
-              title="Agregar nota"
+              className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors"
+              aria-label="Quitar"
+              title="Quitar servicio"
             >
-              <StickyNote className="w-3.5 h-3.5" />
+              <Trash2 className="w-3.5 h-3.5" />
             </button>
           </PopoverTrigger>
-          <PopoverContent
-            align="end"
-            className="w-[280px] p-3 z-[60]"
-            onOpenAutoFocus={(e) => e.preventDefault()}
-          >
-            <NoteEditor
-              tipo="normal"
-              onSave={(lines) => {
-                const now = new Date().toISOString();
-                const prev = servicio.notasList ?? [];
-                const newNotes = lines.map((text, idx) => ({
-                  id: `note-${Date.now()}-${idx}`,
-                  type: "normal" as const,
-                  text,
-                  important: false,
-                  createdAt: now,
-                }));
-                onUpdate({ ...servicio, notasList: [...prev, ...newNotes] });
-                setOpenEditor(null);
-              }}
-              onClose={() => setOpenEditor(null)}
-            />
+          <PopoverContent align="end" className="w-[220px] p-4 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+            <div className="space-y-3">
+              <div>
+                <div className="text-sm font-semibold text-slate-800">Eliminar servicio</div>
+                <div className="text-xs text-slate-500 mt-1">¿Seguro que deseas eliminar este servicio?</div>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => { setOpenEditor(null); onRemove(); }}
+                  className="flex-1 h-8 rounded-lg text-xs font-semibold text-white transition-all hover:brightness-110"
+                  style={{ backgroundColor: "#dc2626" }}
+                >
+                  Eliminar
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setOpenEditor(null)}
+                  className="flex-1 h-8 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
           </PopoverContent>
         </Popover>
-
-        {/* ⚠ Nota importante */}
-        <Popover
-          open={openEditor === "important-note"}
-          onOpenChange={(o) => setOpenEditor(o ? "important-note" : null)}
-        >
-          <PopoverTrigger asChild>
-            <button
-              type="button"
-              className={`p-1.5 rounded-lg transition-colors ${
-                (servicio.notasList ?? []).some(n => n.type === "important" || n.important === true) || (servicio.notas && servicio.notesImportant)
-                  ? "opacity-100 hover:bg-orange-100"
-                  : "text-slate-500 hover:bg-slate-100"
-              }`}
-              style={
-                (servicio.notasList ?? []).some(n => n.type === "important" || n.important === true) || (servicio.notas && servicio.notesImportant)
-                  ? { color: "#ef7b15", backgroundColor: "#fff3eb" }
-                  : {}
-              }
-              aria-label="Agregar nota importante"
-              title="Agregar nota importante"
-            >
-              <Flag className="w-3.5 h-3.5" />
-            </button>
-          </PopoverTrigger>
-          <PopoverContent
-            align="end"
-            className="w-[280px] p-3 z-[60]"
-            onOpenAutoFocus={(e) => e.preventDefault()}
-          >
-            <NoteEditor
-              tipo="important"
-              onSave={(lines) => {
-                const now = new Date().toISOString();
-                const prev = servicio.notasList ?? [];
-                const newNotes = lines.map((text, idx) => ({
-                  id: `note-${Date.now()}-${idx}`,
-                  type: "important" as const,
-                  text,
-                  important: true,
-                  createdAt: now,
-                }));
-                onUpdate({ ...servicio, notasList: [...prev, ...newNotes] });
-                setOpenEditor(null);
-              }}
-              onClose={() => setOpenEditor(null)}
-            />
-          </PopoverContent>
-        </Popover>
-
-        <button
-          onClick={onRemove}
-          className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 transition-colors"
-          aria-label="Quitar"
-          title="Quitar servicio"
-        >
-          <Trash2 className="w-3.5 h-3.5" />
-        </button>
       </div>
     </div>
   );
@@ -2116,6 +2109,73 @@ function NoteEditor({
           : "Enter para guardar · Shift+Enter nueva línea · varias líneas = varias notas"
         }
       </p>
+      <div className="flex justify-end">
+        <button type="button" onClick={handleApply} style={btnApply} title="Guardar">✓</button>
+      </div>
+    </div>
+  );
+}
+
+/* ───────────────────────── UnifiedNoteEditor ───────────────────────── */
+
+function UnifiedNoteEditor({
+  onSave,
+  onClose,
+}: {
+  onSave: (text: string, important: boolean) => void;
+  onClose: () => void;
+}) {
+  const [text, setText] = useState("");
+  const [important, setImportant] = useState(false);
+
+  const handleApply = () => {
+    const trimmed = text.trim();
+    if (!trimmed) { onClose(); return; }
+    onSave(trimmed, important);
+  };
+
+  return (
+    <div className="space-y-2.5">
+      <div className="flex items-center justify-between">
+        <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.06em", display: "flex", alignItems: "center", gap: 5 }}>
+          <StickyNote size={11} />
+          Agregar nota
+        </div>
+        <button type="button" onClick={onClose} style={btnClose} title="Cerrar">✕</button>
+      </div>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Detalles, restricciones u observaciones..."
+        rows={2}
+        autoFocus
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleApply(); }
+        }}
+        className="w-full px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 resize-none placeholder:text-slate-300 focus:ring-[#802d62]"
+        style={{ borderRadius: 14, border: "1px solid #D8E0EE", color: "#1e293b", backgroundColor: "#FFFFFF" }}
+      />
+      <label className="flex items-center gap-2 cursor-pointer select-none">
+        <div
+          onClick={() => setImportant(v => !v)}
+          className="flex items-center gap-1.5"
+        >
+          <div
+            className="w-8 h-4 rounded-full transition-colors relative flex-shrink-0"
+            style={{ backgroundColor: important ? "#ef7b15" : "#cbd5e1" }}
+          >
+            <div
+              className="absolute top-0.5 w-3 h-3 rounded-full bg-white shadow transition-transform"
+              style={{ left: 2, transform: important ? "translateX(16px)" : "translateX(0)" }}
+            />
+          </div>
+          <span className="flex items-center gap-1 text-[11px] font-semibold" style={{ color: important ? "#ef7b15" : "#64748b" }}>
+            <Flag size={10} />
+            Nota importante
+          </span>
+        </div>
+      </label>
+      <p className="text-[10px] text-slate-400 -mt-1">Enter para guardar · Shift+Enter nueva línea</p>
       <div className="flex justify-end">
         <button type="button" onClick={handleApply} style={btnApply} title="Guardar">✓</button>
       </div>
