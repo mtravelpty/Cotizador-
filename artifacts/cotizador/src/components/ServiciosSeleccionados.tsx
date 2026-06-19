@@ -107,13 +107,13 @@ const GROUP_TITLE: Record<ServicioSeleccionado["tipo"], string> = {
 
 type CategoriaQuick = "hoteleria" | "traslados" | "aereos" | "catamaran" | "tours" | "otros";
 
-const CATEGORIAS_QUICK: { id: CategoriaQuick; label: string; desc: string; icon: React.ReactNode; nombre: string }[] = [
-  { id: "hoteleria",  label: "Hotelería",  desc: "Alojamientos",           icon: <BedDouble className="w-6 h-6" />, nombre: "Hotel" },
-  { id: "traslados",  label: "Traslados",  desc: "Servicios terrestres",   icon: <Car className="w-6 h-6" />,       nombre: "Traslado" },
-  { id: "tours",      label: "Tours",      desc: "Excursiones",            icon: <Compass className="w-6 h-6" />,   nombre: "Tour" },
-  { id: "aereos",     label: "Aéreos",     desc: "Boletos aéreos",         icon: <Plane className="w-6 h-6" />,     nombre: "Aéreo" },
-  { id: "catamaran",  label: "Catamarán",  desc: "Experiencias marítimas", icon: <Anchor className="w-6 h-6" />,    nombre: "Catamarán" },
-  { id: "otros",      label: "Otros",      desc: "Servicios adicionales",  icon: <Package className="w-6 h-6" />,   nombre: "Servicio" },
+const CATEGORIAS_QUICK: { id: CategoriaQuick; label: string; icon: React.ReactNode; nombre: string }[] = [
+  { id: "hoteleria",  label: "Hotelería",  icon: <BedDouble className="w-5 h-5" />, nombre: "Hotel" },
+  { id: "traslados",  label: "Traslados",  icon: <Car className="w-5 h-5" />,       nombre: "Traslado" },
+  { id: "tours",      label: "Tours",      icon: <Compass className="w-5 h-5" />,   nombre: "Tour" },
+  { id: "aereos",     label: "Aéreos",     icon: <Plane className="w-5 h-5" />,     nombre: "Aéreo" },
+  { id: "catamaran",  label: "Catamarán",  icon: <Anchor className="w-5 h-5" />,    nombre: "Catamarán" },
+  { id: "otros",      label: "Otros",      icon: <Package className="w-5 h-5" />,   nombre: "Servicio" },
 ];
 
 const TIPO_QUICK: Record<CategoriaQuick, ServicioSeleccionado["tipo"]> = {
@@ -278,16 +278,16 @@ export default function ServiciosSeleccionados({
       }
     >
       {onQuickAdd && (
-        <div className="mb-5 pb-5 border-b border-[#f0e4ea]">
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
+        <div className="mb-3 pb-3 border-b border-[#f0e4ea]">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {CATEGORIAS_QUICK.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => handleQuickAddItem(cat.id)}
-                className="group flex flex-col items-center justify-center gap-2 px-2 rounded-2xl border transition-all duration-150 text-center active:scale-95"
+                className="group flex flex-col items-center justify-center gap-1 px-1.5 rounded-xl border transition-all duration-150 text-center active:scale-95"
                 style={{
-                  height: 140,
+                  height: 88,
                   backgroundColor: "#ffffff",
                   borderColor: "#d8bdd0",
                   color: "#802d62",
@@ -297,32 +297,32 @@ export default function ServiciosSeleccionados({
                   const el = e.currentTarget as HTMLButtonElement;
                   el.style.backgroundColor = "#f8eef5";
                   el.style.borderColor = "#802d62";
-                  el.style.boxShadow = "0 4px 14px rgba(128,45,98,0.14)";
+                  el.style.boxShadow = "0 3px 10px rgba(128,45,98,0.13)";
                 }}
                 onMouseLeave={e => {
                   const el = e.currentTarget as HTMLButtonElement;
                   el.style.backgroundColor = "#ffffff";
                   el.style.borderColor = "#d8bdd0";
                   el.style.boxShadow = "none";
+                  el.style.color = "#802d62";
                 }}
                 onMouseDown={e => {
                   const el = e.currentTarget as HTMLButtonElement;
                   el.style.backgroundColor = "#802d62";
                   el.style.borderColor = "#802d62";
                   el.style.color = "#ffffff";
-                  el.style.boxShadow = "0 2px 8px rgba(128,45,98,0.3)";
+                  el.style.boxShadow = "0 2px 8px rgba(128,45,98,0.30)";
                 }}
                 onMouseUp={e => {
                   const el = e.currentTarget as HTMLButtonElement;
                   el.style.backgroundColor = "#f8eef5";
                   el.style.borderColor = "#802d62";
                   el.style.color = "#802d62";
-                  el.style.boxShadow = "0 4px 14px rgba(128,45,98,0.14)";
+                  el.style.boxShadow = "0 3px 10px rgba(128,45,98,0.13)";
                 }}
               >
                 <span style={{ display: "flex" }}>{cat.icon}</span>
-                <span className="text-[13px] font-bold leading-tight">{cat.label}</span>
-                <span className="text-[10px] font-medium leading-tight opacity-70">{cat.desc}</span>
+                <span className="text-[12px] font-bold leading-tight">{cat.label}</span>
               </button>
             ))}
           </div>
@@ -1330,7 +1330,7 @@ function ServicioRow({
                   </div>
                 </div>
               ))}
-              {ninos > 0 && (servicio.precios.CHD ?? 0) > 0 && (
+              {ninos > 0 && (
                 <div className="text-center" style={{ minWidth: 64 }}>
                   <div className="text-sm font-bold tabular-nums" style={{ color: "#92400e" }}>
                     {fmt(servicio.precios.CHD ?? 0)}
@@ -1353,6 +1353,7 @@ function ServicioRow({
             <PricesEditor
               servicio={servicio}
               acomodaciones={acomodaciones}
+              ninos={ninos}
               onSave={(precios) => {
                 onUpdate({ ...servicio, precios });
                 setOpenEditor(null);
@@ -1378,13 +1379,13 @@ function ServicioRow({
               <div className="text-[10px] uppercase tracking-wide text-slate-400">
                 {isCatamaranItem && (servicio.fechaInicio || servicio.fechaFin) ? "p/noche" : "p/p"}
               </div>
-              {ninos > 0 && (servicio.precios.chd ?? 0) > 0 && (
+              {ninos > 0 && (
                 <>
                   <div className="text-sm font-bold tabular-nums mt-0.5" style={{ color: "#92400e" }}>
-                    {fmt(servicio.precios.chd ?? 0)}
+                    {fmt(servicio.precios.chd ?? (servicio.precios.CHD as number | undefined) ?? 0)}
                   </div>
                   <div className="text-[10px] uppercase tracking-wide" style={{ color: "#b45309" }}>
-                    niño p/p
+                    CHD p/p
                   </div>
                 </>
               )}
@@ -1397,8 +1398,18 @@ function ServicioRow({
           >
             <UnitPriceEditor
               currentUnit={unit}
-              onSave={(val) => {
-                onUpdate({ ...servicio, unitOverride: val ?? undefined });
+              currentChd={servicio.precios.chd ?? (servicio.precios.CHD as number | undefined) ?? 0}
+              ninos={ninos}
+              onSave={(val, chdVal) => {
+                const newPrecios = { ...servicio.precios };
+                if (chdVal !== undefined && chdVal !== null) {
+                  newPrecios.chd = chdVal;
+                  (newPrecios as Record<string, number>).CHD = chdVal;
+                } else if (chdVal === null) {
+                  newPrecios.chd = 0;
+                  (newPrecios as Record<string, number>).CHD = 0;
+                }
+                onUpdate({ ...servicio, unitOverride: val ?? undefined, precios: newPrecios });
                 setOpenEditor(null);
               }}
               onClose={() => setOpenEditor(null)}
@@ -1745,11 +1756,13 @@ function DatesEditor({
 function PricesEditor({
   servicio,
   acomodaciones,
+  ninos = 0,
   onSave,
   onClose,
 }: {
   servicio: ServicioSeleccionado;
   acomodaciones: Acomodacion[];
+  ninos?: number;
   onSave: (precios: ServicioSeleccionado["precios"]) => void;
   onClose: () => void;
 }) {
@@ -1809,6 +1822,19 @@ function PricesEditor({
             />
           </div>
         ))}
+        {ninos > 0 && (
+          <div className="flex items-center gap-2 pt-1" style={{ borderTop: "1px dashed #f0e4ea" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#92400e", width: 28, flexShrink: 0 }}>CHD</span>
+            <PriceInput
+              value={vals["CHD"] ?? "0"}
+              onChange={(v) => setVals((prev) => ({ ...prev, CHD: v }))}
+              onApply={handleApply}
+              onCancel={onClose}
+              wrapperClassName="flex-1"
+              inputClassName="w-full h-8 pr-2.5 rounded-md text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+            />
+          </div>
+        )}
       </div>
       {/* Actions */}
       <div className="flex justify-end gap-2 pt-0.5">
@@ -1821,23 +1847,29 @@ function PricesEditor({
 
 function UnitPriceEditor({
   currentUnit,
+  currentChd = 0,
+  ninos = 0,
   onSave,
   onClose,
 }: {
   currentUnit: number;
-  onSave: (val: number | null) => void;
+  currentChd?: number;
+  ninos?: number;
+  onSave: (unitVal: number | null, chdVal?: number | null) => void;
   onClose: () => void;
 }) {
   const [val, setVal] = useState<string>(String(currentUnit));
+  const [chdVal, setChdVal] = useState<string>(String(currentChd));
 
   const handleApply = () => {
     const n = parseFloat(val);
-    onSave(isNaN(n) ? null : n);
+    const c = parseFloat(chdVal);
+    onSave(isNaN(n) ? null : n, ninos > 0 ? (isNaN(c) ? null : c) : undefined);
     onClose();
   };
 
   const handleReset = () => {
-    onSave(null);
+    onSave(null, ninos > 0 ? null : undefined);
     onClose();
   };
 
@@ -1850,15 +1882,30 @@ function UnitPriceEditor({
         </span>
         <button type="button" onClick={onClose} style={btnClose} title="Cerrar">✕</button>
       </div>
-      <PriceInput
-        value={val}
-        onChange={setVal}
-        onApply={handleApply}
-        onCancel={onClose}
-        autoFocus
-        wrapperClassName="w-full"
-        inputClassName="w-full h-8 pr-2.5 rounded-md border border-slate-200 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-      />
+      <div className="space-y-1.5">
+        <PriceInput
+          value={val}
+          onChange={setVal}
+          onApply={handleApply}
+          onCancel={onClose}
+          autoFocus
+          wrapperClassName="w-full"
+          inputClassName="w-full h-8 pr-2.5 rounded-md border border-slate-200 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+        />
+        {ninos > 0 && (
+          <div className="flex items-center gap-2 pt-1" style={{ borderTop: "1px dashed #f0e4ea" }}>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#92400e", flexShrink: 0 }}>CHD</span>
+            <PriceInput
+              value={chdVal}
+              onChange={setChdVal}
+              onApply={handleApply}
+              onCancel={onClose}
+              wrapperClassName="flex-1"
+              inputClassName="w-full h-8 pr-2.5 rounded-md border border-slate-200 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+            />
+          </div>
+        )}
+      </div>
       <div className="flex justify-end gap-2">
         <button type="button" onClick={handleReset} style={btnReset} title="Restablecer precio automático">↺</button>
         <button type="button" onClick={handleApply} style={btnApply} title="Aplicar">✓</button>
