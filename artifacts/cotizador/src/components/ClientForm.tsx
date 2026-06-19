@@ -822,13 +822,22 @@ export function AlojamientoBar({
                 style={{
                   flex: 1, height: 44, minWidth: 0,
                   borderRadius: 9999,
-                  fontSize: 13, fontWeight: 700, letterSpacing: "0.08em",
-                  color: "#fff", textTransform: "uppercase",
+                  fontSize: 13, fontWeight: active ? 700 : 500, letterSpacing: "0.08em",
+                  textTransform: "uppercase",
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  transition: "all 0.15s",
+                  transition: "all 0.2s ease",
                   ...(active
-                    ? { backgroundColor: "#802d62", boxShadow: "0 2px 10px rgba(128,45,98,0.45)" }
-                    : { backgroundColor: "rgba(107,34,82,0.45)", border: "1px solid rgba(183,140,164,0.40)" }),
+                    ? {
+                        backgroundColor: "#ffffff",
+                        color: "#802d62",
+                        boxShadow: "0 2px 12px rgba(0,0,0,0.18), 0 1px 4px rgba(128,45,98,0.25)",
+                        border: "1.5px solid rgba(255,255,255,0.90)",
+                      }
+                    : {
+                        backgroundColor: "rgba(107,34,82,0.45)",
+                        color: "rgba(255,255,255,0.70)",
+                        border: "1px solid rgba(183,140,164,0.30)",
+                      }),
                 }}
               >
                 {p}
@@ -849,22 +858,14 @@ export function AlojamientoBar({
     userSelect: "none",
   };
 
-  const BED_ICON = (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  const BedIcon = ({ color }: { color: string }) => (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M3 18V10a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v8"/>
       <path d="M3 14h18"/>
       <path d="M7 8V6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2"/>
       <path d="M13 8V6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2"/>
     </svg>
   );
-
-  const ROOM_ICONS: Record<Acomodacion, React.ReactNode> = {
-    SGL: BED_ICON,
-    DBL: BED_ICON,
-    TPL: BED_ICON,
-    QDL: BED_ICON,
-    CHD: <></>,
-  };
 
   const IconHab = (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -930,27 +931,33 @@ export function AlojamientoBar({
                   alignItems: "center",
                   justifyContent: "center",
                   gap: 6,
-                  transition: "background 0.2s, border-color 0.2s, box-shadow 0.2s, opacity 0.2s",
+                  transition: "background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease",
                   ...(hasRooms
                     ? {
-                        backgroundColor: "rgba(128,45,98,0.85)",
-                        border: "1px solid rgba(183,140,164,0.70)",
-                        boxShadow: "0 2px 8px rgba(128,45,98,0.40)",
+                        backgroundColor: "#ffffff",
+                        border: "1.5px solid rgba(255,255,255,0.90)",
+                        boxShadow: "0 2px 12px rgba(0,0,0,0.18), 0 1px 4px rgba(128,45,98,0.20)",
+                        opacity: 1,
                       }
                     : {
                         backgroundColor: "rgba(107,34,82,0.45)",
                         border: "1px solid rgba(255,255,255,0.13)",
-                        opacity: 0.60,
+                        opacity: 0.65,
                       }),
                 }}
               >
-                {/* Icon */}
-                <span style={{ display: "flex", lineHeight: 0, flexShrink: 0, opacity: 0.90 }}>
-                  {ROOM_ICONS[p]}
+                {/* Icon — color switches with active state */}
+                <span style={{ display: "flex", lineHeight: 0, flexShrink: 0 }}>
+                  <BedIcon color={hasRooms ? "#802d62" : "rgba(255,255,255,0.70)"} />
                 </span>
 
                 {/* Label */}
-                <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", letterSpacing: "0.06em", textTransform: "uppercase", lineHeight: 1 }}>
+                <span style={{
+                  fontSize: 14, fontWeight: 700, letterSpacing: "0.06em",
+                  textTransform: "uppercase", lineHeight: 1,
+                  color: hasRooms ? "#802d62" : "rgba(255,255,255,0.70)",
+                  transition: "color 0.2s ease",
+                }}>
                   {p}
                 </span>
 
@@ -983,14 +990,18 @@ export function AlojamientoBar({
                     style={{
                       width: 34, height: 34,
                       textAlign: "center",
-                      fontSize: 16, fontWeight: 800, color: "#fff",
-                      background: "rgba(0,0,0,0.22)",
-                      border: "1px solid rgba(255,255,255,0.22)",
+                      fontSize: 16, fontWeight: 800,
+                      color: hasRooms ? "#802d62" : "rgba(255,255,255,0.80)",
+                      background: hasRooms ? "#ffffff" : "rgba(0,0,0,0.22)",
+                      border: hasRooms
+                        ? "1.5px solid rgba(128,45,98,0.30)"
+                        : "1px solid rgba(255,255,255,0.22)",
                       borderRadius: 7,
                       padding: 0,
                       outline: "none",
                       lineHeight: "34px",
                       boxSizing: "border-box",
+                      transition: "background 0.2s ease, color 0.2s ease, border-color 0.2s ease",
                     }}
                   />
                 </div>
