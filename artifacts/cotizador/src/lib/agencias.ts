@@ -129,6 +129,58 @@ export async function saveCounters(list: Counter[]): Promise<void> {
   } catch (err) { console.error(err); }
 }
 
+// ─── Sync desde cotización ────────────────────────────────────────────────────
+// Llama al endpoint smart-sync del backend y gestiona el conflicto de correo.
+
+interface SyncFromQuoteResult {
+  status: "ok" | "skipped" | "email_conflict";
+  agenciaId?: string;
+  agenteId?: string;
+  agenteNombre?: string;
+  currentEmail?: string;
+  newEmail?: string;
+  action?: string;
+  reason?: string;
+}
+
+export async function syncAgenciaFromCliente(cliente: {
+  correo?: string;   // nombre de la agencia (campo "Agencia" en UI)
+  agente?: string;   // nombre del agente
+  emailCliente?: string; // correo electrónico del agente
+}): Promise<void> {
+  const agencyName = cliente.correo?.trim();
+  const agentName = cliente.agente?.trim();
+  const correo = cliente.emailCliente?.trim();
+
+  if (!agencyName || !agentName) return;
+
+  try {
+    const result = await apiAuth.post<SyncFromQuoteResult>("/agencias/sync-from-quote", {
+      agencyName,
+      agentName,
+      correo: correo || undefined,
+    });
+
+    if (result.status === "email_conflict" && result.agenteId && result.currentEmail && result.newEmail) {
+      const confirmed = window.confirm(
+        `El agente "${result.agenteNombre}" ya tiene registrado el correo "${result.currentEmail}".\n\n` +
+        `¿Desea actualizarlo a "${result.newEmail}"?`
+      );
+      if (confirmed) {
+        await apiAuth.put(`/agentes/${result.agenteId}`, { correo: result.newEmail });
+      }
+    }
+
+    // Refrescar caches para que Agencias muestre los datos actualizados
+    if (result.status === "ok" || result.status === "email_conflict") {
+      await queryClient.invalidateQueries({ queryKey: ["agencias"] });
+      await queryClient.invalidateQueries({ queryKey: ["agentes"] });
+    }
+  } catch (err) {
+    console.error("[agencias] Error en sync-from-quote:", err);
+  }
+}
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 export function getAgenciaByNombre(nombre: string): Agencia | undefined {

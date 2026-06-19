@@ -1,7 +1,12 @@
 import { Router } from "express";
+import { randomUUID } from "crypto";
 import { db, agenciasTable, agentesTable, countersTable } from "@workspace/db";
 import { eq } from "drizzle-orm";
 import { requireAuth, type AuthRequest } from "../lib/auth-middleware";
+
+function normalize(s: string): string {
+  return s.trim().toLowerCase().replace(/\s+/g, " ");
+}
 
 const router = Router();
 
@@ -196,6 +201,98 @@ router.delete("/counters/:id", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error al eliminar counter" });
+  }
+});
+
+// ─── Smart sync desde cotización ──────────────────────────────────────────────
+
+router.post("/agencias/sync-from-quote", async (req, res) => {
+  try {
+    const { agencyName, agentName, correo } = req.body as {
+      agencyName?: string;
+      agentName?: string;
+      correo?: string;
+    };
+
+    const agencyNorm = normalize(agencyName ?? "");
+    const agentNorm = normalize(agentName ?? "");
+
+    if (!agencyNorm || !agentNorm) {
+      return res.json({ status: "skipped", reason: "empty_fields" });
+    }
+
+    // ── 1. Buscar o crear agencia ─────────────────────────────────────────────
+    const allAgencias = await db.select().from(agenciasTable);
+    let agencia = allAgencias.find((a) => normalize(a.nombre) === agencyNorm);
+
+    if (!agencia) {
+      const [created] = await db
+        .insert(agenciasTable)
+        .values({
+          id: randomUUID(),
+          nombre: agencyName!.trim(),
+          predeterminada: false,
+        })
+        .returning();
+      agencia = created;
+    }
+
+    // ── 2. Buscar o crear agente ──────────────────────────────────────────────
+    const allAgentes = await db
+      .select()
+      .from(agentesTable)
+      .where(eq(agentesTable.agenciaId, agencia.id));
+
+    const agente = allAgentes.find((a) => normalize(a.nombre) === agentNorm);
+
+    if (!agente) {
+      // Verificar que no exista el mismo correo ya en la agencia
+      const correoNorm = correo?.trim().toLowerCase();
+      const correoYaExiste = correoNorm
+        ? allAgentes.some((a) => a.correo?.toLowerCase() === correoNorm)
+        : false;
+
+      const [created] = await db
+        .insert(agentesTable)
+        .values({
+          id: randomUUID(),
+          agenciaId: agencia.id,
+          nombre: agentName!.trim(),
+          correo: !correoYaExiste && correo?.trim() ? correo.trim() : null,
+        })
+        .returning();
+      return res.json({ status: "ok", agenciaId: agencia.id, agenteId: created.id, action: "created_agent" });
+    }
+
+    // ── 3. Agente ya existe — revisar correo ──────────────────────────────────
+    const currentEmail = agente.correo?.trim() || "";
+    const newEmail = correo?.trim() || "";
+
+    if (!newEmail || currentEmail.toLowerCase() === newEmail.toLowerCase()) {
+      return res.json({ status: "ok", agenciaId: agencia.id, agenteId: agente.id, action: "no_change" });
+    }
+
+    if (!currentEmail) {
+      // Si no tenía correo, actualizar sin pedir confirmación
+      await db
+        .update(agentesTable)
+        .set({ correo: newEmail })
+        .where(eq(agentesTable.id, agente.id));
+      return res.json({ status: "ok", agenciaId: agencia.id, agenteId: agente.id, action: "email_added" });
+    }
+
+    // Correo distinto al existente → reportar conflicto para confirmación del usuario
+    return res.json({
+      status: "email_conflict",
+      agenciaId: agencia.id,
+      agenteId: agente.id,
+      agenteNombre: agente.nombre,
+      currentEmail,
+      newEmail,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error en sync-from-quote" });
   }
 });
 

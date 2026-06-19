@@ -86,6 +86,7 @@ import { api, type CatalogInfo, type LangCode } from "@/lib/api";
 import { calcularLocal } from "@/lib/calc";
 import { Loader2, BedDouble, Car, Plane, Anchor, Compass, Package } from "lucide-react";
 import { useAuth } from "@/lib/auth";
+import { syncAgenciaFromCliente } from "@/lib/agencias";
 
 function addTwoMonths(date: Date): string {
   const d = new Date(date);
@@ -826,6 +827,14 @@ export default function CotizadorPage() {
         "success",
       );
     }
+
+    // Sincronizar agencia/agente en background (sin bloquear el guardado)
+    void syncAgenciaFromCliente({
+      correo: cliente.correo,
+      agente: cliente.agente,
+      emailCliente: cliente.emailCliente,
+    });
+
     return { ok: true, isNew };
   };
 
