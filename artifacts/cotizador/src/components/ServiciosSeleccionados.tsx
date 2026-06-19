@@ -110,9 +110,9 @@ type CategoriaQuick = "hoteleria" | "traslados" | "aereos" | "catamaran" | "tour
 const CATEGORIAS_QUICK: { id: CategoriaQuick; label: string; icon: React.ReactNode; nombre: string }[] = [
   { id: "hoteleria",  label: "Hotelería",  icon: <BedDouble className="w-5 h-5" />, nombre: "Hotel" },
   { id: "traslados",  label: "Traslados",  icon: <Car className="w-5 h-5" />,       nombre: "Traslado" },
+  { id: "tours",      label: "Tours",      icon: <Compass className="w-5 h-5" />,   nombre: "Tour" },
   { id: "aereos",     label: "Aéreos",     icon: <Plane className="w-5 h-5" />,     nombre: "Aéreo" },
   { id: "catamaran",  label: "Catamarán",  icon: <Anchor className="w-5 h-5" />,    nombre: "Catamarán" },
-  { id: "tours",      label: "Tours",      icon: <Compass className="w-5 h-5" />,   nombre: "Tour" },
   { id: "otros",      label: "Otros",      icon: <Package className="w-5 h-5" />,   nombre: "Servicio" },
 ];
 
@@ -246,6 +246,7 @@ export default function ServiciosSeleccionados({
       nombre: catData.nombre,
       precios: {},
       manual: true,
+      ...(cat === "hoteleria" && { tipoHabitacion: "Standard" }),
       ...(cat === "otros" && { customTipo: "Otro" }),
     });
   };
@@ -254,7 +255,7 @@ export default function ServiciosSeleccionados({
   <>
     <Section
       icon={<ListChecks className="w-4 h-4" />}
-      title="Servicios seleccionados"
+      title="Agregar servicios"
       subtitle={
         servicios.length
           ? `${servicios.length} ítem${servicios.length !== 1 ? "s" : ""} en la cotización`
@@ -1586,21 +1587,38 @@ function UbicacionEditor({
   onSave: (v: string) => void;
   onClose: () => void;
 }) {
+  const [value, setValue] = useState(current);
   return (
-    <div className="py-0.5 max-h-64 overflow-y-auto">
-      {UBICACIONES_LIST.map((u) => (
+    <div className="p-3 flex flex-col gap-3">
+      <input
+        autoFocus
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") { e.preventDefault(); onSave(value.trim()); }
+          if (e.key === "Escape") { e.preventDefault(); onClose(); }
+        }}
+        placeholder="Ej. Punta Cana"
+        className="w-full px-3 h-9 rounded-lg border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#802d62]/30"
+      />
+      <div className="flex gap-2">
         <button
-          key={u}
           type="button"
-          onClick={() => onSave(u)}
-          className={`w-full text-left flex items-center gap-2 px-3 py-2 text-[11px] rounded-lg hover:bg-primary/5 hover:text-primary transition-colors ${
-            current === u ? "text-primary font-semibold" : "text-slate-700"
-          }`}
+          onClick={() => onSave(value.trim())}
+          className="flex-1 h-8 rounded-lg text-xs font-semibold text-white transition-all hover:brightness-110"
+          style={{ backgroundColor: "#802d62" }}
         >
-          {current === u && <Check className="w-3 h-3 flex-shrink-0" />}
-          <span className={current === u ? "" : "ml-[15px]"}>{u}</span>
+          Guardar
         </button>
-      ))}
+        <button
+          type="button"
+          onClick={onClose}
+          className="flex-1 h-8 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all"
+        >
+          Cancelar
+        </button>
+      </div>
     </div>
   );
 }
