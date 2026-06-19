@@ -29,7 +29,7 @@ outputType = "webview"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "PUPPETEER_SKIP_DOWNLOAD=true pnpm install && pnpm --filter @workspace/api-server run build && (PORT=8080 pnpm --filter @workspace/api-server run start & PORT=5000 BASE_PATH=/ pnpm --filter @workspace/cotizador run dev)"
+args = "PUPPETEER_SKIP_DOWNLOAD=true pnpm install && PORT=5000 BASE_PATH=/ pnpm --filter @workspace/cotizador run dev"
 waitForPort = 5000
 
 [agent]
@@ -47,10 +47,6 @@ externalPort = 80
 [[ports]]
 localPort = 8080
 externalPort = 8080
-
-[[ports]]
-localPort = 8081
-externalPort = 8081
 
 [[ports]]
 localPort = 8082
