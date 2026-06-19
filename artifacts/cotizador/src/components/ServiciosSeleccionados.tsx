@@ -107,13 +107,13 @@ const GROUP_TITLE: Record<ServicioSeleccionado["tipo"], string> = {
 
 type CategoriaQuick = "hoteleria" | "traslados" | "aereos" | "catamaran" | "tours" | "otros";
 
-const CATEGORIAS_QUICK: { id: CategoriaQuick; label: string; icon: React.ReactNode; nombre: string }[] = [
-  { id: "hoteleria",  label: "Hotelería",  icon: <BedDouble className="w-5 h-5" />, nombre: "Hotel" },
-  { id: "traslados",  label: "Traslados",  icon: <Car className="w-5 h-5" />,       nombre: "Traslado" },
-  { id: "tours",      label: "Tours",      icon: <Compass className="w-5 h-5" />,   nombre: "Tour" },
-  { id: "aereos",     label: "Aéreos",     icon: <Plane className="w-5 h-5" />,     nombre: "Aéreo" },
-  { id: "catamaran",  label: "Catamarán",  icon: <Anchor className="w-5 h-5" />,    nombre: "Catamarán" },
-  { id: "otros",      label: "Otros",      icon: <Package className="w-5 h-5" />,   nombre: "Servicio" },
+const CATEGORIAS_QUICK: { id: CategoriaQuick; label: string; desc: string; icon: React.ReactNode; nombre: string }[] = [
+  { id: "hoteleria",  label: "Hotelería",  desc: "Alojamientos",           icon: <BedDouble className="w-6 h-6" />, nombre: "Hotel" },
+  { id: "traslados",  label: "Traslados",  desc: "Servicios terrestres",   icon: <Car className="w-6 h-6" />,       nombre: "Traslado" },
+  { id: "tours",      label: "Tours",      desc: "Excursiones",            icon: <Compass className="w-6 h-6" />,   nombre: "Tour" },
+  { id: "aereos",     label: "Aéreos",     desc: "Boletos aéreos",         icon: <Plane className="w-6 h-6" />,     nombre: "Aéreo" },
+  { id: "catamaran",  label: "Catamarán",  desc: "Experiencias marítimas", icon: <Anchor className="w-6 h-6" />,    nombre: "Catamarán" },
+  { id: "otros",      label: "Otros",      desc: "Servicios adicionales",  icon: <Package className="w-6 h-6" />,   nombre: "Servicio" },
 ];
 
 const TIPO_QUICK: Record<CategoriaQuick, ServicioSeleccionado["tipo"]> = {
@@ -279,22 +279,50 @@ export default function ServiciosSeleccionados({
     >
       {onQuickAdd && (
         <div className="mb-5 pb-5 border-b border-[#f0e4ea]">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
-            Agregar servicio
-          </p>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5">
             {CATEGORIAS_QUICK.map((cat) => (
               <button
                 key={cat.id}
                 type="button"
                 onClick={() => handleQuickAddItem(cat.id)}
-                className="flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl border transition-all text-center active:scale-95"
-                style={{ backgroundColor: "#fdf7fb", borderColor: "#e8d5e0", color: "#802d62" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#f9eef5"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#fdf7fb"; }}
+                className="group flex flex-col items-center justify-center gap-2 px-2 rounded-2xl border transition-all duration-150 text-center active:scale-95"
+                style={{
+                  height: 140,
+                  backgroundColor: "#ffffff",
+                  borderColor: "#d8bdd0",
+                  color: "#802d62",
+                  boxShadow: "none",
+                }}
+                onMouseEnter={e => {
+                  const el = e.currentTarget as HTMLButtonElement;
+                  el.style.backgroundColor = "#f8eef5";
+                  el.style.borderColor = "#802d62";
+                  el.style.boxShadow = "0 4px 14px rgba(128,45,98,0.14)";
+                }}
+                onMouseLeave={e => {
+                  const el = e.currentTarget as HTMLButtonElement;
+                  el.style.backgroundColor = "#ffffff";
+                  el.style.borderColor = "#d8bdd0";
+                  el.style.boxShadow = "none";
+                }}
+                onMouseDown={e => {
+                  const el = e.currentTarget as HTMLButtonElement;
+                  el.style.backgroundColor = "#802d62";
+                  el.style.borderColor = "#802d62";
+                  el.style.color = "#ffffff";
+                  el.style.boxShadow = "0 2px 8px rgba(128,45,98,0.3)";
+                }}
+                onMouseUp={e => {
+                  const el = e.currentTarget as HTMLButtonElement;
+                  el.style.backgroundColor = "#f8eef5";
+                  el.style.borderColor = "#802d62";
+                  el.style.color = "#802d62";
+                  el.style.boxShadow = "0 4px 14px rgba(128,45,98,0.14)";
+                }}
               >
-                <span>{cat.icon}</span>
-                <span className="text-[11px] font-semibold leading-tight">{cat.label}</span>
+                <span style={{ display: "flex" }}>{cat.icon}</span>
+                <span className="text-[13px] font-bold leading-tight">{cat.label}</span>
+                <span className="text-[10px] font-medium leading-tight opacity-70">{cat.desc}</span>
               </button>
             ))}
           </div>
