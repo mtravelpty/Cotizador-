@@ -16,6 +16,8 @@ import {
   ImageIcon,
 } from "lucide-react";
 import type { Acomodacion, ServicioSeleccionado } from "@/lib/types";
+import ServiceNameAutocomplete from "./ServiceNameAutocomplete";
+import { useServiceNameSuggestions, type SuggestionCategory } from "@/lib/useServiceNameSuggestions";
 
 type CustomTipo = "hotel" | "traslado" | "tour" | "vuelo" | "catamaran" | "otros";
 
@@ -369,6 +371,17 @@ export default function CustomItemModal({
   const isCatamaran = tipo === "catamaran";
   const isOtros = tipo === "otros";
 
+  const { addSuggestion } = useServiceNameSuggestions();
+  const CUSTOM_CATEGORY: Record<CustomTipo, SuggestionCategory> = {
+    hotel: "hoteleria",
+    traslado: "traslados",
+    tour: "tours",
+    vuelo: "aereos",
+    catamaran: "catamaran",
+    otros: "otros",
+  };
+  const suggestCategory = CUSTOM_CATEGORY[tipo];
+
   const vueloNombre = useMemo(
     () =>
       idaVuelta
@@ -470,6 +483,9 @@ export default function CustomItemModal({
         : {}),
     };
 
+    if (!isVuelo) {
+      addSuggestion(suggestCategory, displayName);
+    }
     onSave(servicio);
     onClose();
   };
@@ -613,11 +629,11 @@ export default function CustomItemModal({
             <>
               <div>
                 <label className={lbl}>Nombre del hotel</label>
-                <input
-                  ref={nombreRef}
-                  type="text"
+                <ServiceNameAutocomplete
+                  inputRef={nombreRef}
                   value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
+                  onChange={setNombre}
+                  category="hoteleria"
                   placeholder="Ej: Hotel Hilton Garden Inn"
                   className={inputCls}
                 />
@@ -703,11 +719,11 @@ export default function CustomItemModal({
             <>
               <div>
                 <label className={lbl}>Nombre / descripción</label>
-                <input
-                  ref={nombreRef}
-                  type="text"
+                <ServiceNameAutocomplete
+                  inputRef={nombreRef}
                   value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
+                  onChange={setNombre}
+                  category="traslados"
                   placeholder="Ej: Traslado aeropuerto - hotel"
                   className={inputCls}
                 />
@@ -755,11 +771,11 @@ export default function CustomItemModal({
             <>
               <div>
                 <label className={lbl}>Nombre del tour</label>
-                <input
-                  ref={nombreRef}
-                  type="text"
+                <ServiceNameAutocomplete
+                  inputRef={nombreRef}
                   value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
+                  onChange={setNombre}
+                  category="tours"
                   placeholder="Ej: Tour en lancha por San Blas"
                   className={inputCls}
                 />
@@ -830,11 +846,11 @@ export default function CustomItemModal({
             <>
               <div>
                 <label className={lbl}>Nombre del servicio</label>
-                <input
-                  ref={nombreRef}
-                  type="text"
+                <ServiceNameAutocomplete
+                  inputRef={nombreRef}
                   value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
+                  onChange={setNombre}
+                  category="catamaran"
                   placeholder="Ej: Catamarán a Taboga"
                   className={inputCls}
                 />
@@ -905,11 +921,11 @@ export default function CustomItemModal({
             <>
               <div>
                 <label className={lbl}>Nombre del servicio</label>
-                <input
-                  ref={nombreRef}
-                  type="text"
+                <ServiceNameAutocomplete
+                  inputRef={nombreRef}
                   value={nombre}
-                  onChange={(e) => setNombre(e.target.value)}
+                  onChange={setNombre}
+                  category="otros"
                   placeholder="Ej: Cena especial en restaurante"
                   className={inputCls}
                 />

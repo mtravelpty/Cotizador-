@@ -10,6 +10,8 @@ import type {
 import { fmt, pickTier, priceForTier } from "@/lib/calc";
 import { formatTrasladoNombre, personalizarNombreTraslado } from "@/lib/utils";
 import { formatRegimen } from "@/lib/regimen";
+import ServiceNameAutocomplete from "./ServiceNameAutocomplete";
+import { useServiceNameSuggestions, tipoToSuggestionCategory } from "@/lib/useServiceNameSuggestions";
 import InlineRangePicker, { nightsBetween } from "./InlineRangePicker";
 
 import {
@@ -769,6 +771,9 @@ function ServicioRow({
   const [nameValue, setNameValue] = useState(servicio.nombre);
   const nameInputRef = useRef<HTMLInputElement>(null);
   const savingRef = useRef(false);
+
+  const { addSuggestion } = useServiceNameSuggestions();
+  const suggestCategory = tipoToSuggestionCategory(servicio.tipo, servicio.customTipo);
   const dragHandleActive = useRef(false);
   const [iconHover, setIconHover] = useState(false);
   const imgInputRef = useRef<HTMLInputElement>(null);
@@ -804,11 +809,12 @@ function ServicioRow({
     }, 0);
   }
 
-  function commitName() {
+  function commitName(overrideValue?: string) {
     if (savingRef.current) return;
     savingRef.current = true;
-    const trimmed = nameValue.trim();
+    const trimmed = (overrideValue ?? nameValue).trim();
     if (trimmed) {
+      addSuggestion(suggestCategory, trimmed);
       onUpdate({ ...servicio, nombre: trimmed });
     }
     setEditingName(false);
@@ -938,16 +944,14 @@ function ServicioRow({
       {/* Content */}
       <div className="min-w-0 flex-1">
         {editingName ? (
-          <input
-            ref={nameInputRef}
+          <ServiceNameAutocomplete
+            inputRef={nameInputRef}
             value={nameValue}
-            onChange={(e) => setNameValue(e.target.value)}
-            onBlur={commitName}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") { e.preventDefault(); commitName(); }
-              if (e.key === "Escape") { e.preventDefault(); cancelName(); }
-            }}
+            onChange={setNameValue}
+            category={suggestCategory}
             className="text-sm font-semibold text-slate-900 w-full bg-transparent border-b border-primary/50 focus:outline-none focus:border-primary pb-px leading-tight"
+            onCommit={commitName}
+            onEscape={cancelName}
           />
         ) : (
           <div

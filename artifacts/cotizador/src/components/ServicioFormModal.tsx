@@ -25,6 +25,8 @@ import type {
   Traslado,
 } from "@/lib/types";
 import { fmt, pickTier, priceForTier, tierLabel, diffNoches, addDays } from "@/lib/calc";
+import ServiceNameAutocomplete from "./ServiceNameAutocomplete";
+import { useServiceNameSuggestions } from "@/lib/useServiceNameSuggestions";
 
 export type ServicioTipo = "hotel" | "tour" | "traslado";
 
@@ -125,6 +127,9 @@ export default function ServicioFormModal(props: Props) {
   // Catalog selection
   const [search, setSearch] = useState("");
   const [selectedCatId, setSelectedCatId] = useState<string | null>(null);
+
+  const { addSuggestion } = useServiceNameSuggestions();
+  const suggestCategory = tipo === "hotel" ? "hoteleria" : tipo === "tour" ? "tours" : "traslados";
 
   useEffect(() => {
     if (!open) return;
@@ -356,6 +361,7 @@ export default function ServicioFormModal(props: Props) {
     if (tipo === "tour" && horario.trim()) {
       base.horario = horario.trim();
     }
+    addSuggestion(suggestCategory, nombre.trim());
     onSave(base);
   };
 
@@ -493,9 +499,10 @@ export default function ServicioFormModal(props: Props) {
             </div>
             <div className="md:col-span-2">
               <Label>Nombre</Label>
-              <input
+              <ServiceNameAutocomplete
                 value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
+                onChange={setNombre}
+                category={suggestCategory}
                 placeholder="Nombre del servicio"
                 className={inputCls}
               />
