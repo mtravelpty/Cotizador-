@@ -262,7 +262,7 @@ export default function ClientForm({ cliente, onChange, errors }: Props) {
                 onChange={(v) => update({ counter: v })}
               />
             </Field>
-            <Field label="Correo electrónico">
+            <Field label="Correo electrónico" required error={errors?.emailCliente}>
               <div className="relative flex items-center">
                 <Mail className="absolute left-3 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
                 <input
@@ -271,6 +271,7 @@ export default function ClientForm({ cliente, onChange, errors }: Props) {
                   onChange={(e) => update({ emailCliente: e.target.value })}
                   placeholder="cliente@correo.com"
                   className={inputCls + " pl-8"}
+                  style={errors?.emailCliente ? { borderColor: "#e5484d" } : undefined}
                   autoComplete="off"
                   spellCheck={false}
                 />
@@ -684,18 +685,29 @@ function Field({
   error?: boolean;
   span?: number;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (error && containerRef.current) {
+      const el = containerRef.current;
+      el.classList.remove("field-shake");
+      void el.offsetWidth;
+      el.classList.add("field-shake");
+    }
+  }, [error]);
+
   return (
-    <div style={span ? { gridColumn: `span ${span}` } : undefined}>
+    <div ref={containerRef} style={span ? { gridColumn: `span ${span}` } : undefined}>
       <label className="block text-[11px] font-semibold mb-1.5 uppercase tracking-wide" style={{ color: "#07152f" }}>
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
-        {error && (
-          <span className="ml-2 text-[10px] font-medium text-red-500 normal-case tracking-normal">
-            requerido
-          </span>
-        )}
+        {required && <span className="ml-0.5" style={{ color: "#e5484d" }}>*</span>}
       </label>
       {children}
+      {error && (
+        <p className="mt-1 text-[11px] font-medium" style={{ color: "#e5484d" }}>
+          Campo obligatorio
+        </p>
+      )}
     </div>
   );
 }

@@ -100,6 +100,7 @@ export default function ServicioFormModal(props: Props) {
     SGL: 0,
     DBL: 0,
     TPL: 0,
+    QDL: 0,
     CHD: 0,
     p1: 0,
     p2_5: 0,
@@ -145,6 +146,7 @@ export default function ServicioFormModal(props: Props) {
         SGL: initial.precios.SGL ?? 0,
         DBL: initial.precios.DBL ?? 0,
         TPL: initial.precios.TPL ?? 0,
+        QDL: initial.precios.QDL ?? 0,
         CHD: initial.precios.CHD ?? initial.precios.chd ?? 0,
         p1: initial.precios.p1 ?? 0,
         p2_5: initial.precios.p2_5 ?? 0,
@@ -323,6 +325,7 @@ export default function ServicioFormModal(props: Props) {
               SGL: precios.SGL,
               DBL: precios.DBL,
               TPL: precios.TPL,
+              QDL: precios.QDL,
               CHD: precios.CHD,
               chd: precios.CHD,
             }
@@ -707,7 +710,7 @@ function HotelFields({
   aplicarVigencia: boolean;
   tipoHabitacion: string;
   desayuno: string;
-  precios: { SGL: number; DBL: number; TPL: number; CHD: number };
+  precios: { SGL: number; DBL: number; TPL: number; QDL: number; CHD: number };
   onChange: (
     patch: Partial<{
       fechaInicio: string;
@@ -717,7 +720,7 @@ function HotelFields({
       vigencia: string;
       tipoHabitacion: string;
       desayuno: string;
-      precios: Partial<{ SGL: number; DBL: number; TPL: number; CHD: number }>;
+      precios: Partial<{ SGL: number; DBL: number; TPL: number; QDL: number; CHD: number }>;
     }>,
   ) => void;
   onToggleAplicarVigencia: () => void;
@@ -907,8 +910,8 @@ function HotelFields({
       {/* ── Precios ── */}
       <div>
         <SectionTitle>Precios por acomodación (por noche)</SectionTitle>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {(["SGL", "DBL", "TPL", "CHD"] as const).map((a) => (
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          {(["SGL", "DBL", "TPL", "QDL", "CHD"] as const).map((a) => (
             <div key={a}>
               <Label>{a}</Label>
               <PriceInput

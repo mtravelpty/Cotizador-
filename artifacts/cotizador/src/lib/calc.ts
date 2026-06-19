@@ -151,7 +151,7 @@ export function calcularLocal(
       preciosPorAcom.SGL = s.precios.SGL ?? 0;
       preciosPorAcom.DBL = s.precios.DBL ?? 0;
       preciosPorAcom.TPL = s.precios.TPL ?? 0;
-      preciosPorAcom.QDL = s.precios.TPL ?? 0; // QDL uses TPL tarifa
+      preciosPorAcom.QDL = s.precios.QDL ?? s.precios.TPL ?? 0;
       preciosPorAcom.CHD = s.precios.CHD ?? 0;
       const hotelNoches =
         s.fechaInicio && s.fechaFin

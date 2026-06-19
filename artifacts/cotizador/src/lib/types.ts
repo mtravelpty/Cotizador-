@@ -62,6 +62,7 @@ export interface ServicioSeleccionado {
     DBL?: number;
     TPL?: number;
     CHD?: number;
+    QDL?: number;
   };
   tarifaOverride?: Tier;
   unitOverride?: number;
@@ -142,7 +143,7 @@ export interface Cliente {
   noches: number;
 }
 
-export type ClienteValidationField = "agencia" | "agente" | "fechaInicio";
+export type ClienteValidationField = "agencia" | "agente" | "emailCliente" | "fechaInicio";
 
 export type ClienteValidationErrors = Partial<
   Record<ClienteValidationField, boolean>
@@ -155,6 +156,7 @@ export function validateCliente(c: Cliente): {
   const errors: ClienteValidationErrors = {};
   if (!c.correo?.trim()) errors.agencia = true;
   if (!c.agente?.trim()) errors.agente = true;
+  if (!c.emailCliente?.trim()) errors.emailCliente = true;
   return { ok: Object.keys(errors).length === 0, errors };
 }
 

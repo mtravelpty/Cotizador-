@@ -2,6 +2,17 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
+@keyframes field-shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(3px); }
+}
+.field-shake {
+  animation: field-shake 0.32s ease;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
