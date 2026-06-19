@@ -11,9 +11,7 @@ import {
   RefreshCw,
   Send,
 } from "lucide-react";
-import html2pdfImport from "html2pdf.js";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const html2pdf = html2pdfImport as unknown as (...args: any[]) => any;
+import { generarPDF } from "@/lib/generar-pdf";
 import type {
   Acomodacion,
   Cliente,
@@ -645,78 +643,41 @@ export default function ExportButtons({
     if (pdfLoading) return;
     if (!validateBeforeAction()) return;
 
-    // Save to Seguimiento FIRST — before generating PDF
     const { ok: saved, isNew } = onSaveToSeguimiento();
     if (!saved) return;
 
     setPdfError(false);
     setPdfLoading(true);
 
-    const numero = getNumeroCotizacion();
-    const clienteSafe = sanitizeForFilename(cliente.cotizacionNombre || cliente.nombre || "");
-    const filename = `Cotizacion-${numero}-${clienteSafe}.pdf`;
-
-    let iframe: HTMLIFrameElement | null = null;
-
     try {
-      const html = buildHtml(numero);
-
-      iframe = document.createElement("iframe");
-      iframe.style.position = "fixed";
-      iframe.style.left = "-10000px";
-      iframe.style.top = "0";
-      iframe.style.width = "816px";
-      iframe.style.height = "1056px";
-      iframe.style.border = "0";
-      iframe.setAttribute("aria-hidden", "true");
-      document.body.appendChild(iframe);
-
-      const doc = iframe.contentDocument;
-      if (!doc) throw new Error("No iframe document");
-      doc.open();
-      doc.write(html);
-      doc.close();
-
-      await new Promise<void>((resolve) => {
-        if (doc.readyState === "complete") resolve();
-        else {
-          iframe!.onload = () => resolve();
-          setTimeout(() => resolve(), 1500);
-        }
-      });
-
-      const images = Array.from(doc.images);
-      await Promise.all(
-        images.map(
-          (img) =>
-            new Promise<void>((resolve) => {
-              if (img.complete) return resolve();
-              img.onload = () => resolve();
-              img.onerror = () => resolve();
-            }),
-        ),
+      const numero = getNumeroCotizacion();
+      await generarPDF(
+        {
+          cliente,
+          servicios,
+          result,
+          modo,
+          presentationMode,
+          quotingMode,
+          habitacionesPorAcomodacion,
+          incluirItinerario,
+          incluirDescriptivos,
+          incluirDescriptivoCompleto,
+          descriptivos,
+          actividadesOverride,
+          observaciones,
+          idioma,
+          personalizarTraslados,
+          opcionesPaquete,
+        },
+        numero,
       );
-
-      const target = doc.body;
-      await html2pdf()
-        .set({
-          margin: [10, 10, 10, 10],
-          filename,
-          image: { type: "jpeg", quality: 0.95 },
-          html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", windowWidth: 816 },
-          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-          pagebreak: { mode: ["css", "legacy"] },
-        })
-        .from(target)
-        .save();
-
       onActionComplete?.("pdf_enviado", isNew);
     } catch (err) {
       console.error("PDF generation failed:", err);
       setPdfError(true);
       setTimeout(() => setPdfError(false), 3000);
     } finally {
-      if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
       setPdfLoading(false);
     }
   };

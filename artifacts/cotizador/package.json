@@ -78,6 +78,8 @@
   "dependencies": {
     "flatpickr": "^4.6.13",
     "html2pdf.js": "^0.14.0",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
     "xlsx": "^0.18.5"
   }
 }

@@ -24,7 +24,7 @@ import type {
   Tour,
   Traslado,
 } from "@/lib/types";
-import { fmt, pickTier, priceForTier, tierLabel } from "@/lib/calc";
+import { fmt, pickTier, priceForTier, tierLabel, diffNoches, addDays } from "@/lib/calc";
 
 export type ServicioTipo = "hotel" | "tour" | "traslado";
 
@@ -722,6 +722,8 @@ function HotelFields({
   ) => void;
   onToggleAplicarVigencia: () => void;
 }) {
+  const noches = useMemo(() => diffNoches(fechaInicio, fechaFin), [fechaInicio, fechaFin]);
+
   return (
     <>
       {/* ── Estadía ── */}
@@ -737,10 +739,9 @@ function HotelFields({
               onChange={(iso) => {
                 const patch: Parameters<typeof onChange>[0] = { fechaInicio: iso };
                 if (iso) {
-                  const d = new Date(iso + "T00:00:00");
-                  d.setDate(d.getDate() + 1);
-                  const nextDay = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-                  if (!fechaFin || fechaFin <= iso) patch.fechaFin = nextDay;
+                  if (!fechaFin || fechaFin <= iso) {
+                    patch.fechaFin = addDays(iso, Math.max(1, noches));
+                  }
                 }
                 onChange(patch);
               }}
@@ -758,6 +759,39 @@ function HotelFields({
               minDate={fechaInicio || undefined}
             />
           </div>
+        </div>
+
+        {/* Noches summary + editable field */}
+        <div className="mt-2 flex items-center gap-3">
+          <div
+            className="flex items-center gap-2 rounded-lg px-3 py-1.5"
+            style={{ background: "rgba(128,45,98,0.07)", border: "1px solid rgba(128,45,98,0.18)" }}
+          >
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "#802d62" }}>
+              Noches
+            </span>
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              value={noches === 0 ? "" : String(noches)}
+              placeholder="0"
+              onChange={(e) => {
+                const raw = e.target.value.replace(/[^0-9]/g, "");
+                if (!raw) return;
+                const n = parseInt(raw, 10);
+                if (!Number.isFinite(n) || n <= 0 || !fechaInicio) return;
+                onChange({ fechaFin: addDays(fechaInicio, n) });
+              }}
+              className="w-10 text-center text-sm font-bold focus:outline-none bg-transparent"
+              style={{ color: "#802d62" }}
+            />
+          </div>
+          {fechaInicio && fechaFin && (
+            <span className="text-xs text-slate-400">
+              {fechaInicio.split("-").reverse().join("/")} → {fechaFin.split("-").reverse().join("/")}
+            </span>
+          )}
         </div>
       </div>
 

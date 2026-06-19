@@ -179,6 +179,13 @@ export default function ClientForm({ cliente, onChange, errors }: Props) {
     if (patch.fechaInicio !== undefined || patch.fechaFin !== undefined) {
       const calc = diffNoches(next.fechaInicio, next.fechaFin);
       if (calc > 0) next.noches = calc;
+    } else if (patch.noches !== undefined && next.fechaInicio) {
+      const n = Math.max(0, Math.floor(next.noches));
+      if (n > 0) {
+        const d = new Date(next.fechaInicio + "T00:00:00");
+        d.setDate(d.getDate() + n);
+        next.fechaFin = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      }
     }
     onChange(next);
   };
@@ -319,7 +326,6 @@ export default function ClientForm({ cliente, onChange, errors }: Props) {
                 min={0}
                 accent
                 prominent={cliente.noches > 1}
-                readOnly
               />
             </div>
             <div className="flex-1 py-2.5 px-3">
