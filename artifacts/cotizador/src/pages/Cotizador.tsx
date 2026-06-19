@@ -1543,138 +1543,19 @@ const TIPO_MAP: Record<CategoriaServicio, ServicioSeleccionado["tipo"]> = {
 };
 
 function AgregarServicioAccordion({ onSave }: { onSave: (s: ServicioSeleccionado) => void }) {
-  const [activeCategory, setActiveCategory] = useState<CategoriaServicio | null>(null);
-  const [formVals, setFormVals] = useState<Record<string, string>>({});
-
-  const toggle = (cat: CategoriaServicio) => {
-    if (activeCategory === cat) { setActiveCategory(null); setFormVals({}); }
-    else { setActiveCategory(cat); setFormVals({}); }
-  };
-  const setF = (key: string, val: string) => setFormVals(prev => ({ ...prev, [key]: val }));
-  const f = (key: string) => formVals[key] ?? "";
-
-  const handleSave = () => {
-    if (!activeCategory) return;
-    const tipo = TIPO_MAP[activeCategory];
+  const handleCategoryClick = (cat: CategoriaServicio) => {
+    const tipo = TIPO_MAP[cat];
+    const catLabel = CATEGORIAS_SERVICIO.find(c => c.id === cat)!.label;
     const id = `manual-${tipo}-${Date.now()}`;
-    const precios: ServicioSeleccionado["precios"] = {};
-    if (f("sgl")) precios.SGL = parseFloat(f("sgl")) || 0;
-    if (f("dbl")) precios.DBL = parseFloat(f("dbl")) || 0;
-    if (f("tpl")) precios.TPL = parseFloat(f("tpl")) || 0;
-    if (f("p1"))  precios.p1  = parseFloat(f("p1"))  || 0;
-    if (f("p2"))  precios.p2_5  = parseFloat(f("p2"))  || 0;
-    if (f("p6"))  precios.p6_10 = parseFloat(f("p6"))  || 0;
-    const catLabel = CATEGORIAS_SERVICIO.find(c => c.id === activeCategory)!.label;
     const servicio: ServicioSeleccionado = {
       id,
       tipo,
-      nombre: f("nombre") || `(${catLabel})`,
-      precios,
+      nombre: `(${catLabel})`,
+      precios: {},
       manual: true,
-      ...(f("estrellas")    && { estrellas: f("estrellas") }),
-      ...(f("tipoHabitacion") && { tipoHabitacion: f("tipoHabitacion") }),
-      ...(f("desayuno")     && { desayuno: f("desayuno") }),
-      ...(f("notas")        && { notas: f("notas") }),
-      ...(f("origen")       && { origen: f("origen") }),
-      ...(f("destino")      && { destino: f("destino") }),
-      ...(f("tipoServicio") && { tipoServicio: f("tipoServicio") as "Regular" | "Privado" }),
-      ...(f("ruta")         && { ruta: f("ruta") }),
-      ...(f("duracion")     && { duracion: f("duracion") }),
-      ...(activeCategory === "otros" && { customTipo: "Otro" }),
+      ...(cat === "otros" && { customTipo: "Otro" }),
     };
     onSave(servicio);
-    setActiveCategory(null);
-    setFormVals({});
-  };
-
-  const iCls = "w-full text-sm px-3 py-2 rounded-lg border border-[#e8d5e0] bg-white focus:outline-none focus:border-[#802d62] focus:ring-1 focus:ring-[#b78ca4]/40 text-slate-800 placeholder:text-slate-400";
-  const lCls = "block text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-1";
-
-  const renderForm = () => {
-    switch (activeCategory) {
-      case "hoteleria": return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="sm:col-span-2"><label className={lCls}>Nombre del hotel</label><input className={iCls} placeholder="Ej. Hotel Barceló Aruba" value={f("nombre")} onChange={e => setF("nombre", e.target.value)} /></div>
-          <div>
-            <label className={lCls}>Categoría</label>
-            <select className={iCls} value={f("estrellas")} onChange={e => setF("estrellas", e.target.value)}>
-              <option value="">Sin categoría</option>
-              <option value="3">★★★ Tres estrellas</option>
-              <option value="4">★★★★ Cuatro estrellas</option>
-              <option value="5">★★★★★ Cinco estrellas</option>
-            </select>
-          </div>
-          <div><label className={lCls}>Tipo de habitación</label><input className={iCls} placeholder="Ej. Superior Vista Mar" value={f("tipoHabitacion")} onChange={e => setF("tipoHabitacion", e.target.value)} /></div>
-          <div>
-            <label className={lCls}>Régimen</label>
-            <select className={iCls} value={f("desayuno")} onChange={e => setF("desayuno", e.target.value)}>
-              <option value="">Sin régimen</option>
-              <option value="Solo alojamiento">Solo alojamiento</option>
-              <option value="Desayuno incluido">Desayuno incluido</option>
-              <option value="Media pensión">Media pensión</option>
-              <option value="Pensión completa">Pensión completa</option>
-              <option value="All inclusive">All inclusive</option>
-            </select>
-          </div>
-          <div />
-          <div><label className={lCls}>Tarifa SGL (USD)</label><input type="number" className={iCls} placeholder="0" value={f("sgl")} onChange={e => setF("sgl", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa DBL (USD)</label><input type="number" className={iCls} placeholder="0" value={f("dbl")} onChange={e => setF("dbl", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa TPL (USD)</label><input type="number" className={iCls} placeholder="0" value={f("tpl")} onChange={e => setF("tpl", e.target.value)} /></div>
-          <div className="sm:col-span-2"><label className={lCls}>Observaciones</label><textarea className={iCls} rows={2} placeholder="Notas adicionales..." value={f("notas")} onChange={e => setF("notas", e.target.value)} /></div>
-        </div>
-      );
-      case "traslados": return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="sm:col-span-2"><label className={lCls}>Nombre del servicio</label><input className={iCls} placeholder="Ej. Traslado aeropuerto – hotel" value={f("nombre")} onChange={e => setF("nombre", e.target.value)} /></div>
-          <div><label className={lCls}>Origen</label><input className={iCls} placeholder="Ej. Aeropuerto Internacional" value={f("origen")} onChange={e => setF("origen", e.target.value)} /></div>
-          <div><label className={lCls}>Destino</label><input className={iCls} placeholder="Ej. Hotel" value={f("destino")} onChange={e => setF("destino", e.target.value)} /></div>
-          <div>
-            <label className={lCls}>Modalidad</label>
-            <select className={iCls} value={f("tipoServicio")} onChange={e => setF("tipoServicio", e.target.value)}>
-              <option value="Regular">Regular (compartido)</option>
-              <option value="Privado">Privado</option>
-            </select>
-          </div>
-          <div><label className={lCls}>Tarifa por pax (USD)</label><input type="number" className={iCls} placeholder="0" value={f("p1")} onChange={e => setF("p1", e.target.value)} /></div>
-          <div className="sm:col-span-2"><label className={lCls}>Observaciones</label><textarea className={iCls} rows={2} placeholder="Notas adicionales..." value={f("notas")} onChange={e => setF("notas", e.target.value)} /></div>
-        </div>
-      );
-      case "aereos": return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div><label className={lCls}>Aerolínea</label><input className={iCls} placeholder="Ej. Avianca" value={f("nombre")} onChange={e => setF("nombre", e.target.value)} /></div>
-          <div><label className={lCls}>Ruta</label><input className={iCls} placeholder="Ej. BOG – AUA – BOG" value={f("ruta")} onChange={e => setF("ruta", e.target.value)} /></div>
-          <div><label className={lCls}>Equipaje incluido</label><input className={iCls} placeholder="Ej. 23 kg incluido" value={f("duracion")} onChange={e => setF("duracion", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa por pax (USD)</label><input type="number" className={iCls} placeholder="0" value={f("p1")} onChange={e => setF("p1", e.target.value)} /></div>
-          <div className="sm:col-span-2"><label className={lCls}>Observaciones</label><textarea className={iCls} rows={2} placeholder="Notas adicionales..." value={f("notas")} onChange={e => setF("notas", e.target.value)} /></div>
-        </div>
-      );
-      case "catamaran": return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="sm:col-span-2"><label className={lCls}>Nombre del catamarán</label><input className={iCls} placeholder="Ej. Sailing Aruba" value={f("nombre")} onChange={e => setF("nombre", e.target.value)} /></div>
-          <div><label className={lCls}>Tipo de cabina</label><input className={iCls} placeholder="Ej. Camarote doble" value={f("tipoHabitacion")} onChange={e => setF("tipoHabitacion", e.target.value)} /></div>
-          <div><label className={lCls}>Noches</label><input type="number" className={iCls} placeholder="0" value={f("duracion")} onChange={e => setF("duracion", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa SGL (USD)</label><input type="number" className={iCls} placeholder="0" value={f("sgl")} onChange={e => setF("sgl", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa DBL (USD)</label><input type="number" className={iCls} placeholder="0" value={f("dbl")} onChange={e => setF("dbl", e.target.value)} /></div>
-          <div className="sm:col-span-2"><label className={lCls}>Observaciones</label><textarea className={iCls} rows={2} placeholder="Notas adicionales..." value={f("notas")} onChange={e => setF("notas", e.target.value)} /></div>
-        </div>
-      );
-      case "tours": return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="sm:col-span-2"><label className={lCls}>Nombre del tour</label><input className={iCls} placeholder="Ej. City Tour Histórico" value={f("nombre")} onChange={e => setF("nombre", e.target.value)} /></div>
-          <div><label className={lCls}>Duración</label><input className={iCls} placeholder="Ej. 4 horas" value={f("duracion")} onChange={e => setF("duracion", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa por pax (USD)</label><input type="number" className={iCls} placeholder="0" value={f("p1")} onChange={e => setF("p1", e.target.value)} /></div>
-          <div className="sm:col-span-2"><label className={lCls}>Observaciones</label><textarea className={iCls} rows={2} placeholder="Notas adicionales..." value={f("notas")} onChange={e => setF("notas", e.target.value)} /></div>
-        </div>
-      );
-      case "otros": return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="sm:col-span-2"><label className={lCls}>Nombre</label><input className={iCls} placeholder="Ej. Seguro de viaje" value={f("nombre")} onChange={e => setF("nombre", e.target.value)} /></div>
-          <div className="sm:col-span-2"><label className={lCls}>Descripción</label><textarea className={iCls} rows={2} placeholder="Describe el servicio adicional..." value={f("notas")} onChange={e => setF("notas", e.target.value)} /></div>
-          <div><label className={lCls}>Tarifa por pax (USD)</label><input type="number" className={iCls} placeholder="0" value={f("p1")} onChange={e => setF("p1", e.target.value)} /></div>
-        </div>
-      );
-      default: return null;
-    }
   };
 
   return (
@@ -1683,53 +1564,25 @@ function AgregarServicioAccordion({ onSave }: { onSave: (s: ServicioSeleccionado
         Agregar servicio
       </p>
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 px-4 pb-4">
-        {CATEGORIAS_SERVICIO.map((cat) => {
-          const isActive = activeCategory === cat.id;
-          return (
-            <button
-              key={cat.id}
-              type="button"
-              onClick={() => toggle(cat.id)}
-              className="flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl border transition-all text-center"
-              style={{
-                backgroundColor: isActive ? "#802d62" : "#fdf7fb",
-                borderColor:     isActive ? "#802d62" : "#e8d5e0",
-                color:           isActive ? "#ffffff"  : "#802d62",
-              }}
-            >
-              <span>{cat.icon}</span>
-              <span className="text-[11px] font-semibold leading-tight">{cat.label}</span>
-            </button>
-          );
-        })}
+        {CATEGORIAS_SERVICIO.map((cat) => (
+          <button
+            key={cat.id}
+            type="button"
+            onClick={() => handleCategoryClick(cat.id)}
+            className="flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl border transition-all text-center active:scale-95"
+            style={{
+              backgroundColor: "#fdf7fb",
+              borderColor: "#e8d5e0",
+              color: "#802d62",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#f9eef5"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#fdf7fb"; }}
+          >
+            <span>{cat.icon}</span>
+            <span className="text-[11px] font-semibold leading-tight">{cat.label}</span>
+          </button>
+        ))}
       </div>
-
-      {activeCategory && (
-        <div className="border-t border-[#e8d5e0] bg-[#faf7f9] px-4 pt-4 pb-4 space-y-4">
-          <p className="text-sm font-bold" style={{ color: "#802d62" }}>
-            {CATEGORIAS_SERVICIO.find(c => c.id === activeCategory)?.label}
-          </p>
-          {renderForm()}
-          <div className="flex items-center gap-2 pt-2 border-t border-[#e8d5e0]">
-            <button
-              type="button"
-              onClick={handleSave}
-              className="px-4 py-2 rounded-lg text-sm font-semibold text-white transition-colors hover:opacity-90"
-              style={{ backgroundColor: "#802d62" }}
-            >
-              Guardar servicio
-            </button>
-            <button
-              type="button"
-              onClick={() => { setActiveCategory(null); setFormVals({}); }}
-              className="px-4 py-2 rounded-lg text-sm font-semibold border transition-colors hover:bg-[#f9f0f5]"
-              style={{ color: "#802d62", borderColor: "#b78ca4", backgroundColor: "white" }}
-            >
-              Cancelar
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -667,7 +667,10 @@ function ServicioRow({
   const colors = tipoColors(servicio.tipo);
 
   const [openEditor, setOpenEditor] = useState<
-    "dates" | "price" | "notes" | "important-note" | "tickets" | "ubicacion" | "estrellas" | null
+    | "dates" | "price" | "notes" | "important-note" | "tickets" | "ubicacion" | "estrellas"
+    | "regimen" | "tipoHab" | "origen" | "destino" | "fecha" | "fechaIda" | "fechaRegreso"
+    | "equipaje" | "horario" | "ruta"
+    | null
   >(null);
 
   const [editingName, setEditingName] = useState(false);
@@ -949,26 +952,37 @@ function ServicioRow({
             </Popover>
 
             {/* Régimen */}
-            {formatRegimen(servicio.desayuno) && (
-              <>
-                <span className="text-slate-300 text-[11px] select-none">·</span>
-                <span className="text-[11px] text-amber-700 font-medium px-1">{formatRegimen(servicio.desayuno)}</span>
-              </>
-            )}
+            <span className="text-slate-300 text-[11px] select-none">·</span>
+            <Popover open={openEditor === "regimen"} onOpenChange={(o) => setOpenEditor(o ? "regimen" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-amber-700 hover:text-amber-800 hover:bg-amber-50 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Cambiar régimen">
+                  {formatRegimen(servicio.desayuno) || <span className="italic text-slate-400">Régimen</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[200px] p-1 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <RegimenEditor current={servicio.desayuno ?? ""} onSave={(v) => { onUpdate({ ...servicio, desayuno: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+
+            {/* Tipo habitación */}
+            <span className="text-slate-300 text-[11px] select-none">·</span>
+            <Popover open={openEditor === "tipoHab"} onOpenChange={(o) => setOpenEditor(o ? "tipoHab" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Tipo de habitación">
+                  {servicio.tipoHabitacion || <span className="italic text-slate-400">Tipo hab.</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Tipo de habitación" placeholder="Ej. Superior Vista Mar" current={servicio.tipoHabitacion ?? ""} onSave={(v) => { onUpdate({ ...servicio, tipoHabitacion: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
           </div>
         ) : isCatamaranItem ? (
           <div className="flex items-center gap-0.5 flex-wrap mt-0.5">
             {/* Fechas estadía catamarán */}
-            <Popover
-              open={openEditor === "dates"}
-              onOpenChange={(o) => setOpenEditor(o ? "dates" : null)}
-            >
+            <Popover open={openEditor === "dates"} onOpenChange={(o) => setOpenEditor(o ? "dates" : null)}>
               <PopoverTrigger asChild>
-                <button
-                  type="button"
-                  className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1"
-                  title="Editar fechas de estadía"
-                >
+                <button type="button" className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Editar fechas de estadía">
                   {servicio.fechaInicio && servicio.fechaFin ? (
                     <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-slate-700">
                       <Calendar className="w-3 h-3" />
@@ -978,36 +992,155 @@ function ServicioRow({
                       </span>
                     </span>
                   ) : (
-                    <span className="italic text-slate-400">
-                      <Calendar className="w-3 h-3 inline mr-0.5" />
-                      Fechas estadía
-                    </span>
+                    <span className="italic text-slate-400"><Calendar className="w-3 h-3 inline mr-0.5" />Fechas estadía</span>
                   )}
                 </button>
               </PopoverTrigger>
-              <PopoverContent
-                align="start"
-                className="w-[290px] p-3 z-[60]"
-                onOpenAutoFocus={(e) => e.preventDefault()}
-              >
-                <DatesEditor
-                  servicio={servicio}
-                  onSave={(patch) => onUpdate({ ...servicio, ...patch })}
-                  onClose={() => setOpenEditor(null)}
-                />
+              <PopoverContent align="start" className="w-[290px] p-3 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <DatesEditor servicio={servicio} onSave={(patch) => onUpdate({ ...servicio, ...patch })} onClose={() => setOpenEditor(null)} />
               </PopoverContent>
             </Popover>
-            {/* Horario */}
-            {servicio.horario && (
-              <>
-                <span className="text-slate-300 text-[11px] select-none">·</span>
-                <span className="text-[11px] text-slate-500 px-1">{servicio.horario}</span>
-              </>
-            )}
           </div>
-        ) : descripcion ? (
-          <div className="text-[11px] text-slate-500 truncate mt-0.5">
-            {descripcion}
+        ) : servicio.tipo === "traslado" ? (
+          <div className="flex items-center gap-0.5 flex-wrap mt-0.5">
+            {/* Origen */}
+            <Popover open={openEditor === "origen"} onOpenChange={(o) => setOpenEditor(o ? "origen" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Origen">
+                  {servicio.origen || <span className="italic text-slate-400">Origen</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Origen" placeholder="Ej. Aeropuerto Internacional" current={servicio.origen ?? ""} onSave={(v) => { onUpdate({ ...servicio, origen: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            <span className="text-slate-400 text-[11px] select-none">→</span>
+            {/* Destino */}
+            <Popover open={openEditor === "destino"} onOpenChange={(o) => setOpenEditor(o ? "destino" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Destino">
+                  {servicio.destino || <span className="italic text-slate-400">Destino</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Destino" placeholder="Ej. Hotel" current={servicio.destino ?? ""} onSave={(v) => { onUpdate({ ...servicio, destino: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            <span className="text-slate-300 text-[11px] select-none">·</span>
+            {/* Fecha */}
+            <Popover open={openEditor === "fecha"} onOpenChange={(o) => setOpenEditor(o ? "fecha" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Fecha">
+                  {servicio.fecha ? (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700"><Calendar className="w-3 h-3" />{fmtDMA(servicio.fecha)}</span>
+                  ) : (
+                    <span className="italic text-slate-400 inline-flex items-center gap-1"><Calendar className="w-3 h-3" />Fecha</span>
+                  )}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[200px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <SingleDateEditor label="Fecha" current={servicio.fecha ?? ""} onSave={(v) => { onUpdate({ ...servicio, fecha: v || undefined, usarFecha: !!v }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+          </div>
+        ) : servicio.tipo === "vuelo" ? (
+          <div className="flex items-center gap-0.5 flex-wrap mt-0.5">
+            {/* Origen */}
+            <Popover open={openEditor === "origen"} onOpenChange={(o) => setOpenEditor(o ? "origen" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Origen">
+                  {servicio.origen || <span className="italic text-slate-400">Origen</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Origen" placeholder="Ej. BOG" current={servicio.origen ?? ""} onSave={(v) => { onUpdate({ ...servicio, origen: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            <span className="text-slate-400 text-[11px] select-none">→</span>
+            {/* Destino */}
+            <Popover open={openEditor === "destino"} onOpenChange={(o) => setOpenEditor(o ? "destino" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Destino">
+                  {servicio.destino || <span className="italic text-slate-400">Destino</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Destino" placeholder="Ej. AUA" current={servicio.destino ?? ""} onSave={(v) => { onUpdate({ ...servicio, destino: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            <span className="text-slate-300 text-[11px] select-none">·</span>
+            {/* Ida */}
+            <Popover open={openEditor === "fechaIda"} onOpenChange={(o) => setOpenEditor(o ? "fechaIda" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Fecha de ida">
+                  {servicio.fechaInicio ? (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700"><Calendar className="w-3 h-3" />Ida {fmtDMA(servicio.fechaInicio)}</span>
+                  ) : (
+                    <span className="italic text-slate-400 inline-flex items-center gap-1"><Calendar className="w-3 h-3" />Ida</span>
+                  )}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[200px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <SingleDateEditor label="Ida" current={servicio.fechaInicio ?? ""} onSave={(v) => { onUpdate({ ...servicio, fechaInicio: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            {/* Regreso */}
+            <Popover open={openEditor === "fechaRegreso"} onOpenChange={(o) => setOpenEditor(o ? "fechaRegreso" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Fecha de regreso">
+                  {servicio.fechaFin ? (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700"><Calendar className="w-3 h-3" />Regreso {fmtDMA(servicio.fechaFin)}</span>
+                  ) : (
+                    <span className="italic text-slate-400 inline-flex items-center gap-1"><Calendar className="w-3 h-3" />Regreso</span>
+                  )}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[200px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <SingleDateEditor label="Regreso" current={servicio.fechaFin ?? ""} onSave={(v) => { onUpdate({ ...servicio, fechaFin: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            <span className="text-slate-300 text-[11px] select-none">·</span>
+            {/* Equipaje */}
+            <Popover open={openEditor === "equipaje"} onOpenChange={(o) => setOpenEditor(o ? "equipaje" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Equipaje">
+                  {servicio.duracion || <span className="italic text-slate-400">Equipaje</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Equipaje" placeholder="Ej. 23 kg incluido" current={servicio.duracion ?? ""} onSave={(v) => { onUpdate({ ...servicio, duracion: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+          </div>
+        ) : servicio.tipo === "tour" ? (
+          <div className="flex items-center gap-0.5 flex-wrap mt-0.5">
+            {/* Fecha */}
+            <Popover open={openEditor === "fecha"} onOpenChange={(o) => setOpenEditor(o ? "fecha" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Fecha del tour">
+                  {servicio.fecha ? (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700"><Calendar className="w-3 h-3" />{fmtDMA(servicio.fecha)}</span>
+                  ) : (
+                    <span className="italic text-slate-400 inline-flex items-center gap-1"><Calendar className="w-3 h-3" />Fecha</span>
+                  )}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[200px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <SingleDateEditor label="Fecha" current={servicio.fecha ?? ""} onSave={(v) => { onUpdate({ ...servicio, fecha: v || undefined, usarFecha: !!v }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
+            <span className="text-slate-300 text-[11px] select-none">·</span>
+            {/* Horario */}
+            <Popover open={openEditor === "horario"} onOpenChange={(o) => setOpenEditor(o ? "horario" : null)}>
+              <PopoverTrigger asChild>
+                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Horario">
+                  {servicio.horario || <span className="italic text-slate-400">Horario</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
+                <TextFieldEditor label="Horario" placeholder="Ej. 08:00 AM" current={servicio.horario ?? ""} onSave={(v) => { onUpdate({ ...servicio, horario: v || undefined }); setOpenEditor(null); }} onClose={() => setOpenEditor(null)} />
+              </PopoverContent>
+            </Popover>
           </div>
         ) : null}
 
@@ -1087,12 +1220,6 @@ function ServicioRow({
             </div>
           )}
 
-        {/* Tour horario */}
-        {servicio.tipo === "tour" && servicio.horario && (
-          <div className="text-[11px] text-slate-500 mt-1 truncate">
-            Horario: {servicio.horario}
-          </div>
-        )}
       </div>
 
       {/* Price area */}
@@ -1712,6 +1839,125 @@ function NoteItem({
         >
           <Trash2 className="w-2.5 h-2.5 text-red-400" />
         </button>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────── TextFieldEditor — generic inline text field ─────────── */
+
+function TextFieldEditor({
+  label,
+  placeholder = "",
+  current,
+  onSave,
+  onClose,
+}: {
+  label: string;
+  placeholder?: string;
+  current: string;
+  onSave: (v: string) => void;
+  onClose: () => void;
+}) {
+  const [val, setVal] = useState(current);
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    setTimeout(() => { inputRef.current?.focus(); inputRef.current?.select(); }, 0);
+  }, []);
+  return (
+    <div className="p-3 space-y-2">
+      <div className="flex items-center justify-between">
+        <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</span>
+        <button type="button" onClick={onClose} style={btnClose}>✕</button>
+      </div>
+      <input
+        ref={inputRef}
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        placeholder={placeholder}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") { e.preventDefault(); onSave(val); }
+          if (e.key === "Escape") { e.preventDefault(); onClose(); }
+        }}
+        className="w-full h-8 px-2.5 rounded-md border border-slate-200 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+      />
+      <div className="flex justify-end gap-2">
+        <button type="button" onClick={onClose} style={btnReset} title="Cancelar">✕</button>
+        <button type="button" onClick={() => onSave(val)} style={btnApply} title="Aplicar">✓</button>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────── RegimenEditor — régimen dropdown ───────────────────── */
+
+const REGIMENES_LIST = [
+  { value: "", label: "Sin régimen" },
+  { value: "Solo alojamiento", label: "Solo alojamiento" },
+  { value: "Desayuno incluido", label: "Desayuno incluido" },
+  { value: "Media pensión", label: "Media pensión" },
+  { value: "Pensión completa", label: "Pensión completa" },
+  { value: "All inclusive", label: "All inclusive" },
+];
+
+function RegimenEditor({
+  current,
+  onSave,
+  onClose,
+}: {
+  current: string;
+  onSave: (v: string) => void;
+  onClose: () => void;
+}) {
+  return (
+    <div className="py-0.5">
+      {REGIMENES_LIST.map((r) => (
+        <button
+          key={r.value}
+          type="button"
+          onClick={() => onSave(r.value)}
+          className={`w-full text-left flex items-center gap-2 px-3 py-2 text-[11px] rounded-lg hover:bg-amber-50 hover:text-amber-700 transition-colors ${
+            current === r.value ? "text-amber-700 font-semibold" : "text-slate-700"
+          }`}
+        >
+          {current === r.value && <Check className="w-3 h-3 flex-shrink-0" />}
+          <span className={current === r.value ? "" : "ml-[15px]"}>{r.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/* ─────────────────── SingleDateEditor — single date picker ──────────────── */
+
+function SingleDateEditor({
+  label,
+  current,
+  onSave,
+  onClose,
+}: {
+  label: string;
+  current: string;
+  onSave: (v: string) => void;
+  onClose: () => void;
+}) {
+  const [val, setVal] = useState(current);
+  return (
+    <div className="p-3 space-y-2">
+      <div className="flex items-center justify-between">
+        <span style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</span>
+        <button type="button" onClick={onClose} style={btnClose}>✕</button>
+      </div>
+      <input
+        type="date"
+        value={val}
+        onChange={(e) => setVal(e.target.value)}
+        autoFocus
+        className="w-full h-8 px-2.5 rounded-md border border-slate-200 text-sm bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
+      />
+      <div className="flex justify-end gap-2">
+        <button type="button" onClick={() => onSave("")} style={btnReset} title="Borrar fecha">✕</button>
+        <button type="button" onClick={() => onSave(val)} style={btnApply} title="Aplicar">✓</button>
       </div>
     </div>
   );
