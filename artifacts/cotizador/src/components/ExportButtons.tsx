@@ -11,7 +11,10 @@ import {
   RefreshCw,
   Send,
 } from "lucide-react";
-import { generarPDF } from "@/lib/generar-pdf";
+import html2pdfImport from "html2pdf.js";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const html2pdf = html2pdfImport as unknown as (...args: any[]) => any;
+import { loadAgencias } from "@/lib/agencias";
 import type {
   Acomodacion,
   Cliente,
@@ -92,6 +95,41 @@ function buildEmailGreeting(agente: string): string {
     ? `${saludo}, ${tratamiento} ${firstName}:`
     : `${saludo}:`;
   return `${greeting}\n\nEs un gusto saludarle.\n\nA continuación encontrará la propuesta solicitada.`;
+}
+
+/** Build the agency logo or initials block — injected at top of PDF HTML only. */
+function buildAgenciaLogoHtml(logoUrl: string | null | undefined, nombre: string): string {
+  const initials = nombre
+    .trim()
+    .split(/\s+/)
+    .filter((w) => /[A-Za-záéíóúÁÉÍÓÚñÑ]/.test(w))
+    .map((w) => w[0].toUpperCase())
+    .slice(0, 2)
+    .join("");
+
+  const wrap = `font-family:Arial,'Segoe UI',sans-serif;text-align:center;padding:18px 24px 8px;`;
+  const nameEsc = nombre.replace(/"/g, "&quot;");
+
+  if (logoUrl) {
+    return (
+      `<div style="${wrap}">` +
+      `<img src="${logoUrl}" alt="${nameEsc}" crossorigin="anonymous" ` +
+      `style="max-height:80px;max-width:240px;object-fit:contain;display:inline-block;" />` +
+      `</div>`
+    );
+  }
+
+  const circleStyle =
+    `width:64px;height:64px;border-radius:50%;background:#802d62;` +
+    `display:inline-flex;align-items:center;justify-content:center;` +
+    `color:#ffffff;font-size:24px;font-weight:700;letter-spacing:1px;` +
+    `font-family:Arial,sans-serif;`;
+
+  return (
+    `<div style="${wrap}">` +
+    `<div style="${circleStyle}">${initials || "?"}</div>` +
+    `</div>`
+  );
 }
 
 export default function ExportButtons({
@@ -643,41 +681,89 @@ export default function ExportButtons({
     if (pdfLoading) return;
     if (!validateBeforeAction()) return;
 
+    // Save to Seguimiento FIRST — before generating PDF
     const { ok: saved, isNew } = onSaveToSeguimiento();
     if (!saved) return;
 
     setPdfError(false);
     setPdfLoading(true);
 
+    const numero = getNumeroCotizacion();
+    const clienteSafe = sanitizeForFilename(cliente.cotizacionNombre || cliente.nombre || "");
+    const filename = `Cotizacion-${numero}-${clienteSafe}.pdf`;
+
+    let iframe: HTMLIFrameElement | null = null;
+
     try {
-      const numero = getNumeroCotizacion();
-      await generarPDF(
-        {
-          cliente,
-          servicios,
-          result,
-          modo,
-          presentationMode,
-          quotingMode,
-          habitacionesPorAcomodacion,
-          incluirItinerario,
-          incluirDescriptivos,
-          incluirDescriptivoCompleto,
-          descriptivos,
-          actividadesOverride,
-          observaciones,
-          idioma,
-          personalizarTraslados,
-          opcionesPaquete,
-        },
-        numero,
+      // Build exact same HTML as the preview
+      let html = buildHtml(numero);
+
+      // Inject agency logo / initials at the very top (PDF only, not in preview)
+      const agencias = loadAgencias();
+      const agenciaNombreKey = (cliente.correo || "").trim().toLowerCase();
+      const agencia = agencias.find(
+        (a) => a.nombre.trim().toLowerCase() === agenciaNombreKey,
       );
+      const agenciaNombre = agencia?.nombre || cliente.correo || "";
+      const logoBlock = buildAgenciaLogoHtml(agencia?.logoUrl, agenciaNombre);
+      html = html.replace("<body>", `<body>${logoBlock}`);
+
+      iframe = document.createElement("iframe");
+      iframe.style.position = "fixed";
+      iframe.style.left = "-10000px";
+      iframe.style.top = "0";
+      iframe.style.width = "816px";
+      iframe.style.height = "1056px";
+      iframe.style.border = "0";
+      iframe.setAttribute("aria-hidden", "true");
+      document.body.appendChild(iframe);
+
+      const doc = iframe.contentDocument;
+      if (!doc) throw new Error("No iframe document");
+      doc.open();
+      doc.write(html);
+      doc.close();
+
+      await new Promise<void>((resolve) => {
+        if (doc.readyState === "complete") resolve();
+        else {
+          iframe!.onload = () => resolve();
+          setTimeout(() => resolve(), 1500);
+        }
+      });
+
+      const images = Array.from(doc.images);
+      await Promise.all(
+        images.map(
+          (img) =>
+            new Promise<void>((resolve) => {
+              if (img.complete) return resolve();
+              img.onload = () => resolve();
+              img.onerror = () => resolve();
+            }),
+        ),
+      );
+
+      const target = doc.body;
+      await html2pdf()
+        .set({
+          margin: [10, 10, 10, 10],
+          filename,
+          image: { type: "jpeg", quality: 0.95 },
+          html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", windowWidth: 816 },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] },
+        })
+        .from(target)
+        .save();
+
       onActionComplete?.("pdf_enviado", isNew);
     } catch (err) {
       console.error("PDF generation failed:", err);
       setPdfError(true);
       setTimeout(() => setPdfError(false), 3000);
     } finally {
+      if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
       setPdfLoading(false);
     }
   };
