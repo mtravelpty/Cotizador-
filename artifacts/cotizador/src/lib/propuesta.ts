@@ -1132,18 +1132,34 @@ function buildPackageView(d: PropuestaData): string {
       `text-transform:uppercase;letter-spacing:0.6px;background:${C_PRICE_BG};` +
       `border-bottom:2px solid ${C_BORDER};`;
 
+    const ninosPkg = d.cliente.ninos ?? 0;
+
     if (numOpciones <= 1) {
       // ── Single option: table WITHOUT Opción column ──────────────────────
       const opHoteles = d.opcionesHoteleras?.[0]?.hoteles ?? d.hoteles;
       const opTotales = (d.opcionesHoteleras?.[0]?.totalesPorAcomodacion ?? d.result.totalesPorAcomodacion) as Record<string, number>;
       const nHoteles = opHoteles.length;
 
+      const chdPriceTotal = ninosPkg > 0
+        ? opHoteles.reduce((sum, h) => {
+            const rate = (h.preciosPorAcomodacion as Record<string, number>)["CHD"] ?? 0;
+            return sum + rate * (h.noches ?? 0) * ninosPkg;
+          }, 0)
+        : 0;
+
+      const chdPriceLine = ninosPkg > 0 && chdPriceTotal > 0
+        ? `<div style="white-space:nowrap;line-height:2.2;">` +
+          `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">CHD:</span>` +
+          ` <span style="font-size:15px;font-weight:800;color:${C_DARK};">USD ${escape(fmt(chdPriceTotal))}</span>` +
+          `</div>`
+        : "";
+
       const priceLinesHtml = acoms.map((a) =>
         `<div style="white-space:nowrap;line-height:2.2;">` +
         `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">${escape(String(a))}:</span>` +
         ` <span style="font-size:15px;font-weight:800;color:${C_DARK};">USD ${escape(fmt(opTotales[String(a)] ?? 0))}</span>` +
         `</div>`
-      ).join("");
+      ).join("") + chdPriceLine;
 
       const dataRows = opHoteles.map((h, idx) => {
         const regimenFmt = formatRegimen(h.desayuno);
@@ -1153,11 +1169,18 @@ function buildPackageView(d: PropuestaData): string {
         const isFirst = idx === 0;
         const rowspanAttr = nHoteles > 1 ? ` rowspan="${nHoteles}"` : "";
 
+        const chdRate = (h.preciosPorAcomodacion as Record<string, number>)["CHD"] ?? 0;
+        const chdNocheLine = ninosPkg > 0 && chdRate > 0
+          ? `<div style="line-height:2.0;">` +
+            `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">CHD:</span>` +
+            ` USD ${escape(fmt(chdRate))}</div>`
+          : "";
+
         const nocheLinesHtml = acoms.map((a) =>
           `<div style="line-height:2.0;">` +
           `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">${escape(String(a))}:</span>` +
           ` USD ${escape(fmt(h.preciosPorAcomodacion[a] ?? 0))}</div>`
-        ).join("");
+        ).join("") + chdNocheLine;
 
         return `<tr style="background:${rowBg};page-break-inside:avoid;">
           <td style="padding:12px 14px;border-bottom:1px solid ${C_BORDER};border-right:1px solid ${C_BORDER};vertical-align:top;">
@@ -1200,12 +1223,26 @@ function buildPackageView(d: PropuestaData): string {
         const nHoteles = op.hoteles.length;
         const rowspanAttr = nHoteles > 1 ? ` rowspan="${nHoteles}"` : "";
 
+        const opChdPriceTotal = ninosPkg > 0
+          ? op.hoteles.reduce((sum, h) => {
+              const rate = (h.preciosPorAcomodacion as Record<string, number>)["CHD"] ?? 0;
+              return sum + rate * (h.noches ?? 0) * ninosPkg;
+            }, 0)
+          : 0;
+
+        const opChdPriceLine = ninosPkg > 0 && opChdPriceTotal > 0
+          ? `<div style="white-space:nowrap;line-height:2.2;">` +
+            `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">CHD:</span>` +
+            ` <span style="font-size:15px;font-weight:800;color:${C_DARK};">USD ${escape(fmt(opChdPriceTotal))}</span>` +
+            `</div>`
+          : "";
+
         const priceLinesHtml = acoms.map((a) =>
           `<div style="white-space:nowrap;line-height:2.2;">` +
           `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">${escape(String(a))}:</span>` +
           ` <span style="font-size:15px;font-weight:800;color:${C_DARK};">USD ${escape(fmt(opTotales[String(a)] ?? 0))}</span>` +
           `</div>`
-        ).join("");
+        ).join("") + opChdPriceLine;
 
         return op.hoteles.map((h, hIdx) => {
           const isFirst = hIdx === 0;
@@ -1217,11 +1254,18 @@ function buildPackageView(d: PropuestaData): string {
             ? `border-bottom:2px solid ${C_BORDER};`
             : `border-bottom:1px dashed ${C_BORDER};`;
 
+          const hChdRate = (h.preciosPorAcomodacion as Record<string, number>)["CHD"] ?? 0;
+          const hChdNocheLine = ninosPkg > 0 && hChdRate > 0
+            ? `<div style="line-height:2.0;">` +
+              `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">CHD:</span>` +
+              ` USD ${escape(fmt(hChdRate))}</div>`
+            : "";
+
           const nocheLinesHtml = acoms.map((a) =>
             `<div style="line-height:2.0;">` +
             `<span style="font-weight:700;color:${C_LBL};font-size:10px;text-transform:uppercase;width:36px;display:inline-block;">${escape(String(a))}:</span>` +
             ` USD ${escape(fmt(h.preciosPorAcomodacion[a] ?? 0))}</div>`
-          ).join("");
+          ).join("") + hChdNocheLine;
 
           return `<tr style="background:${blockBg};page-break-inside:avoid;">
             ${isFirst ? `<td${rowspanAttr} style="padding:12px 14px;border-bottom:2px solid ${C_BORDER};border-right:1px solid ${C_BORDER};vertical-align:middle;background:${blockBg};white-space:nowrap;">
