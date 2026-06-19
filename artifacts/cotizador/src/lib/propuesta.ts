@@ -1324,23 +1324,18 @@ function grupoDetalleBlock(d: PropuestaData): string {
     </div>`;
   }
 
-  // ── Per-accommodation totals (each acom uses its own pax count) ──
+  // ── Per-accommodation hotel totals: rate × (rooms × paxPerRoom) × noches ──
+  // Non-hotel services (traslados, tours, vuelos, catamaran) are NOT included here;
+  // they roll up into d.grupoTotal via calcGrupoTotalFromResult.
   const acTotals: Partial<Record<Acomodacion, number>> = {};
   for (const a of roomAcoms) {
-    let total = 0;
     const rooms = d.grupoHabitacionesPorAcom[a] ?? 0;
     const paxForAcom = rooms * rp(a);
+    let total = 0;
     for (const svc of d.result.servicios) {
       if (svc.tipo === "hotel") {
         const rate = svc.preciosPorAcomodacion[a] ?? 0;
         total += rate * paxForAcom * (svc.noches ?? 0);
-      } else {
-        const unit = svc.unitAplicado ?? (svc.preciosPorAcomodacion.DBL ?? 0);
-        const ticketsAdult =
-          svc.tipo === "tour" && svc.tickets?.enabled
-            ? (svc.tickets.adultPrice ?? 0)
-            : 0;
-        total += (unit + ticketsAdult) * paxForAcom;
       }
     }
     acTotals[a] = total;
