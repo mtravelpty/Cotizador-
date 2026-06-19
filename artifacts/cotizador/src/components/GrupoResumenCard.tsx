@@ -1,5 +1,5 @@
 import type { Acomodacion, CotizacionResult } from "@/lib/types";
-import { fmt } from "@/lib/calc";
+import { fmt, calcGrupoTotalFromResult } from "@/lib/calc";
 import { Users } from "lucide-react";
 
 const ROOM_PAX: Partial<Record<Acomodacion, number>> = {
@@ -19,21 +19,6 @@ export function calcAdultosPax(
   hab: Partial<Record<Acomodacion, number>>,
 ): number {
   return ROOM_ACOMS.reduce((s, a) => s + (hab[a] ?? 0) * roomPax(a), 0);
-}
-
-/** Total grupo cost: SGL/DBL/TPL/QDL rooms + ninos × CHD rate. */
-export function calcGrupoTotal(
-  acoms: Acomodacion[],
-  hab: Partial<Record<Acomodacion, number>>,
-  totales: Partial<Record<Acomodacion, number>>,
-  ninos: number,
-): number {
-  const roomTotal = ROOM_ACOMS.filter((a) => acoms.includes(a)).reduce(
-    (s, a) => s + (totales[a] ?? 0) * (hab[a] ?? 0) * roomPax(a),
-    0,
-  );
-  const chdRate = totales["CHD" as Acomodacion] ?? 0;
-  return roomTotal + ninos * chdRate;
 }
 
 const ACOM_COLORS: Partial<Record<Acomodacion, { bg: string; text: string; border: string; btn: string; btnBorder: string }>> = {
@@ -61,12 +46,7 @@ export default function GrupoResumenCard({
   const roomAcoms = ROOM_ACOMS.filter((a) => acomodaciones.includes(a));
   const adultosPax = calcAdultosPax(habitaciones);
   const totalPax = adultosPax + ninos;
-  const totalGrupo = calcGrupoTotal(
-    acomodaciones,
-    habitaciones,
-    result.totalesPorAcomodacion,
-    ninos,
-  );
+  const totalGrupo = calcGrupoTotalFromResult(result, habitaciones, ninos).total;
 
   const setHab = (a: Acomodacion, val: number) =>
     onHabitacionesChange({ ...habitaciones, [a]: Math.max(0, val) });

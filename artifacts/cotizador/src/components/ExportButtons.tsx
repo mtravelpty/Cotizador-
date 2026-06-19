@@ -421,8 +421,8 @@ export default function ExportButtons({
 
     // ── Detalle del Grupo ─────────────────────────────────────────
     if (quotingMode === "grupo") {
-      const ROOM_PAX: Partial<Record<Acomodacion, number>> = { SGL: 1, DBL: 2, TPL: 3 };
-      const ROOM_ACOMS: Acomodacion[] = (["SGL", "DBL", "TPL"] as Acomodacion[]).filter((a) => acoms.includes(a));
+      const ROOM_PAX: Partial<Record<Acomodacion, number>> = { SGL: 1, DBL: 2, TPL: 3, QDL: 4 };
+      const ROOM_ACOMS: Acomodacion[] = (["SGL", "DBL", "TPL", "QDL"] as Acomodacion[]).filter((a) => acoms.includes(a));
       const rp = (a: Acomodacion) => ROOM_PAX[a] ?? 1;
       const hab = habitacionesPorAcomodacion ?? {};
       const activeRoomAcoms = ROOM_ACOMS.filter((a) => (hab[a] ?? 0) > 0);
@@ -431,6 +431,20 @@ export default function ExportButtons({
       const grupoTotalPax = grupoAdultoPax + ninos;
       const grupoSubs = calcGrupoTotalFromResult(result, hab, ninos);
       const grupoTotal = grupoSubs.total;
+
+      // Per-acom hotel subtotals: rate × rooms × paxPerRoom × noches (no global pax)
+      const acomSubtotals: Partial<Record<Acomodacion, number>> = {};
+      for (const a of activeRoomAcoms) {
+        const rooms = hab[a] ?? 0;
+        const paxA = rooms * rp(a);
+        let subtotal = 0;
+        for (const svc of result.servicios) {
+          if (svc.tipo === "hotel") {
+            subtotal += (svc.preciosPorAcomodacion[a] ?? 0) * paxA * (svc.noches ?? 0);
+          }
+        }
+        acomSubtotals[a] = subtotal;
+      }
 
       lines.push("");
       lines.push("👥 *DETALLE DEL GRUPO*");
@@ -444,12 +458,12 @@ export default function ExportButtons({
 
       if (activeRoomAcoms.length > 0) {
         lines.push("");
-        lines.push("*Tarifas por persona:*");
+        lines.push("*Subtotal alojamiento por tipo:*");
         for (const a of activeRoomAcoms) {
-          const pp = result.totalesPorAcomodacion[a] ?? 0;
-          if (pp > 0) lines.push(`  ${String(a)}: ${fmt(pp)}`);
+          const sub = acomSubtotals[a] ?? 0;
+          if (sub > 0) lines.push(`  ${String(a)}: ${fmt(sub)}`);
         }
-        if (ninos > 0 && chdRate > 0) lines.push(`  Tarifa niño: ${fmt(chdRate)}`);
+        if (ninos > 0 && chdRate > 0) lines.push(`  CHD: ${fmt(chdRate * ninos)}`);
       }
 
       lines.push("");
