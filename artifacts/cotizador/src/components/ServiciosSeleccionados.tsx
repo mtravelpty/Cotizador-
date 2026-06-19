@@ -41,6 +41,8 @@ import {
   Check,
   Flag,
   Copy,
+  BedDouble,
+  Package,
 } from "lucide-react";
 import { loadPlantillas, pushReciente, type Plantilla } from "@/lib/plantillas";
 import { loadObservaciones } from "@/lib/observaciones";
@@ -55,6 +57,7 @@ interface Props {
   onChange: (s: ServicioSeleccionado[]) => void;
   onEdit: (s: ServicioSeleccionado) => void;
   onAddCustom?: () => void;
+  onQuickAdd?: (s: ServicioSeleccionado) => void;
   onCargarPlantilla?: (id: string) => void;
   onEditarPlantilla?: (p: Plantilla) => void;
   observaciones?: string;
@@ -102,6 +105,26 @@ const GROUP_TITLE: Record<ServicioSeleccionado["tipo"], string> = {
   catamaran: "Catamarán y Navegación",
 };
 
+type CategoriaQuick = "hoteleria" | "traslados" | "aereos" | "catamaran" | "tours" | "otros";
+
+const CATEGORIAS_QUICK: { id: CategoriaQuick; label: string; icon: React.ReactNode; nombre: string }[] = [
+  { id: "hoteleria",  label: "Hotelería",  icon: <BedDouble className="w-5 h-5" />, nombre: "Hotel" },
+  { id: "traslados",  label: "Traslados",  icon: <Car className="w-5 h-5" />,       nombre: "Traslado" },
+  { id: "aereos",     label: "Aéreos",     icon: <Plane className="w-5 h-5" />,     nombre: "Aéreo" },
+  { id: "catamaran",  label: "Catamarán",  icon: <Anchor className="w-5 h-5" />,    nombre: "Catamarán" },
+  { id: "tours",      label: "Tours",      icon: <Compass className="w-5 h-5" />,   nombre: "Tour" },
+  { id: "otros",      label: "Otros",      icon: <Package className="w-5 h-5" />,   nombre: "Servicio" },
+];
+
+const TIPO_QUICK: Record<CategoriaQuick, ServicioSeleccionado["tipo"]> = {
+  hoteleria: "hotel",
+  traslados: "traslado",
+  aereos:    "vuelo",
+  catamaran: "catamaran",
+  tours:     "tour",
+  otros:     "tour",
+};
+
 export default function ServiciosSeleccionados({
   servicios,
   acomodaciones,
@@ -111,6 +134,7 @@ export default function ServiciosSeleccionados({
   onChange,
   onEdit,
   onAddCustom,
+  onQuickAdd,
   onCargarPlantilla,
   onEditarPlantilla,
   observaciones = "",
@@ -211,6 +235,21 @@ export default function ServiciosSeleccionados({
     items: servicios.filter((s) => s.tipo === tipo),
   })).filter((g) => g.items.length > 0);
 
+  const handleQuickAddItem = (cat: CategoriaQuick) => {
+    if (!onQuickAdd) return;
+    const tipo = TIPO_QUICK[cat];
+    const catData = CATEGORIAS_QUICK.find(c => c.id === cat)!;
+    const id = `manual-${tipo}-${Date.now()}`;
+    onQuickAdd({
+      id,
+      tipo,
+      nombre: catData.nombre,
+      precios: {},
+      manual: true,
+      ...(cat === "otros" && { customTipo: "Otro" }),
+    });
+  };
+
   return (
   <>
     <Section
@@ -237,6 +276,29 @@ export default function ServiciosSeleccionados({
         )
       }
     >
+      {onQuickAdd && (
+        <div className="mb-5 pb-5 border-b border-[#f0e4ea]">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
+            Agregar servicio
+          </p>
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+            {CATEGORIAS_QUICK.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => handleQuickAddItem(cat.id)}
+                className="flex flex-col items-center justify-center gap-1.5 py-3 px-2 rounded-xl border transition-all text-center active:scale-95"
+                style={{ backgroundColor: "#fdf7fb", borderColor: "#e8d5e0", color: "#802d62" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#f9eef5"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#fdf7fb"; }}
+              >
+                <span>{cat.icon}</span>
+                <span className="text-[11px] font-semibold leading-tight">{cat.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       {servicios.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-[#e8d5e0] px-6 py-10 text-center flex flex-col items-center gap-3" style={{ backgroundColor: "#ffffff" }}>
           <img
@@ -815,7 +877,7 @@ function ServicioRow({
           />
         ) : (
           <div
-            className="cursor-pointer flex items-center gap-1.5 group/name"
+            className="cursor-pointer inline-flex items-center gap-1.5 rounded-md px-1.5 py-0.5 transition-colors bg-[#fdf4f9] hover:bg-[#f5e8f1]"
             onClick={startNameEdit}
             title="Clic para editar el nombre"
           >
@@ -853,14 +915,6 @@ function ServicioRow({
                 {servicio.tipoServicio ?? "Regular"}
               </button>
             )}
-            <Pencil className="w-3 h-3 text-slate-300 opacity-0 group-hover/name:opacity-100 flex-shrink-0 transition-opacity" />
-          </div>
-        )}
-        {servicio.manual && (
-          <div className="mt-0.5">
-            <span className="inline-block text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">
-              manual
-            </span>
           </div>
         )}
 
@@ -875,10 +929,10 @@ function ServicioRow({
               <PopoverTrigger asChild>
                 <button
                   type="button"
-                  className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer"
+                  className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer"
                   title="Cambiar ubicación"
                 >
-                  {servicio.ubicacion ?? <span className="italic text-slate-400">Ubicación</span>}
+                  {servicio.ubicacion ?? <span className="italic text-[#802d62]/45">Ubicación</span>}
                 </button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-[210px] p-1 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
@@ -968,8 +1022,8 @@ function ServicioRow({
             <span className="text-slate-300 text-[11px] select-none">·</span>
             <Popover open={openEditor === "tipoHab"} onOpenChange={(o) => setOpenEditor(o ? "tipoHab" : null)}>
               <PopoverTrigger asChild>
-                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Tipo de habitación">
-                  {servicio.tipoHabitacion || <span className="italic text-slate-400">Tipo hab.</span>}
+                <button type="button" className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Tipo de habitación">
+                  {servicio.tipoHabitacion || <span className="italic text-[#802d62]/45">Tipo hab.</span>}
                 </button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
@@ -1006,8 +1060,8 @@ function ServicioRow({
             {/* Origen */}
             <Popover open={openEditor === "origen"} onOpenChange={(o) => setOpenEditor(o ? "origen" : null)}>
               <PopoverTrigger asChild>
-                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Origen">
-                  {servicio.origen || <span className="italic text-slate-400">Origen</span>}
+                <button type="button" className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Origen">
+                  {servicio.origen || <span className="italic text-[#802d62]/45">Origen</span>}
                 </button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
@@ -1018,8 +1072,8 @@ function ServicioRow({
             {/* Destino */}
             <Popover open={openEditor === "destino"} onOpenChange={(o) => setOpenEditor(o ? "destino" : null)}>
               <PopoverTrigger asChild>
-                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Destino">
-                  {servicio.destino || <span className="italic text-slate-400">Destino</span>}
+                <button type="button" className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Destino">
+                  {servicio.destino || <span className="italic text-[#802d62]/45">Destino</span>}
                 </button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
@@ -1030,11 +1084,11 @@ function ServicioRow({
             {/* Fecha */}
             <Popover open={openEditor === "fecha"} onOpenChange={(o) => setOpenEditor(o ? "fecha" : null)}>
               <PopoverTrigger asChild>
-                <button type="button" className="text-[11px] hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Fecha">
+                <button type="button" className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer inline-flex items-center gap-1" title="Fecha">
                   {servicio.fecha ? (
                     <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-700"><Calendar className="w-3 h-3" />{fmtDMA(servicio.fecha)}</span>
                   ) : (
-                    <span className="italic text-slate-400 inline-flex items-center gap-1"><Calendar className="w-3 h-3" />Fecha</span>
+                    <span className="italic text-[#802d62]/45 inline-flex items-center gap-1"><Calendar className="w-3 h-3" />Fecha</span>
                   )}
                 </button>
               </PopoverTrigger>
@@ -1048,8 +1102,8 @@ function ServicioRow({
             {/* Origen */}
             <Popover open={openEditor === "origen"} onOpenChange={(o) => setOpenEditor(o ? "origen" : null)}>
               <PopoverTrigger asChild>
-                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Origen">
-                  {servicio.origen || <span className="italic text-slate-400">Origen</span>}
+                <button type="button" className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Origen">
+                  {servicio.origen || <span className="italic text-[#802d62]/45">Origen</span>}
                 </button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>
@@ -1060,8 +1114,8 @@ function ServicioRow({
             {/* Destino */}
             <Popover open={openEditor === "destino"} onOpenChange={(o) => setOpenEditor(o ? "destino" : null)}>
               <PopoverTrigger asChild>
-                <button type="button" className="text-[11px] text-slate-500 hover:text-primary hover:bg-primary/5 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Destino">
-                  {servicio.destino || <span className="italic text-slate-400">Destino</span>}
+                <button type="button" className="text-[11px] text-[#802d62]/75 hover:text-[#802d62] hover:bg-[#802d62]/8 px-1 py-0.5 rounded transition-colors cursor-pointer" title="Destino">
+                  {servicio.destino || <span className="italic text-[#802d62]/45">Destino</span>}
                 </button>
               </PopoverTrigger>
               <PopoverContent align="start" className="w-[230px] p-0 z-[60]" onOpenAutoFocus={(e) => e.preventDefault()}>

@@ -1346,7 +1346,6 @@ export default function CotizadorPage() {
                   adultos={cliente.pasajeros ?? 0}
                   onShowToast={showToast}
                 />
-                <AgregarServicioAccordion onSave={(s) => handleQuickAdd(s)} />
                 <ServiciosSeleccionados
                   servicios={servicios}
                   acomodaciones={acomodaciones}
@@ -1356,6 +1355,7 @@ export default function CotizadorPage() {
                   onChange={setServicios}
                   onEdit={openEdit}
                   onAddCustom={() => setCustomOpen(true)}
+                  onQuickAdd={(s) => handleQuickAdd(s)}
                   onCargarPlantilla={handleCargarPlantillaEnCotizacion}
                   onEditarPlantilla={() => {
                     refreshPlantillasCount();
