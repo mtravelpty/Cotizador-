@@ -43,6 +43,7 @@ import {
   Copy,
   BedDouble,
   Package,
+  Camera,
 } from "lucide-react";
 import { loadPlantillas, pushReciente, type Plantilla } from "@/lib/plantillas";
 import { loadObservaciones } from "@/lib/observaciones";
@@ -769,6 +770,30 @@ function ServicioRow({
   const nameInputRef = useRef<HTMLInputElement>(null);
   const savingRef = useRef(false);
   const dragHandleActive = useRef(false);
+  const [iconHover, setIconHover] = useState(false);
+  const imgInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files ?? []);
+    if (!files.length) return;
+    Promise.all(
+      files.map(
+        (f) =>
+          new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (ev) => resolve(ev.target!.result as string);
+            reader.readAsDataURL(f);
+          })
+      )
+    ).then((newImgs) => {
+      onUpdate({ ...servicio, images: [...(servicio.images ?? []), ...newImgs] });
+      if (imgInputRef.current) imgInputRef.current.value = "";
+    });
+  };
+
+  const removeImage = (idx: number) => {
+    onUpdate({ ...servicio, images: (servicio.images ?? []).filter((_, i) => i !== idx) });
+  };
 
   function startNameEdit() {
     setNameValue(servicio.nombre);
@@ -883,11 +908,31 @@ function ServicioRow({
         <GripVertical className="w-3.5 h-3.5" />
       </div>
 
-      {/* Type icon */}
-      <div
-        className={`w-8 h-8 rounded-xl ${colors.bg} ${colors.text} flex items-center justify-center flex-shrink-0`}
-      >
-        {iconForTipo(servicio.tipo)}
+      {/* Type icon — hover → camera to upload images */}
+      <div className="relative flex-shrink-0">
+        <button
+          type="button"
+          onClick={() => imgInputRef.current?.click()}
+          onMouseEnter={() => setIconHover(true)}
+          onMouseLeave={() => setIconHover(false)}
+          title="Clic para agregar imágenes"
+          className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-150 ${
+            iconHover
+              ? "bg-[#f0e4ea] text-[#802d62] ring-1 ring-[#d8bdd0]"
+              : `${colors.bg} ${colors.text}`
+          }`}
+          style={{ cursor: "pointer" }}
+        >
+          {iconHover ? <Camera className="w-4 h-4" /> : iconForTipo(servicio.tipo)}
+        </button>
+        <input
+          ref={imgInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={handleImgUpload}
+        />
       </div>
 
       {/* Content */}
@@ -1268,26 +1313,46 @@ function ServicioRow({
           </div>
         ) : null}
 
-        {/* Images thumbnails */}
+        {/* Images grid */}
         {(servicio.images?.length ?? 0) > 0 && (
-          <div className="mt-1.5 flex flex-wrap gap-1">
-            {(servicio.images ?? []).slice(0, 3).map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt=""
-                className="h-10 rounded border border-slate-200 object-cover flex-shrink-0"
-                style={{ width: 56 }}
-              />
-            ))}
-            {(servicio.images ?? []).length > 3 && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            {(servicio.images ?? []).map((img, i) => (
               <div
-                className="h-10 rounded border border-slate-200 bg-slate-100 flex items-center justify-center text-[10px] font-semibold text-slate-500 flex-shrink-0"
-                style={{ width: 40 }}
+                key={i}
+                className="group/img relative flex-shrink-0"
+                style={{
+                  width: 80,
+                  height: 60,
+                  borderRadius: 7,
+                  overflow: "hidden",
+                  border: "1px solid #e2e8f0",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.07)",
+                }}
               >
-                +{servicio.images!.length - 3}
+                <img
+                  src={img}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+                <button
+                  type="button"
+                  onClick={(e) => { e.stopPropagation(); removeImage(i); }}
+                  className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity"
+                  style={{
+                    background: "rgba(0,0,0,0.65)",
+                    color: "#fff",
+                    fontSize: 9,
+                    lineHeight: 1,
+                    padding: 0,
+                    border: "none",
+                    cursor: "pointer",
+                  }}
+                  title="Eliminar imagen"
+                >
+                  ✕
+                </button>
               </div>
-            )}
+            ))}
           </div>
         )}
 
