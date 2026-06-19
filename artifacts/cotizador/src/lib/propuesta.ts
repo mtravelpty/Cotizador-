@@ -579,6 +579,8 @@ function adicionalesTable(
   if (d.isCalc) return "";
   if (items.length === 0) return "";
   const { T } = d;
+  const ninosCount = d.cliente.ninos ?? 0;
+  const showChdCol = ninosCount > 0;
   const hasCHD = d.acoms.some((a) => String(a) === "CHD");
   const onlyCHD = hasCHD && d.acoms.length === 1;
   const rows = items
@@ -587,10 +589,6 @@ function adicionalesTable(
       const mainUnit = onlyCHD
         ? (chdUnit > 0 ? chdUnit : (s.unitAplicado ?? 0))
         : (s.unitAplicado ?? 0);
-      const chdSubLine =
-        hasCHD && !onlyCHD && chdUnit > 0
-          ? `<div style="font-size:11px;color:#475569;margin-top:3px;">CHD: ${escape(fmt(chdUnit))}</div>`
-          : "";
       const tipo =
         s.tipo === "vuelo"
           ? T.tipoVuelo
@@ -651,8 +649,12 @@ function adicionalesTable(
         </tr>`;
       }
 
+      const chdCell = showChdCol
+        ? `<td style="${STYLES.tdNum};width:10%;">${escape(fmt(chdUnit > 0 ? chdUnit : 0))}</td>`
+        : `<td style="${STYLES.tdEmpty};width:10%;"></td>`;
+
       return `<tr style="page-break-inside:avoid;">
-        <td style="${STYLES.td};width:65%;">
+        <td style="${STYLES.td};width:${showChdCol ? "55%" : "65%"};">
           <div style="${STYLES.cellTitle}">${escape(displayName)}</div>
           ${ticketsLine}
           ${fechasCatamaranLine}
@@ -661,8 +663,8 @@ function adicionalesTable(
           ${imagesLine}
         </td>
         <td style="${STYLES.td};width:15%;">${escape(tipo)}</td>
-        <td style="${STYLES.tdNum};width:10%;">${escape(fmt(mainUnit))}${chdSubLine}</td>
-        <td style="${STYLES.tdEmpty};width:10%;"></td>
+        <td style="${STYLES.tdNum};width:10%;">${escape(fmt(mainUnit))}</td>
+        ${chdCell}
       </tr>`;
     })
     .join("");
@@ -671,6 +673,9 @@ function adicionalesTable(
   const tarifaSub = itemTipo === "catamaran" ? "PAX/NOCHE" : "PAX";
   const tarifaSubDiv = `<div style="font-weight:400;color:#94a3b8;font-size:9px;margin-top:2px;line-height:1.2;white-space:nowrap;">${tarifaSub}</div>`;
   const tarifaHeaderHtml = onlyCHD ? escape("TARIFA CHD") : `TARIFA${tarifaSubDiv}`;
+  const chdThHeader = showChdCol
+    ? `<th style="${STYLES.thNum};width:10%;">CHD${tarifaSubDiv}</th>`
+    : `<th style="${STYLES.thEmpty};width:10%;"></th>`;
   const thead = d.isCalc
     ? `<tr>
         <th style="${STYLES.th};width:65%;">${escape(T.descripcion)}</th>
@@ -678,10 +683,10 @@ function adicionalesTable(
         <th style="${STYLES.thNum};width:20%;">${tarifaHeaderHtml}</th>
       </tr>`
     : `<tr>
-        <th style="${STYLES.th};width:65%;">${escape(T.descripcion)}</th>
+        <th style="${STYLES.th};width:${showChdCol ? "55%" : "65%"};">${escape(T.descripcion)}</th>
         <th style="${STYLES.th};width:15%;">${escape(T.tipo)}</th>
         <th style="${STYLES.thNum};width:10%;">${tarifaHeaderHtml}</th>
-        <th style="${STYLES.thEmpty};width:10%;"></th>
+        ${chdThHeader}
       </tr>`;
 
   return `
@@ -890,6 +895,7 @@ function buildTotalesView(d: PropuestaData): string {
   // ── 2. SERVICE SECTIONS ─────────────────────────────────────────
   const hasCHDTot = d.acoms.some((a) => String(a) === "CHD");
   const onlyCHDTot = hasCHDTot && d.acoms.length === 1;
+  const showChdColTot = (d.cliente.ninos ?? 0) > 0;
 
   const serviceSectionHtml = (
     color: string,
@@ -907,10 +913,6 @@ function buildTotalesView(d: PropuestaData): string {
       const mainUnit = onlyCHDTot
         ? (chdUnit > 0 ? chdUnit : (s.unitAplicado ?? 0))
         : (s.unitAplicado ?? 0);
-      const chdSubLine =
-        hasCHDTot && !onlyCHDTot && chdUnit > 0
-          ? `<div style="font-size:11px;color:#475569;margin-top:3px;">CHD: ${escape(fmt(chdUnit))}</div>`
-          : "";
       const ticketsLine = (() => {
         if (s.tipo !== "tour" || !s.tickets?.enabled || s.tickets.adultPrice <= 0) return "";
         const tk = s.tickets;
@@ -924,25 +926,33 @@ function buildTotalesView(d: PropuestaData): string {
       })();
       const notasLine = renderNotasHTML(s.notas, s.notesImportant, s.notasList, STYLES.cellNote);
       const imagesLineTot = renderImagesHTML(s.images);
+      const chdTotCell = showChdColTot
+        ? `<td style="${tdNum};width:10%;">${escape(fmt(chdUnit > 0 ? chdUnit : 0))}</td>`
+        : "";
       rows += `<tr style="page-break-inside:avoid;">
-        <td style="${tdBase};width:48%;font-weight:600;">${escape(getName(s))}${ticketsLine}${notasLine}${imagesLineTot}</td>
-        <td style="${tdBase};width:17%;">${escape(getTipo(s))}</td>
-        <td style="${tdNum};width:13%;">${escape(fmt(mainUnit))}${chdSubLine}</td>
+        <td style="${tdBase};width:${showChdColTot ? "43%" : "48%"};font-weight:600;">${escape(getName(s))}${ticketsLine}${notasLine}${imagesLineTot}</td>
+        <td style="${tdBase};width:${showChdColTot ? "15%" : "17%"};">${escape(getTipo(s))}</td>
+        <td style="${tdNum};width:${showChdColTot ? "10%" : "13%"};">${escape(fmt(mainUnit))}</td>
+        ${chdTotCell}
         <td style="${tdCtr};width:8%;">${escape(String(pax))}</td>
         <td style="${tdNum};width:14%;color:${color};">${escape(fmt(total))}</td>
       </tr>`;
     }
     const totSubDiv = `<div style="font-weight:400;color:#94a3b8;font-size:9px;margin-top:2px;line-height:1.2;white-space:nowrap;">PAX</div>`;
     const tarifaHeaderTotHtml = onlyCHDTot ? escape("TARIFA CHD") : `TARIFA${totSubDiv}`;
+    const chdThTot = showChdColTot
+      ? `<th style="${STYLES.thNum};width:10%;">CHD${totSubDiv}</th>`
+      : "";
     return `
     <div style="${STYLES.block}">
       ${sectionBar(label, color)}
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
         <thead>
           <tr>
-            <th style="${STYLES.th};width:48%;">${escape(T.descripcion)}</th>
-            <th style="${STYLES.th};width:17%;">${escape(T.modalidad)}</th>
-            <th style="${STYLES.thNum};width:13%;">${tarifaHeaderTotHtml}</th>
+            <th style="${STYLES.th};width:${showChdColTot ? "43%" : "48%"};">${escape(T.descripcion)}</th>
+            <th style="${STYLES.th};width:${showChdColTot ? "15%" : "17%"};">${escape(T.modalidad)}</th>
+            <th style="${STYLES.thNum};width:${showChdColTot ? "10%" : "13%"};">${tarifaHeaderTotHtml}</th>
+            ${chdThTot}
             <th style="${STYLES.thCenter};width:8%;">${escape(T.pax)}</th>
             <th style="${STYLES.thNum};width:14%;color:${color};">${escape(T.total)}</th>
           </tr>
@@ -1058,7 +1068,7 @@ function buildPackageView(d: PropuestaData): string {
 
   const inclusionBlock = inclRows
     ? `<div style="margin-bottom:20px;">
-        ${sectionBar("Incluye", C_BLUE)}
+        ${sectionBar("Incluye", C_TOT_ALOJAMIENTO)}
         <table cellpadding="0" cellspacing="0" border="0" width="100%"
           style="width:100%;border-collapse:collapse;border:1px solid ${C_BORDER};border-top:none;background:#ffffff;">
           <tbody>
@@ -1166,7 +1176,7 @@ function buildPackageView(d: PropuestaData): string {
 
       hotelBlock = `
       <div style="margin-bottom:20px;">
-        ${sectionBar("Alojamiento", "#363765")}
+        ${sectionBar("Alojamiento", C_TOT_ALOJAMIENTO)}
         <table cellpadding="0" cellspacing="0" border="0" width="100%"
           style="width:100%;border-collapse:collapse;border:1px solid ${C_BORDER};border-top:none;">
           <thead>
@@ -1233,7 +1243,7 @@ function buildPackageView(d: PropuestaData): string {
 
       hotelBlock = `
       <div style="margin-bottom:20px;">
-        ${sectionBar("Opciones de alojamiento", "#363765")}
+        ${sectionBar("Opciones de alojamiento", C_TOT_ALOJAMIENTO)}
         <table cellpadding="0" cellspacing="0" border="0" width="100%"
           style="width:100%;border-collapse:collapse;border:1px solid ${C_BORDER};border-top:none;">
           <thead>
@@ -1295,7 +1305,7 @@ function grupoDetalleBlock(d: PropuestaData): string {
 
     return `
     <div style="margin-bottom:20px;">
-      ${sectionBar("Totalizado", C_BLUE)}
+      ${sectionBar("Totalizado", C_TOT_ALOJAMIENTO)}
       <div style="border:1px solid ${C_BORDER};border-top:none;background:#ffffff;">
         <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
           <thead>
@@ -1361,7 +1371,7 @@ function grupoDetalleBlock(d: PropuestaData): string {
 
   return `
   <div style="margin-bottom:20px;">
-    ${sectionBar("Detalle del Grupo", C_BLUE)}
+    ${sectionBar("Detalle del Grupo", C_TOT_ALOJAMIENTO)}
     <div style="border:1px solid ${C_BORDER};border-top:none;background:#ffffff;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;border-collapse:collapse;">
         <thead>
@@ -1409,7 +1419,7 @@ function buildGrupoPackageView(d: PropuestaData): string {
 
   const inclusionBlock = includeItems.length
     ? `<div style="margin-bottom:20px;">
-        ${sectionBar("Incluye", C_BLUE)}
+        ${sectionBar("Incluye", C_TOT_ALOJAMIENTO)}
         <table cellpadding="0" cellspacing="0" border="0" width="100%"
           style="width:100%;border-collapse:collapse;border:1px solid ${C_BORDER};border-top:none;background:#ffffff;">
           <tbody>${includeItems.map(checkTd).join("")}</tbody>

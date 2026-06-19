@@ -1,0 +1,84 @@
+Corregir la visualización de las cotizaciones finales en los modos Tarifario, Grupo y Paquete.
+
+1. Unificar colores de encabezados
+
+Actualmente el modo Tarifario utiliza correctamente el color corporativo rosado oscuro (#802d62), pero los modos Grupo y Paquete muestran colores distintos.
+
+Aplicar exactamente el mismo color, estilo y apariencia visual del modo Tarifario a todos los encabezados de sección en:
+
+- Paquete
+- Grupo
+
+Incluyendo:
+- Alojamiento
+- Traslados
+- Tours y Experiencias
+- Aéreos
+- Catamarán
+- Otros
+- Incluye
+- Detalle del Grupo
+- Cualquier otra sección similar
+
+No modificar estructura, tamaños ni tipografía.
+Solo unificar colores y estilo visual.
+
+--------------------------------------------------
+
+2. Mostrar tarifa CHD en cotizaciones finales
+
+Actualmente la tarifa CHD se registra pero no aparece correctamente en la cotización final.
+
+Corregir:
+
+Si existe al menos 1 niño (Niños > 0):
+
+Mostrar columna CHD en:
+- Tarifario
+- Grupo
+- Paquete
+
+Aplicar a:
+- Hotelería
+- Catamarán
+- Tours
+- Traslados
+- Aéreos
+- Otros servicios con tarifa por persona
+
+Ejemplo en Hotelería:
+
+HOTEL | CATEGORÍA | TIPO HAB. | DBL PAX/NOCHE | CHD PAX/NOCHE
+
+Hotel X | ★★★ | Standard | $90 | $45
+
+--------------------------------------------------
+
+3. Cálculos
+
+Cuando existan niños:
+
+- Utilizar tarifa CHD para niños.
+- Utilizar tarifa adulto para adultos.
+- Reflejar correctamente ambos valores en subtotales y totales.
+
+No ocultar CHD cuando existan niños.
+
+Si Niños = 0:
+- Ocultar completamente la columna CHD.
+- Mantener diseño actual.
+
+--------------------------------------------------
+
+4. Validación visual
+
+Antes de renderizar la cotización:
+
+Si Niños > 0 y existe tarifa CHD:
+→ Mostrar columna CHD.
+
+Si Niños > 0 y la tarifa CHD está vacía:
+→ Mostrar CHD como USD 0 para evitar que desaparezca la columna.
+
+Resultado esperado:
+Los modos Tarifario, Grupo y Paquete deben tener exactamente la misma identidad visual y las tarifas CHD deben verse correctamente en la cotización final cuando existan niños.
