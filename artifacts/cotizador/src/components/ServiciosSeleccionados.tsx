@@ -152,26 +152,6 @@ export default function ServiciosSeleccionados({
   const hotelesServs = servicios.filter((s) => s.tipo === "hotel");
   const [dragId, setDragId] = useState<string | null>(null);
   const [dragOverKey, setDragOverKey] = useState<string | null>(null);
-  const [customEmptyImg, setCustomEmptyImg] = useState<string | null>(
-    () => {
-      try { return localStorage.getItem("rge_empty_state_img"); } catch { return null; }
-    }
-  );
-  const [emptyImgHover, setEmptyImgHover] = useState(false);
-  const emptyImgInputRef = useRef<HTMLInputElement>(null);
-
-  const handleEmptyImgUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const src = ev.target!.result as string;
-      setCustomEmptyImg(src);
-      try { localStorage.setItem("rge_empty_state_img", src); } catch {}
-    };
-    reader.readAsDataURL(file);
-    if (emptyImgInputRef.current) emptyImgInputRef.current.value = "";
-  };
   const [plantillaModalOpen, setPlantillaModalOpen] = useState(false);
   const [plantillas, setPlantillas] = useState<Plantilla[]>([]);
   const [editingOpId, setEditingOpId] = useState<string | null>(null);
@@ -351,40 +331,12 @@ export default function ServiciosSeleccionados({
       )}
       {servicios.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-[#e8d5e0] px-6 py-10 text-center flex flex-col items-center gap-3" style={{ backgroundColor: "#ffffff" }}>
-          <div className="relative" style={{ display: "inline-block" }}>
-            <img
-              src={customEmptyImg ?? defaultEmptyImg}
-              alt=""
-              aria-hidden="true"
-              style={{
-                maxWidth: 170, maxHeight: 170, width: "100%",
-                objectFit: "contain", display: "block",
-                borderRadius: 8,
-                transition: "opacity 0.15s",
-                opacity: emptyImgHover ? 0.6 : 1,
-                cursor: "pointer",
-              }}
-              onClick={() => emptyImgInputRef.current?.click()}
-              onMouseEnter={() => setEmptyImgHover(true)}
-              onMouseLeave={() => setEmptyImgHover(false)}
-            />
-            {emptyImgHover && (
-              <div
-                className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1"
-                style={{ borderRadius: 8 }}
-              >
-                <Camera className="w-6 h-6" style={{ color: "#802d62" }} />
-                <span style={{ fontSize: 10, fontWeight: 600, color: "#802d62" }}>Cambiar imagen</span>
-              </div>
-            )}
-            <input
-              ref={emptyImgInputRef}
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleEmptyImgUpload}
-            />
-          </div>
+          <img
+            src={defaultEmptyImg}
+            alt=""
+            aria-hidden="true"
+            style={{ maxWidth: 170, maxHeight: 170, width: "100%", objectFit: "contain", display: "block" }}
+          />
           <div className="font-semibold text-slate-700 text-sm">
             Aún no has agregado servicios
           </div>
